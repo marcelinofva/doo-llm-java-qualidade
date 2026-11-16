@@ -1,0 +1,15 @@
+You are given a software specification written as user stories.
+Implement it in Java using object-oriented design.
+
+SPECIFICATION:
+{{SPEC}}
+
+OUTPUT RULES:
+- Output only Java source code. One top-level class per file.
+- Start each file with a line: // File: <ClassName>.java
+- Put each file in its own ```java code block.
+- Use Java 11 syntax only (no records, no switch expressions, no text blocks, no sealed classes).
+- Use only the JDK (no external libraries). Do not declare a package.
+- Include a class named Main with a main method that demonstrates the main flows
+  using hard-coded data. Main must not read user input.
+- No explanations outside code blocks.

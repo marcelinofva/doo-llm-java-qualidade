@@ -1,0 +1,7 @@
+User
+Facility
+WasteType
+OpeningHours
+Favorite
+Event
+Administrator

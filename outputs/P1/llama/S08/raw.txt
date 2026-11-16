@@ -1,0 +1,249 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities:
+    * User
+    * Collection
+    * DepositGroup
+    * Permission
+    * Item
+    * Repository
+  2. Single responsibility of each class:
+    * User: represents a user with their attributes and methods
+    * Collection: represents a collection with its attributes and methods
+    * DepositGroup: represents a group of users with methods to add and remove users
+    * Permission: represents a permission with its attributes and methods
+    * Item: represents an item with its attributes and methods
+    * Repository: represents the repository with methods to manage collections, deposit groups, and permissions
+  3. Relationships:
+    * A collection has many deposit groups (composition)
+    * A deposit group has many users (composition)
+    * A user can be part of many deposit groups (association)
+    * A permission is associated with a collection (association)
+    * An item is part of a collection (association)
+  4. Public methods of each class:
+    * User: addPermission, removePermission, getPermissions
+    * Collection: addDepositGroup, removeDepositGroup, getDepositGroups
+    * DepositGroup: addUser, removeUser, getUsers
+    * Permission: grant, revoke
+    * Item: getPermissions
+    * Repository: addCollection, removeCollection, getCollections
+</design>
+```
+
+**Phase 2 - CODE**
+
+### User.java
+```java
+// File: User.java
+
+public class User {
+    private String netID;
+    private String name;
+    private List<Permission> permissions;
+
+    public User(String netID, String name) {
+        this.netID = netID;
+        this.name = name;
+        this.permissions = new ArrayList<>();
+    }
+
+    public void addPermission(Permission permission) {
+        this.permissions.add(permission);
+    }
+
+    public void removePermission(Permission permission) {
+        this.permissions.remove(permission);
+    }
+
+    public List<Permission> getPermissions() {
+        return this.permissions;
+    }
+}
+```
+
+### Collection.java
+```java
+// File: Collection.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Collection {
+    private String name;
+    private List<DepositGroup> depositGroups;
+    private List<Item> items;
+
+    public Collection(String name) {
+        this.name = name;
+        this.depositGroups = new ArrayList<>();
+        this.items = new ArrayList<>();
+    }
+
+    public void addDepositGroup(DepositGroup depositGroup) {
+        this.depositGroups.add(depositGroup);
+    }
+
+    public void removeDepositGroup(DepositGroup depositGroup) {
+        this.depositGroups.remove(depositGroup);
+    }
+
+    public List<DepositGroup> getDepositGroups() {
+        return this.depositGroups;
+    }
+
+    public void addItem(Item item) {
+        this.items.add(item);
+    }
+
+    public List<Item> getItems() {
+        return this.items;
+    }
+}
+```
+
+### DepositGroup.java
+```java
+// File: DepositGroup.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class DepositGroup {
+    private String name;
+    private List<User> users;
+
+    public DepositGroup(String name) {
+        this.name = name;
+        this.users = new ArrayList<>();
+    }
+
+    public void addUser(User user) {
+        this.users.add(user);
+    }
+
+    public void removeUser(User user) {
+        this.users.remove(user);
+    }
+
+    public List<User> getUsers() {
+        return this.users;
+    }
+}
+```
+
+### Permission.java
+```java
+// File: Permission.java
+
+public class Permission {
+    private String name;
+    private boolean granted;
+
+    public Permission(String name) {
+        this.name = name;
+        this.granted = false;
+    }
+
+    public void grant() {
+        this.granted = true;
+    }
+
+    public void revoke() {
+        this.granted = false;
+    }
+
+    public boolean isGranted() {
+        return this.granted;
+    }
+}
+```
+
+### Item.java
+```java
+// File: Item.java
+
+public class Item {
+    private String name;
+    private List<Permission> permissions;
+
+    public Item(String name) {
+        this.name = name;
+        this.permissions = new ArrayList<>();
+    }
+
+    public void addPermission(Permission permission) {
+        this.permissions.add(permission);
+    }
+
+    public List<Permission> getPermissions() {
+        return this.permissions;
+    }
+}
+```
+
+### Repository.java
+```java
+// File: Repository.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Repository {
+    private List<Collection> collections;
+
+    public Repository() {
+        this.collections = new ArrayList<>();
+    }
+
+    public void addCollection(Collection collection) {
+        this.collections.add(collection);
+    }
+
+    public void removeCollection(Collection collection) {
+        this.collections.remove(collection);
+    }
+
+    public List<Collection> getCollections() {
+        return this.collections;
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        // Create users
+        User user1 = new User("netid1", "Name1");
+        User user2 = new User("netid2", "Name2");
+
+        // Create collection
+        Collection collection = new Collection("Collection1");
+
+        // Create deposit group
+        DepositGroup depositGroup = new DepositGroup("DepositGroup1");
+
+        // Add users to deposit group
+        depositGroup.addUser(user1);
+        depositGroup.addUser(user2);
+
+        // Add deposit group to collection
+        collection.addDepositGroup(depositGroup);
+
+        // Create repository
+        Repository repository = new Repository();
+
+        // Add collection to repository
+        repository.addCollection(collection);
+
+        // Print collection's deposit groups
+        for (DepositGroup depositGroup : collection.getDepositGroups()) {
+            System.out.println(depositGroup.getUsers());
+        }
+    }
+}
+```

@@ -1,0 +1,31 @@
+outputs\P1\phi\S30\src\ETD.java:2: error: duplicate class: ETD
+public class ETD {
+       ^
+outputs\P1\phi\S30\src\DigitalRecordsArchivist.java:3: error: cannot find symbol
+    public void ingestETDs(List<ETD> etds) {
+                           ^
+  symbol:   class List
+  location: class DigitalRecordsArchivist
+outputs\P1\phi\S30\src\DigitalRecordsArchivist.java:46: error: cannot find symbol
+        List<ETD> etds = new ArrayList<>();
+        ^
+  symbol:   class List
+  location: class Main
+outputs\P1\phi\S30\src\DigitalRecordsArchivist.java:46: error: cannot find symbol
+        List<ETD> etds = new ArrayList<>();
+                             ^
+  symbol:   class ArrayList
+  location: class Main
+outputs\P1\phi\S30\src\DigitalRecordsArchivist.java:47: error: constructor ETD in class ETD cannot be applied to given types;
+        etds.add(new ETD("Metadata1", true, "Record1"));
+                 ^
+  required: no arguments
+  found:    String,boolean,String
+  reason: actual and formal argument lists differ in length
+outputs\P1\phi\S30\src\DigitalRecordsArchivist.java:48: error: constructor ETD in class ETD cannot be applied to given types;
+        etds.add(new ETD("Metadata2", false, "Record2"));
+                 ^
+  required: no arguments
+  found:    String,boolean,String
+  reason: actual and formal argument lists differ in length
+6 errors

@@ -1,0 +1,20 @@
+outputs\P1\phi\S13\src\MemberProfile.java:65: error: <identifier> expected
+    public void setPrivate(boolean private) {
+                                  ^
+outputs\P1\phi\S13\src\MemberProfile.java:65: error: illegal start of type
+    public void setPrivate(boolean private) {
+                                          ^
+outputs\P1\phi\S13\src\MemberProfile.java:66: error: illegal start of expression
+        isPrivate = private;
+                    ^
+outputs\P1\phi\S13\src\MemberProfile.java:66: error: illegal start of type
+        isPrivate = private;
+                           ^
+outputs\P1\phi\S13\src\MemberProfile.java:69: error: implicitly declared classes are not supported in -source 11
+    public boolean isEmailPrivate() {
+           ^
+  (use -source 25 or higher to enable implicitly declared classes)
+outputs\P1\phi\S13\src\MemberProfile.java:76: error: class, interface, or enum expected
+}
+^
+6 errors

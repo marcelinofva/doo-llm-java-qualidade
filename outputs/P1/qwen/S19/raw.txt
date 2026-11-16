@@ -1,0 +1,187 @@
+<design>
+1) Domain Entities (Classes):
+   - Plan
+   - PlanReview
+   - PlanReviewer
+   - Applicant
+   - Inspection
+   - Bond
+   - CodeModification
+
+2) Single Responsibility of Each Class:
+   - Plan: Manages plan details.
+   - PlanReview: Manages the review process of a plan.
+   - PlanReviewer: Manages the work of a plan reviewer.
+   - Applicant: Manages applicant details and requests.
+   - Inspection: Manages inspection details.
+   - Bond: Manages bond details.
+   - CodeModification: Manages code modification requests.
+
+3) Relationships:
+   - PlanReview has-a Plan
+   - PlanReview has-a PlanReviewer
+   - Applicant has-a PlanReview
+   - PlanReview has-a Inspection
+   - PlanReview has-a Bond
+   - PlanReview has-a CodeModification
+
+4) Public Methods:
+   - Plan: setPlanId, getPlanId, setPlanDetails, getPlanDetails
+   - PlanReview: assignPlanToReviewer, conductReview, recordOutcome, reviewCodeModification
+   - PlanReviewer: manageWorkload, reviewPlans
+   - Applicant: requestPlanReviewMeeting, submitCodeModification
+   - Inspection: manageInspection
+   - Bond: manageBondLifecycle
+   - CodeModification: submitCodeModification, approveCodeModification, denyCodeModification
+</design>
+
+// File: Plan.java
+```java
+public class Plan {
+    private String planId;
+    private String planDetails;
+
+    public void setPlanId(String planId) {
+        this.planId = planId;
+    }
+
+    public String getPlanId() {
+        return planId;
+    }
+
+    public void setPlanDetails(String planDetails) {
+        this.planDetails = planDetails;
+    }
+
+    public String getPlanDetails() {
+        return planDetails;
+    }
+}
+```
+
+// File: PlanReview.java
+```java
+public class PlanReview {
+    private Plan plan;
+    private PlanReviewer reviewer;
+    private String outcome;
+    private Bond bond;
+    private CodeModification codeModification;
+
+    public void assignPlanToReviewer(Plan plan, PlanReviewer reviewer) {
+        this.plan = plan;
+        this.reviewer = reviewer;
+    }
+
+    public void conductReview() {
+        // Conduct review logic
+    }
+
+    public void recordOutcome(String outcome) {
+        this.outcome = outcome;
+    }
+
+    public void reviewCodeModification(CodeModification codeModification) {
+        this.codeModification = codeModification;
+        // Review code modification logic
+    }
+}
+```
+
+// File: PlanReviewer.java
+```java
+public class PlanReviewer {
+    private String reviewerId;
+
+    public void manageWorkload() {
+        // Manage workload logic
+    }
+
+    public void reviewPlans() {
+        // Review plans logic
+    }
+}
+```
+
+// File: Applicant.java
+```java
+public class Applicant {
+    private String applicantId;
+
+    public void requestPlanReviewMeeting(PlanReview planReview) {
+        // Request plan review meeting logic
+    }
+
+    public void submitCodeModification(CodeModification codeModification) {
+        // Submit code modification logic
+    }
+}
+```
+
+// File: Inspection.java
+```java
+public class Inspection {
+    private String inspectionId;
+
+    public void manageInspection() {
+        // Manage inspection logic
+    }
+}
+```
+
+// File: Bond.java
+```java
+public class Bond {
+    private String bondId;
+
+    public void manageBondLifecycle() {
+        // Manage bond lifecycle logic
+    }
+}
+```
+
+// File: CodeModification.java
+```java
+public class CodeModification {
+    private String modificationId;
+
+    public void submitCodeModification() {
+        // Submit code modification logic
+    }
+
+    public void approveCodeModification() {
+        // Approve code modification logic
+    }
+
+    public void denyCodeModification() {
+        // Deny code modification logic
+    }
+}
+```
+
+// File: Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Demonstrate main flows using hard-coded data
+        Plan plan = new Plan();
+        plan.setPlanId("P001");
+        plan.setPlanDetails("Building permit for a new residential building");
+
+        PlanReviewer reviewer = new PlanReviewer();
+        reviewer.setReviewerId("R001");
+
+        PlanReview planReview = new PlanReview();
+        planReview.assignPlanToReviewer(plan, reviewer);
+        planReview.conductReview();
+        planReview.recordOutcome("Approved");
+
+        Applicant applicant = new Applicant();
+        applicant.requestPlanReviewMeeting(planReview);
+
+        CodeModification codeModification = new CodeModification();
+        codeModification.submitCodeModification();
+        codeModification.approveCodeModification();
+    }
+}
+```

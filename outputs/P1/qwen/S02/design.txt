@@ -1,0 +1,34 @@
+1) Domain Entities (Classes):
+   - Camper
+   - Parent
+   - Group
+   - Activity
+   - Attendance
+   - Staff
+   - Position
+
+2) Single Responsibility of Each Class:
+   - Camper: Manages camper details.
+   - Parent: Manages parent details and enrolls campers.
+   - Group: Manages groups and adds campers.
+   - Activity: Manages activities for a group.
+   - Attendance: Logs attendance for campers.
+   - Staff: Manages staff details and assigns positions.
+   - Position: Manages different staff positions.
+
+3) Relationships:
+   - Camper has a Parent.
+   - Parent has multiple Campers.
+   - Group has multiple Campers.
+   - Staff has a Position.
+   - Group has multiple Activities.
+   - Attendance logs Campers for a specific date.
+
+4) Public Methods:
+   - Camper: Constructor, getName(), getParent().
+   - Parent: Constructor, getName(), enrollCamper(Camper).
+   - Group: Constructor, getName(), addCamper(Camper), addActivity(Activity).
+   - Activity: Constructor, getName(), getGroup().
+   - Attendance: Constructor, getDate(), logCamper(Camper).
+   - Staff: Constructor, getName(), getPosition().
+   - Position: Constructor, getName().

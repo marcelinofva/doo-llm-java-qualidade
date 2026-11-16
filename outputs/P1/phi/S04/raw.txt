@@ -1,0 +1,128 @@
+```java
+// File: DataHub.java
+public class DataHub {
+    public static void main(String[] args) {
+        DataPackage package1 = new DataPackage("package1", "data1", "data2");
+        DataPackage package2 = new DataPackage("package2", "data3", "data4");
+
+        DataHub hub = new DataHub();
+        hub.importPackage(package1);
+        hub.importPackage(package2);
+
+        System.out.println(hub.getPackage("package1").getData());
+        System.out.println(hub.getPackage("package2").getData());
+
+        hub.updatePackage("package1", "updatedData1", "updatedData2");
+        System.out.println(hub.getPackage("package1").getData());
+
+        hub.unpublishPackage("package2");
+        System.out.println(hub.hasPackage("package2"));
+
+        hub.deletePackage("package1");
+        System.out.println(hub.hasPackage("package1"));
+
+        hub.restorePackage("package1");
+        System.out.println(hub.getPackage("package1").getData());
+
+        hub.undeletePackage("package2");
+        System.out.println(hub.hasPackage("package2"));
+    }
+
+    public void importPackage(DataPackage package) {
+        packages.put(package.getName(), package);
+        System.out.println("Package " + package.getName() + " imported.");
+    }
+
+    public void updatePackage(String name, String newData1, String newData2) {
+        if (packages.containsKey(name)) {
+            DataPackage package = packages.get(name);
+            package.setData(newData1, newData2);
+            System.out.println("Package " + name + " updated.");
+        } else {
+            System.out.println("Package not found.");
+        }
+    }
+
+    public void unpublishPackage(String name) {
+        if (packages.containsKey(name)) {
+            packages.remove(name);
+            System.out.println("Package " + name + " unpublished.");
+        } else {
+            System.out.println("Package not found.");
+        }
+    }
+
+    public void deletePackage(String name) {
+        if (packages.containsKey(name)) {
+            packages.remove(name);
+            System.out.println("Package " + name + " deleted.");
+        } else {
+            System.out.println("Package not found.");
+        }
+    }
+
+    public void restorePackage(String name) {
+        if (!packages.containsKey(name)) {
+            packages.put(name, new DataPackage(name, "restoredData1", "restoredData2"));
+            System.out.println("Package " + name + " restored.");
+        } else {
+            System.out.println("Package already exists.");
+        }
+    }
+
+    public void undeletePackage(String name) {
+        if (!packages.containsKey(name)) {
+            packages.put(name, new DataPackage(name, "undeletedData1", "undeletedData2"));
+            System.out.println("Package " + name + " undeleted.");
+        } else {
+            System.out.println("Package already exists.");
+        }
+    }
+
+    public boolean hasPackage(String name) {
+        return packages.containsKey(name);
+    }
+
+    public DataPackage getPackage(String name) {
+        return packages.get(name);
+    }
+
+    private Map<String, DataPackage> packages = new HashMap<>();
+}
+
+class DataPackage {
+    private String name;
+    private String data1;
+    private String data2;
+
+    public DataPackage(String name, String data1, String data2) {
+        this.name = name;
+        this.data1 = data1;
+        this.data2 = data2;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getData1() {
+        return data1;
+    }
+
+    public String getData2() {
+        return data2;
+    }
+
+    public void setData1(String data1) {
+        this.data1 = data1;
+    }
+
+    public void setData2(String data2) {
+        this.data2 = data2;
+    }
+
+    public String getData() {
+        return data1 + " " + data2;
+    }
+}
+```

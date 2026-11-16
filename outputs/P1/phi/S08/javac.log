@@ -1,0 +1,91 @@
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:3: error: cannot find symbol
+    public void addDepositorsToCollection(Collection collection, List<String> netIDs) {
+                                                                 ^
+  symbol:   class List
+  location: class DigitalRecordsArchivist
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:7: error: cannot find symbol
+    public void removeDepositorsFromCollection(Collection collection, List<String> netIDs) {
+                                                                      ^
+  symbol:   class List
+  location: class DigitalRecordsArchivist
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:11: error: cannot find symbol
+    public void setDepositWindowCloseDate(Collection collection, Date closeDate) {
+                                                                 ^
+  symbol:   class Date
+  location: class DigitalRecordsArchivist
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:35: error: cannot find symbol
+    public void changePermissionsOnItems(Collection collection, List<String> itemPermissions) {
+                                                                ^
+  symbol:   class List
+  location: class DigitalRecordsArchivist
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:46: error: cannot find symbol
+    private List<String> depositors;
+            ^
+  symbol:   class List
+  location: class Collection
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:47: error: cannot find symbol
+    private Date depositWindowCloseDate;
+            ^
+  symbol:   class Date
+  location: class Collection
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:49: error: cannot find symbol
+    private List<String> itemPermissions;
+            ^
+  symbol:   class List
+  location: class Collection
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:67: error: cannot find symbol
+    public void setDepositWindowCloseDate(Date closeDate) {
+                                          ^
+  symbol:   class Date
+  location: class Collection
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:79: error: cannot find symbol
+    public List<String> getDepositors() {
+           ^
+  symbol:   class List
+  location: class Collection
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:83: error: cannot find symbol
+    public Date getDepositWindowCloseDate() {
+           ^
+  symbol:   class Date
+  location: class Collection
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:91: error: cannot find symbol
+    public List<String> getItemPermissions() {
+           ^
+  symbol:   class List
+  location: class Collection
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:53: error: cannot find symbol
+        this.depositors = new ArrayList<>();
+                              ^
+  symbol:   class ArrayList
+  location: class Collection
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:56: error: cannot find symbol
+        this.itemPermissions = new ArrayList<>();
+                                   ^
+  symbol:   class ArrayList
+  location: class Collection
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:101: error: cannot find symbol
+        collection.setDepositWindowCloseDate(new Date());
+                                                 ^
+  symbol:   class Date
+  location: class Main
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:107: error: cannot find symbol
+        archivist.addDepositorsToCollection(collection, Arrays.asList("netID3", "netID4"));
+                                                        ^
+  symbol:   variable Arrays
+  location: class Main
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:108: error: cannot find symbol
+        archivist.removeDepositorsFromCollection(collection, Arrays.asList("netID1"));
+                                                             ^
+  symbol:   variable Arrays
+  location: class Main
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:109: error: cannot find symbol
+        archivist.setDepositWindowCloseDate(collection, new Date());
+                                                            ^
+  symbol:   class Date
+  location: class Main
+outputs\P1\phi\S08\src\DigitalRecordsArchivist.java:115: error: cannot find symbol
+        archivist.changePermissionsOnItems(collection, Arrays.asList("item3", "item4"));
+                                                       ^
+  symbol:   variable Arrays
+  location: class Main
+18 errors

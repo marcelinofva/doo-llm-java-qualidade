@@ -1,0 +1,16 @@
+outputs\P1\llama\S19\src\Bond.java:4: error: cannot find symbol
+    private Project project;
+            ^
+  symbol:   class Project
+  location: class Bond
+outputs\P1\llama\S19\src\Bond.java:6: error: cannot find symbol
+    public Bond(Project project) {
+                ^
+  symbol:   class Project
+  location: class Bond
+outputs\P1\llama\S19\src\Main.java:11: error: cannot find symbol
+        Bond bond = new Bond(new Project());
+                                 ^
+  symbol:   class Project
+  location: class Main
+3 errors

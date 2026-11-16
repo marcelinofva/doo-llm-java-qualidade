@@ -1,0 +1,6 @@
+outputs\P1\llama\S05\src\Publisher.java:10: error: cannot find symbol
+        return dataPackage.getTags();
+                          ^
+  symbol:   method getTags()
+  location: variable dataPackage of type DataPackage
+1 error

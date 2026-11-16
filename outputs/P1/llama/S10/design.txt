@@ -1,0 +1,20 @@
+1. Domain entities (classes):
+    - Dataset
+    - User
+    - PlatformAdministrator
+    - DataPublishingUser
+  2. Single responsibility of each class:
+    - Dataset: represents a dataset with its metadata and status
+    - User: represents a user with their credentials and permissions
+    - PlatformAdministrator: represents a platform administrator with additional permissions
+    - DataPublishingUser: represents a data publishing user with their datasets and permissions
+  3. Relationships (association, composition, inheritance):
+    - A User has many Datasets (composition)
+    - A Dataset belongs to one User (association)
+    - A PlatformAdministrator is a type of User (inheritance)
+    - A DataPublishingUser is a type of User (inheritance)
+  4. Public methods of each class:
+    - Dataset: add(), edit(), delete(), hide(), unhide()
+    - User: authenticate(), authorize()
+    - PlatformAdministrator: hideDataset(), deleteDataset()
+    - DataPublishingUser: addDataset(), hideDataset()

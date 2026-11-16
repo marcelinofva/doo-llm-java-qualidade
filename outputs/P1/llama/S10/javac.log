@@ -1,0 +1,16 @@
+outputs\P1\llama\S10\src\User.java:7: error: cannot find symbol
+    private List<Dataset> datasets;
+            ^
+  symbol:   class List
+  location: class User
+outputs\P1\llama\S10\src\User.java:28: error: cannot find symbol
+    public List<Dataset> getDatasets() {
+           ^
+  symbol:   class List
+  location: class User
+outputs\P1\llama\S10\src\User.java:13: error: cannot find symbol
+        this.datasets = new ArrayList<>();
+                            ^
+  symbol:   class ArrayList
+  location: class User
+3 errors

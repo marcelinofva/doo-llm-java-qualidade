@@ -1,0 +1,38 @@
+1. Domain entities (classes):
+    * `ETD`: Electronic Thesis Document
+    * `Embargo`: represents an embargo on an ETD
+    * `Permission`: represents permissions for an ETD
+    * `DescriptiveRecord`: represents the descriptive metadata for an ETD
+    * `Repository`: represents the repository where ETDs are stored
+    * `BatchIngest`: represents the batch ingest process
+    * `AuthorAuthorityControl`: represents the author authority control process
+    * `OAI-PMH`: represents the OAI-PMH interface
+
+  2. Single responsibility of each class:
+    * `ETD`: represents an ETD with its metadata and files
+    * `Embargo`: represents an embargo on an ETD with its start and end dates
+    * `Permission`: represents permissions for an ETD with its allowed actions
+    * `DescriptiveRecord`: represents the descriptive metadata for an ETD
+    * `Repository`: manages the storage and retrieval of ETDs
+    * `BatchIngest`: performs the batch ingest process for ETDs
+    * `AuthorAuthorityControl`: performs author authority control on ETDs
+    * `OAI-PMH`: exposes the repository contents via OAI-PMH
+
+  3. Relationships (association, composition, inheritance):
+    * `ETD` has-a `Embargo` (composition)
+    * `ETD` has-a `Permission` (composition)
+    * `ETD` has-a `DescriptiveRecord` (composition)
+    * `Repository` contains-a `ETD` (association)
+    * `BatchIngest` uses-a `Repository` (association)
+    * `AuthorAuthorityControl` uses-a `Repository` (association)
+    * `OAI-PMH` uses-a `Repository` (association)
+
+  4. Public methods of each class:
+    * `ETD`: `getMetadata()`, `getFile()`, `setEmbargo()`, `setPermission()`
+    * `Embargo`: `getStartDate()`, `getEndDate()`
+    * `Permission`: `getAllowedActions()`
+    * `DescriptiveRecord`: `getMetadata()`
+    * `Repository`: `addETD()`, `getETD()`, `removeETD()`
+    * `BatchIngest`: `performIngest()`
+    * `AuthorAuthorityControl`: `performControl()`
+    * `OAI-PMH`: `getETDs()`

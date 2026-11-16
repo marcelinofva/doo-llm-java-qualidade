@@ -1,0 +1,4 @@
+outputs\P1\llama\S08\src\Main.java:29: error: variable depositGroup is already defined in method main(String[])
+        for (DepositGroup depositGroup : collection.getDepositGroups()) {
+                          ^
+1 error

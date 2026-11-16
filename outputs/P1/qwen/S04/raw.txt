@@ -1,0 +1,124 @@
+<design>
+1) Domain Entities (Classes):
+   - DataPackage: Represents a data package with properties like id, name, content, and status.
+   - Registry: Manages the data packages, including publishing, unpublishing, deleting, and restoring.
+   - Validator: Validates the data package before publishing.
+
+2) Single Responsibility:
+   - DataPackage: Manages the properties and state of a data package.
+   - Registry: Manages the lifecycle of data packages (publish, unpublish, delete, restore).
+   - Validator: Validates the data package.
+
+3) Relationships:
+   - Registry has a collection of DataPackage.
+   - Validator validates DataPackage.
+
+4) Public Methods:
+   - DataPackage: Constructor, getters, setters, publish(), unpublish(), delete(), restore(), validate().
+   - Registry: publish(DataPackage), unpublish(DataPackage), delete(DataPackage), restore(DataPackage).
+   - Validator: validate(DataPackage).
+</design>
+
+// File: DataPackage.java
+```java
+public class DataPackage {
+    private String id;
+    private String name;
+    private String content;
+    private String status;
+
+    public DataPackage(String id, String name, String content) {
+        this.id = id;
+        this.name = name;
+        this.content = content;
+        this.status = "DRAFT";
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void publish() {
+        this.status = "PUBLISHED";
+    }
+
+    public void unpublish() {
+        this.status = "UNPUBLISHED";
+    }
+
+    public void delete() {
+        this.status = "DELETED";
+    }
+
+    public void restore() {
+        this.status = "PUBLISHED";
+    }
+
+    public void validate() {
+        // Validation logic here
+        System.out.println("Data package validated.");
+    }
+}
+```
+
+// File: Registry.java
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class Registry {
+    private Map<String, DataPackage> dataPackages;
+
+    public Registry() {
+        this.dataPackages = new HashMap<>();
+    }
+
+    public void publish(DataPackage dataPackage) {
+        dataPackage.validate();
+        dataPackage.publish();
+        dataPackages.put(dataPackage.getId(), dataPackage);
+    }
+
+    public void unpublish(DataPackage dataPackage) {
+        dataPackage.unpublish();
+        dataPackages.put(dataPackage.getId(), dataPackage);
+    }
+
+    public void delete(DataPackage dataPackage) {
+        dataPackage.delete();
+        dataPackages.remove(dataPackage.getId());
+    }
+
+    public void restore(DataPackage dataPackage) {
+        dataPackage.restore();
+        dataPackages.put(dataPackage.getId(), dataPackage);
+    }
+}
+```
+
+// File: Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        Registry registry = new Registry();
+        DataPackage dataPackage = new DataPackage("1", "SampleData", "Sample content");
+
+        registry.publish(dataPackage);
+        registry.unpublish(dataPackage);
+        registry.delete(dataPackage);
+        registry.restore(dataPackage);
+    }
+}
+```

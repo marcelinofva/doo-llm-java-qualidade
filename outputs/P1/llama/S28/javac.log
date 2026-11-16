@@ -1,0 +1,121 @@
+outputs\P1\llama\S28\src\Accession.java:6: error: cannot find symbol
+    private List<Agent> agents;
+            ^
+  symbol:   class List
+  location: class Accession
+outputs\P1\llama\S28\src\Accession.java:7: error: cannot find symbol
+    private List<Subject> subjects;
+            ^
+  symbol:   class List
+  location: class Accession
+outputs\P1\llama\S28\src\Subject.java:6: error: cannot find symbol
+    private List<Source> sources;
+            ^
+  symbol:   class List
+  location: class Subject
+outputs\P1\llama\S28\src\Agent.java:6: error: cannot find symbol
+    private List<NameForm> nameForms;
+            ^
+  symbol:   class List
+  location: class Agent
+outputs\P1\llama\S28\src\Agent.java:7: error: cannot find symbol
+    private List<Source> sources;
+            ^
+  symbol:   class List
+  location: class Agent
+outputs\P1\llama\S28\src\Resource.java:6: error: cannot find symbol
+    private List<Agent> agents;
+            ^
+  symbol:   class List
+  location: class Resource
+outputs\P1\llama\S28\src\Resource.java:7: error: cannot find symbol
+    private List<Subject> subjects;
+            ^
+  symbol:   class List
+  location: class Resource
+outputs\P1\llama\S28\src\ResourceComponent.java:6: error: cannot find symbol
+    private List<Agent> agents;
+            ^
+  symbol:   class List
+  location: class ResourceComponent
+outputs\P1\llama\S28\src\ResourceComponent.java:7: error: cannot find symbol
+    private List<Subject> subjects;
+            ^
+  symbol:   class List
+  location: class ResourceComponent
+outputs\P1\llama\S28\src\Accession.java:12: error: cannot find symbol
+        this.agents = new ArrayList<>();
+                          ^
+  symbol:   class ArrayList
+  location: class Accession
+outputs\P1\llama\S28\src\Accession.java:13: error: cannot find symbol
+        this.subjects = new ArrayList<>();
+                            ^
+  symbol:   class ArrayList
+  location: class Accession
+outputs\P1\llama\S28\src\Agent.java:12: error: cannot find symbol
+        this.nameForms = new ArrayList<>();
+                             ^
+  symbol:   class ArrayList
+  location: class Agent
+outputs\P1\llama\S28\src\Agent.java:13: error: cannot find symbol
+        this.sources = new ArrayList<>();
+                           ^
+  symbol:   class ArrayList
+  location: class Agent
+outputs\P1\llama\S28\src\Subject.java:11: error: cannot find symbol
+        this.sources = new ArrayList<>();
+                           ^
+  symbol:   class ArrayList
+  location: class Subject
+outputs\P1\llama\S28\src\Source.java:11: error: constructor Agent in class Agent cannot be applied to given types;
+        this.agent = new Agent();
+                     ^
+  required: String,String
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+outputs\P1\llama\S28\src\NameForm.java:11: error: constructor Agent in class Agent cannot be applied to given types;
+        this.agent = new Agent();
+                     ^
+  required: String,String
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+outputs\P1\llama\S28\src\EACCPFRecord.java:10: error: constructor Agent in class Agent cannot be applied to given types;
+        this.agent = new Agent();
+                     ^
+  required: String,String
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+outputs\P1\llama\S28\src\MARCXMLRecord.java:11: error: constructor Agent in class Agent cannot be applied to given types;
+        this.agent = new Agent();
+                     ^
+  required: String,String
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+outputs\P1\llama\S28\src\MARCXMLRecord.java:12: error: constructor Subject in class Subject cannot be applied to given types;
+        this.subject = new Subject();
+                       ^
+  required: String,String
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+outputs\P1\llama\S28\src\Resource.java:12: error: cannot find symbol
+        this.agents = new ArrayList<>();
+                          ^
+  symbol:   class ArrayList
+  location: class Resource
+outputs\P1\llama\S28\src\Resource.java:13: error: cannot find symbol
+        this.subjects = new ArrayList<>();
+                            ^
+  symbol:   class ArrayList
+  location: class Resource
+outputs\P1\llama\S28\src\ResourceComponent.java:12: error: cannot find symbol
+        this.agents = new ArrayList<>();
+                          ^
+  symbol:   class ArrayList
+  location: class ResourceComponent
+outputs\P1\llama\S28\src\ResourceComponent.java:13: error: cannot find symbol
+        this.subjects = new ArrayList<>();
+                            ^
+  symbol:   class ArrayList
+  location: class ResourceComponent
+23 errors

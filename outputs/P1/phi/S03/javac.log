@@ -1,0 +1,61 @@
+outputs\P1\phi\S03\src\Event.java:4: error: cannot find symbol
+    private LocalDateTime eventDateTime;
+            ^
+  symbol:   class LocalDateTime
+  location: class Event
+outputs\P1\phi\S03\src\Event.java:6: error: cannot find symbol
+    public Event(String eventName, LocalDateTime eventDateTime) {
+                                   ^
+  symbol:   class LocalDateTime
+  location: class Event
+outputs\P1\phi\S03\src\Event.java:19: error: cannot find symbol
+    public LocalDateTime getEventDateTime() {
+           ^
+  symbol:   class LocalDateTime
+  location: class Event
+outputs\P1\phi\S03\src\Event.java:23: error: cannot find symbol
+    public void setEventDateTime(LocalDateTime eventDateTime) {
+                                 ^
+  symbol:   class LocalDateTime
+  location: class Event
+outputs\P1\phi\S03\src\User.java:6: error: cannot find symbol
+    private List<Favorite> favorites;
+            ^
+  symbol:   class List
+  location: class User
+outputs\P1\phi\S03\src\User.java:7: error: cannot find symbol
+    private List<Event> favoriteEvents;
+            ^
+  symbol:   class List
+  location: class User
+outputs\P1\phi\S03\src\User.java:41: error: cannot find symbol
+    public List<Favorite> getFavorites() {
+           ^
+  symbol:   class List
+  location: class User
+outputs\P1\phi\S03\src\User.java:45: error: cannot find symbol
+    public void setFavorites(List<Favorite> favorites) {
+                             ^
+  symbol:   class List
+  location: class User
+outputs\P1\phi\S03\src\User.java:49: error: cannot find symbol
+    public List<Event> getFavoriteEvents() {
+           ^
+  symbol:   class List
+  location: class User
+outputs\P1\phi\S03\src\User.java:53: error: cannot find symbol
+    public void setFavoriteEvents(List<Event> favoriteEvents) {
+                                  ^
+  symbol:   class List
+  location: class User
+outputs\P1\phi\S03\src\User.java:13: error: cannot find symbol
+        this.favorites = new ArrayList<>();
+                             ^
+  symbol:   class ArrayList
+  location: class User
+outputs\P1\phi\S03\src\User.java:14: error: cannot find symbol
+        this.favoriteEvents = new ArrayList<>();
+                                  ^
+  symbol:   class ArrayList
+  location: class User
+12 errors

@@ -1,0 +1,13 @@
+outputs\P1\phi\S15\src\Main.java:2: error: duplicate class: Main
+public class Main {
+       ^
+outputs\P1\phi\S15\src\Sponsor.java:2: error: duplicate class: Sponsor
+public class Sponsor {
+       ^
+outputs\P1\phi\S15\src\SponsorLevel.java:2: error: duplicate class: SponsorLevel
+public enum SponsorLevel {
+       ^
+outputs\P1\phi\S15\src\Sponsorship.java:2: error: duplicate class: Sponsorship
+public class Sponsorship {
+       ^
+4 errors

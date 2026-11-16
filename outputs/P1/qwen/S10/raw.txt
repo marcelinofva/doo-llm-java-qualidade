@@ -1,0 +1,152 @@
+<design>
+1) Domain Entities (Classes):
+   - Dataset
+   - User
+   - PlatformAdmin
+
+2) Single Responsibility of Each Class:
+   - Dataset: Manages dataset properties and state (public, hidden).
+   - User: Manages user-specific actions on datasets.
+   - PlatformAdmin: Manages platform-wide actions on datasets.
+
+3) Relationships:
+   - User has many Datasets.
+   - PlatformAdmin has many Datasets.
+
+4) Public Methods:
+   - Dataset: edit(), delete(), hide(), isPublic(), isHidden().
+   - User: publishDataset(Dataset), deleteDataset(Dataset), hideDataset(Dataset).
+   - PlatformAdmin: viewAllDatasets(), deleteDataset(Dataset), hideDataset(Dataset).
+</design>
+
+// File: Dataset.java
+```java
+public class Dataset {
+    private String title;
+    private boolean isPublic;
+    private boolean isHidden;
+
+    public Dataset(String title) {
+        this.title = title;
+        this.isPublic = false;
+        this.isHidden = false;
+    }
+
+    public void edit() {
+        // Implementation to edit dataset
+    }
+
+    public void delete() {
+        // Implementation to delete dataset
+    }
+
+    public void hide() {
+        this.isHidden = true;
+        this.isPublic = false;
+    }
+
+    public boolean isPublic() {
+        return isPublic;
+    }
+
+    public boolean isHidden() {
+        return isHidden;
+    }
+}
+```
+
+// File: User.java
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class User {
+    private String username;
+    private List<Dataset> datasets;
+
+    public User(String username) {
+        this.username = username;
+        this.datasets = new ArrayList<>();
+    }
+
+    public void publishDataset(Dataset dataset) {
+        datasets.add(dataset);
+    }
+
+    public void deleteDataset(Dataset dataset) {
+        datasets.remove(dataset);
+    }
+
+    public void hideDataset(Dataset dataset) {
+        dataset.hide();
+    }
+
+    public List<Dataset> getDatasets() {
+        return datasets;
+    }
+}
+```
+
+// File: PlatformAdmin.java
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class PlatformAdmin {
+    private List<Dataset> datasets;
+
+    public PlatformAdmin() {
+        this.datasets = new ArrayList<>();
+    }
+
+    public void viewAllDatasets() {
+        for (Dataset dataset : datasets) {
+            System.out.println("Dataset: " + dataset.getTitle() + ", Public: " + dataset.isPublic() + ", Hidden: " + dataset.isHidden());
+        }
+    }
+
+    public void deleteDataset(Dataset dataset) {
+        datasets.remove(dataset);
+    }
+
+    public void hideDataset(Dataset dataset) {
+        dataset.hide();
+    }
+
+    public void addDataset(Dataset dataset) {
+        datasets.add(dataset);
+    }
+}
+```
+
+// File: Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        PlatformAdmin admin = new PlatformAdmin();
+        User user1 = new User("user1");
+        User user2 = new User("user2");
+
+        Dataset dataset1 = new Dataset("Dataset 1");
+        Dataset dataset2 = new Dataset("Dataset 2");
+
+        user1.publishDataset(dataset1);
+        user2.publishDataset(dataset2);
+
+        admin.addDataset(dataset1);
+        admin.addDataset(dataset2);
+
+        admin.viewAllDatasets();
+
+        user1.hideDataset(dataset1);
+        admin.hideDataset(dataset2);
+
+        admin.viewAllDatasets();
+
+        user1.deleteDataset(dataset1);
+        admin.deleteDataset(dataset2);
+
+        admin.viewAllDatasets();
+    }
+}
+```

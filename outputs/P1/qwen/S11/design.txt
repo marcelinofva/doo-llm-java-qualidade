@@ -1,0 +1,26 @@
+1) Domain Entities (Classes):
+   - DataSource: Represents the data source (CSV, Excel, JSON, Google Spreadsheet, Fiscal Data Package).
+   - DataModel: Represents the model of the data.
+   - DataValidator: Validates the data.
+   - DataImporter: Imports data from various sources.
+   - DataUpdater: Updates the data automatically when the source file changes.
+
+2) Single Responsibility:
+   - DataSource: Manages the data source.
+   - DataModel: Manages the data model.
+   - DataValidator: Validates the data.
+   - DataImporter: Imports data from various sources.
+   - DataUpdater: Updates the data automatically when the source file changes.
+
+3) Relationships:
+   - DataSource is used by DataImporter and DataUpdater.
+   - DataModel is used by DataImporter and DataUpdater.
+   - DataValidator is used by DataImporter.
+   - DataImporter is used by DataUpdater.
+
+4) Public Methods:
+   - DataSource: getFilePath(), setFilePath(), readData()
+   - DataModel: getModel(), setModel()
+   - DataValidator: validateData()
+   - DataImporter: importData(), editModel()
+   - DataUpdater: updateData()

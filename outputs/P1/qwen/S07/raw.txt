@@ -1,0 +1,141 @@
+<design>
+1) Domain Entities (Classes):
+   - Item
+   - Embargo
+   - Collection
+   - User
+   - Repository
+
+2) Single Responsibility of Each Class:
+   - Item: Manages item metadata and embargo status.
+   - Embargo: Manages embargo details such as start and end dates.
+   - Collection: Manages collections and their embargo policies.
+   - User: Manages user roles and permissions.
+   - Repository: Manages the overall repository operations and embargo lifting.
+
+3) Relationships:
+   - Item has an Embargo.
+   - Collection has multiple Items.
+   - User has permissions to perform actions on Items and Collections.
+   - Repository manages multiple Collections and Users.
+
+4) Public Methods:
+   - Item: liftEmbargo(), setEmbargoDate(), getEmbargoStatus()
+   - Embargo: getStartDate(), getEndDate()
+   - Collection: setEmbargoPolicy(), getEmbargoPolicy()
+   - User: hasPermission(), grantPermission()
+   - Repository: liftEmbargoOnReleaseDate(), downloadEmbargoMetadata()
+</design>
+
+// File: Item.java
+```java
+public class Item {
+    private String metadata;
+    private Embargo embargo;
+
+    public void liftEmbargo() {
+        if (embargo != null) {
+            embargo = null;
+        }
+    }
+
+    public void setEmbargoDate(Date startDate, Date endDate) {
+        embargo = new Embargo(startDate, endDate);
+    }
+
+    public String getEmbargoStatus() {
+        if (embargo == null) {
+            return "No embargo";
+        } else {
+            return "Embargoed until " + embargo.getEndDate();
+        }
+    }
+}
+
+// File: Embargo.java
+```java
+import java.util.Date;
+
+public class Embargo {
+    private Date startDate;
+    private Date endDate;
+
+    public Embargo(Date startDate, Date endDate) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+}
+
+// File: Collection.java
+```java
+import java.util.List;
+
+public class Collection {
+    private List<Item> items;
+    private String embargoPolicy;
+
+    public void setEmbargoPolicy(String policy) {
+        embargoPolicy = policy;
+    }
+
+    public String getEmbargoPolicy() {
+        return embargoPolicy;
+    }
+}
+
+// File: User.java
+```java
+import java.util.List;
+
+public class User {
+    private List<String> permissions;
+
+    public boolean hasPermission(String permission) {
+        return permissions.contains(permission);
+    }
+
+    public void grantPermission(String permission) {
+        permissions.add(permission);
+    }
+}
+
+// File: Repository.java
+```java
+import java.util.List;
+
+public class Repository {
+    private List<Collection> collections;
+    private List<User> users;
+
+    public void liftEmbargoOnReleaseDate() {
+        // Logic to lift embargoes on release date
+    }
+
+    public void downloadEmbargoMetadata() {
+        // Logic to download embargo metadata
+    }
+}
+
+// File: Main.java
+```java
+import java.util.Date;
+
+public class Main {
+    public static void main(String[] args) {
+        Item item = new Item();
+        item.setEmbargoDate(new Date(), new Date(System.currentTimeMillis() + 30 * 24 * 60 * 60 * 1000)); // 30 days
+        System.out.println(item.getEmbargoStatus());
+
+        item.liftEmbargo();
+        System.out.println(item.getEmbargoStatus());
+    }
+}
+```

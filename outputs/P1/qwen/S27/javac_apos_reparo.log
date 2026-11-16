@@ -1,0 +1,18 @@
+outputs\P1\qwen\S27\src\Main.java:21: error: id has private access in Resource
+        System.out.println("Resource ID: " + resource.id);
+                                                     ^
+outputs\P1\qwen\S27\src\Main.java:22: error: id has private access in ResourceComponent
+        System.out.println("Component ID: " + component.id);
+                                                       ^
+outputs\P1\qwen\S27\src\Main.java:23: error: levelOfDescription has private access in Resource
+        System.out.println("Level of Description: " + resource.levelOfDescription);
+                                                              ^
+outputs\P1\qwen\S27\src\Main.java:24: error: details has private access in Location
+        System.out.println("Container Location: " + location.details);
+                                                            ^
+outputs\P1\qwen\S27\src\Resource.java:20: error: cannot find symbol
+        component.setId(id);
+                 ^
+  symbol:   method setId(String)
+  location: variable component of type ResourceComponent
+5 errors

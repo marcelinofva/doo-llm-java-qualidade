@@ -1,0 +1,107 @@
+outputs\P1\phi\S02\src\CampAdministrator.java:3: error: cannot find symbol
+    private List<CampGroup> groups = new ArrayList<>();
+            ^
+  symbol:   class List
+  location: class CampAdministrator
+outputs\P1\phi\S02\src\CampAdministrator.java:4: error: cannot find symbol
+    private List<Parent> parents = new ArrayList<>();
+            ^
+  symbol:   class List
+  location: class CampAdministrator
+outputs\P1\phi\S02\src\CampAdministrator.java:5: error: cannot find symbol
+    private List<Campers> campers = new ArrayList<>();
+            ^
+  symbol:   class List
+  location: class CampAdministrator
+outputs\P1\phi\S02\src\CampAdministrator.java:6: error: cannot find symbol
+    private List<Staff> staff = new ArrayList<>();
+            ^
+  symbol:   class List
+  location: class CampAdministrator
+outputs\P1\phi\S02\src\CampAdministrator.java:61: error: cannot find symbol
+    private List<Campers> campers = new ArrayList<>();
+            ^
+  symbol:   class List
+  location: class Parent
+outputs\P1\phi\S02\src\CampAdministrator.java:44: error: cannot find symbol
+    private List<Activity> activities = new ArrayList<>();
+            ^
+  symbol:   class List
+  location: class Campers
+outputs\P1\phi\S02\src\CampAdministrator.java:3: error: cannot find symbol
+    private List<CampGroup> groups = new ArrayList<>();
+                                         ^
+  symbol:   class ArrayList
+  location: class CampAdministrator
+outputs\P1\phi\S02\src\CampAdministrator.java:4: error: cannot find symbol
+    private List<Parent> parents = new ArrayList<>();
+                                       ^
+  symbol:   class ArrayList
+  location: class CampAdministrator
+outputs\P1\phi\S02\src\CampAdministrator.java:5: error: cannot find symbol
+    private List<Campers> campers = new ArrayList<>();
+                                        ^
+  symbol:   class ArrayList
+  location: class CampAdministrator
+outputs\P1\phi\S02\src\CampAdministrator.java:6: error: cannot find symbol
+    private List<Staff> staff = new ArrayList<>();
+                                    ^
+  symbol:   class ArrayList
+  location: class CampAdministrator
+outputs\P1\phi\S02\src\CampAdministrator.java:30: error: cannot find symbol
+        campers.get(campers.indexOf(campers)).scheduleActivity(activity, date);
+                           ^
+  symbol:   method indexOf(Campers)
+  location: variable campers of type Campers
+outputs\P1\phi\S02\src\CampAdministrator.java:34: error: cannot find symbol
+        campers.get(campers.indexOf(campers)).logAttendance(present);
+                           ^
+  symbol:   method indexOf(Campers)
+  location: variable campers of type Campers
+outputs\P1\phi\S02\src\CampAdministrator.java:38: error: cannot find symbol
+        staff.get(staff.indexOf(staff)).assignPosition(position);
+                       ^
+  symbol:   method indexOf(Staff)
+  location: variable staff of type Staff
+outputs\P1\phi\S02\src\CampAdministrator.java:44: error: cannot find symbol
+    private List<Activity> activities = new ArrayList<>();
+                                            ^
+  symbol:   class ArrayList
+  location: class Campers
+outputs\P1\phi\S02\src\CampAdministrator.java:47: error: cannot find symbol
+        this.name = campers.get(campers.indexOf(campers)).name;
+                                       ^
+  symbol:   method indexOf(Campers)
+  location: variable campers of type Campers
+outputs\P1\phi\S02\src\CampAdministrator.java:69: error: constructor Campers in class Campers cannot be applied to given types;
+class CampGroup extends Campers {
+^
+  required: Campers
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+outputs\P1\phi\S02\src\CampAdministrator.java:61: error: cannot find symbol
+    private List<Campers> campers = new ArrayList<>();
+                                        ^
+  symbol:   class ArrayList
+  location: class Parent
+outputs\P1\phi\S02\src\CampAdministrator.java:64: error: cannot find symbol
+        campers.add(new Campers(campers));
+               ^
+  symbol:   method add(Campers)
+  location: variable campers of type Campers
+outputs\P1\phi\S02\src\CampAdministrator.java:65: error: cannot find symbol
+        campers.get(campers.indexOf(campers)).enroll(this);
+                           ^
+  symbol:   method indexOf(Campers)
+  location: variable campers of type Campers
+outputs\P1\phi\S02\src\CampAdministrator.java:99: error: incompatible types: String cannot be converted to Campers
+        parent.enrollCampers(new Campers("John Doe"));
+                                         ^
+outputs\P1\phi\S02\src\CampAdministrator.java:100: error: incompatible types: String cannot be converted to Campers
+        Campers campers = new Campers("John Doe");
+                                      ^
+outputs\P1\phi\S02\src\CampAdministrator.java:104: error: staff has private access in CampAdministrator
+        admin.assignPositions(admin.staff.get(0), "Counselor");
+                                   ^
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+22 errors

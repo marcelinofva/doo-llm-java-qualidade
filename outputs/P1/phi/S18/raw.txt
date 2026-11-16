@@ -1,0 +1,75 @@
+```java
+// File: StaffMember.java
+public class StaffMember {
+    private String name;
+    private String id;
+
+    public StaffMember(String name, String id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void applyHold() {
+        System.out.println("Hold applied by " + name);
+    }
+
+    public void removeHold() {
+        System.out.println("Hold removed by " + name);
+    }
+
+    public void scheduleMeeting(String dateTime, String participants) {
+        System.out.println("Meeting scheduled by " + name + " on " + dateTime + " with participants: " + participants);
+    }
+
+    public void denoteFinalAction() {
+        System.out.println("Final action denoted by " + name);
+    }
+
+    public void manageHearingCalendars() {
+        System.out.println("Hearing calendars managed by " + name);
+    }
+
+    public void manageAffidavits() {
+        System.out.println("Affidavits managed by " + name);
+    }
+
+    public void sendFormalResponse() {
+        System.out.println("Formal response sent by " + name);
+    }
+
+    public void recordInternalNote() {
+        System.out.println("Internal note recorded by " + name);
+    }
+}
+
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        StaffMember staffMember = new StaffMember("John Doe", "12345");
+        staffMember.applyHold();
+        staffMember.removeHold();
+        staffMember.scheduleMeeting("2023-10-15T10:00:00", "Applicant, Judge, Lawyer");
+        staffMember.denyFinalAction();
+        staffMember.manageHearingCalendars();
+        staffMember.manageAffidavits();
+        staffMember.sendFormalResponse();
+        staffMember.recordInternalNote();
+    }
+}
+```

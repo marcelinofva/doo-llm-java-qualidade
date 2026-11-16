@@ -1,0 +1,266 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities (classes):
+    * Hold
+    * Meeting
+    * Application
+    * HearingCalendar
+    * Affidavit
+    * FormalResponse
+    * InternalNote
+    * StaffMember
+
+  2. Single responsibility of each class:
+    * Hold: represents a hold on an application, with methods to apply and remove holds
+    * Meeting: represents a meeting, with methods to schedule and manage meetings
+    * Application: represents an application, with methods to denote final action status and manage application lifecycle
+    * HearingCalendar: represents a hearing calendar, with methods to manage hearing-related activities and due dates
+    * Affidavit: represents an affidavit, with methods to manage affidavits and ensure compliance
+    * FormalResponse: represents a formal response, with methods to send formal responses to applicants
+    * InternalNote: represents an internal note, with methods to record and share internal notes
+    * StaffMember: represents a staff member, with methods to manage holds, meetings, applications, and other staff-related activities
+
+  3. Relationships (association, composition, inheritance):
+    * Hold has a reference to the Application it is associated with (composition)
+    * Meeting has references to the StaffMember who scheduled it and the Application it is related to (association)
+    * Application has references to the Hold and Meeting associated with it (composition)
+    * HearingCalendar has a reference to the Application it is associated with (composition)
+    * Affidavit has a reference to the Application it is associated with (composition)
+    * FormalResponse has a reference to the Application it is associated with (composition)
+    * InternalNote has a reference to the Application it is associated with (composition)
+    * StaffMember has a collection of Holds, Meetings, Applications, and other staff-related activities (composition)
+
+  4. Public methods of each class:
+    * Hold: applyHold(), removeHold()
+    * Meeting: scheduleMeeting(), manageMeeting()
+    * Application: denoteFinalAction(), manageApplication()
+    * HearingCalendar: manageHearingCalendar()
+    * Affidavit: manageAffidavit()
+    * FormalResponse: sendFormalResponse()
+    * InternalNote: recordInternalNote()
+    * StaffMember: manageHolds(), manageMeetings(), manageApplications()
+</design>
+```
+
+**Phase 2 - CODE**
+
+### Hold.java
+```java
+// File: Hold.java
+
+public class Hold {
+    private Application application;
+
+    public Hold(Application application) {
+        this.application = application;
+    }
+
+    public void applyHold() {
+        // implement logic to apply hold
+    }
+
+    public void removeHold() {
+        // implement logic to remove hold
+    }
+}
+```
+
+### Meeting.java
+```java
+// File: Meeting.java
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+public class Meeting {
+    private StaffMember staffMember;
+    private Application application;
+    private LocalDate date;
+    private LocalTime time;
+
+    public Meeting(StaffMember staffMember, Application application, LocalDate date, LocalTime time) {
+        this.staffMember = staffMember;
+        this.application = application;
+        this.date = date;
+        this.time = time;
+    }
+
+    public void scheduleMeeting() {
+        // implement logic to schedule meeting
+    }
+
+    public void manageMeeting() {
+        // implement logic to manage meeting
+    }
+}
+```
+
+### Application.java
+```java
+// File: Application.java
+
+public class Application {
+    private Hold hold;
+    private Meeting meeting;
+    private HearingCalendar hearingCalendar;
+    private Affidavit affidavit;
+    private FormalResponse formalResponse;
+    private InternalNote internalNote;
+
+    public void denoteFinalAction() {
+        // implement logic to denote final action
+    }
+
+    public void manageApplication() {
+        // implement logic to manage application
+    }
+}
+```
+
+### HearingCalendar.java
+```java
+// File: HearingCalendar.java
+
+public class HearingCalendar {
+    private Application application;
+
+    public HearingCalendar(Application application) {
+        this.application = application;
+    }
+
+    public void manageHearingCalendar() {
+        // implement logic to manage hearing calendar
+    }
+}
+```
+
+### Affidavit.java
+```java
+// File: Affidavit.java
+
+public class Affidavit {
+    private Application application;
+
+    public Affidavit(Application application) {
+        this.application = application;
+    }
+
+    public void manageAffidavit() {
+        // implement logic to manage affidavit
+    }
+}
+```
+
+### FormalResponse.java
+```java
+// File: FormalResponse.java
+
+public class FormalResponse {
+    private Application application;
+
+    public FormalResponse(Application application) {
+        this.application = application;
+    }
+
+    public void sendFormalResponse() {
+        // implement logic to send formal response
+    }
+}
+```
+
+### InternalNote.java
+```java
+// File: InternalNote.java
+
+public class InternalNote {
+    private Application application;
+
+    public InternalNote(Application application) {
+        this.application = application;
+    }
+
+    public void recordInternalNote() {
+        // implement logic to record internal note
+    }
+}
+```
+
+### StaffMember.java
+```java
+// File: StaffMember.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class StaffMember {
+    private List<Hold> holds;
+    private List<Meeting> meetings;
+    private List<Application> applications;
+
+    public StaffMember() {
+        this.holds = new ArrayList<>();
+        this.meetings = new ArrayList<>();
+        this.applications = new ArrayList<>();
+    }
+
+    public void manageHolds() {
+        // implement logic to manage holds
+    }
+
+    public void manageMeetings() {
+        // implement logic to manage meetings
+    }
+
+    public void manageApplications() {
+        // implement logic to manage applications
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        // create staff member
+        StaffMember staffMember = new StaffMember();
+
+        // create application
+        Application application = new Application();
+
+        // create hold
+        Hold hold = new Hold(application);
+
+        // apply hold
+        hold.applyHold();
+
+        // create meeting
+        Meeting meeting = new Meeting(staffMember, application, LocalDate.now(), LocalTime.now());
+
+        // schedule meeting
+        meeting.scheduleMeeting();
+
+        // denote final action
+        application.denoteFinalAction();
+
+        // manage hearing calendar
+        HearingCalendar hearingCalendar = new HearingCalendar(application);
+        hearingCalendar.manageHearingCalendar();
+
+        // manage affidavit
+        Affidavit affidavit = new Affidavit(application);
+        affidavit.manageAffidavit();
+
+        // send formal response
+        FormalResponse formalResponse = new FormalResponse(application);
+        formalResponse.sendFormalResponse();
+
+        // record internal note
+        InternalNote internalNote = new InternalNote(application);
+        internalNote.recordInternalNote();
+    }
+}
+```

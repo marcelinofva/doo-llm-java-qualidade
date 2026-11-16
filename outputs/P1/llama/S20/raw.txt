@@ -1,0 +1,247 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  <domain-entities>
+    <class name="File">
+      <single-responsibility>Represents a digital file with its metadata and restrictions</single-responsibility>
+      <relationships>
+        <association>one-to-many: FileRestrictions</association>
+      </relationships>
+      <public-methods>
+        <method name="addRestriction">Adds a restriction to the file</method>
+        <method name="removeRestriction">Removes a restriction from the file</method>
+        <method name="getRestrictions">Returns the list of restrictions for the file</method>
+      </public-methods>
+    </class>
+    <class name="FileRestriction">
+      <single-responsibility>Represents a restriction applied to a file</single-responsibility>
+      <relationships>
+        <association>many-to-one: File</association>
+      </relationships>
+      <public-methods>
+        <method name="getType">Returns the type of restriction (e.g. access, redaction)</method>
+        <method name="getEndDate">Returns the end date of the restriction</method>
+      </public-methods>
+    </class>
+    <class name="Group">
+      <single-responsibility>Represents a group of files with shared restrictions</single-responsibility>
+      <relationships>
+        <association>one-to-many: File</association>
+        <association>one-to-many: FileRestrictions</association>
+      </relationships>
+      <public-methods>
+        <method name="addFile">Adds a file to the group</method>
+        <method name="removeFile">Removes a file from the group</method>
+        <method name="getFiles">Returns the list of files in the group</method>
+      </public-methods>
+    </class>
+    <class name="User">
+      <single-responsibility>Represents a user with access rights</single-responsibility>
+      <relationships>
+        <association>many-to-many: File</association>
+      </relationships>
+      <public-methods>
+        <method name="addAccess">Grants access to a file</method>
+        <method name="removeAccess">Revokes access to a file</method>
+      </public-methods>
+    </class>
+    <class name="IPAccess">
+      <single-responsibility>Represents IP address-based access control</single-responsibility>
+      <relationships>
+        <association>many-to-many: File</association>
+      </relationships>
+      <public-methods>
+        <method name="addAccess">Grants access to a file from a specific IP address</method>
+        <method name="removeAccess">Revokes access to a file from a specific IP address</method>
+      </public-methods>
+    </class>
+  </domain-entities>
+</design>
+```
+
+**Phase 2 - CODE**
+
+### File.java
+```java
+// File: File.java
+
+public class File {
+    private String name;
+    private List<FileRestriction> restrictions;
+
+    public File(String name) {
+        this.name = name;
+        this.restrictions = new ArrayList<>();
+    }
+
+    public void addRestriction(FileRestriction restriction) {
+        this.restrictions.add(restriction);
+    }
+
+    public void removeRestriction(FileRestriction restriction) {
+        this.restrictions.remove(restriction);
+    }
+
+    public List<FileRestriction> getRestrictions() {
+        return this.restrictions;
+    }
+}
+```
+
+### FileRestriction.java
+```java
+// File: FileRestriction.java
+
+public class FileRestriction {
+    private String type;
+    private Date endDate;
+
+    public FileRestriction(String type, Date endDate) {
+        this.type = type;
+        this.endDate = endDate;
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
+    public Date getEndDate() {
+        return this.endDate;
+    }
+}
+```
+
+### Group.java
+```java
+// File: Group.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Group {
+    private String name;
+    private List<File> files;
+    private List<FileRestriction> restrictions;
+
+    public Group(String name) {
+        this.name = name;
+        this.files = new ArrayList<>();
+        this.restrictions = new ArrayList<>();
+    }
+
+    public void addFile(File file) {
+        this.files.add(file);
+    }
+
+    public void removeFile(File file) {
+        this.files.remove(file);
+    }
+
+    public List<File> getFiles() {
+        return this.files;
+    }
+
+    public void addRestriction(FileRestriction restriction) {
+        this.restrictions.add(restriction);
+    }
+
+    public void removeRestriction(FileRestriction restriction) {
+        this.restrictions.remove(restriction);
+    }
+
+    public List<FileRestriction> getRestrictions() {
+        return this.restrictions;
+    }
+}
+```
+
+### User.java
+```java
+// File: User.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class User {
+    private String name;
+    private List<File> files;
+
+    public User(String name) {
+        this.name = name;
+        this.files = new ArrayList<>();
+    }
+
+    public void addAccess(File file) {
+        this.files.add(file);
+    }
+
+    public void removeAccess(File file) {
+        this.files.remove(file);
+    }
+
+    public List<File> getFiles() {
+        return this.files;
+    }
+}
+```
+
+### IPAccess.java
+```java
+// File: IPAccess.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class IPAccess {
+    private String ip;
+    private List<File> files;
+
+    public IPAccess(String ip) {
+        this.ip = ip;
+        this.files = new ArrayList<>();
+    }
+
+    public void addAccess(File file) {
+        this.files.add(file);
+    }
+
+    public void removeAccess(File file) {
+        this.files.remove(file);
+    }
+
+    public List<File> getFiles() {
+        return this.files;
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        File file1 = new File("file1.txt");
+        File file2 = new File("file2.txt");
+
+        Group group = new Group("group1");
+        group.addFile(file1);
+        group.addFile(file2);
+
+        FileRestriction restriction = new FileRestriction("access", new Date());
+        group.addRestriction(restriction);
+
+        User user = new User("user1");
+        user.addAccess(file1);
+
+        IPAccess ipAccess = new IPAccess("192.168.1.1");
+        ipAccess.addAccess(file2);
+
+        System.out.println("Files in group: " + group.getFiles());
+        System.out.println("Restrictions for group: " + group.getRestrictions());
+        System.out.println("Files accessible by user: " + user.getFiles());
+        System.out.println("Files accessible by IP: " + ipAccess.getFiles());
+    }
+}
+```

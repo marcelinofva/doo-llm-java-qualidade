@@ -1,0 +1,34 @@
+1) Domain Entities (Classes):
+   - File
+   - Group
+   - Restriction
+   - IPAddressRestriction
+   - UserRestriction
+   - Redaction
+   - FileGroup
+
+2) Single Responsibility of Each Class:
+   - File: Manages file properties and restrictions.
+   - Group: Manages a collection of files and group-level restrictions.
+   - Restriction: Base class for all types of restrictions.
+   - IPAddressRestriction: Restricts access by IP address.
+   - UserRestriction: Restricts access by user.
+   - Redaction: Manages redaction of file content.
+   - FileGroup: Manages a group of files and group-level restrictions.
+
+3) Relationships:
+   - File has-a Restriction (composition)
+   - Group has-a List of File (composition)
+   - Group has-a Restriction (composition)
+   - Restriction is-a IPAddressRestriction
+   - Restriction is-a UserRestriction
+   - Restriction is-a Redaction
+
+4) Public Methods:
+   - File: markAsRestricted(), addRestriction(Restriction), redactContent()
+   - Group: addFile(File), markAsRestricted(), addRestriction(Restriction)
+   - Restriction: applyRestriction()
+   - IPAddressRestriction: applyRestriction()
+   - UserRestriction: applyRestriction()
+   - Redaction: applyRedaction()
+   - FileGroup: uploadFiles()

@@ -1,0 +1,4 @@
+outputs\P1\phi\S09\src\Main.java:7: error: remoteSites has private access in RepositoryManager
+        manager.setRemoteReplicationPolicy("Collection1", manager.remoteSites.get("RemoteSite1"), true);
+                                                                 ^
+1 error

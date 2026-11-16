@@ -1,0 +1,38 @@
+1. Domain entities (classes):
+    * Sponsor
+    * SponsorshipLevel
+    * PaymentMethod
+    * StripePaymentProcessor
+    * User
+    * JobListing
+    * SponsorshipProfile
+    * Payment
+
+  2. Single responsibility of each class:
+    * Sponsor: represents a sponsor with its attributes and methods
+    * SponsorshipLevel: represents a sponsorship level with its attributes and methods
+    * PaymentMethod: represents a payment method with its attributes and methods
+    * StripePaymentProcessor: processes payments via Stripe
+    * User: represents a user with its attributes and methods
+    * JobListing: represents a job listing with its attributes and methods
+    * SponsorshipProfile: represents a sponsorship profile with its attributes and methods
+    * Payment: represents a payment with its attributes and methods
+
+  3. Relationships (association, composition, inheritance):
+    * A Sponsor has many SponsorshipLevels (one-to-many)
+    * A SponsorshipLevel belongs to one Sponsor (many-to-one)
+    * A User can have one SponsorshipProfile (one-to-one)
+    * A SponsorshipProfile belongs to one User (many-to-one)
+    * A JobListing belongs to one Sponsor (many-to-one)
+    * A Sponsor has many Payments (one-to-many)
+    * A Payment belongs to one Sponsor (many-to-one)
+
+  4. Public methods of each class:
+    * Sponsor: get SponsorshipLevels(), addSponsorshipLevel(SponsorshipLevel)
+    * SponsorshipLevel: get Sponsor(), get Level()
+    * PaymentMethod: get Method(), processPayment(Payment)
+    * StripePaymentProcessor: processPayment(Payment)
+    * User: get SponsorshipProfile(), addSponsorshipProfile(SponsorshipProfile)
+    * JobListing: get Sponsor(), get JobTitle()
+    * SponsorshipProfile: get User(), get Sponsor()
+    * Payment: get Sponsor(), get Amount()

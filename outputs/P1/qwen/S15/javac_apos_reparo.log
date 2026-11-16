@@ -1,0 +1,6 @@
+outputs\P1\qwen\S15\src\Payment.java:17: error: cannot find symbol
+        return UUID.randomUUID().toString();
+               ^
+  symbol:   variable UUID
+  location: class Payment
+1 error

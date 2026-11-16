@@ -1,0 +1,41 @@
+1) Domain Entities (Classes):
+   - ETD (Electronic Thesis and Dissertation)
+   - BatchIngestTool
+   - Embargo
+   - Permission
+   - DescriptiveRecord
+   - AuthorAuthorityControl
+   - OAIRepository
+   - BatchSubmitter
+   - Depositor
+
+2) Single Responsibility of Each Class:
+   - ETD: Represents an ETD with its metadata and files.
+   - BatchIngestTool: Manages the batch ingestion of ETDs.
+   - Embargo: Manages embargo settings for ETDs.
+   - Permission: Manages permissions for ETDs.
+   - DescriptiveRecord: Exposes the descriptive record for ETDs.
+   - AuthorAuthorityControl: Manages author authority control.
+   - OAIRepository: Exposes repository contents via OAI-PMH.
+   - BatchSubmitter: Handles batch submission of data and metadata.
+   - Depositor: Manages depositor feedback post-ingest.
+
+3) Relationships:
+   - BatchIngestTool has-a List<ETD>
+   - ETD has-a Embargo
+   - ETD has-a List<Permission>
+   - DescriptiveRecord has-a ETD
+   - AuthorAuthorityControl has-a List<ETD>
+   - OAIRepository has-a List<ETD>
+   - BatchSubmitter has-a List<ETD>
+   - Depositor has-a List<ETD>
+
+4) Public Methods:
+   - BatchIngestTool: ingestETDs(List<ETD> etds)
+   - Embargo: setEmbargoDate(Date date)
+   - Permission: setPermissions(List<String> roles)
+   - DescriptiveRecord: getDescriptiveRecord()
+   - AuthorAuthorityControl: controlAuthorAuthority(ETD etd)
+   - OAIRepository: getRepositoryContents()
+   - BatchSubmitter: submitData(List<Object> data)
+   - Depositor: getFeedback(ETD etd)

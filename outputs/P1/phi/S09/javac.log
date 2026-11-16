@@ -1,0 +1,24 @@
+outputs\P1\phi\S09\src\RepositoryManager.java:3: error: cannot find symbol
+    private Map<String, Collection> collections;
+            ^
+  symbol:   class Map
+  location: class RepositoryManager
+outputs\P1\phi\S09\src\RepositoryManager.java:4: error: cannot find symbol
+    private Map<String, RemoteSite> remoteSites;
+            ^
+  symbol:   class Map
+  location: class RepositoryManager
+outputs\P1\phi\S09\src\Main.java:7: error: remoteSites has private access in RepositoryManager
+        manager.setRemoteReplicationPolicy("Collection1", manager.remoteSites.get("RemoteSite1"), true);
+                                                                 ^
+outputs\P1\phi\S09\src\RepositoryManager.java:7: error: cannot find symbol
+        collections = new HashMap<>();
+                          ^
+  symbol:   class HashMap
+  location: class RepositoryManager
+outputs\P1\phi\S09\src\RepositoryManager.java:8: error: cannot find symbol
+        remoteSites = new HashMap<>();
+                          ^
+  symbol:   class HashMap
+  location: class RepositoryManager
+5 errors

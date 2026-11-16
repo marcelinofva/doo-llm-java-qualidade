@@ -1,0 +1,238 @@
+<design>
+1) Domain Entities (Classes):
+   - Camper
+   - Parent
+   - Group
+   - Activity
+   - Attendance
+   - Staff
+   - Position
+
+2) Single Responsibility of Each Class:
+   - Camper: Manages camper details.
+   - Parent: Manages parent details and enrolls campers.
+   - Group: Manages groups and adds campers.
+   - Activity: Manages activities for a group.
+   - Attendance: Logs attendance for campers.
+   - Staff: Manages staff details and assigns positions.
+   - Position: Manages different staff positions.
+
+3) Relationships:
+   - Camper has a Parent.
+   - Parent has multiple Campers.
+   - Group has multiple Campers.
+   - Staff has a Position.
+   - Group has multiple Activities.
+   - Attendance logs Campers for a specific date.
+
+4) Public Methods:
+   - Camper: Constructor, getName(), getParent().
+   - Parent: Constructor, getName(), enrollCamper(Camper).
+   - Group: Constructor, getName(), addCamper(Camper), addActivity(Activity).
+   - Activity: Constructor, getName(), getGroup().
+   - Attendance: Constructor, getDate(), logCamper(Camper).
+   - Staff: Constructor, getName(), getPosition().
+   - Position: Constructor, getName().
+</design>
+
+// File: Camper.java
+```java
+public class Camper {
+    private String name;
+    private Parent parent;
+
+    public Camper(String name, Parent parent) {
+        this.name = name;
+        this.parent = parent;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Parent getParent() {
+        return parent;
+    }
+}
+```
+
+// File: Parent.java
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class Parent {
+    private String name;
+    private List<Camper> campers = new ArrayList<>();
+
+    public Parent(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void enrollCamper(Camper camper) {
+        campers.add(camper);
+    }
+
+    public List<Camper> getCampers() {
+        return campers;
+    }
+}
+```
+
+// File: Group.java
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class Group {
+    private String name;
+    private List<Camper> campers = new ArrayList<>();
+    private List<Activity> activities = new ArrayList<>();
+
+    public Group(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void addCamper(Camper camper) {
+        campers.add(camper);
+    }
+
+    public void addActivity(Activity activity) {
+        activities.add(activity);
+    }
+
+    public List<Camper> getCampers() {
+        return campers;
+    }
+
+    public List<Activity> getActivities() {
+        return activities;
+    }
+}
+```
+
+// File: Activity.java
+```java
+public class Activity {
+    private String name;
+    private Group group;
+
+    public Activity(String name, Group group) {
+        this.name = name;
+        this.group = group;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+}
+```
+
+// File: Attendance.java
+```java
+import java.util.Date;
+import java.util.List;
+
+public class Attendance {
+    private Date date;
+    private List<Camper> campers = new ArrayList<>();
+
+    public Attendance(Date date) {
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void logCamper(Camper camper) {
+        campers.add(camper);
+    }
+
+    public List<Camper> getCampers() {
+        return campers;
+    }
+}
+```
+
+// File: Staff.java
+```java
+public class Staff {
+    private String name;
+    private Position position;
+
+    public Staff(String name, Position position) {
+        this.name = name;
+        this.position = position;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+}
+```
+
+// File: Position.java
+```java
+public class Position {
+    private String name;
+
+    public Position(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+```
+
+// File: Main.java
+```java
+import java.util.Date;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create entities
+        Parent parent = new Parent("John Doe");
+        Camper camper1 = new Camper("Alice", parent);
+        Camper camper2 = new Camper("Bob", parent);
+
+        Group group = new Group("Group A");
+        group.addCamper(camper1);
+        group.addCamper(camper2);
+
+        Activity activity = new Activity("Swimming", group);
+
+        Attendance attendance = new Attendance(new Date());
+        attendance.logCamper(camper1);
+        attendance.logCamper(camper2);
+
+        Staff staff = new Staff("Jane Smith", new Position("Counselor"));
+
+        // Demonstrate main flows
+        System.out.println("Parent: " + parent.getName());
+        System.out.println("Camper 1: " + camper1.getName());
+        System.out.println("Group: " + group.getName());
+        System.out.println("Activity: " + activity.getName());
+        System.out.println("Attendance: " + attendance.getDate());
+        System.out.println("Staff: " + staff.getName() + ", Position: " + staff.getPosition().getName());
+    }
+}
+```

@@ -1,0 +1,55 @@
+outputs\P1\phi\S05\src\Publisher.java:15: error: <identifier> expected
+    public void createPackage(DataPackage package) {
+                                         ^
+outputs\P1\phi\S05\src\Publisher.java:16: error: illegal start of expression
+        if (currentPackage != null && currentPackage.getTag().equals(package.getTag())) {
+                                                                     ^
+outputs\P1\phi\S05\src\Publisher.java:16: error: ';' expected
+        if (currentPackage != null && currentPackage.getTag().equals(package.getTag())) {
+                                                                                     ^
+outputs\P1\phi\S05\src\Publisher.java:19: error: illegal start of expression
+            this.currentPackage = package;
+                                  ^
+outputs\P1\phi\S05\src\Publisher.java:20: error: illegal start of expression
+            this.previousPackages.add(package);
+                                      ^
+outputs\P1\phi\S05\src\Publisher.java:21: error: illegal start of expression
+            System.out.println("Package created with tag: " + package.getTag());
+                                                              ^
+outputs\P1\phi\S05\src\Publisher.java:21: error: ';' expected
+            System.out.println("Package created with tag: " + package.getTag());
+                                                                              ^
+outputs\P1\phi\S05\src\Publisher.java:18: error: 'else' without 'if'
+        } else {
+          ^
+outputs\P1\phi\S05\src\Publisher.java:53: error: not a statement
+        DataPackage package = getPackageAtVersion(version);
+        ^
+outputs\P1\phi\S05\src\Publisher.java:53: error: ';' expected
+        DataPackage package = getPackageAtVersion(version);
+                   ^
+outputs\P1\phi\S05\src\Publisher.java:54: error: illegal start of expression
+        if (package != null) {
+            ^
+outputs\P1\phi\S05\src\Publisher.java:55: error: illegal start of expression
+            System.out.println("Viewing package at version " + version + ": " + package);
+                                                                                ^
+outputs\P1\phi\S05\src\Publisher.java:56: error: 'else' without 'if'
+        } else {
+          ^
+outputs\P1\phi\S05\src\Publisher.java:62: error: not a statement
+        DataPackage package = getPackageAtVersion(version);
+        ^
+outputs\P1\phi\S05\src\Publisher.java:62: error: ';' expected
+        DataPackage package = getPackageAtVersion(version);
+                   ^
+outputs\P1\phi\S05\src\Publisher.java:63: error: illegal start of expression
+        if (package != null) {
+            ^
+outputs\P1\phi\S05\src\Publisher.java:64: error: illegal start of expression
+            System.out.println("Downloading package at version " + version + ": " + package);
+                                                                                    ^
+outputs\P1\phi\S05\src\Publisher.java:65: error: 'else' without 'if'
+        } else {
+          ^
+18 errors

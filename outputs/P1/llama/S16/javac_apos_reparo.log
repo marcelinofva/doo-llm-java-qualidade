@@ -1,0 +1,6 @@
+outputs\P1\llama\S16\src\Main.java:18: error: cannot find symbol
+        System.out.println("Attendee: " + attendee.getRegistration().getTraining().getName());
+                                                                                  ^
+  symbol:   method getName()
+  location: class Training
+1 error

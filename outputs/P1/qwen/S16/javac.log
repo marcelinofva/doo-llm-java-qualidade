@@ -1,0 +1,34 @@
+outputs\P1\qwen\S16\src\Training.java:5: error: cannot find symbol
+    private List<Registration> registrations;
+            ^
+  symbol:   class List
+  location: class Training
+outputs\P1\qwen\S16\src\Training.java:6: error: cannot find symbol
+    private List<WaitlistEntry> waitlist;
+            ^
+  symbol:   class List
+  location: class Training
+outputs\P1\qwen\S16\src\Training.java:28: error: cannot find symbol
+    public List<Registration> getRegistrations() {
+           ^
+  symbol:   class List
+  location: class Training
+outputs\P1\qwen\S16\src\Training.java:32: error: cannot find symbol
+    public List<WaitlistEntry> getWaitlist() {
+           ^
+  symbol:   class List
+  location: class Training
+outputs\P1\qwen\S16\src\Training.java:12: error: cannot find symbol
+        this.registrations = new ArrayList<>();
+                                 ^
+  symbol:   class ArrayList
+  location: class Training
+outputs\P1\qwen\S16\src\Training.java:13: error: cannot find symbol
+        this.waitlist = new ArrayList<>();
+                            ^
+  symbol:   class ArrayList
+  location: class Training
+outputs\P1\qwen\S16\src\TrainingCoordinator.java:1: error: TrainingCoordinator is not abstract and does not override abstract method viewScheduledTrainings() in User
+public class TrainingCoordinator extends User {
+       ^
+7 errors

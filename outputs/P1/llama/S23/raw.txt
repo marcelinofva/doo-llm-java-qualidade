@@ -1,0 +1,327 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities (classes):
+    * Person
+    * Contact
+    * Meeting
+    * Reminder
+    * Agenda
+    * Alfred (assistant)
+
+  2. Single responsibility of each class:
+    * Person: represents an individual with attributes and methods for managing their contact list and agenda
+    * Contact: represents a contact with attributes and methods for managing contact information
+    * Meeting: represents a meeting with attributes and methods for managing meeting details
+    * Reminder: represents a reminder with attributes and methods for managing reminder details
+    * Agenda: represents a person's agenda with attributes and methods for managing appointments and meetings
+    * Alfred: represents the assistant with attributes and methods for managing reminders, agenda, and contacts
+
+  3. Relationships (association, composition, inheritance):
+    * Person has-a Contact (composition)
+    * Person has-a Agenda (composition)
+    * Meeting belongs-to Person (association)
+    * Reminder belongs-to Person (association)
+    * Agenda has-many Meetings (composition)
+    * Agenda has-many Reminders (composition)
+
+  4. Public methods of each class:
+    * Person: addContact(), removeContact(), addMeeting(), removeMeeting(), addReminder(), removeReminder()
+    * Contact: getName(), getPhoneNumber(), getNotes()
+    * Meeting: getStartTime(), getEndTime(), getNotes()
+    * Reminder: getReminderTime(), getReminderNotes()
+    * Agenda: addMeeting(), removeMeeting(), addReminder(), removeReminder()
+    * Alfred: remindPerson(), manageAgenda(), manageContacts()
+</design>
+```
+
+**Phase 2 - CODE**
+
+### Person.java
+```java
+// File: Person.java
+
+public class Person {
+    private String name;
+    private Contact[] contacts;
+    private Meeting[] meetings;
+    private Reminder[] reminders;
+    private Agenda agenda;
+
+    public Person(String name) {
+        this.name = name;
+        this.contacts = new Contact[0];
+        this.meetings = new Meeting[0];
+        this.reminders = new Reminder[0];
+        this.agenda = new Agenda(this);
+    }
+
+    public void addContact(Contact contact) {
+        Contact[] newContacts = new Contact[contacts.length + 1];
+        System.arraycopy(contacts, 0, newContacts, 0, contacts.length);
+        newContacts[contacts.length] = contact;
+        contacts = newContacts;
+    }
+
+    public void removeContact(Contact contact) {
+        Contact[] newContacts = new Contact[contacts.length - 1];
+        int i = 0;
+        for (Contact c : contacts) {
+            if (c != contact) {
+                newContacts[i++] = c;
+            }
+        }
+        contacts = newContacts;
+    }
+
+    public void addMeeting(Meeting meeting) {
+        Meeting[] newMeetings = new Meeting[meetings.length + 1];
+        System.arraycopy(meetings, 0, newMeetings, 0, meetings.length);
+        newMeetings[meetings.length] = meeting;
+        meetings = newMeetings;
+    }
+
+    public void removeMeeting(Meeting meeting) {
+        Meeting[] newMeetings = new Meeting[meetings.length - 1];
+        int i = 0;
+        for (Meeting m : meetings) {
+            if (m != meeting) {
+                newMeetings[i++] = m;
+            }
+        }
+        meetings = newMeetings;
+    }
+
+    public void addReminder(Reminder reminder) {
+        Reminder[] newReminders = new Reminder[reminders.length + 1];
+        System.arraycopy(reminders, 0, newReminders, 0, reminders.length);
+        newReminders[reminders.length] = reminder;
+        reminders = newReminders;
+    }
+
+    public void removeReminder(Reminder reminder) {
+        Reminder[] newReminders = new Reminder[reminders.length - 1];
+        int i = 0;
+        for (Reminder r : reminders) {
+            if (r != reminder) {
+                newReminders[i++] = r;
+            }
+        }
+        reminders = newReminders;
+    }
+
+    public Contact[] getContacts() {
+        return contacts;
+    }
+
+    public Meeting[] getMeetings() {
+        return meetings;
+    }
+
+    public Reminder[] getReminders() {
+        return reminders;
+    }
+
+    public Agenda getAgenda() {
+        return agenda;
+    }
+}
+```
+
+### Contact.java
+```java
+// File: Contact.java
+
+public class Contact {
+    private String name;
+    private String phoneNumber;
+    private String notes;
+
+    public Contact(String name, String phoneNumber, String notes) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.notes = notes;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+}
+```
+
+### Meeting.java
+```java
+// File: Meeting.java
+
+public class Meeting {
+    private String startTime;
+    private String endTime;
+    private String notes;
+
+    public Meeting(String startTime, String endTime, String notes) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.notes = notes;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+}
+```
+
+### Reminder.java
+```java
+// File: Reminder.java
+
+public class Reminder {
+    private String reminderTime;
+    private String reminderNotes;
+
+    public Reminder(String reminderTime, String reminderNotes) {
+        this.reminderTime = reminderTime;
+        this.reminderNotes = reminderNotes;
+    }
+
+    public String getReminderTime() {
+        return reminderTime;
+    }
+
+    public String getReminderNotes() {
+        return reminderNotes;
+    }
+}
+```
+
+### Agenda.java
+```java
+// File: Agenda.java
+
+public class Agenda {
+    private Person person;
+    private Meeting[] meetings;
+    private Reminder[] reminders;
+
+    public Agenda(Person person) {
+        this.person = person;
+        this.meetings = new Meeting[0];
+        this.reminders = new Reminder[0];
+    }
+
+    public void addMeeting(Meeting meeting) {
+        Meeting[] newMeetings = new Meeting[meetings.length + 1];
+        System.arraycopy(meetings, 0, newMeetings, 0, meetings.length);
+        newMeetings[meetings.length] = meeting;
+        meetings = newMeetings;
+    }
+
+    public void removeMeeting(Meeting meeting) {
+        Meeting[] newMeetings = new Meeting[meetings.length - 1];
+        int i = 0;
+        for (Meeting m : meetings) {
+            if (m != meeting) {
+                newMeetings[i++] = m;
+            }
+        }
+        meetings = newMeetings;
+    }
+
+    public void addReminder(Reminder reminder) {
+        Reminder[] newReminders = new Reminder[reminders.length + 1];
+        System.arraycopy(reminders, 0, newReminders, 0, reminders.length);
+        newReminders[reminders.length] = reminder;
+        reminders = newReminders;
+    }
+
+    public void removeReminder(Reminder reminder) {
+        Reminder[] newReminders = new Reminder[reminders.length - 1];
+        int i = 0;
+        for (Reminder r : reminders) {
+            if (r != reminder) {
+                newReminders[i++] = r;
+            }
+        }
+        reminders = newReminders;
+    }
+
+    public Meeting[] getMeetings() {
+        return meetings;
+    }
+
+    public Reminder[] getReminders() {
+        return reminders;
+    }
+}
+```
+
+### Alfred.java
+```java
+// File: Alfred.java
+
+public class Alfred {
+    private Person person;
+
+    public Alfred(Person person) {
+        this.person = person;
+    }
+
+    public void remindPerson() {
+        // implement reminder logic
+    }
+
+    public void manageAgenda() {
+        // implement agenda management logic
+    }
+
+    public void manageContacts() {
+        // implement contact management logic
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person("John Doe");
+        Contact contact = new Contact("Jane Doe", "123-456-7890", "Notes");
+        person.addContact(contact);
+
+        Meeting meeting = new Meeting("10:00", "12:00", "Meeting notes");
+        person.addMeeting(meeting);
+
+        Reminder reminder = new Reminder("14:00", "Reminder notes");
+        person.addReminder(reminder);
+
+        Agenda agenda = person.getAgenda();
+        agenda.addMeeting(meeting);
+        agenda.addReminder(reminder);
+
+        Alfred alfred = new Alfred(person);
+        alfred.remindPerson();
+        alfred.manageAgenda();
+        alfred.manageContacts();
+    }
+}
+```
+
+Note: This implementation is a simplified version of the specification and is intended to demonstrate the design and code structure. It does not include any error handling or edge cases.

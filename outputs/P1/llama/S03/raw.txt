@@ -1,0 +1,291 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities:
+    - User
+    - RecyclingFacility
+    - DonationCenter
+    - Event
+    - Admin
+
+  2. Single responsibility of each class:
+    - User: manage user profile, favorites, and notifications
+    - RecyclingFacility: store and manage recycling facility information
+    - DonationCenter: store and manage donation center information
+    - Event: store and manage event information
+    - Admin: manage recycling facility and donation center information
+
+  3. Relationships:
+    - User has many RecyclingFacility (favorites)
+    - User has many DonationCenter (favorites)
+    - RecyclingFacility has many Event (associated events)
+    - Admin has many RecyclingFacility (managed facilities)
+    - Admin has many DonationCenter (managed centers)
+
+  4. Public methods of each class:
+    - User: addFavorite(RecyclingFacility), addFavorite(DonationCenter), getFavorites(), subscribeToNotifications()
+    - RecyclingFacility: getHours(), getAcceptedWasteTypes(), getOpeningHours()
+    - DonationCenter: getDonationTypes(), getOpeningHours()
+    - Event: getEventDetails(), getEventLocation()
+    - Admin: addFacility(RecyclingFacility), removeFacility(RecyclingFacility), addCenter(DonationCenter), removeCenter(DonationCenter)
+</design>
+```
+
+**Phase 2 - CODE**
+
+### User.java
+```java
+// File: User.java
+
+public class User {
+    private String id;
+    private String name;
+    private List<RecyclingFacility> favorites;
+    private List<DonationCenter> favoritesDonation;
+    private String email;
+
+    public User(String id, String name) {
+        this.id = id;
+        this.name = name;
+        this.favorites = new ArrayList<>();
+        this.favoritesDonation = new ArrayList<>();
+    }
+
+    public void addFavorite(RecyclingFacility facility) {
+        favorites.add(facility);
+    }
+
+    public void addFavorite(DonationCenter center) {
+        favoritesDonation.add(center);
+    }
+
+    public List<RecyclingFacility> getFavorites() {
+        return favorites;
+    }
+
+    public List<DonationCenter> getFavoritesDonation() {
+        return favoritesDonation;
+    }
+
+    public void subscribeToNotifications() {
+        // implement notification subscription logic
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
+```
+
+### RecyclingFacility.java
+```java
+// File: RecyclingFacility.java
+
+public class RecyclingFacility {
+    private String id;
+    private String name;
+    private String address;
+    private String hours;
+    private List<String> acceptedWasteTypes;
+
+    public RecyclingFacility(String id, String name, String address) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.acceptedWasteTypes = new ArrayList<>();
+    }
+
+    public String getHours() {
+        return hours;
+    }
+
+    public void setHours(String hours) {
+        this.hours = hours;
+    }
+
+    public List<String> getAcceptedWasteTypes() {
+        return acceptedWasteTypes;
+    }
+
+    public void addAcceptedWasteType(String type) {
+        acceptedWasteTypes.add(type);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+}
+```
+
+### DonationCenter.java
+```java
+// File: DonationCenter.java
+
+public class DonationCenter {
+    private String id;
+    private String name;
+    private String address;
+    private String donationTypes;
+
+    public DonationCenter(String id, String name, String address) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+    }
+
+    public String getDonationTypes() {
+        return donationTypes;
+    }
+
+    public void setDonationTypes(String donationTypes) {
+        this.donationTypes = donationTypes;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+}
+```
+
+### Event.java
+```java
+// File: Event.java
+
+public class Event {
+    private String id;
+    private String name;
+    private String location;
+    private String details;
+
+    public Event(String id, String name, String location) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
+    }
+
+    public String getEventDetails() {
+        return details;
+    }
+
+    public void setEventDetails(String details) {
+        this.details = details;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+}
+```
+
+### Admin.java
+```java
+// File: Admin.java
+
+public class Admin {
+    private List<RecyclingFacility> managedFacilities;
+    private List<DonationCenter> managedCenters;
+
+    public Admin() {
+        this.managedFacilities = new ArrayList<>();
+        this.managedCenters = new ArrayList<>();
+    }
+
+    public void addFacility(RecyclingFacility facility) {
+        managedFacilities.add(facility);
+    }
+
+    public void removeFacility(RecyclingFacility facility) {
+        managedFacilities.remove(facility);
+    }
+
+    public void addCenter(DonationCenter center) {
+        managedCenters.add(center);
+    }
+
+    public void removeCenter(DonationCenter center) {
+        managedCenters.remove(center);
+    }
+
+    public List<RecyclingFacility> getManagedFacilities() {
+        return managedFacilities;
+    }
+
+    public List<DonationCenter> getManagedCenters() {
+        return managedCenters;
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        User user = new User("1", "John Doe");
+        RecyclingFacility facility = new RecyclingFacility("1", "Facility 1", "123 Main St");
+        DonationCenter center = new DonationCenter("1", "Center 1", "456 Elm St");
+        Event event = new Event("1", "Event 1", "789 Oak St");
+
+        user.addFavorite(facility);
+        user.addFavorite(center);
+        facility.addAcceptedWasteType("Paper");
+        center.setDonationTypes("Clothing, Shoes");
+
+        System.out.println("User Favorites:");
+        for (RecyclingFacility facility : user.getFavorites()) {
+            System.out.println(facility.getName());
+        }
+
+        System.out.println("Donation Center Favorites:");
+        for (DonationCenter center : user.getFavoritesDonation()) {
+            System.out.println(center.getName());
+        }
+
+        System.out.println("Facility Hours:");
+        System.out.println(facility.getHours());
+
+        System.out.println("Event Details:");
+        System.out.println(event.getEventDetails());
+    }
+}
+```
+
+Note: This implementation is a simplified version of the specification and does not include error handling, validation, or other features that a real-world application would require.

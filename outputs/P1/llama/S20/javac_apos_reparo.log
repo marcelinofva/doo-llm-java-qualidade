@@ -1,0 +1,21 @@
+outputs\P1\llama\S20\src\FileRestriction.java:5: error: cannot find symbol
+    private Date endDate;
+            ^
+  symbol:   class Date
+  location: class FileRestriction
+outputs\P1\llama\S20\src\FileRestriction.java:7: error: cannot find symbol
+    public FileRestriction(String type, Date endDate) {
+                                        ^
+  symbol:   class Date
+  location: class FileRestriction
+outputs\P1\llama\S20\src\FileRestriction.java:16: error: cannot find symbol
+    public Date getEndDate() {
+           ^
+  symbol:   class Date
+  location: class FileRestriction
+outputs\P1\llama\S20\src\Main.java:12: error: cannot find symbol
+        FileRestriction restriction = new FileRestriction("access", new Date());
+                                                                        ^
+  symbol:   class Date
+  location: class Main
+4 errors

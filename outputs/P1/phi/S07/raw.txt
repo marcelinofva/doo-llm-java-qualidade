@@ -1,0 +1,83 @@
+```java
+// File: DigitalRecordsArchivist.java
+public class DigitalRecordsArchivist {
+    private String name;
+    private String accessControlConfig;
+    private String embargoMetadata;
+
+    public DigitalRecordsArchivist(String name, String accessControlConfig, String embargoMetadata) {
+        this.name = name;
+        this.accessControlConfig = accessControlConfig;
+        this.embargoMetadata = embargoMetadata;
+    }
+
+    public void liftEmbargoesOnReleaseDate() {
+        System.out.println("Lifting embargoes on release date for " + name);
+    }
+
+    public void editEmbargoLength() {
+        System.out.println("Editing embargo length for " + name);
+    }
+
+    public void grantEmbargoPrivileges() {
+        System.out.println("Granting embargo privileges to other administrators");
+    }
+
+    public void viewAndDownloadEmbargoMetadata() {
+        System.out.println("Viewing and downloading embargo metadata for " + name);
+    }
+}
+
+// File: Item.java
+public class Item {
+    private String title;
+    private String embargoDate;
+    private String metadata;
+
+    public Item(String title, String embargoDate, String metadata) {
+        this.title = title;
+        this.embargoDate = embargoDate;
+        this.metadata = metadata;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getEmbargoDate() {
+        return embargoDate;
+    }
+
+    public void setEmbargoDate(String embargoDate) {
+        this.embargoDate = embargoDate;
+    }
+
+    public String getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(String metadata) {
+        this.metadata = metadata;
+    }
+}
+
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        DigitalRecordsArchivist archivist = new DigitalRecordsArchivist("Archivist1", "Config1", "Metadata1");
+        archivist.liftEmbargoesOnReleaseDate();
+        archivist.editEmbargoLength();
+        archivist.grantEmbargoPrivileges();
+        archivist.viewAndDownloadEmbargoMetadata();
+
+        Item item = new Item("Item1", "2023-12-31", "Metadata for Item1");
+        System.out.println("Item Title: " + item.getTitle());
+        System.out.println("Embargo Date: " + item.getEmbargoDate());
+        System.out.println("Metadata: " + item.getMetadata());
+    }
+}
+```

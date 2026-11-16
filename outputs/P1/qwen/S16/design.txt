@@ -1,0 +1,26 @@
+1) Domain Entities:
+   - User (Trainee, TrainingCoordinator)
+   - Training
+   - Registration
+   - Waitlist
+   - Cancellation
+
+2) Single Responsibility:
+   - User: Manages user information and actions.
+   - Training: Manages training details and availability.
+   - Registration: Manages user registration for training.
+   - Waitlist: Manages users waiting for training spots.
+   - Cancellation: Manages cancellation of registrations.
+
+3) Relationships:
+   - User has many Registrations.
+   - Training has many Registrations and Waitlist entries.
+   - Registration belongs to a User and a Training.
+   - Waitlist entry belongs to a User and a Training.
+
+4) Public Methods:
+   - User: registerForTraining(Training training), addToWaitlist(Training training), viewScheduledTrainings()
+   - Training: addRegistration(Registration registration), addToWaitlist(WaitlistEntry entry), removeRegistration(Registration registration), removeWaitlistEntry(WaitlistEntry entry)
+   - Registration: acceptCancellationTerms(boolean accepted)
+   - WaitlistEntry: createEntry(User user, Training training)
+   - Cancellation: processCancellation(Registration registration)

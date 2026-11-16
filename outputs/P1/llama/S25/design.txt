@@ -1,0 +1,50 @@
+1. Domain entities (classes):
+    * Person
+    * Door
+    * Phone
+    * Light
+    * Heating
+    * TV
+    * Radio
+    * MoviePlayer
+    * NewsReader
+    * GroceryShopper
+    * Alfred (assistant)
+
+  2. Single responsibility of each class:
+    * Person: represents an older person with attributes and methods for interacting with ALFRED
+    * Door: represents a door with attributes and methods for opening and closing
+    * Phone: represents a phone with attributes and methods for making and receiving calls
+    * Light: represents a light with attributes and methods for turning on and off
+    * Heating: represents a heating system with attributes and methods for controlling temperature
+    * TV: represents a TV with attributes and methods for turning on and off
+    * Radio: represents a radio with attributes and methods for turning on and off
+    * MoviePlayer: represents a movie player with attributes and methods for playing movies
+    * NewsReader: represents a news reader with attributes and methods for reading news
+    * GroceryShopper: represents a grocery shopper with attributes and methods for shopping
+    * Alfred: represents the ALFRED assistant with attributes and methods for interacting with the older person
+
+  3. Relationships (association, composition, inheritance):
+    * Person has a relationship with Door (association)
+    * Person has a relationship with Phone (association)
+    * Person has a relationship with Light (association)
+    * Person has a relationship with Heating (association)
+    * Person has a relationship with TV (association)
+    * Person has a relationship with Radio (association)
+    * Person has a relationship with MoviePlayer (association)
+    * Person has a relationship with NewsReader (association)
+    * Person has a relationship with GroceryShopper (association)
+    * Alfred has a relationship with Person (association)
+
+  4. Public methods of each class:
+    * Person: openDoor(), pickUpPhone(), turnOnLight(), turnOffLight(), controlHeating(), controlTV(), controlRadio(), playMovie(), readNews(), shopGroceries()
+    * Door: open(), close()
+    * Phone: makeCall(), receiveCall()
+    * Light: turnOn(), turnOff()
+    * Heating: turnOn(), turnOff()
+    * TV: turnOn(), turnOff()
+    * Radio: turnOn(), turnOff()
+    * MoviePlayer: playMovie()
+    * NewsReader: readNews()
+    * GroceryShopper: shopGroceries()
+    * Alfred: interactWithPerson()

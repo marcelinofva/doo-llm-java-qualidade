@@ -1,0 +1,100 @@
+```java
+// File: DataSource.java
+public class DataSource {
+    private String sourceType;
+    private String sourcePath;
+
+    public DataSource(String sourceType, String sourcePath) {
+        this.sourceType = sourceType;
+        this.sourcePath = sourcePath;
+    }
+
+    public String getSourceType() {
+        return sourceType;
+    }
+
+    public void setSourceType(String sourceType) {
+        this.sourceType = sourceType;
+    }
+
+    public String getSourcePath() {
+        return sourcePath;
+    }
+
+    public void setSourcePath(String sourcePath) {
+        this.sourcePath = sourcePath;
+    }
+}
+
+// File: DataImporter.java
+public class DataImporter {
+    private DataSource dataSource;
+
+    public DataImporter(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    public void importData() {
+        System.out.println("Importing data from: " + dataSource.getSourceType() + " at path: " + dataSource.getSourcePath());
+    }
+}
+
+// File: DataValidator.java
+public class DataValidator {
+    private DataSource dataSource;
+
+    public DataValidator(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    public boolean validateCSV() {
+        System.out.println("Validating CSV file from: " + dataSource.getSourceType() + " at path: " + dataSource.getSourcePath());
+        return true; // Simulate validation
+    }
+}
+
+// File: DataModelEditor.java
+public class DataModelEditor {
+    private DataSource dataSource;
+
+    public DataModelEditor(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    public void editModel() {
+        System.out.println("Editing model for data source: " + dataSource.getSourceType() + " at path: " + dataSource.getSourcePath());
+    }
+}
+
+// File: DataUpdater.java
+public class DataUpdater {
+    private DataSource dataSource;
+
+    public DataUpdater(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    public void updateData() {
+        System.out.println("Updating data for source: " + dataSource.getSourceType() + " at path: " + dataSource.getSourcePath());
+    }
+}
+
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        DataSource dataSource = new DataSource("CSV", "path/to/csv/file.csv");
+        DataImporter importer = new DataImporter(dataSource);
+        importer.importData();
+
+        DataValidator validator = new DataValidator(dataSource);
+        boolean isValid = validator.validateCSV();
+        System.out.println("CSV is valid: " + isValid);
+
+        DataModelEditor editor = new DataModelEditor(dataSource);
+        editor.editModel();
+
+        DataUpdater updater = new DataUpdater(dataSource);
+        updater.updateData();
+    }
+}
+```

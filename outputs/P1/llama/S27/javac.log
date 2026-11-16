@@ -1,0 +1,46 @@
+outputs\P1\llama\S27\src\Container.java:4: error: cannot find symbol
+    private List<Instance> instances;
+            ^
+  symbol:   class List
+  location: class Container
+outputs\P1\llama\S27\src\Container.java:15: error: cannot find symbol
+    public List<Instance> getInstances() {
+           ^
+  symbol:   class List
+  location: class Container
+outputs\P1\llama\S27\src\Resource.java:4: error: cannot find symbol
+    private List<ResourceComponent> components;
+            ^
+  symbol:   class List
+  location: class Resource
+outputs\P1\llama\S27\src\Resource.java:5: error: cannot find symbol
+    private List<Instance> instances;
+            ^
+  symbol:   class List
+  location: class Resource
+outputs\P1\llama\S27\src\Resource.java:22: error: cannot find symbol
+    public List<ResourceComponent> getComponents() {
+           ^
+  symbol:   class List
+  location: class Resource
+outputs\P1\llama\S27\src\Resource.java:26: error: cannot find symbol
+    public List<Instance> getInstances() {
+           ^
+  symbol:   class List
+  location: class Resource
+outputs\P1\llama\S27\src\Container.java:8: error: cannot find symbol
+        instances = new ArrayList<>();
+                        ^
+  symbol:   class ArrayList
+  location: class Container
+outputs\P1\llama\S27\src\Resource.java:10: error: cannot find symbol
+        components = new ArrayList<>();
+                         ^
+  symbol:   class ArrayList
+  location: class Resource
+outputs\P1\llama\S27\src\Resource.java:11: error: cannot find symbol
+        instances = new ArrayList<>();
+                        ^
+  symbol:   class ArrayList
+  location: class Resource
+9 errors

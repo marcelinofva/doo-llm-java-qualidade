@@ -1,0 +1,218 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities:
+    * User
+    * Training
+    * Registration
+    * Attendee
+    * TrainingCoordinator
+    * AdminView
+
+  2. Single responsibility of each class:
+    * User: represents a user with authentication and authorization
+    * Training: represents a training session with its details
+    * Registration: represents a registration for a training session
+    * Attendee: represents an attendee of a training session
+    * TrainingCoordinator: represents a training coordinator with admin privileges
+    * AdminView: provides an admin view for tracking registration status
+
+  3. Relationships:
+    * User has many Registrations (one-to-many)
+    * Training has many Registrations (one-to-many)
+    * Registration belongs to one User (many-to-one)
+    * Registration belongs to one Training (many-to-one)
+    * Attendee is an instance of User
+    * TrainingCoordinator is an instance of User
+
+  4. Public methods of each class:
+    * User: authenticate(), authorize()
+    * Training: getDetails(), getRegistrations()
+    * Registration: getTraining(), getUser(), register()
+    * Attendee: getTraining(), getRegistration()
+    * TrainingCoordinator: getAdminView(), getRegistrations()
+    * AdminView: getRegistrations(), getAttendees()
+</design>
+```
+
+**Phase 2 - CODE**
+
+### User.java
+```java
+// File: User.java
+
+public class User {
+    private String id;
+    private String name;
+    private String email;
+
+    public User(String id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
+
+    public String authenticate(String password) {
+        // implement authentication logic
+        return "authenticated";
+    }
+
+    public boolean authorize(String role) {
+        // implement authorization logic
+        return true;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+}
+```
+
+### Training.java
+```java
+// File: Training.java
+
+public class Training {
+    private String id;
+    private String name;
+    private String description;
+
+    public Training(String id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
+    public String getDetails() {
+        return "Training: " + name + ", Description: " + description;
+    }
+
+    public String getId() {
+        return id;
+    }
+}
+```
+
+### Registration.java
+```java
+// File: Registration.java
+
+public class Registration {
+    private User user;
+    private Training training;
+    private boolean accepted;
+
+    public Registration(User user, Training training) {
+        this.user = user;
+        this.training = training;
+        this.accepted = false;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Training getTraining() {
+        return training;
+    }
+
+    public boolean isAccepted() {
+        return accepted;
+    }
+
+    public void accept() {
+        accepted = true;
+    }
+}
+```
+
+### Attendee.java
+```java
+// File: Attendee.java
+
+public class Attendee extends User {
+    private Registration registration;
+
+    public Attendee(String id, String name, String email, Registration registration) {
+        super(id, name, email);
+        this.registration = registration;
+    }
+
+    public Registration getRegistration() {
+        return registration;
+    }
+}
+```
+
+### TrainingCoordinator.java
+```java
+// File: TrainingCoordinator.java
+
+public class TrainingCoordinator extends User {
+    private AdminView adminView;
+
+    public TrainingCoordinator(String id, String name, String email) {
+        super(id, name, email);
+        this.adminView = new AdminView();
+    }
+
+    public AdminView getAdminView() {
+        return adminView;
+    }
+}
+```
+
+### AdminView.java
+```java
+// File: AdminView.java
+
+public class AdminView {
+    private List<Registration> registrations;
+
+    public AdminView() {
+        this.registrations = new ArrayList<>();
+    }
+
+    public void addRegistration(Registration registration) {
+        registrations.add(registration);
+    }
+
+    public List<Registration> getRegistrations() {
+        return registrations;
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        User user = new User("1", "John Doe", "john.doe@example.com");
+        Training training = new Training("1", "Java Programming", "Learn Java programming");
+        Registration registration = new Registration(user, training);
+        Attendee attendee = new Attendee("1", "John Doe", "john.doe@example.com", registration);
+        TrainingCoordinator trainingCoordinator = new TrainingCoordinator("1", "Jane Doe", "jane.doe@example.com");
+        AdminView adminView = trainingCoordinator.getAdminView();
+
+        registration.accept();
+        adminView.addRegistration(registration);
+
+        System.out.println("User: " + user.getName());
+        System.out.println("Training: " + training.getDetails());
+        System.out.println("Registration: " + registration.isAccepted());
+        System.out.println("Attendee: " + attendee.getRegistration().getTraining().getName());
+        System.out.println("Admin View: " + adminView.getRegistrations().size());
+    }
+}
+```

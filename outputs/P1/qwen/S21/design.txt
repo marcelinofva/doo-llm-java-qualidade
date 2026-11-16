@@ -1,0 +1,22 @@
+1) Domain Entities (Classes):
+   - Collection
+   - Item
+   - User
+   - Repository
+
+2) Single Responsibility of Each Class:
+   - Collection: Manages collection details and items.
+   - Item: Represents a single item in a collection.
+   - User: Manages user details and permissions.
+   - Repository: Manages collections and items.
+
+3) Relationships:
+   - Collection has many Items (composition).
+   - User has many Collections (composition).
+   - Repository has many Collections (composition).
+
+4) Public Methods:
+   - Collection: createCollection, renameCollection, moveCollection, applyBranding, sortItems
+   - Item: addItem, removeItem, updateItem
+   - User: createUser, deleteUser, assignCollection
+   - Repository: createRepository, moveCollection, renameCollection

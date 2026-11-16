@@ -1,0 +1,6 @@
+outputs\P1\llama\S01\src\Item.java:10: error: cannot find symbol
+    public List<Estimate> getEstimates() {
+           ^
+  symbol:   class List
+  location: class Item
+1 error

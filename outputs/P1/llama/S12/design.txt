@@ -1,0 +1,26 @@
+1. Domain entities:
+    - Course
+    - Event
+    - Trainer
+    - SiteAdministrator
+    - SiteEditor
+
+  2. Single responsibility of each class:
+    - Course: represents a course with its details
+    - Event: represents an event with its details
+    - Trainer: represents a trainer with their courses and events
+    - SiteAdministrator: manages courses and events, sets listing fees
+    - SiteEditor: updates courses and events
+
+  3. Relationships:
+    - A Trainer has many Courses and Events (composition)
+    - A Course or Event has one Trainer (association)
+    - A SiteAdministrator manages many Courses and Events (composition)
+    - A SiteEditor updates many Courses and Events (composition)
+
+  4. Public methods of each class:
+    - Course: addTrainer(), updateDetails(), delete()
+    - Event: addTrainer(), updateDetails(), delete()
+    - Trainer: addCourse(), addEvent(), updateDetails()
+    - SiteAdministrator: addCourse(), addEvent(), setListingFee()
+    - SiteEditor: updateCourse(), updateEvent()

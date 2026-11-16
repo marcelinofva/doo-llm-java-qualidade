@@ -1,0 +1,16 @@
+outputs\P1\llama\S26\src\User.java:6: error: cannot find symbol
+    private List<Role> roles;
+            ^
+  symbol:   class List
+  location: class User
+outputs\P1\llama\S26\src\User.java:26: error: cannot find symbol
+    public List<Role> getRoles() {
+           ^
+  symbol:   class List
+  location: class User
+outputs\P1\llama\S26\src\User.java:11: error: cannot find symbol
+        this.roles = new ArrayList<>();
+                         ^
+  symbol:   class ArrayList
+  location: class User
+3 errors

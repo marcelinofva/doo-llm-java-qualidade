@@ -1,0 +1,26 @@
+1) Domain Entities:
+   - Collection
+   - DepositGroup
+   - User
+   - Permission
+   - SubmissionWindow
+
+2) Single Responsibility:
+   - Collection: Manages deposit groups and permissions for the collection.
+   - DepositGroup: Manages users and permissions within a group.
+   - User: Represents a user with a NetID.
+   - Permission: Represents a permission with a type (e.g., submit, view).
+   - SubmissionWindow: Manages the start and end dates for a submission window.
+
+3) Relationships:
+   - Collection has many DepositGroups.
+   - DepositGroup has many Users and Permissions.
+   - User has many Permissions.
+   - Permission is associated with a Collection and a DepositGroup.
+
+4) Public Methods:
+   - Collection: addGroup, removeGroup, setDefaultPermission, restrictAccessToDukeIPs, restrictSubmittersFromModifyingItems, changePermissions, viewPermissions.
+   - DepositGroup: addUser, removeUser, setPermission.
+   - User: None.
+   - Permission: None.
+   - SubmissionWindow: setStartDate, setEndDate.

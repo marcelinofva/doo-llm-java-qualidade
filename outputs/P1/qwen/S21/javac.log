@@ -1,0 +1,31 @@
+outputs\P1\qwen\S21\src\Collection.java:4: error: cannot find symbol
+    private List<Item> items;
+            ^
+  symbol:   class List
+  location: class Collection
+outputs\P1\qwen\S21\src\Repository.java:2: error: cannot find symbol
+    private List<Collection> collections;
+            ^
+  symbol:   class List
+  location: class Repository
+outputs\P1\qwen\S21\src\User.java:3: error: cannot find symbol
+    private List<Collection> collections;
+            ^
+  symbol:   class List
+  location: class User
+outputs\P1\qwen\S21\src\Collection.java:8: error: cannot find symbol
+        this.items = new ArrayList<>();
+                         ^
+  symbol:   class ArrayList
+  location: class Collection
+outputs\P1\qwen\S21\src\Repository.java:5: error: cannot find symbol
+        this.collections = new ArrayList<>();
+                               ^
+  symbol:   class ArrayList
+  location: class Repository
+outputs\P1\qwen\S21\src\User.java:7: error: cannot find symbol
+        this.collections = new ArrayList<>();
+                               ^
+  symbol:   class ArrayList
+  location: class User
+6 errors

@@ -1,0 +1,71 @@
+outputs\P1\phi\S16\src\Training.java:5: error: cannot find symbol
+    private LocalDate startDate;
+            ^
+  symbol:   class LocalDate
+  location: class Training
+outputs\P1\phi\S16\src\Training.java:6: error: cannot find symbol
+    private LocalDate endDate;
+            ^
+  symbol:   class LocalDate
+  location: class Training
+outputs\P1\phi\S16\src\Training.java:7: error: cannot find symbol
+    private List<User> attendees;
+            ^
+  symbol:   class List
+  location: class Training
+outputs\P1\phi\S16\src\Training.java:9: error: cannot find symbol
+    public Training(String name, String description, LocalDate startDate, LocalDate endDate) {
+                                                     ^
+  symbol:   class LocalDate
+  location: class Training
+outputs\P1\phi\S16\src\Training.java:9: error: cannot find symbol
+    public Training(String name, String description, LocalDate startDate, LocalDate endDate) {
+                                                                          ^
+  symbol:   class LocalDate
+  location: class Training
+outputs\P1\phi\S16\src\Training.java:23: error: cannot find symbol
+    public List<User> getAttendees() {
+           ^
+  symbol:   class List
+  location: class Training
+outputs\P1\phi\S16\src\User.java:7: error: cannot find symbol
+    private List<Training> registeredTrainings;
+            ^
+  symbol:   class List
+  location: class User
+outputs\P1\phi\S16\src\User.java:8: error: cannot find symbol
+    private List<Training> waitlistedTrainings;
+            ^
+  symbol:   class List
+  location: class User
+outputs\P1\phi\S16\src\User.java:41: error: cannot find symbol
+    public List<Training> getSchedule() {
+           ^
+  symbol:   class List
+  location: class User
+outputs\P1\phi\S16\src\Training.java:14: error: cannot find symbol
+        this.attendees = new ArrayList<>();
+                             ^
+  symbol:   class ArrayList
+  location: class Training
+outputs\P1\phi\S16\src\Training.java:32: error: cannot find symbol
+        Training training = new Training("Java Basics", "Learn Java from scratch", LocalDate.of(2023, 9, 1), LocalDate.of(2023, 9, 10));
+                                                                                   ^
+  symbol:   variable LocalDate
+  location: class Training
+outputs\P1\phi\S16\src\Training.java:32: error: cannot find symbol
+        Training training = new Training("Java Basics", "Learn Java from scratch", LocalDate.of(2023, 9, 1), LocalDate.of(2023, 9, 10));
+                                                                                                             ^
+  symbol:   variable LocalDate
+  location: class Training
+outputs\P1\phi\S16\src\User.java:15: error: cannot find symbol
+        this.registeredTrainings = new ArrayList<>();
+                                       ^
+  symbol:   class ArrayList
+  location: class User
+outputs\P1\phi\S16\src\User.java:16: error: cannot find symbol
+        this.waitlistedTrainings = new ArrayList<>();
+                                       ^
+  symbol:   class ArrayList
+  location: class User
+14 errors

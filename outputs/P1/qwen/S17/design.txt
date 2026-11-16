@@ -1,0 +1,36 @@
+1) Domain Entities (Classes):
+   - Customer
+   - Applicant
+   - Application
+   - Document
+   - Fee
+   - Transaction
+   - Staff
+   - Review
+
+2) Single Responsibility of Each Class:
+   - Customer: Manages customer information and portal access.
+   - Applicant: Manages application details and transactions.
+   - Application: Represents a service request and its status.
+   - Document: Represents supporting documents for an application.
+   - Fee: Manages fee details and payment.
+   - Transaction: Tracks the status of a transaction.
+   - Staff: Manages staff actions and reviews.
+   - Review: Handles completeness review and detailed review.
+
+3) Relationships:
+   - Customer has one or many Applications.
+   - Applicant has one or many Applications.
+   - Application has one or many Documents.
+   - Application has one Fee.
+   - Application has one Transaction.
+   - Staff performs Completeness Review and Detailed Review on Applications.
+
+4) Public Methods:
+   - Customer: createAccount(), login(), logout().
+   - Applicant: submitApplication(), submitDocument(), payFee(), checkStatus(), modifyApplication().
+   - Application: getStatus(), isComplete(), assignForReview().
+   - Document: uploadDocument().
+   - Fee: getAmount(), pay().
+   - Transaction: getStatus().
+   - Staff: performCompletenessReview(), assignForDetailedReview().

@@ -1,0 +1,66 @@
+// File: NewsItem.java
+public class NewsItem {
+    private String title;
+    private String content;
+    private Date startPublishingDate;
+    private Date oldNewsDate;
+    private Date stopPublishingDate;
+    private int priority;
+
+    public NewsItem(String title, String content, Date startPublishingDate, Date oldNewsDate, Date stopPublishingDate, int priority) {
+        this.title = title;
+        this.content = content;
+        this.startPublishingDate = startPublishingDate;
+        this.oldNewsDate = oldNewsDate;
+        this.stopPublishingDate = stopPublishingDate;
+        this.priority = priority;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Date getStartPublishingDate() {
+        return startPublishingDate;
+    }
+
+    public void setStartPublishingDate(Date startPublishingDate) {
+        this.startPublishingDate = startPublishingDate;
+    }
+
+    public Date getOldNewsDate() {
+        return oldNewsDate;
+    }
+
+    public void setOldNewsDate(Date oldNewsDate) {
+        this.oldNewsDate = oldNewsDate;
+    }
+
+    public Date getStopPublishingDate() {
+        return stopPublishingDate;
+    }
+
+    public void setStopPublishingDate(Date stopPublishingDate) {
+        this.stopPublishingDate = stopPublishingDate;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+}

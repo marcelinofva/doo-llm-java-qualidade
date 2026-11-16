@@ -1,0 +1,219 @@
+<design>
+1) Domain Entities:
+   - User (Trainee, TrainingCoordinator)
+   - Training
+   - Registration
+   - Waitlist
+   - Cancellation
+
+2) Single Responsibility:
+   - User: Manages user information and actions.
+   - Training: Manages training details and availability.
+   - Registration: Manages user registration for training.
+   - Waitlist: Manages users waiting for training spots.
+   - Cancellation: Manages cancellation of registrations.
+
+3) Relationships:
+   - User has many Registrations.
+   - Training has many Registrations and Waitlist entries.
+   - Registration belongs to a User and a Training.
+   - Waitlist entry belongs to a User and a Training.
+
+4) Public Methods:
+   - User: registerForTraining(Training training), addToWaitlist(Training training), viewScheduledTrainings()
+   - Training: addRegistration(Registration registration), addToWaitlist(WaitlistEntry entry), removeRegistration(Registration registration), removeWaitlistEntry(WaitlistEntry entry)
+   - Registration: acceptCancellationTerms(boolean accepted)
+   - WaitlistEntry: createEntry(User user, Training training)
+   - Cancellation: processCancellation(Registration registration)
+</design>
+
+// File: User.java
+```java
+public abstract class User {
+    private String id;
+    private String name;
+
+    public User(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public abstract void registerForTraining(Training training);
+    public abstract void addToWaitlist(Training training);
+    public abstract void viewScheduledTrainings();
+}
+```
+
+// File: Trainee.java
+```java
+public class Trainee extends User {
+    public Trainee(String id, String name) {
+        super(id, name);
+    }
+
+    @Override
+    public void registerForTraining(Training training) {
+        // Implementation
+    }
+
+    @Override
+    public void addToWaitlist(Training training) {
+        // Implementation
+    }
+
+    @Override
+    public void viewScheduledTrainings() {
+        // Implementation
+    }
+}
+```
+
+// File: TrainingCoordinator.java
+```java
+public class TrainingCoordinator extends User {
+    public TrainingCoordinator(String id, String name) {
+        super(id, name);
+    }
+
+    public void viewRegistrationStatus(Training training) {
+        // Implementation
+    }
+
+    public void viewWaitlist(Training training) {
+        // Implementation
+    }
+}
+```
+
+// File: Training.java
+```java
+public class Training {
+    private String id;
+    private String title;
+    private int capacity;
+    private List<Registration> registrations;
+    private List<WaitlistEntry> waitlist;
+
+    public Training(String id, String title, int capacity) {
+        this.id = id;
+        this.title = title;
+        this.capacity = capacity;
+        this.registrations = new ArrayList<>();
+        this.waitlist = new ArrayList<>();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public List<Registration> getRegistrations() {
+        return registrations;
+    }
+
+    public List<WaitlistEntry> getWaitlist() {
+        return waitlist;
+    }
+
+    public void addRegistration(Registration registration) {
+        // Implementation
+    }
+
+    public void addToWaitlist(WaitlistEntry entry) {
+        // Implementation
+    }
+
+    public void removeRegistration(Registration registration) {
+        // Implementation
+    }
+
+    public void removeWaitlistEntry(WaitlistEntry entry) {
+        // Implementation
+    }
+}
+```
+
+// File: Registration.java
+```java
+public class Registration {
+    private User user;
+    private Training training;
+    private boolean cancellationTermsAccepted;
+
+    public Registration(User user, Training training) {
+        this.user = user;
+        this.training = training;
+        this.cancellationTermsAccepted = false;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Training getTraining() {
+        return training;
+    }
+
+    public boolean isCancellationTermsAccepted() {
+        return cancellationTermsAccepted;
+    }
+
+    public void acceptCancellationTerms(boolean accepted) {
+        this.cancellationTermsAccepted = accepted;
+    }
+}
+```
+
+// File: WaitlistEntry.java
+```java
+public class WaitlistEntry {
+    private User user;
+    private Training training;
+
+    public WaitlistEntry(User user, Training training) {
+        this.user = user;
+        this.training = training;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Training getTraining() {
+        return training;
+    }
+}
+```
+
+// File: Cancellation.java
+```java
+public class Cancellation {
+    public void processCancellation(Registration registration) {
+        // Implementation
+    }
+}
+```
+
+// File: Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Demonstration of main flows using hard-coded data
+    }
+}
+```

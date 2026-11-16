@@ -1,0 +1,7 @@
+outputs\P1\phi\S25\src\Main.java:32: error: duplicate class: ALFRED
+class ALFRED {
+^
+outputs\P1\phi\S25\src\OlderPerson.java:2: error: duplicate class: OlderPerson
+public class OlderPerson {
+       ^
+2 errors

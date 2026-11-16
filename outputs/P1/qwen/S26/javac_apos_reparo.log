@@ -1,0 +1,16 @@
+outputs\P1\qwen\S26\src\Main.java:4: error: cannot find symbol
+        Role repositoryManager = new Role("Repository Manager", Arrays.asList("create", "update", "delete"));
+                                                                ^
+  symbol:   variable Arrays
+  location: class Main
+outputs\P1\qwen\S26\src\Main.java:11: error: cannot find symbol
+        readOnlyUser.assignRole(new Role("ReadOnly", Arrays.asList("view")));
+                                                     ^
+  symbol:   variable Arrays
+  location: class Main
+outputs\P1\qwen\S26\src\Main.java:14: error: cannot find symbol
+        basicUser.assignRole(new Role("Basic Data Entry", Arrays.asList("create", "update")));
+                                                          ^
+  symbol:   variable Arrays
+  location: class Main
+3 errors

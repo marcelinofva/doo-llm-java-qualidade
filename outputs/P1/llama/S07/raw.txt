@@ -1,0 +1,202 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities:
+    * Embargo
+    * Item
+    * Collection
+    * User
+    * Repository
+  2. Single responsibility of each class:
+    * Embargo: represents an embargo on an item
+    * Item: represents a digital object with metadata
+    * Collection: represents a group of items with shared metadata
+    * User: represents a repository administrator or curator
+    * Repository: manages embargoes and item metadata
+  3. Relationships:
+    * Embargo has a one-to-one relationship with Item (an embargo is associated with one item)
+    * Item has a many-to-one relationship with Collection (an item belongs to one collection)
+    * User has a many-to-many relationship with Repository (a user can be an administrator of multiple repositories)
+    * Repository has a one-to-many relationship with Embargo (a repository can have multiple embargoes)
+  4. Public methods of each class:
+    * Embargo: liftEmbargo(), getEmbargoDate()
+    * Item: getMetadata(), setMetadata(), getEmbargo()
+    * Collection: getItems(), setEmbargoDate()
+    * User: grantEmbargoPrivileges(), viewEmbargoMetadata()
+    * Repository: liftEmbargoes(), setAccessControls(), viewEmbargoMetadata()
+</design>
+```
+
+**Phase 2 - CODE**
+
+### Embargo.java
+```java
+// File: Embargo.java
+
+public class Embargo {
+    private Item item;
+    private Date embargoDate;
+
+    public Embargo(Item item, Date embargoDate) {
+        this.item = item;
+        this.embargoDate = embargoDate;
+    }
+
+    public void liftEmbargo() {
+        item.setEmbargo(null);
+    }
+
+    public Date getEmbargoDate() {
+        return embargoDate;
+    }
+}
+```
+
+### Item.java
+```java
+// File: Item.java
+
+import java.util.Date;
+
+public class Item {
+    private String metadata;
+    private Embargo embargo;
+
+    public Item(String metadata) {
+        this.metadata = metadata;
+    }
+
+    public String getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(String metadata) {
+        this.metadata = metadata;
+    }
+
+    public Embargo getEmbargo() {
+        return embargo;
+    }
+
+    public void setEmbargo(Embargo embargo) {
+        this.embargo = embargo;
+    }
+}
+```
+
+### Collection.java
+```java
+// File: Collection.java
+
+import java.util.ArrayList;
+import java.util.Date;
+
+public class Collection {
+    private ArrayList<Item> items;
+    private Date embargoDate;
+
+    public Collection() {
+        items = new ArrayList<>();
+    }
+
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void setEmbargoDate(Date embargoDate) {
+        this.embargoDate = embargoDate;
+    }
+
+    public Date getEmbargoDate() {
+        return embargoDate;
+    }
+}
+```
+
+### User.java
+```java
+// File: User.java
+
+public class User {
+    private String username;
+
+    public User(String username) {
+        this.username = username;
+    }
+
+    public void grantEmbargoPrivileges() {
+        // implementation omitted
+    }
+
+    public void viewEmbargoMetadata() {
+        // implementation omitted
+    }
+}
+```
+
+### Repository.java
+```java
+// File: Repository.java
+
+import java.util.ArrayList;
+import java.util.Date;
+
+public class Repository {
+    private ArrayList<Embargo> embargoes;
+    private ArrayList<User> administrators;
+
+    public Repository() {
+        embargoes = new ArrayList<>();
+        administrators = new ArrayList<>();
+    }
+
+    public void liftEmbargoes() {
+        for (Embargo embargo : embargoes) {
+            embargo.liftEmbargo();
+        }
+    }
+
+    public void setAccessControls() {
+        // implementation omitted
+    }
+
+    public void viewEmbargoMetadata() {
+        // implementation omitted
+    }
+
+    public void addAdministrator(User user) {
+        administrators.add(user);
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+import java.util.Date;
+
+public class Main {
+    public static void main(String[] args) {
+        Item item = new Item("metadata");
+        Embargo embargo = new Embargo(item, new Date());
+        item.setEmbargo(embargo);
+
+        Collection collection = new Collection();
+        collection.addItem(item);
+
+        Repository repository = new Repository();
+        repository.addAdministrator(new User("admin"));
+
+        repository.liftEmbargoes();
+        repository.viewEmbargoMetadata();
+    }
+}
+```
+
+Note: This implementation is a simplified version of the specification and may require additional features and modifications to meet the requirements of a real-world application.

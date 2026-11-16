@@ -1,0 +1,41 @@
+outputs\P1\llama\S14\src\NewsItem.java:6: error: cannot find symbol
+    private Date startDate;
+            ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\llama\S14\src\NewsItem.java:7: error: cannot find symbol
+    private Date endDate;
+            ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\llama\S14\src\NewsItem.java:10: error: cannot find symbol
+    public NewsItem(String title, String content, Date startDate, Date endDate, int priority) {
+                                                  ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\llama\S14\src\NewsItem.java:10: error: cannot find symbol
+    public NewsItem(String title, String content, Date startDate, Date endDate, int priority) {
+                                                                  ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\llama\S14\src\NewsItem.java:34: error: cannot find symbol
+    public Date getStartDate() {
+           ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\llama\S14\src\NewsItem.java:38: error: cannot find symbol
+    public void setStartDate(Date startDate) {
+                             ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\llama\S14\src\NewsItem.java:42: error: cannot find symbol
+    public Date getEndDate() {
+           ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\llama\S14\src\NewsItem.java:46: error: cannot find symbol
+    public void setEndDate(Date endDate) {
+                           ^
+  symbol:   class Date
+  location: class NewsItem
+8 errors

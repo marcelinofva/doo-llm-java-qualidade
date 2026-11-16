@@ -1,0 +1,197 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities (classes):
+    * DataSource
+    * DataImporter
+    * DataValidator
+    * DataModel
+    * Dataset
+    * DataPackager
+
+  2. Single responsibility of each class:
+    * DataSource: represents a data source (e.g. CSV file, Excel file, Google Spreadsheet)
+    * DataImporter: imports data from a data source
+    * DataValidator: validates a CSV file
+    * DataModel: represents a data model (e.g. schema, structure)
+    * Dataset: represents a dataset (e.g. collection of data)
+    * DataPackager: packages data for publishing
+
+  3. Relationships (association, composition, inheritance):
+    * DataSource has-a DataModel (composition)
+    * DataImporter uses-a DataSource (association)
+    * DataValidator uses-a DataSource (association)
+    * Dataset has-a DataModel (composition)
+    * DataPackager uses-a Dataset (association)
+
+  4. Public methods of each class:
+    * DataSource: importData(), getSchema()
+    * DataImporter: importData(), getImportedData()
+    * DataValidator: validateCSV(), getValidationResults()
+    * DataModel: getSchema(), updateSchema()
+    * Dataset: getDataset(), updateDataset()
+    * DataPackager: packageData(), getPackagedData()
+</design>
+```
+
+**Phase 2 - CODE**
+
+### DataSource.java
+```java
+// File: DataSource.java
+
+public class DataSource {
+    private String name;
+    private DataModel schema;
+
+    public DataSource(String name, DataModel schema) {
+        this.name = name;
+        this.schema = schema;
+    }
+
+    public DataModel getSchema() {
+        return schema;
+    }
+
+    public void importData(DataImporter importer) {
+        importer.importData(this);
+    }
+}
+```
+
+### DataImporter.java
+```java
+// File: DataImporter.java
+
+import java.io.File;
+import java.io.IOException;
+
+public class DataImporter {
+    public void importData(DataSource dataSource) {
+        // implementation of importing data from a data source
+    }
+}
+```
+
+### DataValidator.java
+```java
+// File: DataValidator.java
+
+import java.io.File;
+import java.io.IOException;
+
+public class DataValidator {
+    public void validateCSV(File csvFile) {
+        // implementation of validating a CSV file
+    }
+}
+```
+
+### DataModel.java
+```java
+// File: DataModel.java
+
+public class DataModel {
+    private String schema;
+
+    public DataModel(String schema) {
+        this.schema = schema;
+    }
+
+    public String getSchema() {
+        return schema;
+    }
+
+    public void updateSchema(String newSchema) {
+        this.schema = newSchema;
+    }
+}
+```
+
+### Dataset.java
+```java
+// File: Dataset.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Dataset {
+    private List<DataModel> dataModels;
+
+    public Dataset() {
+        this.dataModels = new ArrayList<>();
+    }
+
+    public void addDataModel(DataModel dataModel) {
+        this.dataModels.add(dataModel);
+    }
+
+    public List<DataModel> getDataset() {
+        return dataModels;
+    }
+
+    public void updateDataset(List<DataModel> newDataset) {
+        this.dataModels = newDataset;
+    }
+}
+```
+
+### DataPackager.java
+```java
+// File: DataPackager.java
+
+import java.io.File;
+import java.io.IOException;
+
+public class DataPackager {
+    public void packageData(Dataset dataset) {
+        // implementation of packaging data
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        // create a data source
+        DataSource dataSource = new DataSource("example.csv", new DataModel("schema"));
+
+        // create a data importer
+        DataImporter importer = new DataImporter();
+
+        // import data
+        dataSource.importData(importer);
+
+        // create a data validator
+        DataValidator validator = new DataValidator();
+
+        // validate CSV file
+        validator.validateCSV(new File("example.csv"));
+
+        // create a data model
+        DataModel dataModel = new DataModel("new schema");
+
+        // update data model
+        dataModel.updateSchema("new schema");
+
+        // create a dataset
+        Dataset dataset = new Dataset();
+
+        // add data model to dataset
+        dataset.addDataModel(dataModel);
+
+        // get dataset
+        List<DataModel> datasetList = dataset.getDataset();
+
+        // create a data packager
+        DataPackager packager = new DataPackager();
+
+        // package data
+        packager.packageData(dataset);
+    }
+}
+```

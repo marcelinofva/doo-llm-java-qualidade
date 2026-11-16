@@ -1,0 +1,41 @@
+outputs\P1\phi\S01\src\Game.java:5: error: cannot find symbol
+    private List<Round> rounds;
+            ^
+  symbol:   class List
+  location: class Game
+outputs\P1\phi\S01\src\Game.java:31: error: cannot find symbol
+    public List<Round> getRounds() {
+           ^
+  symbol:   class List
+  location: class Game
+outputs\P1\phi\S01\src\Game.java:38: error: cannot find symbol
+    private List<Estimator> estimators;
+            ^
+  symbol:   class List
+  location: class Round
+outputs\P1\phi\S01\src\Game.java:39: error: cannot find symbol
+    private List<Integer> estimates;
+            ^
+  symbol:   class List
+  location: class Round
+outputs\P1\phi\S01\src\Game.java:73: error: cannot find symbol
+    public List<Estimator> getEstimators() {
+           ^
+  symbol:   class List
+  location: class Round
+outputs\P1\phi\S01\src\Game.java:10: error: cannot find symbol
+        this.rounds = new ArrayList<>();
+                          ^
+  symbol:   class ArrayList
+  location: class Game
+outputs\P1\phi\S01\src\Game.java:43: error: cannot find symbol
+        this.estimators = new ArrayList<>();
+                              ^
+  symbol:   class ArrayList
+  location: class Round
+outputs\P1\phi\S01\src\Game.java:44: error: cannot find symbol
+        this.estimates = new ArrayList<>();
+                             ^
+  symbol:   class ArrayList
+  location: class Round
+8 errors

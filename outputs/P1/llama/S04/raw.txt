@@ -1,0 +1,154 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities:
+    * DataPackage
+    * Publisher
+    * Registry
+    * Validator
+
+  2. Single responsibility of each class:
+    * DataPackage: represents a package of data, with methods to update and delete
+    * Publisher: responsible for publishing and unpublishing data packages
+    * Registry: manages the collection of data packages, with methods to add, remove, and restore
+    * Validator: checks the validity of data packages before publishing
+
+  3. Relationships:
+    * A Publisher has many DataPackages (composition)
+    * A DataPackage is associated with one Publisher (association)
+    * A Registry contains many DataPackages (composition)
+    * A Validator is used by the Publisher to validate DataPackages (association)
+
+  4. Public methods of each class:
+    * DataPackage: update(), delete(), getPublisher()
+    * Publisher: publish(), unpublish(), validate(DataPackage)
+    * Registry: add(DataPackage), remove(DataPackage), restore(DataPackage)
+    * Validator: validate(DataPackage)
+</design>
+```
+
+**Phase 2 - CODE**
+
+### DataPackage.java
+```java
+// File: DataPackage.java
+
+public class DataPackage {
+    private String id;
+    private String name;
+    private Publisher publisher;
+
+    public DataPackage(String id, String name, Publisher publisher) {
+        this.id = id;
+        this.name = name;
+        this.publisher = publisher;
+    }
+
+    public void update() {
+        // update logic
+    }
+
+    public void delete() {
+        // delete logic
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+}
+```
+
+### Publisher.java
+```java
+// File: Publisher.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Publisher {
+    private List<DataPackage> dataPackages;
+    private Validator validator;
+
+    public Publisher() {
+        this.dataPackages = new ArrayList<>();
+        this.validator = new Validator();
+    }
+
+    public void publish(DataPackage dataPackage) {
+        validator.validate(dataPackage);
+        dataPackages.add(dataPackage);
+    }
+
+    public void unpublish(DataPackage dataPackage) {
+        dataPackages.remove(dataPackage);
+    }
+
+    public void validate(DataPackage dataPackage) {
+        validator.validate(dataPackage);
+    }
+}
+```
+
+### Registry.java
+```java
+// File: Registry.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Registry {
+    private List<DataPackage> dataPackages;
+
+    public Registry() {
+        this.dataPackages = new ArrayList<>();
+    }
+
+    public void add(DataPackage dataPackage) {
+        dataPackages.add(dataPackage);
+    }
+
+    public void remove(DataPackage dataPackage) {
+        dataPackages.remove(dataPackage);
+    }
+
+    public void restore(DataPackage dataPackage) {
+        dataPackages.add(dataPackage);
+    }
+}
+```
+
+### Validator.java
+```java
+// File: Validator.java
+
+public class Validator {
+    public void validate(DataPackage dataPackage) {
+        // validation logic
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        Publisher publisher = new Publisher();
+        DataPackage dataPackage = new DataPackage("id1", "name1", publisher);
+        publisher.publish(dataPackage);
+
+        Registry registry = new Registry();
+        registry.add(dataPackage);
+
+        publisher.unpublish(dataPackage);
+        registry.remove(dataPackage);
+
+        publisher.publish(dataPackage);
+        registry.restore(dataPackage);
+    }
+}
+```
+
+Note: This implementation assumes a simple validation logic in the `Validator` class. You may want to add more complex validation logic depending on your requirements.

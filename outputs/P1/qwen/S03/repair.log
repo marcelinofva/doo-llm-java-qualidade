@@ -1,0 +1,4 @@
+Event.java: import java.util.ArrayList; import java.util.List;
+RecyclingFacility.java: import java.util.Map;
+User.java: import java.util.ArrayList; import java.util.List;
+Main.java: import java.util.HashMap;

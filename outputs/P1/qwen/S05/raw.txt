@@ -1,0 +1,175 @@
+<design>
+1) Domain Entities (Classes):
+   - DataPackage
+   - Tag
+   - Registry
+   - Publisher
+   - Consumer
+
+2) Single Responsibility:
+   - DataPackage: Manages the data and its versions.
+   - Tag: Represents a version tag for a DataPackage.
+   - Registry: Stores and manages DataPackages and their tags.
+   - Publisher: Publishes new versions of DataPackages.
+   - Consumer: Views and downloads DataPackages at specific versions.
+
+3) Relationships:
+   - DataPackage has many Tags.
+   - Registry has many DataPackages.
+   - Publisher can create Tags for DataPackages.
+   - Consumer can view and download DataPackages by their Tags.
+
+4) Public Methods:
+   - DataPackage: addTag(Tag), getTag(String), getAllTags()
+   - Tag: getTagId(), getDataPackage()
+   - Registry: addDataPackage(DataPackage), getDataPackage(String), getTag(String)
+   - Publisher: publishDataPackage(DataPackage)
+   - Consumer: viewDataPackage(String), downloadDataPackage(String)
+</design>
+
+// File: DataPackage.java
+```java
+public class DataPackage {
+    private String id;
+    private List<Tag> tags;
+
+    public DataPackage(String id) {
+        this.id = id;
+        this.tags = new ArrayList<>();
+    }
+
+    public void addTag(Tag tag) {
+        tags.add(tag);
+    }
+
+    public Tag getTag(String tagId) {
+        return tags.stream().filter(t -> t.getTagId().equals(tagId)).findFirst().orElse(null);
+    }
+
+    public List<Tag> getAllTags() {
+        return tags;
+    }
+
+    public String getId() {
+        return id;
+    }
+}
+```
+
+// File: Tag.java
+```java
+public class Tag {
+    private String tagId;
+    private DataPackage dataPackage;
+
+    public Tag(String tagId, DataPackage dataPackage) {
+        this.tagId = tagId;
+        this.dataPackage = dataPackage;
+    }
+
+    public String getTagId() {
+        return tagId;
+    }
+
+    public DataPackage getDataPackage() {
+        return dataPackage;
+    }
+}
+```
+
+// File: Registry.java
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class Registry {
+    private Map<String, DataPackage> dataPackages;
+
+    public Registry() {
+        this.dataPackages = new HashMap<>();
+    }
+
+    public void addDataPackage(DataPackage dataPackage) {
+        dataPackages.put(dataPackage.getId(), dataPackage);
+    }
+
+    public DataPackage getDataPackage(String id) {
+        return dataPackages.get(id);
+    }
+
+    public Tag getTag(String tagId) {
+        for (DataPackage dp : dataPackages.values()) {
+            for (Tag tag : dp.getAllTags()) {
+                if (tag.getTagId().equals(tagId)) {
+                    return tag;
+                }
+            }
+        }
+        return null;
+    }
+}
+```
+
+// File: Publisher.java
+```java
+public class Publisher {
+    private Registry registry;
+
+    public Publisher(Registry registry) {
+        this.registry = registry;
+    }
+
+    public void publishDataPackage(DataPackage dataPackage) {
+        registry.addDataPackage(dataPackage);
+    }
+}
+```
+
+// File: Consumer.java
+```java
+public class Consumer {
+    private Registry registry;
+
+    public Consumer(Registry registry) {
+        this.registry = registry;
+    }
+
+    public void viewDataPackage(String tagId) {
+        Tag tag = registry.getTag(tagId);
+        if (tag != null) {
+            System.out.println("DataPackage: " + tag.getDataPackage().getId());
+        } else {
+            System.out.println("Tag not found.");
+        }
+    }
+
+    public void downloadDataPackage(String tagId) {
+        Tag tag = registry.getTag(tagId);
+        if (tag != null) {
+            System.out.println("Downloading DataPackage: " + tag.getDataPackage().getId());
+        } else {
+            System.out.println("Tag not found.");
+        }
+    }
+}
+```
+
+// File: Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        Registry registry = new Registry();
+        Publisher publisher = new Publisher(registry);
+        Consumer consumer = new Consumer(registry);
+
+        DataPackage dp = new DataPackage("dp1");
+        publisher.publishDataPackage(dp);
+
+        dp.addTag(new Tag("v1", dp));
+        dp.addTag(new Tag("v2", dp));
+
+        consumer.viewDataPackage("v1");
+        consumer.downloadDataPackage("v2");
+    }
+}
+```

@@ -1,0 +1,41 @@
+outputs\P1\qwen\S22\src\Dataset.java:5: error: cannot find symbol
+    private List<User> collaborators;
+            ^
+  symbol:   class List
+  location: class Dataset
+outputs\P1\qwen\S22\src\Dataset.java:7: error: cannot find symbol
+    private List<Publication> linkedPublications;
+            ^
+  symbol:   class List
+  location: class Dataset
+outputs\P1\qwen\S22\src\Project.java:4: error: cannot find symbol
+    private List<Dataset> datasets;
+            ^
+  symbol:   class List
+  location: class Project
+outputs\P1\qwen\S22\src\User.java:4: error: cannot find symbol
+    private List<Dataset> datasets;
+            ^
+  symbol:   class List
+  location: class User
+outputs\P1\qwen\S22\src\Dataset.java:14: error: cannot find symbol
+        this.collaborators = new ArrayList<>();
+                                 ^
+  symbol:   class ArrayList
+  location: class Dataset
+outputs\P1\qwen\S22\src\Dataset.java:15: error: cannot find symbol
+        this.linkedPublications = new ArrayList<>();
+                                      ^
+  symbol:   class ArrayList
+  location: class Dataset
+outputs\P1\qwen\S22\src\User.java:9: error: cannot find symbol
+        this.datasets = new ArrayList<>();
+                            ^
+  symbol:   class ArrayList
+  location: class User
+outputs\P1\qwen\S22\src\Project.java:9: error: cannot find symbol
+        this.datasets = new ArrayList<>();
+                            ^
+  symbol:   class ArrayList
+  location: class Project
+8 errors

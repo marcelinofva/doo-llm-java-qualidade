@@ -1,0 +1,34 @@
+outputs\P1\llama\S08\src\Item.java:5: error: cannot find symbol
+    private List<Permission> permissions;
+            ^
+  symbol:   class List
+  location: class Item
+outputs\P1\llama\S08\src\Item.java:16: error: cannot find symbol
+    public List<Permission> getPermissions() {
+           ^
+  symbol:   class List
+  location: class Item
+outputs\P1\llama\S08\src\User.java:6: error: cannot find symbol
+    private List<Permission> permissions;
+            ^
+  symbol:   class List
+  location: class User
+outputs\P1\llama\S08\src\User.java:22: error: cannot find symbol
+    public List<Permission> getPermissions() {
+           ^
+  symbol:   class List
+  location: class User
+outputs\P1\llama\S08\src\Item.java:9: error: cannot find symbol
+        this.permissions = new ArrayList<>();
+                               ^
+  symbol:   class ArrayList
+  location: class Item
+outputs\P1\llama\S08\src\User.java:11: error: cannot find symbol
+        this.permissions = new ArrayList<>();
+                               ^
+  symbol:   class ArrayList
+  location: class User
+outputs\P1\llama\S08\src\Main.java:29: error: variable depositGroup is already defined in method main(String[])
+        for (DepositGroup depositGroup : collection.getDepositGroups()) {
+                          ^
+7 errors

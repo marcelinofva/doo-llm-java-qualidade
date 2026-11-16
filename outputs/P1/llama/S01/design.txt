@@ -1,0 +1,25 @@
+1. Domain entities:
+    * Game
+    * Estimator
+    * Moderator
+    * Item
+    * Estimate
+  2. Single responsibility of each class:
+    * Game: manages game state and logic
+    * Estimator: represents an estimator in the game
+    * Moderator: represents a moderator in the game
+    * Item: represents an item to be estimated
+    * Estimate: represents an estimate made by an estimator
+  3. Relationships:
+    * Game has a list of Estimators (composition)
+    * Game has a list of Items (composition)
+    * Estimator is associated with a Game (association)
+    * Moderator is associated with a Game (association)
+    * Item is associated with a Game (association)
+    * Estimate is associated with an Estimator and an Item (association)
+  4. Public methods of each class:
+    * Game: createGame, inviteEstimators, startRound, showEstimates
+    * Estimator: joinGame, makeEstimate
+    * Moderator: createGame, inviteEstimators, startRound, showEstimates
+    * Item: getEstimates
+    * Estimate: getEstimateValue

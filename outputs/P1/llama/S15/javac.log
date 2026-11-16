@@ -1,0 +1,19 @@
+outputs\P1\llama\S15\src\Sponsor.java:5: error: cannot find symbol
+    private List<SponsorshipLevel> sponsorshipLevels;
+            ^
+  symbol:   class List
+  location: class Sponsor
+outputs\P1\llama\S15\src\Sponsor.java:12: error: cannot find symbol
+    public List<SponsorshipLevel> getSponsorshipLevels() {
+           ^
+  symbol:   class List
+  location: class Sponsor
+outputs\P1\llama\S15\src\Sponsor.java:9: error: cannot find symbol
+        this.sponsorshipLevels = new ArrayList<>();
+                                     ^
+  symbol:   class ArrayList
+  location: class Sponsor
+outputs\P1\llama\S15\src\Main.java:30: error: variable level is already defined in method main(String[])
+        for (SponsorshipLevel level : sponsor.getSponsorshipLevels()) {
+                              ^
+4 errors

@@ -1,0 +1,129 @@
+<design>
+1) Domain Entities (Classes):
+   - Publisher
+   - User
+   - Role (enum)
+   - Invitation
+
+2) Single Responsibility:
+   - Publisher: Manages members and roles.
+   - User: Represents a user with an email and role.
+   - Role: Enumerates different roles (OWNER, MEMBER).
+   - Invitation: Represents an invitation to join a publisher.
+
+3) Relationships:
+   - Publisher has a list of Users.
+   - Publisher has a list of Invitations.
+   - User has a Role.
+
+4) Public Methods:
+   - Publisher: editProfile, inviteUser, inviteByEmail, removeMember, viewMembers, makeOwner, removeOwner
+   - User: (no public methods)
+   - Role: (no public methods)
+   - Invitation: (no public methods)
+</design>
+
+// File: Publisher.java
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class Publisher {
+    private String name;
+    private List<User> members;
+    private List<Invitation> invitations;
+
+    public Publisher(String name) {
+        this.name = name;
+        this.members = new ArrayList<>();
+        this.invitations = new ArrayList<>();
+    }
+
+    public void editProfile(String newName) {
+        this.name = newName;
+    }
+
+    public void inviteUser(User user) {
+        members.add(user);
+    }
+
+    public void inviteByEmail(String email) {
+        // Logic to send invitation email
+        invitations.add(new Invitation(email));
+    }
+
+    public void removeMember(User user) {
+        members.remove(user);
+    }
+
+    public void viewMembers() {
+        for (User member : members) {
+            System.out.println(member.getEmail() + " - " + member.getRole());
+        }
+    }
+
+    public void makeOwner(User user) {
+        user.setRole(Role.OWNER);
+    }
+
+    public void removeOwner(User user) {
+        user.setRole(Role.MEMBER);
+    }
+
+    public enum Role {
+        OWNER, MEMBER
+    }
+
+    private static class Invitation {
+        private String email;
+
+        public Invitation(String email) {
+            this.email = email;
+        }
+    }
+}
+```
+
+// File: User.java
+```java
+public class User {
+    private String email;
+    private Publisher.Publisher.Role role;
+
+    public User(String email) {
+        this.email = email;
+        this.role = Publisher.Publisher.Role.MEMBER;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Publisher.Publisher.Role getRole() {
+        return role;
+    }
+
+    public void setRole(Publisher.Publisher.Role role) {
+        this.role = role;
+    }
+}
+```
+
+// File: Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        Publisher publisher = new Publisher("DataHub Publisher");
+        User owner = new User("owner@example.com");
+        User member = new User("member@example.com");
+
+        publisher.editProfile("Updated DataHub Publisher");
+        publisher.inviteUser(member);
+        publisher.inviteByEmail("newuser@example.com");
+        publisher.viewMembers();
+        publisher.makeOwner(member);
+        publisher.removeOwner(owner);
+        publisher.viewMembers();
+    }
+}
+```

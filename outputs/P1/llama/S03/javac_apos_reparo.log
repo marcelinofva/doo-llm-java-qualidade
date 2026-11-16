@@ -1,0 +1,7 @@
+outputs\P1\llama\S03\src\Main.java:16: error: variable facility is already defined in method main(String[])
+        for (RecyclingFacility facility : user.getFavorites()) {
+                               ^
+outputs\P1\llama\S03\src\Main.java:21: error: variable center is already defined in method main(String[])
+        for (DonationCenter center : user.getFavoritesDonation()) {
+                            ^
+2 errors

@@ -1,0 +1,7 @@
+outputs\P1\phi\S26\src\SystemAdministrator.java:13: error: not a statement
+        sysAdmin.assignRepository
+                ^
+outputs\P1\phi\S26\src\SystemAdministrator.java:13: error: reached end of file while parsing
+        sysAdmin.assignRepository
+                                 ^
+2 errors

@@ -1,0 +1,234 @@
+**Phase 1 - Design**
+
+```xml
+<design>
+  <!-- Domain entities (classes) -->
+  1. Depositor
+  2. Dataset
+  3. License
+  4. Collaborator
+  5. Publication
+  6. ProjectDMP
+  7. ResearchInformationManager
+
+  <!-- Single responsibility of each class -->
+  1. Depositor: manages dataset deposits and collaborations
+  2. Dataset: represents a deposited dataset with metadata and links
+  3. License: represents a license applied to a dataset
+  4. Collaborator: represents a collaborator with access to a dataset
+  5. Publication: represents a publication linked to a dataset
+  6. ProjectDMP: represents a project DMP linked to a dataset
+  7. ResearchInformationManager: tracks citation counts for published datasets
+
+  <!-- Relationships (association, composition, inheritance) -->
+  1. A Depositor has many Datasets (composition)
+  2. A Dataset is associated with one Depositor (association)
+  3. A Dataset has one License (composition)
+  4. A Dataset has many Collaborators (composition)
+  5. A Publication is associated with one Dataset (association)
+  6. A ProjectDMP is associated with one Dataset (association)
+  7. A ResearchInformationManager tracks many Datasets (composition)
+
+  <!-- Public methods of each class -->
+  1. Depositor: depositDataset(), getDatasets(), addCollaborator()
+  2. Dataset: getMetadata(), getLicense(), getCollaborators(), linkPublication(), linkProjectDMP()
+  3. License: applyLicense()
+  4. Collaborator: grantAccess()
+  5. Publication: linkDataset()
+  6. ProjectDMP: linkDataset()
+  7. ResearchInformationManager: trackCitationCount()
+</design>
+```
+
+**Phase 2 - Code**
+
+### Depositor.java
+```java
+// File: Depositor.java
+
+public class Depositor {
+    private List<Dataset> datasets;
+    private List<Collaborator> collaborators;
+
+    public Depositor() {
+        datasets = new ArrayList<>();
+        collaborators = new ArrayList<>();
+    }
+
+    public void depositDataset(Dataset dataset) {
+        datasets.add(dataset);
+    }
+
+    public List<Dataset> getDatasets() {
+        return datasets;
+    }
+
+    public void addCollaborator(Collaborator collaborator) {
+        collaborators.add(collaborator);
+    }
+}
+```
+
+### Dataset.java
+```java
+// File: Dataset.java
+
+public class Dataset {
+    private String metadata;
+    private License license;
+    private List<Collaborator> collaborators;
+    private Publication publication;
+    private ProjectDMP projectDMP;
+
+    public Dataset() {
+        metadata = "";
+        license = null;
+        collaborators = new ArrayList<>();
+        publication = null;
+        projectDMP = null;
+    }
+
+    public String getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(String metadata) {
+        this.metadata = metadata;
+    }
+
+    public License getLicense() {
+        return license;
+    }
+
+    public void setLicense(License license) {
+        this.license = license;
+    }
+
+    public List<Collaborator> getCollaborators() {
+        return collaborators;
+    }
+
+    public void addCollaborator(Collaborator collaborator) {
+        collaborators.add(collaborator);
+    }
+
+    public void linkPublication(Publication publication) {
+        this.publication = publication;
+    }
+
+    public void linkProjectDMP(ProjectDMP projectDMP) {
+        this.projectDMP = projectDMP;
+    }
+}
+```
+
+### License.java
+```java
+// File: License.java
+
+public class License {
+    private String licenseType;
+
+    public License() {
+        licenseType = "";
+    }
+
+    public void applyLicense() {
+        // implement license application logic
+    }
+}
+```
+
+### Collaborator.java
+```java
+// File: Collaborator.java
+
+public class Collaborator {
+    private String name;
+
+    public Collaborator() {
+        name = "";
+    }
+
+    public void grantAccess() {
+        // implement access grant logic
+    }
+}
+```
+
+### Publication.java
+```java
+// File: Publication.java
+
+public class Publication {
+    private String title;
+
+    public Publication() {
+        title = "";
+    }
+
+    public void linkDataset(Dataset dataset) {
+        // implement dataset linking logic
+    }
+}
+```
+
+### ProjectDMP.java
+```java
+// File: ProjectDMP.java
+
+public class ProjectDMP {
+    private String projectTitle;
+
+    public ProjectDMP() {
+        projectTitle = "";
+    }
+
+    public void linkDataset(Dataset dataset) {
+        // implement dataset linking logic
+    }
+}
+```
+
+### ResearchInformationManager.java
+```java
+// File: ResearchInformationManager.java
+
+public class ResearchInformationManager {
+    private List<Dataset> datasets;
+
+    public ResearchInformationManager() {
+        datasets = new ArrayList<>();
+    }
+
+    public void trackCitationCount() {
+        // implement citation count tracking logic
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        Depositor depositor = new Depositor();
+        Dataset dataset = new Dataset();
+        License license = new License();
+        Collaborator collaborator = new Collaborator();
+        Publication publication = new Publication();
+        ProjectDMP projectDMP = new ProjectDMP();
+        ResearchInformationManager manager = new ResearchInformationManager();
+
+        depositor.depositDataset(dataset);
+        dataset.setLicense(license);
+        dataset.addCollaborator(collaborator);
+        dataset.linkPublication(publication);
+        dataset.linkProjectDMP(projectDMP);
+        manager.trackCitationCount();
+    }
+}
+```
+
+Note: This implementation is a simplified representation of the design and does not include error handling, validation, or other features that would be present in a real-world application.

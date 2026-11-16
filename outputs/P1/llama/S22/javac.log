@@ -1,0 +1,51 @@
+outputs\P1\llama\S22\src\Dataset.java:6: error: cannot find symbol
+    private List<Collaborator> collaborators;
+            ^
+  symbol:   class List
+  location: class Dataset
+outputs\P1\llama\S22\src\Dataset.java:34: error: cannot find symbol
+    public List<Collaborator> getCollaborators() {
+           ^
+  symbol:   class List
+  location: class Dataset
+outputs\P1\llama\S22\src\Depositor.java:4: error: cannot find symbol
+    private List<Dataset> datasets;
+            ^
+  symbol:   class List
+  location: class Depositor
+outputs\P1\llama\S22\src\Depositor.java:5: error: cannot find symbol
+    private List<Collaborator> collaborators;
+            ^
+  symbol:   class List
+  location: class Depositor
+outputs\P1\llama\S22\src\Depositor.java:16: error: cannot find symbol
+    public List<Dataset> getDatasets() {
+           ^
+  symbol:   class List
+  location: class Depositor
+outputs\P1\llama\S22\src\ResearchInformationManager.java:4: error: cannot find symbol
+    private List<Dataset> datasets;
+            ^
+  symbol:   class List
+  location: class ResearchInformationManager
+outputs\P1\llama\S22\src\Dataset.java:13: error: cannot find symbol
+        collaborators = new ArrayList<>();
+                            ^
+  symbol:   class ArrayList
+  location: class Dataset
+outputs\P1\llama\S22\src\Depositor.java:8: error: cannot find symbol
+        datasets = new ArrayList<>();
+                       ^
+  symbol:   class ArrayList
+  location: class Depositor
+outputs\P1\llama\S22\src\Depositor.java:9: error: cannot find symbol
+        collaborators = new ArrayList<>();
+                            ^
+  symbol:   class ArrayList
+  location: class Depositor
+outputs\P1\llama\S22\src\ResearchInformationManager.java:7: error: cannot find symbol
+        datasets = new ArrayList<>();
+                       ^
+  symbol:   class ArrayList
+  location: class ResearchInformationManager
+10 errors

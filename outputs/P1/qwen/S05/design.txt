@@ -1,0 +1,26 @@
+1) Domain Entities (Classes):
+   - DataPackage
+   - Tag
+   - Registry
+   - Publisher
+   - Consumer
+
+2) Single Responsibility:
+   - DataPackage: Manages the data and its versions.
+   - Tag: Represents a version tag for a DataPackage.
+   - Registry: Stores and manages DataPackages and their tags.
+   - Publisher: Publishes new versions of DataPackages.
+   - Consumer: Views and downloads DataPackages at specific versions.
+
+3) Relationships:
+   - DataPackage has many Tags.
+   - Registry has many DataPackages.
+   - Publisher can create Tags for DataPackages.
+   - Consumer can view and download DataPackages by their Tags.
+
+4) Public Methods:
+   - DataPackage: addTag(Tag), getTag(String), getAllTags()
+   - Tag: getTagId(), getDataPackage()
+   - Registry: addDataPackage(DataPackage), getDataPackage(String), getTag(String)
+   - Publisher: publishDataPackage(DataPackage)
+   - Consumer: viewDataPackage(String), downloadDataPackage(String)

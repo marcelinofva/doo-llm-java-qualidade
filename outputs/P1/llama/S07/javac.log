@@ -1,0 +1,16 @@
+outputs\P1\llama\S07\src\Embargo.java:5: error: cannot find symbol
+    private Date embargoDate;
+            ^
+  symbol:   class Date
+  location: class Embargo
+outputs\P1\llama\S07\src\Embargo.java:7: error: cannot find symbol
+    public Embargo(Item item, Date embargoDate) {
+                              ^
+  symbol:   class Date
+  location: class Embargo
+outputs\P1\llama\S07\src\Embargo.java:16: error: cannot find symbol
+    public Date getEmbargoDate() {
+           ^
+  symbol:   class Date
+  location: class Embargo
+3 errors

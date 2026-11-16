@@ -1,0 +1,259 @@
+**PHASE 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities:
+    - Resource
+    - ResourceComponent
+    - Instance
+    - Container
+    - Subject
+    - Location
+    - Note
+
+  2. Single responsibility of each class:
+    - Resource: represents a resource with its components and instances
+    - ResourceComponent: represents a component of a resource
+    - Instance: represents an instance of a resource or component
+    - Container: represents a container with its instances
+    - Subject: represents a subject associated with a resource
+    - Location: represents a location associated with a container
+    - Note: represents a note associated with a record
+
+  3. Relationships:
+    - Resource has many ResourceComponents (composition)
+    - Resource has many Instances (composition)
+    - ResourceComponent belongs to one Resource (association)
+    - Instance belongs to one Resource or ResourceComponent (association)
+    - Container has many Instances (composition)
+    - Subject is associated with one Resource (association)
+    - Location is associated with one Container (association)
+    - Note is associated with one record (association)
+
+  4. Public methods of each class:
+    - Resource: addComponent, addInstance, getComponents, getInstances
+    - ResourceComponent: getComponentType, getComponentValue
+    - Instance: getInstanceType, getInstanceValue
+    - Container: addInstance, getInstances
+    - Subject: getSubjectType, getSubjectValue
+    - Location: getLocationType, getLocationValue
+    - Note: getNoteText
+</design>
+```
+
+**PHASE 2 - CODE**
+
+### Resource.java
+```java
+// File: Resource.java
+
+public class Resource {
+    private List<ResourceComponent> components;
+    private List<Instance> instances;
+    private String levelOfDescription;
+    private String levelOfDescriptionValue;
+
+    public Resource() {
+        components = new ArrayList<>();
+        instances = new ArrayList<>();
+    }
+
+    public void addComponent(ResourceComponent component) {
+        components.add(component);
+    }
+
+    public void addInstance(Instance instance) {
+        instances.add(instance);
+    }
+
+    public List<ResourceComponent> getComponents() {
+        return components;
+    }
+
+    public List<Instance> getInstances() {
+        return instances;
+    }
+
+    public void setLevelOfDescription(String level, String value) {
+        this.levelOfDescription = level;
+        this.levelOfDescriptionValue = value;
+    }
+
+    public String getLevelOfDescription() {
+        return levelOfDescription;
+    }
+
+    public String getLevelOfDescriptionValue() {
+        return levelOfDescriptionValue;
+    }
+}
+```
+
+### ResourceComponent.java
+```java
+// File: ResourceComponent.java
+
+public class ResourceComponent {
+    private String componentType;
+    private String componentValue;
+
+    public ResourceComponent(String type, String value) {
+        this.componentType = type;
+        this.componentValue = value;
+    }
+
+    public String getComponentType() {
+        return componentType;
+    }
+
+    public String getComponentValue() {
+        return componentValue;
+    }
+}
+```
+
+### Instance.java
+```java
+// File: Instance.java
+
+public class Instance {
+    private String instanceType;
+    private String instanceValue;
+
+    public Instance(String type, String value) {
+        this.instanceType = type;
+        this.instanceValue = value;
+    }
+
+    public String getInstanceType() {
+        return instanceType;
+    }
+
+    public String getInstanceValue() {
+        return instanceValue;
+    }
+}
+```
+
+### Container.java
+```java
+// File: Container.java
+
+public class Container {
+    private List<Instance> instances;
+    private Location location;
+
+    public Container() {
+        instances = new ArrayList<>();
+    }
+
+    public void addInstance(Instance instance) {
+        instances.add(instance);
+    }
+
+    public List<Instance> getInstances() {
+        return instances;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+}
+```
+
+### Subject.java
+```java
+// File: Subject.java
+
+public class Subject {
+    private String subjectType;
+    private String subjectValue;
+
+    public Subject(String type, String value) {
+        this.subjectType = type;
+        this.subjectValue = value;
+    }
+
+    public String getSubjectType() {
+        return subjectType;
+    }
+
+    public String getSubjectValue() {
+        return subjectValue;
+    }
+}
+```
+
+### Location.java
+```java
+// File: Location.java
+
+public class Location {
+    private String locationType;
+    private String locationValue;
+
+    public Location(String type, String value) {
+        this.locationType = type;
+        this.locationValue = value;
+    }
+
+    public String getLocationType() {
+        return locationType;
+    }
+
+    public String getLocationValue() {
+        return locationValue;
+    }
+}
+```
+
+### Note.java
+```java
+// File: Note.java
+
+public class Note {
+    private String noteText;
+
+    public Note(String text) {
+        this.noteText = text;
+    }
+
+    public String getNoteText() {
+        return noteText;
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        Resource resource = new Resource();
+        ResourceComponent component = new ResourceComponent("Component Type", "Component Value");
+        resource.addComponent(component);
+
+        Instance instance = new Instance("Instance Type", "Instance Value");
+        resource.addInstance(instance);
+
+        Container container = new Container();
+        container.addInstance(instance);
+
+        Subject subject = new Subject("Subject Type", "Subject Value");
+        resource.setLevelOfDescription("Level of Description", subject.getSubjectValue());
+
+        Location location = new Location("Location Type", "Location Value");
+        container.setLocation(location);
+
+        Note note = new Note("Note Text");
+        System.out.println(note.getNoteText());
+    }
+}
+```
+
+Note: This implementation follows the design specified in the problem statement. Each class has a single responsibility and the relationships between classes are implemented as specified. The `Main` class demonstrates the main flows using hard-coded data.

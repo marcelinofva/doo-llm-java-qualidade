@@ -1,0 +1,26 @@
+1) Domain Entities (Classes):
+   - Item
+   - Embargo
+   - Collection
+   - User
+   - Repository
+
+2) Single Responsibility of Each Class:
+   - Item: Manages item metadata and embargo status.
+   - Embargo: Manages embargo details such as start and end dates.
+   - Collection: Manages collections and their embargo policies.
+   - User: Manages user roles and permissions.
+   - Repository: Manages the overall repository operations and embargo lifting.
+
+3) Relationships:
+   - Item has an Embargo.
+   - Collection has multiple Items.
+   - User has permissions to perform actions on Items and Collections.
+   - Repository manages multiple Collections and Users.
+
+4) Public Methods:
+   - Item: liftEmbargo(), setEmbargoDate(), getEmbargoStatus()
+   - Embargo: getStartDate(), getEndDate()
+   - Collection: setEmbargoPolicy(), getEmbargoPolicy()
+   - User: hasPermission(), grantPermission()
+   - Repository: liftEmbargoOnReleaseDate(), downloadEmbargoMetadata()

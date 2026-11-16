@@ -1,0 +1,265 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities:
+    * User
+    * Role
+    * Repository
+    * UserRepository
+    * RoleRepository
+    * RepositoryManager
+    * ReadOnlyUser
+    * BasicDataEntryUser
+
+  2. Single responsibility of each class:
+    * User: represents a user with attributes and methods for authentication
+    * Role: represents a role with attributes and methods for role management
+    * Repository: represents a repository with attributes and methods for repository management
+    * UserRepository: manages user data and provides methods for user operations
+    * RoleRepository: manages role data and provides methods for role operations
+    * RepositoryManager: represents a repository manager with attributes and methods for repository management
+    * ReadOnlyUser: represents a read-only user with attributes and methods for read-only operations
+    * BasicDataEntryUser: represents a basic data entry user with attributes and methods for basic data entry operations
+
+  3. Relationships:
+    * User has a one-to-many relationship with Role (a user can have multiple roles)
+    * User has a one-to-one relationship with UserRepository (a user is associated with a user repository)
+    * Role has a one-to-one relationship with RoleRepository (a role is associated with a role repository)
+    * Repository has a one-to-one relationship with RepositoryManager (a repository is associated with a repository manager)
+    * Repository has a one-to-many relationship with User (a repository can have multiple users)
+    * Repository has a one-to-many relationship with Role (a repository can have multiple roles)
+
+  4. Public methods of each class:
+    * User: authenticate(), resetPassword()
+    * Role: create(), update(), delete()
+    * Repository: create(), update(), delete()
+    * UserRepository: createUser(), updateUser(), deleteUser()
+    * RoleRepository: createRole(), updateRole(), deleteRole()
+    * RepositoryManager: declareRepositoryManager()
+    * ReadOnlyUser: viewArchivalDescriptions()
+    * BasicDataEntryUser: createArchivalDescription(), updateArchivalDescription()
+</design>
+```
+
+**Phase 2 - CODE**
+
+### User.java
+```java
+// File: User.java
+
+public class User {
+    private String username;
+    private String password;
+    private List<Role> roles;
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.roles = new ArrayList<>();
+    }
+
+    public boolean authenticate(String password) {
+        return this.password.equals(password);
+    }
+
+    public void resetPassword(String newPassword) {
+        this.password = newPassword;
+    }
+
+    public void addRole(Role role) {
+        this.roles.add(role);
+    }
+
+    public List<Role> getRoles() {
+        return this.roles;
+    }
+}
+```
+
+### Role.java
+```java
+// File: Role.java
+
+public class Role {
+    private String name;
+    private String description;
+
+    public Role(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+}
+```
+
+### Repository.java
+```java
+// File: Repository.java
+
+public class Repository {
+    private String name;
+    private String description;
+
+    public Repository(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+}
+```
+
+### UserRepository.java
+```java
+// File: UserRepository.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserRepository {
+    private List<User> users;
+
+    public UserRepository() {
+        this.users = new ArrayList<>();
+    }
+
+    public void createUser(User user) {
+        this.users.add(user);
+    }
+
+    public void updateUser(User user) {
+        // implementation
+    }
+
+    public void deleteUser(User user) {
+        this.users.remove(user);
+    }
+
+    public List<User> getUsers() {
+        return this.users;
+    }
+}
+```
+
+### RoleRepository.java
+```java
+// File: RoleRepository.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class RoleRepository {
+    private List<Role> roles;
+
+    public RoleRepository() {
+        this.roles = new ArrayList<>();
+    }
+
+    public void createRole(Role role) {
+        this.roles.add(role);
+    }
+
+    public void updateRole(Role role) {
+        // implementation
+    }
+
+    public void deleteRole(Role role) {
+        this.roles.remove(role);
+    }
+
+    public List<Role> getRoles() {
+        return this.roles;
+    }
+}
+```
+
+### RepositoryManager.java
+```java
+// File: RepositoryManager.java
+
+public class RepositoryManager {
+    private Repository repository;
+
+    public RepositoryManager(Repository repository) {
+        this.repository = repository;
+    }
+
+    public void declareRepositoryManager() {
+        // implementation
+    }
+}
+```
+
+### ReadOnlyUser.java
+```java
+// File: ReadOnlyUser.java
+
+public class ReadOnlyUser extends User {
+    public ReadOnlyUser(String username, String password) {
+        super(username, password);
+    }
+
+    public void viewArchivalDescriptions() {
+        // implementation
+    }
+}
+```
+
+### BasicDataEntryUser.java
+```java
+// File: BasicDataEntryUser.java
+
+public class BasicDataEntryUser extends User {
+    public BasicDataEntryUser(String username, String password) {
+        super(username, password);
+    }
+
+    public void createArchivalDescription() {
+        // implementation
+    }
+
+    public void updateArchivalDescription() {
+        // implementation
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        UserRepository userRepository = new UserRepository();
+        RoleRepository roleRepository = new RoleRepository();
+        Repository repository = new Repository("Repository 1", "Description 1");
+        RepositoryManager repositoryManager = new RepositoryManager(repository);
+
+        User user = new User("username", "password");
+        Role role = new Role("Role 1", "Description 1");
+        userRepository.createUser(user);
+        roleRepository.createRole(role);
+
+        ReadOnlyUser readOnlyUser = new ReadOnlyUser("username", "password");
+        readOnlyUser.viewArchivalDescriptions();
+
+        BasicDataEntryUser basicDataEntryUser = new BasicDataEntryUser("username", "password");
+        basicDataEntryUser.createArchivalDescription();
+        basicDataEntryUser.updateArchivalDescription();
+    }
+}
+```

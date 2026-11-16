@@ -1,0 +1,16 @@
+outputs\P1\qwen\S20\src\File.java:6: error: Restriction is abstract; cannot be instantiated
+        restriction = new Restriction();
+                      ^
+outputs\P1\qwen\S20\src\FileGroup.java:17: error: Restriction is abstract; cannot be instantiated
+        restriction = new Restriction();
+                      ^
+outputs\P1\qwen\S20\src\Group.java:17: error: Restriction is abstract; cannot be instantiated
+        restriction = new Restriction();
+                      ^
+outputs\P1\qwen\S20\src\Redaction.java:1: error: Redaction is not abstract and does not override abstract method applyRestriction() in Restriction
+public class Redaction extends Restriction {
+       ^
+outputs\P1\qwen\S20\src\Redaction.java:2: error: method does not override or implement a method from a supertype
+    @Override
+    ^
+5 errors

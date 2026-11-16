@@ -1,0 +1,31 @@
+1) Domain Entities (Classes):
+   - Hold
+   - Meeting
+   - Hearing
+   - Affidavit
+   - Response
+   - Note
+
+2) Single Responsibility of Each Class:
+   - Hold: Manages the hold status of an application.
+   - Meeting: Manages scheduling and tracking of meetings.
+   - Hearing: Manages hearing-related activities and due dates.
+   - Affidavit: Manages affidavits for compliance.
+   - Response: Manages formal responses to applicants.
+   - Note: Manages internal notes for collaboration.
+
+3) Relationships:
+   - Hold is associated with an application.
+   - Meeting is associated with an application.
+   - Hearing is associated with an application.
+   - Affidavit is associated with an application.
+   - Response is associated with an application.
+   - Note is associated with an application.
+
+4) Public Methods:
+   - Hold: applyHold(), removeHold()
+   - Meeting: scheduleMeeting(), cancelMeeting()
+   - Hearing: scheduleHearing(), cancelHearing()
+   - Affidavit: submitAffidavit(), validateAffidavit()
+   - Response: sendResponse()
+   - Note: recordNote()

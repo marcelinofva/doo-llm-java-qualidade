@@ -1,0 +1,15 @@
+outputs\P1\llama\S21\src\Collection.java:28: error: cannot find symbol
+        Collections.sort(documents, comparator);
+        ^
+  symbol:   variable Collections
+  location: class Collection
+outputs\P1\llama\S21\src\Repository.java:23: error: incompatible types: List<Document> cannot be converted to Document
+        destination.addDocument(collection.getDocuments());
+                                                       ^
+outputs\P1\llama\S21\src\Repository.java:27: error: cannot find symbol
+        collection.setName(newName);
+                  ^
+  symbol:   method setName(String)
+  location: variable collection of type Collection
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+3 errors

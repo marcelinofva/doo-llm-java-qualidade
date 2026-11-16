@@ -1,0 +1,702 @@
+```java
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        DataPublishingUser user = new DataPublishingUser("Alice");
+        user.addDataset("Dataset1", new Dataset("Dataset1", "Initial Data", true));
+        user.addDataset("Dataset2", new Dataset("Dataset2", "Initial Data", false));
+
+        System.out.println(user.getDatasets());
+        System.out.println(user.editDataset("Dataset1", "Updated Data"));
+        System.out.println(user.deleteDataset("Dataset2"));
+        System.out.println(user.hideDataset("Dataset1"));
+        System.out.println(user.getDatasets());
+    }
+}
+
+class DataPublishingUser {
+    private String username;
+    private List<Dataset> datasets;
+
+    public DataPublishingUser(String username) {
+        this.username = username;
+        this.datasets = new ArrayList<>();
+    }
+
+    public void addDataset(String name, Dataset dataset) {
+        datasets.add(dataset);
+    }
+
+    public void editDataset(String name, String newData) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setData(newData));
+    }
+
+    public void deleteDataset(String name) {
+        datasets.removeIf(dataset -> dataset.getName().equals(name));
+    }
+
+    public void hideDataset(String name) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setHidden(true));
+    }
+
+    public List<Dataset> getDatasets() {
+        return new ArrayList<>(datasets);
+    }
+}
+
+class Dataset {
+    private String name;
+    private String data;
+    private boolean isPublic;
+    private boolean isHidden;
+
+    public Dataset(String name, String data, boolean isPublic) {
+        this.name = name;
+        this.data = data;
+        this.isPublic = isPublic;
+        this.isHidden = false;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public boolean isPublic() {
+        return isPublic;
+    }
+
+    public void setPublic(boolean isPublic) {
+        this.isPublic = isPublic;
+    }
+
+    public void setHidden(boolean isHidden) {
+        this.isHidden = isHidden;
+    }
+
+    public boolean isHidden() {
+        return isHidden;
+    }
+}
+```
+
+```java
+// File: DataPublishingUser.java
+import java.util.ArrayList;
+import java.util.List;
+
+class DataPublishingUser {
+    private String username;
+    private List<Dataset> datasets;
+
+    public DataPublishingUser(String username) {
+        this.username = username;
+        this.datasets = new ArrayList<>();
+    }
+
+    public void addDataset(String name, Dataset dataset) {
+        datasets.add(dataset);
+    }
+
+    public void editDataset(String name, String newData) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setData(newData));
+    }
+
+    public void deleteDataset(String name) {
+        datasets.removeIf(dataset -> dataset.getName().equals(name));
+    }
+
+    public void hideDataset(String name) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setHidden(true));
+    }
+
+    public List<Dataset> getDatasets() {
+        return new ArrayList<>(datasets);
+    }
+}
+```
+
+```java
+// File: Dataset.java
+private String name;
+private String data;
+private boolean isPublic;
+private boolean isHidden;
+
+public Dataset(String name, String data, boolean isPublic) {
+    this.name = name;
+    this.data = data;
+    this.isPublic = isPublic;
+    this.isHidden = false;
+}
+```
+
+```java
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        DataPublishingUser user = new DataPublishingUser("Alice");
+        user.addDataset("Dataset1", new Dataset("Dataset1", "Initial Data", true));
+        user.addDataset("Dataset2", new Dataset("Dataset2", "Initial Data", false));
+
+        System.out.println(user.getDatasets());
+        System.out.println(user.editDataset("Dataset1", "Updated Data"));
+        System.out.println(user.deleteDataset("Dataset2"));
+        System.out.println(user.hideDataset("Dataset1"));
+        System.out.println(user.getDatasets());
+    }
+}
+
+class DataPublishingUser {
+    private String username;
+    private List<Dataset> datasets;
+
+    public DataPublishingUser(String username) {
+        this.username = username;
+        this.datasets = new ArrayList<>();
+    }
+
+    public void addDataset(String name, Dataset dataset) {
+        datasets.add(dataset);
+    }
+
+    public void editDataset(String name, String newData) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setData(newData));
+    }
+
+    public void deleteDataset(String name) {
+        datasets.removeIf(dataset -> dataset.getName().equals(name));
+    }
+
+    public void hideDataset(String name) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setHidden(true));
+    }
+
+    public List<Dataset> getDatasets() {
+        return new ArrayList<>(datasets);
+    }
+}
+```
+
+```java
+// File: Dataset.java
+private String name;
+private String data;
+private boolean isPublic;
+private boolean isHidden;
+
+public Dataset(String name, String data, boolean isPublic) {
+    this.name = name;
+    this.data = data;
+    this.isPublic = isPublic;
+    this.isHidden = false;
+}
+```
+
+```java
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        DataPublishingUser user = new DataPublishingUser("Alice");
+        user.addDataset("Dataset1", new Dataset("Dataset1", "Initial Data", true));
+        user.addDataset("Dataset2", new Dataset("Dataset2", "Initial Data", false));
+
+        System.out.println(user.getDatasets());
+        System.out.println(user.editDataset("Dataset1", "Updated Data"));
+        System.out.println(user.deleteDataset("Dataset2"));
+        System.out.println(user.hideDataset("Dataset1"));
+        System.out.println(user.getDatasets());
+    }
+}
+
+class DataPublishingUser {
+    private String username;
+    private List<Dataset> datasets;
+
+    public DataPublishingUser(String username) {
+        this.username = username;
+        this.datasets = new ArrayList<>();
+    }
+
+    public void addDataset(String name, Dataset dataset) {
+        datasets.add(dataset);
+    }
+
+    public void editDataset(String name, String newData) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setData(newData));
+    }
+
+    public void deleteDataset(String name) {
+        datasets.removeIf(dataset -> dataset.getName().equals(name));
+    }
+
+    public void hideDataset(String name) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setHidden(true));
+    }
+
+    public List<Dataset> getDatasets() {
+        return new ArrayList<>(datasets);
+    }
+}
+```
+
+```java
+// File: Dataset.java
+private String name;
+private String data;
+private boolean isPublic;
+private boolean isHidden;
+
+public Dataset(String name, String data, boolean isPublic) {
+    this.name = name;
+    this.data = data;
+    this.isPublic = isPublic;
+    this.isHidden = false;
+}
+```
+
+```java
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        DataPublishingUser user = new DataPublishingUser("Alice");
+        user.addDataset("Dataset1", new Dataset("Dataset1", "Initial Data", true));
+        user.addDataset("Dataset2", new Dataset("Dataset2", "Initial Data", false));
+
+        System.out.println(user.getDatasets());
+        System.out.println(user.editDataset("Dataset1", "Updated Data"));
+        System.out.println(user.deleteDataset("Dataset2"));
+        System.out.println(user.hideDataset("Dataset1"));
+        System.out.println(user.getDatasets());
+    }
+}
+
+class DataPublishingUser {
+    private String username;
+    private List<Dataset> datasets;
+
+    public DataPublishingUser(String username) {
+        this.username = username;
+        this.datasets = new ArrayList<>();
+    }
+
+    public void addDataset(String name, Dataset dataset) {
+        datasets.add(dataset);
+    }
+
+    public void editDataset(String name, String newData) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setData(newData));
+    }
+
+    public void deleteDataset(String name) {
+        datasets.removeIf(dataset -> dataset.getName().equals(name));
+    }
+
+    public void hideDataset(String name) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setHidden(true));
+    }
+
+    public List<Dataset> getDatasets() {
+        return new ArrayList<>(datasets);
+    }
+}
+```
+
+```java
+// File: Dataset.java
+private String name;
+private String data;
+private boolean isPublic;
+private boolean isHidden;
+
+public Dataset(String name, String data, boolean isPublic) {
+    this.name = name;
+    this.data = data;
+    this.isPublic = isPublic;
+    this.isHidden = false;
+}
+```
+
+```java
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        DataPublishingUser user = new DataPublishingUser("Alice");
+        user.addDataset("Dataset1", new Dataset("Dataset1", "Initial Data", true));
+        user.addDataset("Dataset2", new Dataset("Dataset2", "Initial Data", false));
+
+        System.out.println(user.getDatasets());
+        System.out.println(user.editDataset("Dataset1", "Updated Data"));
+        System.out.println(user.deleteDataset("Dataset2"));
+        System.out.println(user.hideDataset("Dataset1"));
+        System.out.println(user.getDatasets());
+    }
+}
+
+class DataPublishingUser {
+    private String username;
+    private List<Dataset> datasets;
+
+    public DataPublishingUser(String username) {
+        this.username = username;
+        this.datasets = new ArrayList<>();
+    }
+
+    public void addDataset(String name, Dataset dataset) {
+        datasets.add(dataset);
+    }
+
+    public void editDataset(String name, String newData) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setData(newData));
+    }
+
+    public void deleteDataset(String name) {
+        datasets.removeIf(dataset -> dataset.getName().equals(name));
+    }
+
+    public void hideDataset(String name) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setHidden(true));
+    }
+
+    public List<Dataset> getDatasets() {
+        return new ArrayList<>(datasets);
+    }
+}
+```
+
+```java
+// File: Dataset.java
+private String name;
+private String data;
+private boolean isPublic;
+private boolean isHidden;
+
+public Dataset(String name, String data, boolean isPublic) {
+    this.name = name;
+    this.data = data;
+    this.isPublic = isPublic;
+    this.isHidden = false;
+}
+```
+
+```java
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        DataPublishingUser user = new DataPublishingUser("Alice");
+        user.addDataset("Dataset1", new Dataset("Dataset1", "Initial Data", true));
+        user.addDataset("Dataset2", new Dataset("Dataset2", "Initial Data", false));
+
+        System.out.println(user.getDatasets());
+        System.out.println(user.editDataset("Dataset1", "Updated Data"));
+        System.out.println(user.deleteDataset("Dataset2"));
+        System.out.println(user.hideDataset("Dataset1"));
+        System.out.println(user.getDatasets());
+    }
+}
+
+class DataPublishingUser {
+    private String username;
+    private List<Dataset> datasets;
+
+    public DataPublishingUser(String username) {
+        this.username = username;
+        this.datasets = new ArrayList<>();
+    }
+
+    public void addDataset(String name, Dataset dataset) {
+        datasets.add(dataset);
+    }
+
+    public void editDataset(String name, String newData) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setData(newData));
+    }
+
+    public void deleteDataset(String name) {
+        datasets.removeIf(dataset -> dataset.getName().equals(name));
+    }
+
+    public void hideDataset(String name) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setHidden(true));
+    }
+
+    public List<Dataset> getDatasets() {
+        return new ArrayList<>(datasets);
+    }
+}
+```
+
+```java
+// File: Dataset.java
+private String name;
+private String data;
+private boolean isPublic;
+private boolean isHidden;
+
+public Dataset(String name, String data, boolean isPublic) {
+    this.name = name;
+    this.data = data;
+    this.isPublic = isPublic;
+    this.isHidden = false;
+}
+```
+
+```java
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        DataPublishingUser user = new DataPublishingUser("Alice");
+        user.addDataset("Dataset1", new Dataset("Dataset1", "Initial Data", true));
+        user.addDataset("Dataset2", new Dataset("Dataset2", "Initial Data", false));
+
+        System.out.println(user.getDatasets());
+        System.out.println(user.editDataset("Dataset1", "Updated Data"));
+        System.out.println(user.deleteDataset("Dataset2"));
+        System.out.println(user.hideDataset("Dataset1"));
+        System.out.println(user.getDatasets());
+    }
+}
+
+class DataPublishingUser {
+    private String username;
+    private List<Dataset> datasets;
+
+    public DataPublishingUser(String username) {
+        this.username = username;
+        this.datasets = new ArrayList<>();
+    }
+
+    public void addDataset(String name, Dataset dataset) {
+        datasets.add(dataset);
+    }
+
+    public void editDataset(String name, String newData) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setData(newData));
+    }
+
+    public void deleteDataset(String name) {
+        datasets.removeIf(dataset -> dataset.getName().equals(name));
+    }
+
+    public void hideDataset(String name) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setHidden(true));
+    }
+
+    public List<Dataset> getDatasets() {
+        return new ArrayList<>(datasets);
+    }
+}
+```
+
+```java
+// File: Dataset.java
+private String name;
+private String data;
+private boolean isPublic;
+private boolean isHidden;
+
+public Dataset(String name, String data, boolean isPublic) {
+    this.name = name;
+    this.data = data;
+    this.isPublic = isPublic;
+    this.isHidden = false;
+}
+```
+
+```java
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        DataPublishingUser user = new DataPublishingUser("Alice");
+        user.addDataset("Dataset1", new Dataset("Dataset1", "Initial Data", true));
+        user.addDataset("Dataset2", new Dataset("Dataset2", "Initial Data", false));
+
+        System.out.println(user.getDatasets());
+        System.out.println(user.editDataset("Dataset1", "Updated Data"));
+        System.out.println(user.deleteDataset("Dataset2"));
+        System.out.println(user.hideDataset("Dataset1"));
+        System.out.println(user.getDatasets());
+    }
+}
+
+class DataPublishingUser {
+    private String username;
+    private List<Dataset> datasets;
+
+    public DataPublishingUser(String username) {
+        this.username = username;
+        this.datasets = new ArrayList<>();
+    }
+
+    public void addDataset(String name, Dataset dataset) {
+        datasets.add(dataset);
+    }
+
+    public void editDataset(String name, String newData) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setData(newData));
+    }
+
+    public void deleteDataset(String name) {
+        datasets.removeIf(dataset -> dataset.getName().equals(name));
+    }
+
+    public void hideDataset(String name) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setHidden(true));
+    }
+
+    public List<Dataset> getDatasets() {
+        return new ArrayList<>(datasets);
+    }
+}
+```
+
+```java
+// File: Dataset.java
+private String name;
+private String data;
+private boolean isPublic;
+private boolean isHidden;
+
+public Dataset(String name, String data, boolean isPublic) {
+    this.name = name;
+    this.data = data;
+    this.isPublic = isPublic;
+    this.isHidden = false;
+}
+```
+
+```java
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        DataPublishingUser user = new DataPublishingUser("Alice");
+        user.addDataset("Dataset1", new Dataset("Dataset1", "Initial Data", true));
+        user.addDataset("Dataset2", new Dataset("Dataset2", "Initial Data", false));
+
+        System.out.println(user.getDatasets());
+        System.out.println(user.editDataset("Dataset1", "Updated Data"));
+        System.out.println(user.deleteDataset("Dataset2"));
+        System.out.println(user.hideDataset("Dataset1"));
+        System.out.println(user.getDatasets());
+    }
+}
+
+class DataPublishingUser {
+    private String username;
+    private List<Dataset> datasets;
+
+    public DataPublishingUser(String username) {
+        this.username = username;
+        this.datasets = new ArrayList<>();
+    }
+
+    public void addDataset(String name, Dataset dataset) {
+        datasets.add(dataset);
+    }
+
+    public void editDataset(String name, String newData) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setData(newData));
+    }
+
+    public void deleteDataset(String name) {
+        datasets.removeIf(dataset -> dataset.getName().equals(name));
+    }
+
+    public void hideDataset(String name) {
+        datasets.stream()
+             .filter(dataset -> dataset.getName().equals(name))
+             .findFirst()
+             .ifPresent(dataset -> dataset.setHidden(true));
+    }
+
+    public List<Dataset> getDatasets() {
+        return new ArrayList<>(datasets);
+    }
+}
+```
+
+```java
+// File: Dataset.java
+private String name;
+private String data;
+private boolean isPublic;
+private boolean isHidden;
+
+public Dataset(String name, String data, boolean isPublic) {
+    this.name = name;
+    this.data = data;
+    this.isPublic = isPublic;
+    this.isHidden = false;
+}
+```
+
+```java
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        DataPublishingUser user = new DataPublishingUser("Alice");
+        user.addDataset("Dataset1", new Dataset("Dataset

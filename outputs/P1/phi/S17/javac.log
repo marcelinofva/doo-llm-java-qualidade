@@ -1,0 +1,7 @@
+outputs\P1\phi\S17\src\CustomerPortal.java:31: error: class Main is public, should be declared in a file named Main.java
+public class Main {
+       ^
+outputs\P1\phi\S17\src\Main.java:2: error: duplicate class: Main
+public class Main {
+       ^
+2 errors

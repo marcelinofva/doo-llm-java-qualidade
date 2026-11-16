@@ -1,0 +1,34 @@
+1) Domain Entities (Classes):
+   - Plan
+   - PlanReview
+   - PlanReviewer
+   - Applicant
+   - Inspection
+   - Bond
+   - CodeModification
+
+2) Single Responsibility of Each Class:
+   - Plan: Manages plan details.
+   - PlanReview: Manages the review process of a plan.
+   - PlanReviewer: Manages the work of a plan reviewer.
+   - Applicant: Manages applicant details and requests.
+   - Inspection: Manages inspection details.
+   - Bond: Manages bond details.
+   - CodeModification: Manages code modification requests.
+
+3) Relationships:
+   - PlanReview has-a Plan
+   - PlanReview has-a PlanReviewer
+   - Applicant has-a PlanReview
+   - PlanReview has-a Inspection
+   - PlanReview has-a Bond
+   - PlanReview has-a CodeModification
+
+4) Public Methods:
+   - Plan: setPlanId, getPlanId, setPlanDetails, getPlanDetails
+   - PlanReview: assignPlanToReviewer, conductReview, recordOutcome, reviewCodeModification
+   - PlanReviewer: manageWorkload, reviewPlans
+   - Applicant: requestPlanReviewMeeting, submitCodeModification
+   - Inspection: manageInspection
+   - Bond: manageBondLifecycle
+   - CodeModification: submitCodeModification, approveCodeModification, denyCodeModification

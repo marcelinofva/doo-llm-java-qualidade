@@ -1,0 +1,6 @@
+outputs\P1\qwen\S19\src\Main.java:9: error: cannot find symbol
+        reviewer.setReviewerId("R001");
+                ^
+  symbol:   method setReviewerId(String)
+  location: variable reviewer of type PlanReviewer
+1 error

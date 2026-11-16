@@ -1,0 +1,26 @@
+outputs\P1\llama\S05\src\DataPackage.java:6: error: cannot find symbol
+    private List<Tag> tags;
+            ^
+  symbol:   class List
+  location: class DataPackage
+outputs\P1\llama\S05\src\Publisher.java:8: error: cannot find symbol
+    public List<Tag> getTags(DataPackage dataPackage) {
+           ^
+  symbol:   class List
+  location: class Publisher
+outputs\P1\llama\S05\src\DataPackage.java:11: error: cannot find symbol
+        this.tags = new ArrayList<>();
+                        ^
+  symbol:   class ArrayList
+  location: class DataPackage
+outputs\P1\llama\S05\src\Main.java:10: error: cannot find symbol
+        List<Tag> tags = publisher.getTags(dataPackage);
+        ^
+  symbol:   class List
+  location: class Main
+outputs\P1\llama\S05\src\Publisher.java:9: error: cannot find symbol
+        return dataPackage.getTags();
+                          ^
+  symbol:   method getTags()
+  location: variable dataPackage of type DataPackage
+5 errors

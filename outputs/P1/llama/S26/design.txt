@@ -1,0 +1,37 @@
+1. Domain entities:
+    * User
+    * Role
+    * Repository
+    * UserRepository
+    * RoleRepository
+    * RepositoryManager
+    * ReadOnlyUser
+    * BasicDataEntryUser
+
+  2. Single responsibility of each class:
+    * User: represents a user with attributes and methods for authentication
+    * Role: represents a role with attributes and methods for role management
+    * Repository: represents a repository with attributes and methods for repository management
+    * UserRepository: manages user data and provides methods for user operations
+    * RoleRepository: manages role data and provides methods for role operations
+    * RepositoryManager: represents a repository manager with attributes and methods for repository management
+    * ReadOnlyUser: represents a read-only user with attributes and methods for read-only operations
+    * BasicDataEntryUser: represents a basic data entry user with attributes and methods for basic data entry operations
+
+  3. Relationships:
+    * User has a one-to-many relationship with Role (a user can have multiple roles)
+    * User has a one-to-one relationship with UserRepository (a user is associated with a user repository)
+    * Role has a one-to-one relationship with RoleRepository (a role is associated with a role repository)
+    * Repository has a one-to-one relationship with RepositoryManager (a repository is associated with a repository manager)
+    * Repository has a one-to-many relationship with User (a repository can have multiple users)
+    * Repository has a one-to-many relationship with Role (a repository can have multiple roles)
+
+  4. Public methods of each class:
+    * User: authenticate(), resetPassword()
+    * Role: create(), update(), delete()
+    * Repository: create(), update(), delete()
+    * UserRepository: createUser(), updateUser(), deleteUser()
+    * RoleRepository: createRole(), updateRole(), deleteRole()
+    * RepositoryManager: declareRepositoryManager()
+    * ReadOnlyUser: viewArchivalDescriptions()
+    * BasicDataEntryUser: createArchivalDescription(), updateArchivalDescription()

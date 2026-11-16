@@ -1,0 +1,36 @@
+1. Domain entities:
+    - Resource
+    - ResourceComponent
+    - Instance
+    - Container
+    - Subject
+    - Location
+    - Note
+
+  2. Single responsibility of each class:
+    - Resource: represents a resource with its components and instances
+    - ResourceComponent: represents a component of a resource
+    - Instance: represents an instance of a resource or component
+    - Container: represents a container with its instances
+    - Subject: represents a subject associated with a resource
+    - Location: represents a location associated with a container
+    - Note: represents a note associated with a record
+
+  3. Relationships:
+    - Resource has many ResourceComponents (composition)
+    - Resource has many Instances (composition)
+    - ResourceComponent belongs to one Resource (association)
+    - Instance belongs to one Resource or ResourceComponent (association)
+    - Container has many Instances (composition)
+    - Subject is associated with one Resource (association)
+    - Location is associated with one Container (association)
+    - Note is associated with one record (association)
+
+  4. Public methods of each class:
+    - Resource: addComponent, addInstance, getComponents, getInstances
+    - ResourceComponent: getComponentType, getComponentValue
+    - Instance: getInstanceType, getInstanceValue
+    - Container: addInstance, getInstances
+    - Subject: getSubjectType, getSubjectValue
+    - Location: getLocationType, getLocationValue
+    - Note: getNoteText

@@ -1,0 +1,31 @@
+1. Domain entities:
+    * User
+    * Training
+    * Registration
+    * Attendee
+    * TrainingCoordinator
+    * AdminView
+
+  2. Single responsibility of each class:
+    * User: represents a user with authentication and authorization
+    * Training: represents a training session with its details
+    * Registration: represents a registration for a training session
+    * Attendee: represents an attendee of a training session
+    * TrainingCoordinator: represents a training coordinator with admin privileges
+    * AdminView: provides an admin view for tracking registration status
+
+  3. Relationships:
+    * User has many Registrations (one-to-many)
+    * Training has many Registrations (one-to-many)
+    * Registration belongs to one User (many-to-one)
+    * Registration belongs to one Training (many-to-one)
+    * Attendee is an instance of User
+    * TrainingCoordinator is an instance of User
+
+  4. Public methods of each class:
+    * User: authenticate(), authorize()
+    * Training: getDetails(), getRegistrations()
+    * Registration: getTraining(), getUser(), register()
+    * Attendee: getTraining(), getRegistration()
+    * TrainingCoordinator: getAdminView(), getRegistrations()
+    * AdminView: getRegistrations(), getAttendees()

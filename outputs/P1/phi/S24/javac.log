@@ -1,0 +1,4 @@
+outputs\P1\phi\S24\src\OlderPerson.java:7: error: variable hasTakenMedicine is already defined in class OlderPerson
+    private boolean hasTakenMedicine;
+                    ^
+1 error

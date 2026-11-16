@@ -1,0 +1,51 @@
+outputs\P1\qwen\S14\src\NewsItem.java:5: error: cannot find symbol
+    private Date startPublishDate;
+            ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\qwen\S14\src\NewsItem.java:6: error: cannot find symbol
+    private Date oldNewsDate;
+            ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\qwen\S14\src\NewsItem.java:7: error: cannot find symbol
+    private Date stopPublishDate;
+            ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\qwen\S14\src\NewsItem.java:33: error: cannot find symbol
+    public Date getStartPublishDate() {
+           ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\qwen\S14\src\NewsItem.java:37: error: cannot find symbol
+    public void setStartPublishDate(Date startPublishDate) {
+                                    ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\qwen\S14\src\NewsItem.java:41: error: cannot find symbol
+    public Date getOldNewsDate() {
+           ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\qwen\S14\src\NewsItem.java:45: error: cannot find symbol
+    public void setOldNewsDate(Date oldNewsDate) {
+                               ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\qwen\S14\src\NewsItem.java:49: error: cannot find symbol
+    public Date getStopPublishDate() {
+           ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\qwen\S14\src\NewsItem.java:53: error: cannot find symbol
+    public void setStopPublishDate(Date stopPublishDate) {
+                                   ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\qwen\S14\src\User.java:7: error: cannot find symbol
+        this.subscribedFeeds = new ArrayList<>();
+                                   ^
+  symbol:   class ArrayList
+  location: class User
+10 errors

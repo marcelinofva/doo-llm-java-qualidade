@@ -1,0 +1,336 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities:
+    - Camper
+    - Parent
+    - Group
+    - Activity
+    - Attendance
+    - Staff
+    - CampAdministrator
+    - CampCounselor
+
+  2. Single responsibility of each class:
+    - Camper: represents a camper with attributes and methods for enrollment and attendance
+    - Parent: represents a parent with attributes and methods for enrolling children
+    - Group: represents a group of campers with methods for adding campers and scheduling activities
+    - Activity: represents a scheduled activity with attributes and methods for tracking progress
+    - Attendance: represents attendance records with methods for logging and viewing attendance
+    - Staff: represents staff members with attributes and methods for assigning positions
+    - CampAdministrator: represents the camp administrator with methods for managing campers, groups, and staff
+    - CampCounselor: represents a camp counselor with methods for taking attendance and tracking progress
+
+  3. Relationships:
+    - Camper belongs to one Group (composition)
+    - Group contains multiple Campers (association)
+    - Parent has multiple Children (association)
+    - Staff has one Position (composition)
+    - CampAdministrator manages multiple Groups (association)
+    - CampCounselor is assigned to one Group (association)
+
+  4. Public methods of each class:
+    - Camper: enroll(), attend()
+    - Parent: enrollChild()
+    - Group: addCamper(), scheduleActivity()
+    - Activity: trackProgress()
+    - Attendance: logAttendance(), viewAttendance()
+    - Staff: assignPosition()
+    - CampAdministrator: manageGroup(), assignStaff()
+    - CampCounselor: takeAttendance()
+</design>
+```
+
+**Phase 2 - CODE**
+
+### Camper.java
+```java
+// File: Camper.java
+
+public class Camper {
+    private String name;
+    private String id;
+    private Group group;
+
+    public Camper(String name, String id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    public void enroll(Group group) {
+        this.group = group;
+    }
+
+    public void attend() {
+        System.out.println(name + " is attending the camp.");
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+}
+```
+
+### Parent.java
+```java
+// File: Parent.java
+
+public class Parent {
+    private String name;
+    private String id;
+    private Camper child;
+
+    public Parent(String name, String id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    public void enrollChild(Camper child) {
+        this.child = child;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Camper getChild() {
+        return child;
+    }
+}
+```
+
+### Group.java
+```java
+// File: Group.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Group {
+    private String name;
+    private List<Camper> campers;
+    private List<Activity> activities;
+
+    public Group(String name) {
+        this.name = name;
+        this.campers = new ArrayList<>();
+        this.activities = new ArrayList<>();
+    }
+
+    public void addCamper(Camper camper) {
+        campers.add(camper);
+    }
+
+    public void scheduleActivity(Activity activity) {
+        activities.add(activity);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Camper> getCampers() {
+        return campers;
+    }
+
+    public List<Activity> getActivities() {
+        return activities;
+    }
+}
+```
+
+### Activity.java
+```java
+// File: Activity.java
+
+public class Activity {
+    private String name;
+    private String description;
+
+    public Activity(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+}
+```
+
+### Attendance.java
+```java
+// File: Attendance.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Attendance {
+    private List<Camper> campers;
+    private List<String> attendanceRecords;
+
+    public Attendance() {
+        this.campers = new ArrayList<>();
+        this.attendanceRecords = new ArrayList<>();
+    }
+
+    public void logAttendance(Camper camper) {
+        campers.add(camper);
+        attendanceRecords.add("Camper " + camper.getName() + " is present.");
+    }
+
+    public void viewAttendance() {
+        for (String record : attendanceRecords) {
+            System.out.println(record);
+        }
+    }
+}
+```
+
+### Staff.java
+```java
+// File: Staff.java
+
+public class Staff {
+    private String name;
+    private String position;
+
+    public Staff(String name, String position) {
+        this.name = name;
+        this.position = position;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+}
+```
+
+### CampAdministrator.java
+```java
+// File: CampAdministrator.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CampAdministrator {
+    private List<Group> groups;
+    private List<Staff> staff;
+
+    public CampAdministrator() {
+        this.groups = new ArrayList<>();
+        this.staff = new ArrayList<>();
+    }
+
+    public void manageGroup(Group group) {
+        groups.add(group);
+    }
+
+    public void assignStaff(Staff staff) {
+        this.staff.add(staff);
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public List<Staff> getStaff() {
+        return staff;
+    }
+}
+```
+
+### CampCounselor.java
+```java
+// File: CampCounselor.java
+
+public class CampCounselor {
+    private String name;
+    private Group group;
+
+    public CampCounselor(String name, Group group) {
+        this.name = name;
+        this.group = group;
+    }
+
+    public void takeAttendance() {
+        System.out.println(name + " is taking attendance for group " + group.getName());
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        // Create campers
+        Camper camper1 = new Camper("John Doe", "12345");
+        Camper camper2 = new Camper("Jane Doe", "67890");
+
+        // Create parent
+        Parent parent = new Parent("John Doe", "12345");
+        parent.enrollChild(camper1);
+
+        // Create group
+        Group group = new Group("Group 1");
+        group.addCamper(camper1);
+        group.addCamper(camper2);
+
+        // Create activity
+        Activity activity = new Activity("Swimming", "Learn how to swim");
+
+        // Create attendance
+        Attendance attendance = new Attendance();
+        attendance.logAttendance(camper1);
+
+        // Create staff
+        Staff staff = new Staff("John Smith", "Counselor");
+
+        // Create camp administrator
+        CampAdministrator administrator = new CampAdministrator();
+        administrator.manageGroup(group);
+        administrator.assignStaff(staff);
+
+        // Create camp counselor
+        CampCounselor counselor = new CampCounselor("Jane Smith", group);
+
+        // Demonstrate main flows
+        System.out.println("Camper 1 is attending the camp.");
+        camper1.attend();
+        System.out.println("Parent " + parent.getName() + " has enrolled child " + parent.getChild().getName());
+        parent.enrollChild(camper2);
+        System.out.println("Group " + group.getName() + " has scheduled activity " + activity.getName());
+        group.scheduleActivity(activity);
+        System.out.println("Attendance for group " + group.getName() + ": " + attendance.viewAttendance());
+        System.out.println("Staff " + staff.getName() + " has position " + staff.getPosition());
+        administrator.assignStaff(staff);
+        System.out.println("Camp counselor " + counselor.getName() + " is taking attendance for group " + counselor.getGroup().getName());
+        counselor.takeAttendance();
+    }
+}
+```
+
+Note: This implementation is based on the provided specification and may require modifications to fit the actual requirements of the CamperPlus system.

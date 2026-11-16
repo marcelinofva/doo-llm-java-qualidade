@@ -1,0 +1,31 @@
+1) Domain Entities (Classes):
+   - OlderPerson
+   - MedicalCaregiver
+   - Medication
+   - EmergencyContact
+   - HomeCareNurse
+   - FallDetector
+
+2) Single Responsibility of Each Class:
+   - OlderPerson: Manages personal information, requests help, and tracks medication intake.
+   - MedicalCaregiver: Manages caregiving tasks, receives alerts, and tracks medication intake.
+   - Medication: Represents a medication with details like name, dosage, and intake status.
+   - EmergencyContact: Stores emergency contact information.
+   - HomeCareNurse: Manages home care nurse information and alerts.
+   - FallDetector: Detects falls and sends emergency alerts.
+
+3) Relationships:
+   - OlderPerson has one EmergencyContact.
+   - OlderPerson has one HomeCareNurse.
+   - OlderPerson has many Medications.
+   - MedicalCaregiver has one EmergencyContact.
+   - MedicalCaregiver has many Medications.
+   - FallDetector is associated with OlderPerson.
+
+4) Public Methods:
+   - OlderPerson: requestHelp(), takeMedication(), checkMedicationStatus()
+   - MedicalCaregiver: receiveAlert(), trackMedication()
+   - Medication: intake(), isTaken()
+   - EmergencyContact: sendAlert()
+   - HomeCareNurse: sendAlert()
+   - FallDetector: detectFall()

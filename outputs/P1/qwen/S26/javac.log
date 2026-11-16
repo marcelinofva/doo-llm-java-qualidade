@@ -1,0 +1,46 @@
+outputs\P1\qwen\S26\src\User.java:5: error: cannot find symbol
+    private List<Role> roles;
+            ^
+  symbol:   class List
+  location: class User
+outputs\P1\qwen\S26\src\Role.java:3: error: cannot find symbol
+    private List<String> permissions;
+            ^
+  symbol:   class List
+  location: class Role
+outputs\P1\qwen\S26\src\Role.java:5: error: cannot find symbol
+    public Role(String name, List<String> permissions) {
+                             ^
+  symbol:   class List
+  location: class Role
+outputs\P1\qwen\S26\src\Repository.java:3: error: cannot find symbol
+    private List<Record> records;
+            ^
+  symbol:   class List
+  location: class Repository
+outputs\P1\qwen\S26\src\User.java:11: error: cannot find symbol
+        this.roles = new ArrayList<>();
+                         ^
+  symbol:   class ArrayList
+  location: class User
+outputs\P1\qwen\S26\src\Main.java:4: error: cannot find symbol
+        Role repositoryManager = new Role("Repository Manager", Arrays.asList("create", "update", "delete"));
+                                                                ^
+  symbol:   variable Arrays
+  location: class Main
+outputs\P1\qwen\S26\src\Main.java:11: error: cannot find symbol
+        readOnlyUser.assignRole(new Role("ReadOnly", Arrays.asList("view")));
+                                                     ^
+  symbol:   variable Arrays
+  location: class Main
+outputs\P1\qwen\S26\src\Main.java:14: error: cannot find symbol
+        basicUser.assignRole(new Role("Basic Data Entry", Arrays.asList("create", "update")));
+                                                          ^
+  symbol:   variable Arrays
+  location: class Main
+outputs\P1\qwen\S26\src\Repository.java:7: error: cannot find symbol
+        this.records = new ArrayList<>();
+                           ^
+  symbol:   class ArrayList
+  location: class Repository
+9 errors

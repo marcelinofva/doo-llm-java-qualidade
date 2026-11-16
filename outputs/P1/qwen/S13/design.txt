@@ -1,0 +1,25 @@
+1) Domain Entities (Classes):
+   - Member
+   - Practitioner
+   - Trainer
+   - Class
+   - SearchCriteria
+
+2) Single Responsibility of Each Class:
+   - Member: Manages basic member details and privacy settings.
+   - Practitioner: Extends Member, adds additional details for practitioners.
+   - Trainer: Extends Member, adds additional details for trainers and upcoming classes.
+   - Class: Represents a training class with details and a link to a detailed page.
+   - SearchCriteria: Holds search criteria for member profiles.
+
+3) Relationships:
+   - Member is the superclass for Practitioner and Trainer.
+   - Trainer has a list of Class objects.
+   - SearchCriteria is used by the system to filter Member profiles.
+
+4) Public Methods:
+   - Member: getName(), getEmail(), setPrivate(), setEmailPrivate()
+   - Practitioner: getDetails(), setDetails()
+   - Trainer: getDetails(), setDetails(), getUpcomingClasses(), addClass()
+   - Class: getTitle(), getLink()
+   - SearchCriteria: setCriteria(), getCriteria()

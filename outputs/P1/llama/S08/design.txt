@@ -1,0 +1,27 @@
+1. Domain entities:
+    * User
+    * Collection
+    * DepositGroup
+    * Permission
+    * Item
+    * Repository
+  2. Single responsibility of each class:
+    * User: represents a user with their attributes and methods
+    * Collection: represents a collection with its attributes and methods
+    * DepositGroup: represents a group of users with methods to add and remove users
+    * Permission: represents a permission with its attributes and methods
+    * Item: represents an item with its attributes and methods
+    * Repository: represents the repository with methods to manage collections, deposit groups, and permissions
+  3. Relationships:
+    * A collection has many deposit groups (composition)
+    * A deposit group has many users (composition)
+    * A user can be part of many deposit groups (association)
+    * A permission is associated with a collection (association)
+    * An item is part of a collection (association)
+  4. Public methods of each class:
+    * User: addPermission, removePermission, getPermissions
+    * Collection: addDepositGroup, removeDepositGroup, getDepositGroups
+    * DepositGroup: addUser, removeUser, getUsers
+    * Permission: grant, revoke
+    * Item: getPermissions
+    * Repository: addCollection, removeCollection, getCollections

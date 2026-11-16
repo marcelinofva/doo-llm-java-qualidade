@@ -1,0 +1,269 @@
+<design>
+1) Domain Entities (Classes):
+   - OlderPerson
+   - Alfred
+   - Door
+   - Phone
+   - Light
+   - Heating
+   - TV
+   - Radio
+   - MoviePlayer
+   - NewsReader
+   - GroceryShopping
+
+2) Single Responsibility of Each Class:
+   - OlderPerson: Manages interactions with Alfred.
+   - Alfred: Handles all tasks for the OlderPerson.
+   - Door: Manages the door's state.
+   - Phone: Manages phone calls.
+   - Light: Manages light control.
+   - Heating: Manages heating control.
+   - TV: Manages TV control.
+   - Radio: Manages radio control.
+   - MoviePlayer: Manages movie playback.
+   - NewsReader: Reads and reports news.
+   - GroceryShopping: Manages grocery shopping.
+
+3) Relationships:
+   - Alfred has-a Door
+   - Alfred has-a Phone
+   - Alfred has-a Light
+   - Alfred has-a Heating
+   - Alfred has-a TV
+   - Alfred has-a Radio
+   - Alfred has-a MoviePlayer
+   - Alfred has-a NewsReader
+   - Alfred has-a GroceryShopping
+
+4) Public Methods:
+   - OlderPerson: useAlfred()
+   - Alfred: seeDoor(), pickUpPhone(), turnOnLight(), turnOffLight(), controlHeating(), controlTV(), controlRadio(), playMovie(), readNews(), doGroceryShopping()
+   - Door: open(), close()
+   - Phone: pickUp()
+   - Light: turnOn(), turnOff()
+   - Heating: setTemperature()
+   - TV: turnOn(), turnOff(), changeChannel()
+   - Radio: turnOn(), turnOff(), changeStation()
+   - MoviePlayer: playMovie()
+   - NewsReader: readNews()
+   - GroceryShopping: shop()
+</design>
+
+// File: OlderPerson.java
+```java
+public class OlderPerson {
+    private Alfred alfred;
+
+    public OlderPerson(Alfred alfred) {
+        this.alfred = alfred;
+    }
+
+    public void useAlfred() {
+        alfred.seeDoor();
+        alfred.pickUpPhone();
+        alfred.turnOnLight();
+        alfred.controlHeating();
+        alfred.controlTV();
+        alfred.controlRadio();
+        alfred.playMovie();
+        alfred.readNews();
+        alfred.doGroceryShopping();
+    }
+}
+```
+
+// File: Alfred.java
+```java
+public class Alfred {
+    private Door door;
+    private Phone phone;
+    private Light light;
+    private Heating heating;
+    private TV tv;
+    private Radio radio;
+    private MoviePlayer moviePlayer;
+    private NewsReader newsReader;
+    private GroceryShopping groceryShopping;
+
+    public Alfred() {
+        this.door = new Door();
+        this.phone = new Phone();
+        this.light = new Light();
+        this.heating = new Heating();
+        this.tv = new TV();
+        this.radio = new Radio();
+        this.moviePlayer = new MoviePlayer();
+        this.newsReader = new NewsReader();
+        this.groceryShopping = new GroceryShopping();
+    }
+
+    public void seeDoor() {
+        door.open();
+        System.out.println("Door is open.");
+    }
+
+    public void pickUpPhone() {
+        phone.pickUp();
+        System.out.println("Phone is picked up.");
+    }
+
+    public void turnOnLight() {
+        light.turnOn();
+        System.out.println("Light is on.");
+    }
+
+    public void turnOffLight() {
+        light.turnOff();
+        System.out.println("Light is off.");
+    }
+
+    public void controlHeating() {
+        heating.setTemperature(22);
+        System.out.println("Heating is set to 22°C.");
+    }
+
+    public void controlTV() {
+        tv.turnOn();
+        tv.changeChannel(5);
+        System.out.println("TV is on and channel 5 is playing.");
+    }
+
+    public void controlRadio() {
+        radio.turnOn();
+        radio.changeStation(101.5);
+        System.out.println("Radio is on and station 101.5 is playing.");
+    }
+
+    public void playMovie() {
+        moviePlayer.playMovie();
+        System.out.println("Movie is playing.");
+    }
+
+    public void readNews() {
+        newsReader.readNews();
+        System.out.println("News are being read.");
+    }
+
+    public void doGroceryShopping() {
+        groceryShopping.shop();
+        System.out.println("Grocery shopping is done.");
+    }
+}
+```
+
+// File: Door.java
+```java
+public class Door {
+    public void open() {
+        System.out.println("Door is opening.");
+    }
+
+    public void close() {
+        System.out.println("Door is closing.");
+    }
+}
+```
+
+// File: Phone.java
+```java
+public class Phone {
+    public void pickUp() {
+        System.out.println("Phone is being picked up.");
+    }
+}
+```
+
+// File: Light.java
+```java
+public class Light {
+    public void turnOn() {
+        System.out.println("Light is turning on.");
+    }
+
+    public void turnOff() {
+        System.out.println("Light is turning off.");
+    }
+}
+```
+
+// File: Heating.java
+```java
+public class Heating {
+    public void setTemperature(int temperature) {
+        System.out.println("Heating temperature set to " + temperature + "°C.");
+    }
+}
+```
+
+// File: TV.java
+```java
+public class TV {
+    public void turnOn() {
+        System.out.println("TV is turning on.");
+    }
+
+    public void turnOff() {
+        System.out.println("TV is turning off.");
+    }
+
+    public void changeChannel(int channel) {
+        System.out.println("TV channel changed to " + channel + ".");
+    }
+}
+```
+
+// File: Radio.java
+```java
+public class Radio {
+    public void turnOn() {
+        System.out.println("Radio is turning on.");
+    }
+
+    public void turnOff() {
+        System.out.println("Radio is turning off.");
+    }
+
+    public void changeStation(double station) {
+        System.out.println("Radio station changed to " + station + ".");
+    }
+}
+```
+
+// File: MoviePlayer.java
+```java
+public class MoviePlayer {
+    public void playMovie() {
+        System.out.println("Movie is playing.");
+    }
+}
+```
+
+// File: NewsReader.java
+```java
+public class NewsReader {
+    public void readNews() {
+        System.out.println("News are being read.");
+    }
+}
+```
+
+// File: GroceryShopping.java
+```java
+public class GroceryShopping {
+    public void shop() {
+        System.out.println("Grocery shopping is done.");
+    }
+}
+```
+
+// File: Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        Alfred alfred = new Alfred();
+        OlderPerson olderPerson = new OlderPerson(alfred);
+        olderPerson.useAlfred();
+    }
+}
+```

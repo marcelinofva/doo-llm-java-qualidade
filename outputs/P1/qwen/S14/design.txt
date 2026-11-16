@@ -1,0 +1,26 @@
+1) Domain Entities (Classes):
+   - NewsItem
+   - NewsFeed
+   - User
+   - Editor
+   - Subscriber
+
+2) Single Responsibility:
+   - NewsItem: Manages the properties and behaviors of a news item.
+   - NewsFeed: Manages the collection of news items and provides methods to access and manipulate them.
+   - User: Manages user-specific data and actions.
+   - Editor: Manages the editing and management of news items.
+   - Subscriber: Manages user subscriptions to news feeds.
+
+3) Relationships:
+   - NewsItem has a relationship with NewsFeed (composition).
+   - User has a relationship with Subscriber (composition).
+   - Editor has a relationship with NewsItem (composition).
+   - Subscriber has a relationship with NewsFeed (association).
+
+4) Public Methods:
+   - NewsItem: getTitle(), getContent(), setPriority(), setPublishDates(), sendEmailToEditor()
+   - NewsFeed: addNewsItem(), removeNewsItem(), getNewsItems(), getNewsItemsByDateRange()
+   - User: subscribeToFeed(), unsubscribeFromFeed()
+   - Editor: addNewsItem(), removeNewsItem(), updateNewsItem()
+   - Subscriber: getSubscribedFeeds(), receiveNewsItems()

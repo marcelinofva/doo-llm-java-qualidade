@@ -1,0 +1,6 @@
+outputs\P1\qwen\S02\src\Attendance.java:6: error: cannot find symbol
+    private List<Camper> campers = new ArrayList<>();
+                                       ^
+  symbol:   class ArrayList
+  location: class Attendance
+1 error

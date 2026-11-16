@@ -1,0 +1,32 @@
+<!-- Domain entities -->
+  1. **DataPackage**: represents a package of data
+  2. **Tag**: represents a version of a DataPackage
+  3. **Publisher**: represents a user who publishes DataPackages
+  4. **Consumer**: represents a user who consumes DataPackages
+
+  <!-- Single responsibility of each class -->
+  1. DataPackage: manages the data package schema and versioning
+  2. Tag: represents a specific version of a DataPackage
+  3. Publisher: publishes DataPackages and manages tags
+  4. Consumer: consumes DataPackages and views versions
+
+  <!-- Relationships -->
+  1. A DataPackage has many Tags (composition)
+  2. A Tag belongs to one DataPackage (association)
+  3. A Publisher can publish many DataPackages (association)
+  4. A Consumer can view many DataPackages (association)
+
+  <!-- Public methods of each class -->
+  1. DataPackage:
+    * addTag(Tag tag)
+    * getTag(String tagName)
+    * getVersion(String tagName)
+  2. Tag:
+    * getDataPackage()
+    * getTagName()
+  3. Publisher:
+    * publishDataPackage(DataPackage dataPackage)
+    * getTags(DataPackage dataPackage)
+  4. Consumer:
+    * viewDataPackage(DataPackage dataPackage, String tagName)
+    * downloadDataPackage(DataPackage dataPackage, String tagName)

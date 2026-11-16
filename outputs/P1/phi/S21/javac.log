@@ -1,0 +1,16 @@
+outputs\P1\phi\S21\src\Collection.java:5: error: cannot find symbol
+    private List<Content> contents;
+            ^
+  symbol:   class List
+  location: class Collection
+outputs\P1\phi\S21\src\Collection.java:25: error: cannot find symbol
+    public List<Content> getContents() {
+           ^
+  symbol:   class List
+  location: class Collection
+outputs\P1\phi\S21\src\Collection.java:10: error: cannot find symbol
+        this.contents = new ArrayList<>();
+                            ^
+  symbol:   class ArrayList
+  location: class Collection
+3 errors

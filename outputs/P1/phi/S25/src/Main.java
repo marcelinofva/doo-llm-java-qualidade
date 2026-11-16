@@ -1,0 +1,64 @@
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        OlderPerson olderPerson = new OlderPerson("John Doe", 75);
+        olderPerson.useALFRED();
+    }
+}
+
+class OlderPerson {
+    private String name;
+    private int age;
+    private ALFRED alfred;
+
+    public OlderPerson(String name, int age) {
+        this.name = name;
+        this.age = age;
+        this.alfred = new ALFRED();
+    }
+
+    public void useALFRED() {
+        alfred.showWhoIsAtDoor();
+        alfred.pickUpPhone();
+        alfred.toggleLights();
+        alfred.controlHeating();
+        alfred.controlTV();
+        alfred.watchMovies();
+        alfred.getNews();
+        alfred.doGroceryShopping();
+    }
+}
+
+class ALFRED {
+    public void showWhoIsAtDoor() {
+        System.out.println("Someone is standing at the door.");
+    }
+
+    public void pickUpPhone() {
+        System.out.println("Picking up the phone.");
+    }
+
+    public void toggleLights() {
+        System.out.println("Toggling the lights.");
+    }
+
+    public void controlHeating() {
+        System.out.println("Controlling the heating.");
+    }
+
+    public void controlTV() {
+        System.out.println("Controlling the TV.");
+    }
+
+    public void watchMovies() {
+        System.out.println("Watching movies.");
+    }
+
+    public void getNews() {
+        System.out.println("Getting the news.");
+    }
+
+    public void doGroceryShopping() {
+        System.out.println("Doing grocery shopping.");
+    }
+}

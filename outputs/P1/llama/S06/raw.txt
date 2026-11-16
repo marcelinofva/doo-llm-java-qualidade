@@ -1,0 +1,173 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities:
+    * Publisher
+    * Member
+    * Owner
+    * User
+  2. Single responsibility of each class:
+    * Publisher: manages its members and owners
+    * Member: represents a user who is a member of a publisher
+    * Owner: represents a user who is an owner of a publisher
+    * User: represents a user with basic information
+  3. Relationships:
+    * A Publisher has many Members (composition)
+    * A Member belongs to one Publisher (association)
+    * An Owner is a type of Member (inheritance)
+    * A User can be an Owner or a Member (association)
+  4. Public methods of each class:
+    * Publisher: inviteUser(), removeMember(), viewMembers(), makeOwner(), removeOwner()
+    * Member: getPublisher(), getRole()
+    * Owner: getPublisher()
+    * User: getId(), getName(), getEmail()
+</design>
+```
+
+**Phase 2 - CODE**
+
+### Publisher.java
+```java
+// File: Publisher.java
+
+public class Publisher {
+    private String name;
+    private List<Member> members;
+
+    public Publisher(String name) {
+        this.name = name;
+        this.members = new ArrayList<>();
+    }
+
+    public void inviteUser(User user) {
+        Member member = new Member(user, this);
+        members.add(member);
+    }
+
+    public void removeMember(Member member) {
+        members.remove(member);
+    }
+
+    public List<Member> viewMembers() {
+        return members;
+    }
+
+    public void makeOwner(Member member) {
+        member.setRole(Role.OWNER);
+    }
+
+    public void removeOwner(Member member) {
+        member.setRole(Role.MEMBER);
+    }
+}
+```
+
+### Member.java
+```java
+// File: Member.java
+
+public class Member extends User {
+    private Publisher publisher;
+    private Role role;
+
+    public Member(User user, Publisher publisher) {
+        super(user.getId(), user.getName(), user.getEmail());
+        this.publisher = publisher;
+        this.role = Role.MEMBER;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+}
+```
+
+### Owner.java
+```java
+// File: Owner.java
+
+public class Owner extends Member {
+    public Owner(User user, Publisher publisher) {
+        super(user, publisher);
+    }
+}
+```
+
+### User.java
+```java
+// File: User.java
+
+public class User {
+    private String id;
+    private String name;
+    private String email;
+
+    public User(String id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+}
+```
+
+### Role.java
+```java
+// File: Role.java
+
+public enum Role {
+    MEMBER,
+    OWNER
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        Publisher publisher = new Publisher("My Publisher");
+        User user1 = new User("1", "John Doe", "john@example.com");
+        User user2 = new User("2", "Jane Doe", "jane@example.com");
+
+        publisher.inviteUser(user1);
+        publisher.inviteUser(user2);
+
+        System.out.println("Members:");
+        for (Member member : publisher.viewMembers()) {
+            System.out.println(member.getName());
+        }
+
+        publisher.makeOwner(publisher.viewMembers().get(0));
+        System.out.println("Owner:");
+        System.out.println(publisher.viewMembers().get(0).getName());
+
+        publisher.removeOwner(publisher.viewMembers().get(0));
+        System.out.println("Member:");
+        System.out.println(publisher.viewMembers().get(0).getName());
+    }
+}
+```
+
+Note: This implementation assumes that the `User` class has a unique `id` field, which is used to identify users. The `Member` class has a `role` field to indicate whether the user is an owner or a member. The `Publisher` class has methods to invite users, remove members, view members, make owners, and remove owners. The `Main` class demonstrates the main flows using hard-coded data.

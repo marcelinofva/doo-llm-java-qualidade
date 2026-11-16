@@ -1,0 +1,292 @@
+**PHASE 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities (classes):
+    * Person
+    * Door
+    * Phone
+    * Light
+    * Heating
+    * TV
+    * Radio
+    * MoviePlayer
+    * NewsReader
+    * GroceryShopper
+    * Alfred (assistant)
+
+  2. Single responsibility of each class:
+    * Person: represents an older person with attributes and methods for interacting with ALFRED
+    * Door: represents a door with attributes and methods for opening and closing
+    * Phone: represents a phone with attributes and methods for making and receiving calls
+    * Light: represents a light with attributes and methods for turning on and off
+    * Heating: represents a heating system with attributes and methods for controlling temperature
+    * TV: represents a TV with attributes and methods for turning on and off
+    * Radio: represents a radio with attributes and methods for turning on and off
+    * MoviePlayer: represents a movie player with attributes and methods for playing movies
+    * NewsReader: represents a news reader with attributes and methods for reading news
+    * GroceryShopper: represents a grocery shopper with attributes and methods for shopping
+    * Alfred: represents the ALFRED assistant with attributes and methods for interacting with the older person
+
+  3. Relationships (association, composition, inheritance):
+    * Person has a relationship with Door (association)
+    * Person has a relationship with Phone (association)
+    * Person has a relationship with Light (association)
+    * Person has a relationship with Heating (association)
+    * Person has a relationship with TV (association)
+    * Person has a relationship with Radio (association)
+    * Person has a relationship with MoviePlayer (association)
+    * Person has a relationship with NewsReader (association)
+    * Person has a relationship with GroceryShopper (association)
+    * Alfred has a relationship with Person (association)
+
+  4. Public methods of each class:
+    * Person: openDoor(), pickUpPhone(), turnOnLight(), turnOffLight(), controlHeating(), controlTV(), controlRadio(), playMovie(), readNews(), shopGroceries()
+    * Door: open(), close()
+    * Phone: makeCall(), receiveCall()
+    * Light: turnOn(), turnOff()
+    * Heating: turnOn(), turnOff()
+    * TV: turnOn(), turnOff()
+    * Radio: turnOn(), turnOff()
+    * MoviePlayer: playMovie()
+    * NewsReader: readNews()
+    * GroceryShopper: shopGroceries()
+    * Alfred: interactWithPerson()
+</design>
+```
+
+**PHASE 2 - CODE**
+
+### Person.java
+```java
+// File: Person.java
+
+public class Person {
+    private String name;
+    private Door door;
+    private Phone phone;
+    private Light light;
+    private Heating heating;
+    private TV tv;
+    private Radio radio;
+    private MoviePlayer moviePlayer;
+    private NewsReader newsReader;
+    private GroceryShopper groceryShopper;
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    public void openDoor() {
+        door.open();
+    }
+
+    public void pickUpPhone() {
+        phone.makeCall();
+    }
+
+    public void turnOnLight() {
+        light.turnOn();
+    }
+
+    public void turnOffLight() {
+        light.turnOff();
+    }
+
+    public void controlHeating() {
+        heating.turnOn();
+    }
+
+    public void controlTV() {
+        tv.turnOn();
+    }
+
+    public void controlRadio() {
+        radio.turnOn();
+    }
+
+    public void playMovie() {
+        moviePlayer.playMovie();
+    }
+
+    public void readNews() {
+        newsReader.readNews();
+    }
+
+    public void shopGroceries() {
+        groceryShopper.shopGroceries();
+    }
+}
+```
+
+### Door.java
+```java
+// File: Door.java
+
+public class Door {
+    public void open() {
+        System.out.println("Door opened");
+    }
+
+    public void close() {
+        System.out.println("Door closed");
+    }
+}
+```
+
+### Phone.java
+```java
+// File: Phone.java
+
+public class Phone {
+    public void makeCall() {
+        System.out.println("Making a call");
+    }
+
+    public void receiveCall() {
+        System.out.println("Receiving a call");
+    }
+}
+```
+
+### Light.java
+```java
+// File: Light.java
+
+public class Light {
+    public void turnOn() {
+        System.out.println("Light turned on");
+    }
+
+    public void turnOff() {
+        System.out.println("Light turned off");
+    }
+}
+```
+
+### Heating.java
+```java
+// File: Heating.java
+
+public class Heating {
+    public void turnOn() {
+        System.out.println("Heating turned on");
+    }
+
+    public void turnOff() {
+        System.out.println("Heating turned off");
+    }
+}
+```
+
+### TV.java
+```java
+// File: TV.java
+
+public class TV {
+    public void turnOn() {
+        System.out.println("TV turned on");
+    }
+
+    public void turnOff() {
+        System.out.println("TV turned off");
+    }
+}
+```
+
+### Radio.java
+```java
+// File: Radio.java
+
+public class Radio {
+    public void turnOn() {
+        System.out.println("Radio turned on");
+    }
+
+    public void turnOff() {
+        System.out.println("Radio turned off");
+    }
+}
+```
+
+### MoviePlayer.java
+```java
+// File: MoviePlayer.java
+
+public class MoviePlayer {
+    public void playMovie() {
+        System.out.println("Playing a movie");
+    }
+}
+```
+
+### NewsReader.java
+```java
+// File: NewsReader.java
+
+public class NewsReader {
+    public void readNews() {
+        System.out.println("Reading news");
+    }
+}
+```
+
+### GroceryShopper.java
+```java
+// File: GroceryShopper.java
+
+public class GroceryShopper {
+    public void shopGroceries() {
+        System.out.println("Shopping for groceries");
+    }
+}
+```
+
+### Alfred.java
+```java
+// File: Alfred.java
+
+public class Alfred {
+    private Person person;
+
+    public Alfred(Person person) {
+        this.person = person;
+    }
+
+    public void interactWithPerson() {
+        person.openDoor();
+        person.pickUpPhone();
+        person.turnOnLight();
+        person.turnOffLight();
+        person.controlHeating();
+        person.controlTV();
+        person.controlRadio();
+        person.playMovie();
+        person.readNews();
+        person.shopGroceries();
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person("John");
+        Door door = new Door();
+        Phone phone = new Phone();
+        Light light = new Light();
+        Heating heating = new Heating();
+        TV tv = new TV();
+        Radio radio = new Radio();
+        MoviePlayer moviePlayer = new MoviePlayer();
+        NewsReader newsReader = new NewsReader();
+        GroceryShopper groceryShopper = new GroceryShopper();
+        Alfred alfred = new Alfred(person);
+
+        alfred.interactWithPerson();
+    }
+}
+```

@@ -1,0 +1,31 @@
+outputs\P1\qwen\S12\src\Course.java:5: error: cannot find symbol
+    private Date startDate;
+            ^
+  symbol:   class Date
+  location: class Course
+outputs\P1\qwen\S12\src\Course.java:6: error: cannot find symbol
+    private Date endDate;
+            ^
+  symbol:   class Date
+  location: class Course
+outputs\P1\qwen\S12\src\Course.java:8: error: cannot find symbol
+    public Course(String title, String description, String location, Date startDate, Date endDate) {
+                                                                     ^
+  symbol:   class Date
+  location: class Course
+outputs\P1\qwen\S12\src\Course.java:8: error: cannot find symbol
+    public Course(String title, String description, String location, Date startDate, Date endDate) {
+                                                                                     ^
+  symbol:   class Date
+  location: class Course
+outputs\P1\qwen\S12\src\Event.java:4: error: cannot find symbol
+    public Event(String title, String description, String location, Date startDate, Date endDate, String eventType) {
+                                                                    ^
+  symbol:   class Date
+  location: class Event
+outputs\P1\qwen\S12\src\Event.java:4: error: cannot find symbol
+    public Event(String title, String description, String location, Date startDate, Date endDate, String eventType) {
+                                                                                    ^
+  symbol:   class Date
+  location: class Event
+6 errors

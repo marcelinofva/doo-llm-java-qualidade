@@ -1,0 +1,16 @@
+outputs\P1\qwen\S05\src\DataPackage.java:3: error: cannot find symbol
+    private List<Tag> tags;
+            ^
+  symbol:   class List
+  location: class DataPackage
+outputs\P1\qwen\S05\src\DataPackage.java:18: error: cannot find symbol
+    public List<Tag> getAllTags() {
+           ^
+  symbol:   class List
+  location: class DataPackage
+outputs\P1\qwen\S05\src\DataPackage.java:7: error: cannot find symbol
+        this.tags = new ArrayList<>();
+                        ^
+  symbol:   class ArrayList
+  location: class DataPackage
+3 errors

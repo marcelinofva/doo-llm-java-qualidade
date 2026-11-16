@@ -1,0 +1,261 @@
+**Phase 1 - Design**
+
+```xml
+<design>
+  <!-- Domain Entities -->
+  1. **PlanReviewStaffMember**
+    * Single Responsibility: Assign plans for review, manage plan reviewer workload
+    * Relationships:
+      + Has-a: PlanReviewStaffMember has a PlanReviewStaffSupervisor
+      + Has-a: PlanReviewStaffMember has a List of Plans
+    * Public Methods:
+      + assignPlanForReview(Plan plan)
+      + managePlanReviewerWorkload()
+  2. **PlanReviewStaffSupervisor**
+    * Single Responsibility: Manage plan reviewer workload
+    * Relationships:
+      + Has-a: PlanReviewStaffSupervisor has a List of PlanReviewStaffMembers
+    * Public Methods:
+      + managePlanReviewerWorkload()
+  3. **Applicant**
+    * Single Responsibility: Request a plan review meeting
+    * Relationships:
+      + Has-a: Applicant has a List of Plans
+    * Public Methods:
+      + requestPlanReviewMeeting()
+  4. **PlanReviewStaff**
+    * Single Responsibility: Conduct a plan review meeting, review plans
+    * Relationships:
+      + Has-a: PlanReviewStaff has a List of Plans
+    * Public Methods:
+      + conductPlanReviewMeeting(Applicant applicant)
+      + reviewPlan(Plan plan)
+  5. **Plan**
+    * Single Responsibility: Represent a plan
+    * Relationships:
+      + Has-a: Plan has a List of CodeModifications
+    * Public Methods:
+      + getPlanDetails()
+  6. **CodeModification**
+    * Single Responsibility: Represent a code modification
+    * Relationships:
+      + Has-a: CodeModification has a Plan
+    * Public Methods:
+      + getCodeModificationDetails()
+  7. **Bond**
+    * Single Responsibility: Represent a bond
+    * Relationships:
+      + Has-a: Bond has a Project
+    * Public Methods:
+      + getBondDetails()
+  8. **Inspector**
+    * Single Responsibility: Represent an inspector
+    * Relationships:
+      + Has-a: Inspector has a List of Inspections
+    * Public Methods:
+      + getInspectorDetails()
+  9. **Inspection**
+    * Single Responsibility: Represent an inspection
+    * Relationships:
+      + Has-a: Inspection has an Inspector
+    * Public Methods:
+      + getInspectionDetails()
+</design>
+```
+
+**Phase 2 - Code**
+
+**PlanReviewStaffMember.java**
+```java
+// File: PlanReviewStaffMember.java
+
+public class PlanReviewStaffMember {
+    private PlanReviewStaffSupervisor supervisor;
+    private List<Plan> plans;
+
+    public PlanReviewStaffMember(PlanReviewStaffSupervisor supervisor) {
+        this.supervisor = supervisor;
+        this.plans = new ArrayList<>();
+    }
+
+    public void assignPlanForReview(Plan plan) {
+        plans.add(plan);
+    }
+
+    public void managePlanReviewerWorkload() {
+        supervisor.managePlanReviewerWorkload();
+    }
+}
+```
+
+**PlanReviewStaffSupervisor.java**
+```java
+// File: PlanReviewStaffSupervisor.java
+
+public class PlanReviewStaffSupervisor {
+    private List<PlanReviewStaffMember> staffMembers;
+
+    public PlanReviewStaffSupervisor() {
+        this.staffMembers = new ArrayList<>();
+    }
+
+    public void managePlanReviewerWorkload() {
+        // implementation
+    }
+}
+```
+
+**Applicant.java**
+```java
+// File: Applicant.java
+
+public class Applicant {
+    private List<Plan> plans;
+
+    public Applicant() {
+        this.plans = new ArrayList<>();
+    }
+
+    public void requestPlanReviewMeeting() {
+        // implementation
+    }
+}
+```
+
+**PlanReviewStaff.java**
+```java
+// File: PlanReviewStaff.java
+
+public class PlanReviewStaff {
+    private List<Plan> plans;
+
+    public PlanReviewStaff() {
+        this.plans = new ArrayList<>();
+    }
+
+    public void conductPlanReviewMeeting(Applicant applicant) {
+        // implementation
+    }
+
+    public void reviewPlan(Plan plan) {
+        // implementation
+    }
+}
+```
+
+**Plan.java**
+```java
+// File: Plan.java
+
+public class Plan {
+    private List<CodeModification> codeModifications;
+
+    public Plan() {
+        this.codeModifications = new ArrayList<>();
+    }
+
+    public void getPlanDetails() {
+        // implementation
+    }
+}
+```
+
+**CodeModification.java**
+```java
+// File: CodeModification.java
+
+public class CodeModification {
+    private Plan plan;
+
+    public CodeModification(Plan plan) {
+        this.plan = plan;
+    }
+
+    public void getCodeModificationDetails() {
+        // implementation
+    }
+}
+```
+
+**Bond.java**
+```java
+// File: Bond.java
+
+public class Bond {
+    private Project project;
+
+    public Bond(Project project) {
+        this.project = project;
+    }
+
+    public void getBondDetails() {
+        // implementation
+    }
+}
+```
+
+**Inspector.java**
+```java
+// File: Inspector.java
+
+public class Inspector {
+    private List<Inspection> inspections;
+
+    public Inspector() {
+        this.inspections = new ArrayList<>();
+    }
+
+    public void getInspectorDetails() {
+        // implementation
+    }
+}
+```
+
+**Inspection.java**
+```java
+// File: Inspection.java
+
+public class Inspection {
+    private Inspector inspector;
+
+    public Inspection(Inspector inspector) {
+        this.inspector = inspector;
+    }
+
+    public void getInspectionDetails() {
+        // implementation
+    }
+}
+```
+
+**Main.java**
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        // create objects
+        PlanReviewStaffMember staffMember = new PlanReviewStaffMember(new PlanReviewStaffSupervisor());
+        Applicant applicant = new Applicant();
+        PlanReviewStaff staff = new PlanReviewStaff();
+        Plan plan = new Plan();
+        CodeModification modification = new CodeModification(plan);
+        Bond bond = new Bond(new Project());
+        Inspector inspector = new Inspector();
+        Inspection inspection = new Inspection(inspector);
+
+        // demonstrate main flows
+        staffMember.assignPlanForReview(plan);
+        staffMember.managePlanReviewerWorkload();
+        applicant.requestPlanReviewMeeting();
+        staff.conductPlanReviewMeeting(applicant);
+        staff.reviewPlan(plan);
+        modification.getCodeModificationDetails();
+        bond.getBondDetails();
+        inspector.getInspectorDetails();
+        inspection.getInspectionDetails();
+    }
+}
+```
+
+Note: This implementation is a simplified version of the specification and may require additional modifications to meet the exact requirements.

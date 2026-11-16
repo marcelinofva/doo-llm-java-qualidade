@@ -1,0 +1,33 @@
+1) Domain Entities (Classes):
+   - OlderPerson
+   - SocialCaregiver
+   - Alfred
+   - Agenda
+   - ContactList
+   - Reminder
+   - Meeting
+
+2) Single Responsibility of Each Class:
+   - OlderPerson: Manages personal information and preferences.
+   - SocialCaregiver: Manages care for an older person.
+   - Alfred: Provides assistance, reminders, and manages the agenda.
+   - Agenda: Stores and manages appointments and meetings.
+   - ContactList: Manages the contact list.
+   - Reminder: Manages reminders for appointments and tasks.
+   - Meeting: Represents a meeting with details.
+
+3) Relationships:
+   - OlderPerson has an Agenda and a ContactList.
+   - SocialCaregiver has an OlderPerson and an Agenda.
+   - Alfred interacts with OlderPerson, SocialCaregiver, Agenda, ContactList, and Reminder.
+   - Agenda has multiple Meetings.
+   - Reminder is associated with an Agenda or Meeting.
+
+4) Public Methods:
+   - OlderPerson: addContact, getAgenda, receiveReminder
+   - SocialCaregiver: addCaregiver, getAgenda, receiveReminder
+   - Alfred: wakeUpCall, manageAgenda, insertMeeting, receiveReminder
+   - Agenda: addMeeting, removeMeeting, getUpcomingMeetings
+   - ContactList: addContact, removeContact, getContacts
+   - Reminder: setReminder, removeReminder, getReminders
+   - Meeting: setDetails, getDetails

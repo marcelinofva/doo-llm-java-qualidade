@@ -1,0 +1,377 @@
+**PHASE 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities:
+    - Agent
+    - Subject
+    - EACCPFRecord
+    - MARCXMLRecord
+    - Accession
+    - Resource
+    - ResourceComponent
+    - NameForm
+    - Source
+
+  2. Single responsibility of each class:
+    - Agent: represents an agent with its properties and relationships
+    - Subject: represents a subject with its properties and relationships
+    - EACCPFRecord: represents an EAC-CPF record with its properties and methods for importing agent information
+    - MARCXMLRecord: represents a MARCXML record with its properties and methods for importing agent and subject information
+    - Accession: represents an accession with its properties and relationships
+    - Resource: represents a resource with its properties and relationships
+    - ResourceComponent: represents a resource component with its properties and relationships
+    - NameForm: represents a name form with its properties and relationships
+    - Source: represents a source with its properties and relationships
+
+  3. Relationships:
+    - Agent has many NameForms (composition)
+    - Agent has many Sources (composition)
+    - Agent is related to many Accessions (association)
+    - Agent is related to many Resources (association)
+    - Agent is related to many ResourceComponents (association)
+    - Subject is related to many Accessions (association)
+    - Subject is related to many Resources (association)
+    - Subject is related to many ResourceComponents (association)
+    - EACCPFRecord has one Agent (composition)
+    - MARCXMLRecord has one Agent (composition)
+    - MARCXMLRecord has one Subject (composition)
+
+  4. Public methods of each class:
+    - Agent: getAgentId(), getAgentName(), addNameForm(), addSource()
+    - Subject: getSubjectId(), getSubjectName(), addSource()
+    - EACCPFRecord: importAgentFromEACCPF()
+    - MARCXMLRecord: importAgentAndSubjectFromMARCXML()
+    - Accession: getAccessionId(), getAccessionName(), addAgent(), addSubject()
+    - Resource: getResourceId(), getResourceName(), addAgent(), addSubject()
+    - ResourceComponent: getResourceComponentId(), getResourceComponentName(), addAgent(), addSubject()
+    - NameForm: getNameFormId(), getNameFormName(), getAgent()
+    - Source: getSourceId(), getSourceName(), getAgent()
+</design>
+```
+
+**PHASE 2 - CODE**
+
+### Agent.java
+```java
+// File: Agent.java
+
+public class Agent {
+    private String agentId;
+    private String agentName;
+    private List<NameForm> nameForms;
+    private List<Source> sources;
+
+    public Agent(String agentId, String agentName) {
+        this.agentId = agentId;
+        this.agentName = agentName;
+        this.nameForms = new ArrayList<>();
+        this.sources = new ArrayList<>();
+    }
+
+    public String getAgentId() {
+        return agentId;
+    }
+
+    public String getAgentName() {
+        return agentName;
+    }
+
+    public void addNameForm(NameForm nameForm) {
+        this.nameForms.add(nameForm);
+    }
+
+    public void addSource(Source source) {
+        this.sources.add(source);
+    }
+}
+```
+
+### Subject.java
+```java
+// File: Subject.java
+
+public class Subject {
+    private String subjectId;
+    private String subjectName;
+    private List<Source> sources;
+
+    public Subject(String subjectId, String subjectName) {
+        this.subjectId = subjectId;
+        this.subjectName = subjectName;
+        this.sources = new ArrayList<>();
+    }
+
+    public String getSubjectId() {
+        return subjectId;
+    }
+
+    public String getSubjectName() {
+        return subjectName;
+    }
+
+    public void addSource(Source source) {
+        this.sources.add(source);
+    }
+}
+```
+
+### EACCPFRecord.java
+```java
+// File: EACCPFRecord.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class EACCPFRecord {
+    private Agent agent;
+
+    public EACCPFRecord() {
+        this.agent = new Agent();
+    }
+
+    public void importAgentFromEACCPF() {
+        // implementation
+    }
+}
+```
+
+### MARCXMLRecord.java
+```java
+// File: MARCXMLRecord.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MARCXMLRecord {
+    private Agent agent;
+    private Subject subject;
+
+    public MARCXMLRecord() {
+        this.agent = new Agent();
+        this.subject = new Subject();
+    }
+
+    public void importAgentAndSubjectFromMARCXML() {
+        // implementation
+    }
+}
+```
+
+### Accession.java
+```java
+// File: Accession.java
+
+public class Accession {
+    private String accessionId;
+    private String accessionName;
+    private List<Agent> agents;
+    private List<Subject> subjects;
+
+    public Accession(String accessionId, String accessionName) {
+        this.accessionId = accessionId;
+        this.accessionName = accessionName;
+        this.agents = new ArrayList<>();
+        this.subjects = new ArrayList<>();
+    }
+
+    public String getAccessionId() {
+        return accessionId;
+    }
+
+    public String getAccessionName() {
+        return accessionName;
+    }
+
+    public void addAgent(Agent agent) {
+        this.agents.add(agent);
+    }
+
+    public void addSubject(Subject subject) {
+        this.subjects.add(subject);
+    }
+}
+```
+
+### Resource.java
+```java
+// File: Resource.java
+
+public class Resource {
+    private String resourceId;
+    private String resourceName;
+    private List<Agent> agents;
+    private List<Subject> subjects;
+
+    public Resource(String resourceId, String resourceName) {
+        this.resourceId = resourceId;
+        this.resourceName = resourceName;
+        this.agents = new ArrayList<>();
+        this.subjects = new ArrayList<>();
+    }
+
+    public String getResourceId() {
+        return resourceId;
+    }
+
+    public String getResourceName() {
+        return resourceName;
+    }
+
+    public void addAgent(Agent agent) {
+        this.agents.add(agent);
+    }
+
+    public void addSubject(Subject subject) {
+        this.subjects.add(subject);
+    }
+}
+```
+
+### ResourceComponent.java
+```java
+// File: ResourceComponent.java
+
+public class ResourceComponent {
+    private String resourceComponentId;
+    private String resourceComponentName;
+    private List<Agent> agents;
+    private List<Subject> subjects;
+
+    public ResourceComponent(String resourceComponentId, String resourceComponentName) {
+        this.resourceComponentId = resourceComponentId;
+        this.resourceComponentName = resourceComponentName;
+        this.agents = new ArrayList<>();
+        this.subjects = new ArrayList<>();
+    }
+
+    public String getResourceComponentId() {
+        return resourceComponentId;
+    }
+
+    public String getResourceComponentName() {
+        return resourceComponentName;
+    }
+
+    public void addAgent(Agent agent) {
+        this.agents.add(agent);
+    }
+
+    public void addSubject(Subject subject) {
+        this.subjects.add(subject);
+    }
+}
+```
+
+### NameForm.java
+```java
+// File: NameForm.java
+
+public class NameForm {
+    private String nameFormId;
+    private String nameFormName;
+    private Agent agent;
+
+    public NameForm(String nameFormId, String nameFormName) {
+        this.nameFormId = nameFormId;
+        this.nameFormName = nameFormName;
+        this.agent = new Agent();
+    }
+
+    public String getNameFormId() {
+        return nameFormId;
+    }
+
+    public String getNameFormName() {
+        return nameFormName;
+    }
+
+    public Agent getAgent() {
+        return agent;
+    }
+}
+```
+
+### Source.java
+```java
+// File: Source.java
+
+public class Source {
+    private String sourceId;
+    private String sourceName;
+    private Agent agent;
+
+    public Source(String sourceId, String sourceName) {
+        this.sourceId = sourceId;
+        this.sourceName = sourceName;
+        this.agent = new Agent();
+    }
+
+    public String getSourceId() {
+        return sourceId;
+    }
+
+    public String getSourceName() {
+        return sourceName;
+    }
+
+    public Agent getAgent() {
+        return agent;
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        // create agent
+        Agent agent = new Agent("agent1", "John Doe");
+
+        // create subject
+        Subject subject = new Subject("subject1", "History");
+
+        // create accession
+        Accession accession = new Accession("accession1", "Accession 1");
+
+        // create resource
+        Resource resource = new Resource("resource1", "Resource 1");
+
+        // create resource component
+        ResourceComponent resourceComponent = new ResourceComponent("resourceComponent1", "Resource Component 1");
+
+        // create name form
+        NameForm nameForm = new NameForm("nameForm1", "Name Form 1");
+
+        // create source
+        Source source = new Source("source1", "Source 1");
+
+        // add agent to accession
+        accession.addAgent(agent);
+
+        // add subject to accession
+        accession.addSubject(subject);
+
+        // add agent to resource
+        resource.addAgent(agent);
+
+        // add subject to resource
+        resource.addSubject(subject);
+
+        // add agent to resource component
+        resourceComponent.addAgent(agent);
+
+        // add subject to resource component
+        resourceComponent.addSubject(subject);
+
+        // add name form to agent
+        agent.addNameForm(nameForm);
+
+        // add source to agent
+        agent.addSource(source);
+    }
+}
+```
+Note: This is a basic implementation and may need to be modified to fit the specific requirements of your project.

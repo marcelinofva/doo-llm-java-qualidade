@@ -1,0 +1,161 @@
+outputs\P1\qwen\S28\src\Accession.java:3: error: cannot find symbol
+    private List<Agent> agents = new ArrayList<>();
+            ^
+  symbol:   class List
+  location: class Accession
+outputs\P1\qwen\S28\src\Agent.java:3: error: cannot find symbol
+    private List<Subject> subjects = new ArrayList<>();
+            ^
+  symbol:   class List
+  location: class Agent
+outputs\P1\qwen\S28\src\Agent.java:4: error: cannot find symbol
+    private List<Source> sources = new ArrayList<>();
+            ^
+  symbol:   class List
+  location: class Agent
+outputs\P1\qwen\S28\src\Agent.java:5: error: cannot find symbol
+    private List<Accession> accessions = new ArrayList<>();
+            ^
+  symbol:   class List
+  location: class Agent
+outputs\P1\qwen\S28\src\Agent.java:6: error: cannot find symbol
+    private List<Resource> resources = new ArrayList<>();
+            ^
+  symbol:   class List
+  location: class Agent
+outputs\P1\qwen\S28\src\Agent.java:7: error: cannot find symbol
+    private List<ResourceComponent> resourceComponents = new ArrayList<>();
+            ^
+  symbol:   class List
+  location: class Agent
+outputs\P1\qwen\S28\src\ResourceComponent.java:3: error: cannot find symbol
+    private List<Agent> agents = new ArrayList<>();
+            ^
+  symbol:   class List
+  location: class ResourceComponent
+outputs\P1\qwen\S28\src\Resource.java:3: error: cannot find symbol
+    private List<Agent> agents = new ArrayList<>();
+            ^
+  symbol:   class List
+  location: class Resource
+outputs\P1\qwen\S28\src\Source.java:3: error: cannot find symbol
+    private List<Agent> agents = new ArrayList<>();
+            ^
+  symbol:   class List
+  location: class Source
+outputs\P1\qwen\S28\src\Subject.java:3: error: cannot find symbol
+    private List<Agent> agents = new ArrayList<>();
+            ^
+  symbol:   class List
+  location: class Subject
+outputs\P1\qwen\S28\src\Accession.java:3: error: cannot find symbol
+    private List<Agent> agents = new ArrayList<>();
+                                     ^
+  symbol:   class ArrayList
+  location: class Accession
+outputs\P1\qwen\S28\src\Agent.java:3: error: cannot find symbol
+    private List<Subject> subjects = new ArrayList<>();
+                                         ^
+  symbol:   class ArrayList
+  location: class Agent
+outputs\P1\qwen\S28\src\Agent.java:4: error: cannot find symbol
+    private List<Source> sources = new ArrayList<>();
+                                       ^
+  symbol:   class ArrayList
+  location: class Agent
+outputs\P1\qwen\S28\src\Agent.java:5: error: cannot find symbol
+    private List<Accession> accessions = new ArrayList<>();
+                                             ^
+  symbol:   class ArrayList
+  location: class Agent
+outputs\P1\qwen\S28\src\Agent.java:6: error: cannot find symbol
+    private List<Resource> resources = new ArrayList<>();
+                                           ^
+  symbol:   class ArrayList
+  location: class Agent
+outputs\P1\qwen\S28\src\Agent.java:7: error: cannot find symbol
+    private List<ResourceComponent> resourceComponents = new ArrayList<>();
+                                                             ^
+  symbol:   class ArrayList
+  location: class Agent
+outputs\P1\qwen\S28\src\Subject.java:3: error: cannot find symbol
+    private List<Agent> agents = new ArrayList<>();
+                                     ^
+  symbol:   class ArrayList
+  location: class Subject
+outputs\P1\qwen\S28\src\Source.java:3: error: cannot find symbol
+    private List<Agent> agents = new ArrayList<>();
+                                     ^
+  symbol:   class ArrayList
+  location: class Source
+outputs\P1\qwen\S28\src\Resource.java:3: error: cannot find symbol
+    private List<Agent> agents = new ArrayList<>();
+                                     ^
+  symbol:   class ArrayList
+  location: class Resource
+outputs\P1\qwen\S28\src\ResourceComponent.java:3: error: cannot find symbol
+    private List<Agent> agents = new ArrayList<>();
+                                     ^
+  symbol:   class ArrayList
+  location: class ResourceComponent
+outputs\P1\qwen\S28\src\Main.java:4: error: cannot find symbol
+        agent.setIdentifier("A123");
+             ^
+  symbol:   method setIdentifier(String)
+  location: variable agent of type Agent
+outputs\P1\qwen\S28\src\Main.java:7: error: cannot find symbol
+        subject.setIdentifier("S456");
+               ^
+  symbol:   method setIdentifier(String)
+  location: variable subject of type Subject
+outputs\P1\qwen\S28\src\Main.java:11: error: cannot find symbol
+        source.setIdentifier("S789");
+              ^
+  symbol:   method setIdentifier(String)
+  location: variable source of type Source
+outputs\P1\qwen\S28\src\Main.java:15: error: cannot find symbol
+        accession.setIdentifier("AC101");
+                 ^
+  symbol:   method setIdentifier(String)
+  location: variable accession of type Accession
+outputs\P1\qwen\S28\src\Main.java:19: error: cannot find symbol
+        resource.setIdentifier("R202");
+                ^
+  symbol:   method setIdentifier(String)
+  location: variable resource of type Resource
+outputs\P1\qwen\S28\src\Main.java:23: error: cannot find symbol
+        resourceComponent.setIdentifier("RC303");
+                         ^
+  symbol:   method setIdentifier(String)
+  location: variable resourceComponent of type ResourceComponent
+outputs\P1\qwen\S28\src\Main.java:32: error: cannot find symbol
+        System.out.println("Agent: " + agent.getIdentifier());
+                                            ^
+  symbol:   method getIdentifier()
+  location: variable agent of type Agent
+outputs\P1\qwen\S28\src\Main.java:33: error: cannot find symbol
+        System.out.println("Subjects: " + agent.getSubjects());
+                                               ^
+  symbol:   method getSubjects()
+  location: variable agent of type Agent
+outputs\P1\qwen\S28\src\Main.java:34: error: cannot find symbol
+        System.out.println("Sources: " + agent.getSources());
+                                              ^
+  symbol:   method getSources()
+  location: variable agent of type Agent
+outputs\P1\qwen\S28\src\Main.java:35: error: cannot find symbol
+        System.out.println("Accessions: " + agent.getAccessions());
+                                                 ^
+  symbol:   method getAccessions()
+  location: variable agent of type Agent
+outputs\P1\qwen\S28\src\Main.java:36: error: cannot find symbol
+        System.out.println("Resources: " + agent.getResources());
+                                                ^
+  symbol:   method getResources()
+  location: variable agent of type Agent
+outputs\P1\qwen\S28\src\Main.java:37: error: cannot find symbol
+        System.out.println("Resource Components: " + agent.getResourceComponents());
+                                                          ^
+  symbol:   method getResourceComponents()
+  location: variable agent of type Agent
+32 errors

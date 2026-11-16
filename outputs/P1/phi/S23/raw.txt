@@ -1,0 +1,151 @@
+```java
+// File: OlderPerson.java
+public class OlderPerson {
+    private String name;
+    private String phoneNumber;
+    private List<Meeting> meetings;
+    private List<Reminder> reminders;
+
+    public OlderPerson(String name, String phoneNumber) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.meetings = new ArrayList<>();
+        this.reminders = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public List<Meeting> getMeetings() {
+        return meetings;
+    }
+
+    public void setMeetings(List<Meeting> meetings) {
+        this.meetings = meetings;
+    }
+
+    public List<Reminder> getReminders() {
+        return reminders;
+    }
+
+    public void setReminders(List<Reminder> reminders) {
+        this.reminders = reminders;
+    }
+
+    public void addMeeting(Meeting meeting) {
+        meetings.add(meeting);
+    }
+
+    public void addReminder(Reminder reminder) {
+        reminders.add(reminder);
+    }
+}
+
+// File: Meeting.java
+public class Meeting {
+    private String title;
+    private String time;
+
+    public Meeting(String title, String time) {
+        this.title = title;
+        this.time = time;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+}
+
+// File: Reminder.java
+public class Reminder {
+    private String message;
+
+    public Reminder(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+}
+
+// File: SocialCaregiver.java
+public class SocialCaregiver {
+    private String name;
+    private List<Reminder> reminders;
+
+    public SocialCaregiver(String name) {
+        this.name = name;
+        this.reminders = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Reminder> getReminders() {
+        return reminders;
+    }
+
+    public void setReminders(List<Reminder> reminders) {
+        this.reminders = reminders;
+    }
+
+    public void addReminder(Reminder reminder) {
+        reminders.add(reminder);
+    }
+}
+
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        OlderPerson olderPerson = new OlderPerson("John Doe", "123-456-7890");
+        olderPerson.addMeeting(new Meeting("Doctor's Appointment", "09:00 AM"));
+        olderPerson.addReminder(new Reminder("Bring glasses to the appointment"));
+
+        System.out.println("Older Person: " + olderPerson.getName());
+        System.out.println("Phone Number: " + olderPerson.getPhoneNumber());
+
+        for (Meeting meeting : olderPerson.getMeetings()) {
+            System.out.println("Meeting: " + meeting.getTitle() + " at " + meeting.getTime());
+        }
+
+        for (Reminder reminder : olderPerson.getReminders()) {
+            System.out.println("Reminder: " + reminder.getMessage());
+        }
+    }
+}
+```

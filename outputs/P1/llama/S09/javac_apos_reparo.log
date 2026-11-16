@@ -1,0 +1,36 @@
+outputs\P1\llama\S09\src\Collection.java:9: error: cannot find symbol
+    private List<Item> items;
+                 ^
+  symbol:   class Item
+  location: class Collection
+outputs\P1\llama\S09\src\Collection.java:10: error: cannot find symbol
+    private List<Component> components;
+                 ^
+  symbol:   class Component
+  location: class Collection
+outputs\P1\llama\S09\src\Collection.java:38: error: cannot find symbol
+    public List<Item> getItems() {
+                ^
+  symbol:   class Item
+  location: class Collection
+outputs\P1\llama\S09\src\Collection.java:42: error: cannot find symbol
+    public void addItem(Item item) {
+                        ^
+  symbol:   class Item
+  location: class Collection
+outputs\P1\llama\S09\src\Collection.java:46: error: cannot find symbol
+    public List<Component> getComponents() {
+                ^
+  symbol:   class Component
+  location: class Collection
+outputs\P1\llama\S09\src\Collection.java:50: error: cannot find symbol
+    public void addComponent(Component component) {
+                             ^
+  symbol:   class Component
+  location: class Collection
+outputs\P1\llama\S09\src\Main.java:19: error: cannot find symbol
+        site.replicateCollection(collection);
+            ^
+  symbol:   method replicateCollection(Collection)
+  location: variable site of type RemoteStorageSite
+7 errors

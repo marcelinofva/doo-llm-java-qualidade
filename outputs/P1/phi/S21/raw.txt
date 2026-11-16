@@ -1,0 +1,89 @@
+```java
+// File: Repository.java
+public class Repository {
+    public void addCollection(Collection collection) {
+        System.out.println("Collection added: " + collection.getName());
+    }
+
+    public void renameCollection(String oldName, String newName) {
+        System.out.println("Collection renamed from " + oldName + " to " + newName);
+    }
+
+    public void moveCollection(String collectionName, String newLocation) {
+        System.out.println("Collection moved from " + collectionName + " to " + newLocation);
+    }
+
+    public void searchCollection(String query) {
+        System.out.println("Searching for: " + query);
+    }
+}
+
+// File: Collection.java
+public class Collection {
+    private String name;
+    private String branding;
+    private List<Content> contents;
+
+    public Collection(String name, String branding) {
+        this.name = name;
+        this.branding = branding;
+        this.contents = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBranding() {
+        return branding;
+    }
+
+    public void addContent(Content content) {
+        contents.add(content);
+    }
+
+    public List<Content> getContents() {
+        return contents;
+    }
+}
+
+// File: Content.java
+public class Content {
+    private String title;
+    private String author;
+    private String metadata;
+
+    public Content(String title, String author, String metadata) {
+        this.title = title;
+        this.author = author;
+        this.metadata = metadata;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getMetadata() {
+        return metadata;
+    }
+}
+
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        Repository repo = new Repository();
+        Collection collection = new Collection("Research Papers", "Faculty of XYZ");
+        collection.addContent(new Content("Paper 1", "Author A", "Metadata 1"));
+        collection.addContent(new Content("Paper 2", "Author B", "Metadata 2"));
+
+        repo.addCollection(collection);
+        repo.renameCollection("Research Papers", "Faculty Research Papers");
+        repo.moveCollection("Faculty Research Papers", "Digital Library");
+        repo.searchCollection("Research Papers");
+    }
+}
+```

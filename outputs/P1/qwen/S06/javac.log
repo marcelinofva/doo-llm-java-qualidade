@@ -1,0 +1,21 @@
+outputs\P1\qwen\S06\src\User.java:3: error: cannot find symbol
+    private Publisher.Publisher.Role role;
+                     ^
+  symbol:   class Publisher
+  location: class Publisher
+outputs\P1\qwen\S06\src\User.java:14: error: cannot find symbol
+    public Publisher.Publisher.Role getRole() {
+                    ^
+  symbol:   class Publisher
+  location: class Publisher
+outputs\P1\qwen\S06\src\User.java:18: error: cannot find symbol
+    public void setRole(Publisher.Publisher.Role role) {
+                                 ^
+  symbol:   class Publisher
+  location: class Publisher
+outputs\P1\qwen\S06\src\User.java:7: error: cannot find symbol
+        this.role = Publisher.Publisher.Role.MEMBER;
+                             ^
+  symbol:   variable Publisher
+  location: class Publisher
+4 errors

@@ -1,0 +1,23 @@
+1. Domain entities (classes):
+    * Collection
+    * Document
+    * Repository
+    * User
+    * Role
+  2. Single responsibility of each class:
+    * Collection: represents a collection of documents with branding and sorting options
+    * Document: represents a single document with metadata
+    * Repository: manages collections and documents
+    * User: represents a user with roles and permissions
+    * Role: represents a role with permissions
+  3. Relationships:
+    * A Collection has many Documents (composition)
+    * A Repository has many Collections (composition)
+    * A User has one Role (association)
+    * A Role has many Users (association)
+  4. Public methods of each class:
+    * Collection: create(), addDocument(), removeDocument(), sortDocuments()
+    * Document: getMetadata(), setMetadata()
+    * Repository: createCollection(), removeCollection(), moveCollection(), renameCollection()
+    * User: getRole(), setRole()
+    * Role: getPermissions(), setPermissions()

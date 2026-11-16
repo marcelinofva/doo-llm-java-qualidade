@@ -1,0 +1,254 @@
+**Phase 1 - Design**
+
+```xml
+<design>
+  1. Domain entities (classes):
+    * Sponsor
+    * SponsorshipLevel
+    * PaymentMethod
+    * StripePaymentProcessor
+    * User
+    * JobListing
+    * SponsorshipProfile
+    * Payment
+
+  2. Single responsibility of each class:
+    * Sponsor: represents a sponsor with its attributes and methods
+    * SponsorshipLevel: represents a sponsorship level with its attributes and methods
+    * PaymentMethod: represents a payment method with its attributes and methods
+    * StripePaymentProcessor: processes payments via Stripe
+    * User: represents a user with its attributes and methods
+    * JobListing: represents a job listing with its attributes and methods
+    * SponsorshipProfile: represents a sponsorship profile with its attributes and methods
+    * Payment: represents a payment with its attributes and methods
+
+  3. Relationships (association, composition, inheritance):
+    * A Sponsor has many SponsorshipLevels (one-to-many)
+    * A SponsorshipLevel belongs to one Sponsor (many-to-one)
+    * A User can have one SponsorshipProfile (one-to-one)
+    * A SponsorshipProfile belongs to one User (many-to-one)
+    * A JobListing belongs to one Sponsor (many-to-one)
+    * A Sponsor has many Payments (one-to-many)
+    * A Payment belongs to one Sponsor (many-to-one)
+
+  4. Public methods of each class:
+    * Sponsor: get SponsorshipLevels(), addSponsorshipLevel(SponsorshipLevel)
+    * SponsorshipLevel: get Sponsor(), get Level()
+    * PaymentMethod: get Method(), processPayment(Payment)
+    * StripePaymentProcessor: processPayment(Payment)
+    * User: get SponsorshipProfile(), addSponsorshipProfile(SponsorshipProfile)
+    * JobListing: get Sponsor(), get JobTitle()
+    * SponsorshipProfile: get User(), get Sponsor()
+    * Payment: get Sponsor(), get Amount()
+</design>
+```
+
+**Phase 2 - Code**
+
+**Sponsor.java**
+```java
+// File: Sponsor.java
+
+public class Sponsor {
+    private String name;
+    private List<SponsorshipLevel> sponsorshipLevels;
+
+    public Sponsor(String name) {
+        this.name = name;
+        this.sponsorshipLevels = new ArrayList<>();
+    }
+
+    public List<SponsorshipLevel> getSponsorshipLevels() {
+        return sponsorshipLevels;
+    }
+
+    public void addSponsorshipLevel(SponsorshipLevel level) {
+        this.sponsorshipLevels.add(level);
+    }
+}
+```
+
+**SponsorshipLevel.java**
+```java
+// File: SponsorshipLevel.java
+
+public class SponsorshipLevel {
+    private String level;
+    private Sponsor sponsor;
+
+    public SponsorshipLevel(String level, Sponsor sponsor) {
+        this.level = level;
+        this.sponsor = sponsor;
+    }
+
+    public Sponsor getSponsor() {
+        return sponsor;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+}
+```
+
+**PaymentMethod.java**
+```java
+// File: PaymentMethod.java
+
+public class PaymentMethod {
+    private String method;
+
+    public PaymentMethod(String method) {
+        this.method = method;
+    }
+
+    public String getMethod() {
+        return method;
+    }
+
+    public void processPayment(Payment payment) {
+        // implement payment processing logic
+    }
+}
+```
+
+**StripePaymentProcessor.java**
+```java
+// File: StripePaymentProcessor.java
+
+public class StripePaymentProcessor {
+    public void processPayment(Payment payment) {
+        // implement Stripe payment processing logic
+    }
+}
+```
+
+**User.java**
+```java
+// File: User.java
+
+public class User {
+    private String name;
+    private SponsorshipProfile sponsorshipProfile;
+
+    public User(String name) {
+        this.name = name;
+        this.sponsorshipProfile = new SponsorshipProfile(this);
+    }
+
+    public SponsorshipProfile getSponsorshipProfile() {
+        return sponsorshipProfile;
+    }
+
+    public void addSponsorshipProfile(SponsorshipProfile profile) {
+        this.sponsorshipProfile = profile;
+    }
+}
+```
+
+**JobListing.java**
+```java
+// File: JobListing.java
+
+public class JobListing {
+    private String jobTitle;
+    private Sponsor sponsor;
+
+    public JobListing(String jobTitle, Sponsor sponsor) {
+        this.jobTitle = jobTitle;
+        this.sponsor = sponsor;
+    }
+
+    public Sponsor getSponsor() {
+        return sponsor;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+}
+```
+
+**SponsorshipProfile.java**
+```java
+// File: SponsorshipProfile.java
+
+public class SponsorshipProfile {
+    private User user;
+    private Sponsor sponsor;
+
+    public SponsorshipProfile(User user) {
+        this.user = user;
+        this.sponsor = new Sponsor("Default Sponsor");
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Sponsor getSponsor() {
+        return sponsor;
+    }
+}
+```
+
+**Payment.java**
+```java
+// File: Payment.java
+
+public class Payment {
+    private Sponsor sponsor;
+    private double amount;
+
+    public Payment(Sponsor sponsor, double amount) {
+        this.sponsor = sponsor;
+        this.amount = amount;
+    }
+
+    public Sponsor getSponsor() {
+        return sponsor;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+}
+```
+
+**Main.java**
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        // create a sponsor
+        Sponsor sponsor = new Sponsor("Example Sponsor");
+
+        // create a sponsorship level
+        SponsorshipLevel level = new SponsorshipLevel("Gold", sponsor);
+
+        // create a payment method
+        PaymentMethod paymentMethod = new PaymentMethod("Stripe");
+
+        // create a payment
+        Payment payment = new Payment(sponsor, 100.0);
+
+        // process payment
+        paymentMethod.processPayment(payment);
+
+        // create a user
+        User user = new User("Example User");
+
+        // create a sponsorship profile
+        SponsorshipProfile profile = new SponsorshipProfile(user);
+
+        // add sponsorship level to sponsor
+        sponsor.addSponsorshipLevel(level);
+
+        // print sponsorship levels
+        for (SponsorshipLevel level : sponsor.getSponsorshipLevels()) {
+            System.out.println(level.getLevel());
+        }
+    }
+}
+```

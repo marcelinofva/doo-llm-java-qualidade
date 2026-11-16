@@ -1,0 +1,264 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  <domain-entities>
+    <class name="Customer">
+      <single-responsibility>Represents a customer with their account information</single-responsibility>
+      <relationships>
+        <association name="has-portal-user-account" type="one-to-one" class="PortalUserAccount"/>
+      </relationships>
+      <public-methods>
+        <method name="createPortalUserAccount"/>
+        <method name="getPortalUserAccount"/>
+      </public-methods>
+    </class>
+    <class name="PortalUserAccount">
+      <single-responsibility>Represents a portal user account with authentication information</single-responsibility>
+      <relationships>
+        <association name="belongs-to" type="one-to-one" class="Customer"/>
+      </relationships>
+      <public-methods>
+        <method name="authenticate"/>
+        <method name="getCustomer"/>
+      </public-methods>
+    </class>
+    <class name="Application">
+      <single-responsibility>Represents an application with its associated information and documents</single-responsibility>
+      <relationships>
+        <association name="has-supporting-documentation" type="one-to-many" class="SupportingDocumentation"/>
+        <association name="has-fees" type="one-to-many" class="Fee"/>
+      </relationships>
+      <public-methods>
+        <method name="submit"/>
+        <method name="getSupportingDocumentation"/>
+        <method name="getFees"/>
+      </public-methods>
+    </class>
+    <class name="SupportingDocumentation">
+      <single-responsibility>Represents supporting documentation for an application</single-responsibility>
+      <relationships>
+        <association name="belongs-to" type="one-to-one" class="Application"/>
+      </relationships>
+      <public-methods>
+        <method name="upload"/>
+        <method name="getApplication"/>
+      </public-methods>
+    </class>
+    <class name="Fee">
+      <single-responsibility>Represents a fee associated with an application</single-responsibility>
+      <relationships>
+        <association name="belongs-to" type="one-to-one" class="Application"/>
+      </relationships>
+      <public-methods>
+        <method name="pay"/>
+        <method name="getApplication"/>
+      </public-methods>
+    </class>
+    <class name="StaffMember">
+      <single-responsibility>Represents a staff member with their associated permissions</single-responsibility>
+      <relationships>
+        <association name="has-permissions" type="one-to-many" class="Permission"/>
+      </relationships>
+      <public-methods>
+        <method name="performCompletenessReview"/>
+        <method name="assignApplicationForDetailedReview"/>
+      </public-methods>
+    </class>
+    <class name="Permission">
+      <single-responsibility>Represents a permission associated with a staff member</single-responsibility>
+      <relationships>
+        <association name="belongs-to" type="one-to-one" class="StaffMember"/>
+      </relationships>
+      <public-methods>
+        <method name="grant"/>
+        <method getName/>
+      </public-methods>
+    </class>
+  </domain-entities>
+</design>
+```
+
+**Phase 2 - CODE**
+
+**Customer.java**
+```java
+// File: Customer.java
+
+public class Customer {
+    private PortalUserAccount portalUserAccount;
+
+    public PortalUserAccount createPortalUserAccount() {
+        return new PortalUserAccount(this);
+    }
+
+    public PortalUserAccount getPortalUserAccount() {
+        return portalUserAccount;
+    }
+}
+```
+
+**PortalUserAccount.java**
+```java
+// File: PortalUserAccount.java
+
+public class PortalUserAccount {
+    private Customer customer;
+
+    public PortalUserAccount(Customer customer) {
+        this.customer = customer;
+    }
+
+    public boolean authenticate(String username, String password) {
+        // authentication logic
+        return true;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+}
+```
+
+**Application.java**
+```java
+// File: Application.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Application {
+    private List<SupportingDocumentation> supportingDocumentation;
+    private List<Fee> fees;
+
+    public Application() {
+        supportingDocumentation = new ArrayList<>();
+        fees = new ArrayList<>();
+    }
+
+    public void submit() {
+        // submission logic
+    }
+
+    public List<SupportingDocumentation> getSupportingDocumentation() {
+        return supportingDocumentation;
+    }
+
+    public List<Fee> getFees() {
+        return fees;
+    }
+}
+```
+
+**SupportingDocumentation.java**
+```java
+// File: SupportingDocumentation.java
+
+public class SupportingDocumentation {
+    private Application application;
+
+    public SupportingDocumentation(Application application) {
+        this.application = application;
+    }
+
+    public void upload(String document) {
+        // upload logic
+    }
+
+    public Application getApplication() {
+        return application;
+    }
+}
+```
+
+**Fee.java**
+```java
+// File: Fee.java
+
+public class Fee {
+    private Application application;
+
+    public Fee(Application application) {
+        this.application = application;
+    }
+
+    public void pay() {
+        // payment logic
+    }
+
+    public Application getApplication() {
+        return application;
+    }
+}
+```
+
+**StaffMember.java**
+```java
+// File: StaffMember.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class StaffMember {
+    private List<Permission> permissions;
+
+    public StaffMember() {
+        permissions = new ArrayList<>();
+    }
+
+    public void performCompletenessReview(Application application) {
+        // completeness review logic
+    }
+
+    public void assignApplicationForDetailedReview(Application application) {
+        // assignment logic
+    }
+}
+```
+
+**Permission.java**
+```java
+// File: Permission.java
+
+public class Permission {
+    private StaffMember staffMember;
+
+    public Permission(StaffMember staffMember) {
+        this.staffMember = staffMember;
+    }
+
+    public void grant() {
+        // grant logic
+    }
+
+    public String getName() {
+        return "Permission";
+    }
+}
+```
+
+**Main.java**
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        Customer customer = new Customer();
+        PortalUserAccount portalUserAccount = customer.createPortalUserAccount();
+        portalUserAccount.authenticate("username", "password");
+
+        Application application = new Application();
+        SupportingDocumentation supportingDocumentation = new SupportingDocumentation(application);
+        supportingDocumentation.upload("document");
+
+        Fee fee = new Fee(application);
+        fee.pay();
+
+        StaffMember staffMember = new StaffMember();
+        staffMember.performCompletenessReview(application);
+        staffMember.assignApplicationForDetailedReview(application);
+    }
+}
+```
+
+Note: This implementation is a simplified version of the specification and may require additional modifications to meet the exact requirements.

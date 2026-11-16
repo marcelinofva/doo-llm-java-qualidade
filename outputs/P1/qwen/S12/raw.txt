@@ -1,0 +1,179 @@
+<design>
+1) Domain Entities (Classes):
+   - Course
+   - Event
+   - ListingFee
+   - User
+   - Admin
+   - Trainer
+   - SiteEditor
+
+2) Single Responsibility:
+   - Course: Manages course details
+   - Event: Manages event details
+   - ListingFee: Manages listing fees
+   - User: Manages user details
+   - Admin: Manages administrative tasks
+   - Trainer: Manages trainer-specific tasks
+   - SiteEditor: Manages site editor-specific tasks
+
+3) Relationships:
+   - Course and Event: Both extend CourseEvent
+   - ListingFee: Managed by Admin
+   - User: Trainer, Admin, SiteEditor
+   - Admin: Manages Trainer and SiteEditor
+   - Trainer: Manages Course and Event
+   - SiteEditor: Manages Course and Event
+
+4) Public Methods:
+   - Course: createCourse(), updateCourse(), deleteCourse()
+   - Event: createEvent(), updateEvent(), deleteEvent(), turnIntoCourse()
+   - ListingFee: setFee()
+   - User: login(), logout()
+   - Admin: createListingFee(), updateListingFee(), deleteUser()
+   - Trainer: createCourse(), updateCourse(), deleteCourse(), turnIntoEvent()
+   - SiteEditor: updateCourse(), updateEvent()
+</design>
+
+// File: Course.java
+```java
+public class Course {
+    private String title;
+    private String description;
+    private String location;
+    private Date startDate;
+    private Date endDate;
+
+    public Course(String title, String description, String location, Date startDate, Date endDate) {
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    // Getters and setters
+}
+```
+
+// File: Event.java
+```java
+public class Event extends Course {
+    private String eventType;
+
+    public Event(String title, String description, String location, Date startDate, Date endDate, String eventType) {
+        super(title, description, location, startDate, endDate);
+        this.eventType = eventType;
+    }
+
+    // Getters and setters
+}
+```
+
+// File: ListingFee.java
+```java
+public class ListingFee {
+    private double fee;
+
+    public ListingFee(double fee) {
+        this.fee = fee;
+    }
+
+    public double getFee() {
+        return fee;
+    }
+
+    public void setFee(double fee) {
+        this.fee = fee;
+    }
+}
+```
+
+// File: User.java
+```java
+public class User {
+    private String username;
+    private String password;
+    private String role;
+
+    public User(String username, String password, String role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+
+    // Getters and setters
+}
+```
+
+// File: Admin.java
+```java
+public class Admin extends User {
+    public Admin(String username, String password) {
+        super(username, password, "Admin");
+    }
+
+    public void createListingFee(ListingFee listingFee) {
+        // Implementation
+    }
+
+    public void updateListingFee(ListingFee listingFee) {
+        // Implementation
+    }
+
+    public void deleteUser(User user) {
+        // Implementation
+    }
+}
+```
+
+// File: Trainer.java
+```java
+public class Trainer extends User {
+    public Trainer(String username, String password) {
+        super(username, password, "Trainer");
+    }
+
+    public void createCourse(Course course) {
+        // Implementation
+    }
+
+    public void updateCourse(Course course) {
+        // Implementation
+    }
+
+    public void deleteCourse(Course course) {
+        // Implementation
+    }
+
+    public void turnIntoEvent(Course course) {
+        // Implementation
+    }
+}
+```
+
+// File: SiteEditor.java
+```java
+public class SiteEditor extends User {
+    public SiteEditor(String username, String password) {
+        super(username, password, "SiteEditor");
+    }
+
+    public void updateCourse(Course course) {
+        // Implementation
+    }
+
+    public void updateEvent(Event event) {
+        // Implementation
+    }
+}
+```
+
+// File: Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Demonstrate main flows using hard-coded data
+    }
+}
+```

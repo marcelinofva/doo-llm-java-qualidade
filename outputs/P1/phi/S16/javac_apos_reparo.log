@@ -1,0 +1,8 @@
+outputs\P1\phi\S16\src\Main.java:8: error: incompatible types: String cannot be converted to LocalDate
+        Training training = new Training("Java Basics", "Learn Java from scratch", "2023-09-01", "2023-09-10");
+                                                                                   ^
+outputs\P1\phi\S16\src\User.java:52: error: incompatible types: String cannot be converted to LocalDate
+        Training training = new Training("Java Basics", "Learn Java from scratch", "2023-09-01", "2023-09-10");
+                                                                                   ^
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+2 errors

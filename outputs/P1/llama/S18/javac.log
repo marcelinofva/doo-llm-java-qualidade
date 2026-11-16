@@ -1,0 +1,11 @@
+outputs\P1\llama\S18\src\Main.java:18: error: cannot find symbol
+        Meeting meeting = new Meeting(staffMember, application, LocalDate.now(), LocalTime.now());
+                                                                ^
+  symbol:   variable LocalDate
+  location: class Main
+outputs\P1\llama\S18\src\Main.java:18: error: cannot find symbol
+        Meeting meeting = new Meeting(staffMember, application, LocalDate.now(), LocalTime.now());
+                                                                                 ^
+  symbol:   variable LocalTime
+  location: class Main
+2 errors

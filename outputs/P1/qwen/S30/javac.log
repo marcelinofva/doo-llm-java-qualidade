@@ -1,0 +1,75 @@
+outputs\P1\qwen\S30\src\ETD.java:4: error: cannot find symbol
+    private Date submissionDate;
+            ^
+  symbol:   class Date
+  location: class ETD
+outputs\P1\qwen\S30\src\ETD.java:6: error: cannot find symbol
+    private List<Permission> permissions;
+            ^
+  symbol:   class List
+  location: class ETD
+outputs\P1\qwen\S30\src\Main.java:10: error: cannot find symbol
+        etd1.setTitle("Thesis Title");
+            ^
+  symbol:   method setTitle(String)
+  location: variable etd1 of type ETD
+outputs\P1\qwen\S30\src\Main.java:11: error: cannot find symbol
+        etd1.setAuthor("Author Name");
+            ^
+  symbol:   method setAuthor(String)
+  location: variable etd1 of type ETD
+outputs\P1\qwen\S30\src\Main.java:12: error: cannot find symbol
+        etd1.setSubmissionDate(new Date());
+            ^
+  symbol:   method setSubmissionDate(Date)
+  location: variable etd1 of type ETD
+outputs\P1\qwen\S30\src\Main.java:13: error: cannot find symbol
+        etd1.setEmbargo(new Embargo());
+            ^
+  symbol:   method setEmbargo(Embargo)
+  location: variable etd1 of type ETD
+outputs\P1\qwen\S30\src\Main.java:14: error: cannot find symbol
+        etd1.getEmbargo().setEmbargoDate(new Date());
+            ^
+  symbol:   method getEmbargo()
+  location: variable etd1 of type ETD
+outputs\P1\qwen\S30\src\Main.java:15: error: cannot find symbol
+        etd1.setPermissions(new ArrayList<>());
+            ^
+  symbol:   method setPermissions(ArrayList<Object>)
+  location: variable etd1 of type ETD
+outputs\P1\qwen\S30\src\Main.java:16: error: cannot find symbol
+        etd1.getPermissions().add("ROLE_ADMIN");
+            ^
+  symbol:   method getPermissions()
+  location: variable etd1 of type ETD
+outputs\P1\qwen\S30\src\Main.java:17: error: cannot find symbol
+        etd1.getPermissions().add("ROLE_CURATION");
+            ^
+  symbol:   method getPermissions()
+  location: variable etd1 of type ETD
+outputs\P1\qwen\S30\src\Main.java:20: error: cannot find symbol
+        BatchIngestTool ingestTool = new BatchIngestTool();
+        ^
+  symbol:   class BatchIngestTool
+  location: class Main
+outputs\P1\qwen\S30\src\Main.java:20: error: cannot find symbol
+        BatchIngestTool ingestTool = new BatchIngestTool();
+                                         ^
+  symbol:   class BatchIngestTool
+  location: class Main
+outputs\P1\qwen\S30\src\Main.java:24: error: cannot find symbol
+        record.setETD(etd1);
+              ^
+  symbol:   method setETD(ETD)
+  location: variable record of type DescriptiveRecord
+outputs\P1\qwen\S30\src\Main.java:31: error: cannot find symbol
+        repository.setRepositoryContents(etds);
+                  ^
+  symbol:   method setRepositoryContents(List<ETD>)
+  location: variable repository of type OAIRepository
+outputs\P1\qwen\S30\src\Main.java:35: error: incompatible types: List<ETD> cannot be converted to List<Object>
+        submitter.submitData(etds);
+                             ^
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+15 errors

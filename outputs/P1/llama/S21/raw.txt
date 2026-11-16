@@ -1,0 +1,211 @@
+**Phase 1 - Design**
+
+```xml
+<design>
+  1. Domain entities (classes):
+    * Collection
+    * Document
+    * Repository
+    * User
+    * Role
+  2. Single responsibility of each class:
+    * Collection: represents a collection of documents with branding and sorting options
+    * Document: represents a single document with metadata
+    * Repository: manages collections and documents
+    * User: represents a user with roles and permissions
+    * Role: represents a role with permissions
+  3. Relationships:
+    * A Collection has many Documents (composition)
+    * A Repository has many Collections (composition)
+    * A User has one Role (association)
+    * A Role has many Users (association)
+  4. Public methods of each class:
+    * Collection: create(), addDocument(), removeDocument(), sortDocuments()
+    * Document: getMetadata(), setMetadata()
+    * Repository: createCollection(), removeCollection(), moveCollection(), renameCollection()
+    * User: getRole(), setRole()
+    * Role: getPermissions(), setPermissions()
+</design>
+```
+
+**Phase 2 - Code**
+
+### Collection.java
+```java
+// File: Collection.java
+
+public class Collection {
+    private String name;
+    private String branding;
+    private List<Document> documents;
+    private Comparator<Document> sortingComparator;
+
+    public Collection(String name, String branding) {
+        this.name = name;
+        this.branding = branding;
+        this.documents = new ArrayList<>();
+    }
+
+    public void addDocument(Document document) {
+        documents.add(document);
+    }
+
+    public void removeDocument(Document document) {
+        documents.remove(document);
+    }
+
+    public void sortDocuments(Comparator<Document> comparator) {
+        sortingComparator = comparator;
+        Collections.sort(documents, comparator);
+    }
+
+    public List<Document> getDocuments() {
+        return documents;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBranding() {
+        return branding;
+    }
+}
+```
+
+### Document.java
+```java
+// File: Document.java
+
+public class Document {
+    private String metadata;
+
+    public Document(String metadata) {
+        this.metadata = metadata;
+    }
+
+    public String getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(String metadata) {
+        this.metadata = metadata;
+    }
+}
+```
+
+### Repository.java
+```java
+// File: Repository.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Repository {
+    private List<Collection> collections;
+
+    public Repository() {
+        collections = new ArrayList<>();
+    }
+
+    public void createCollection(Collection collection) {
+        collections.add(collection);
+    }
+
+    public void removeCollection(Collection collection) {
+        collections.remove(collection);
+    }
+
+    public void moveCollection(Collection collection, Collection destination) {
+        collections.remove(collection);
+        destination.addDocument(collection.getDocuments());
+    }
+
+    public void renameCollection(Collection collection, String newName) {
+        collection.setName(newName);
+    }
+
+    public List<Collection> getCollections() {
+        return collections;
+    }
+}
+```
+
+### User.java
+```java
+// File: User.java
+
+public class User {
+    private Role role;
+
+    public User(Role role) {
+        this.role = role;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+}
+```
+
+### Role.java
+```java
+// File: Role.java
+
+public class Role {
+    private List<User> users;
+    private List<String> permissions;
+
+    public Role() {
+        users = new ArrayList<>();
+        permissions = new ArrayList<>();
+    }
+
+    public void addPermission(String permission) {
+        permissions.add(permission);
+    }
+
+    public List<String> getPermissions() {
+        return permissions;
+    }
+
+    public void addUser(User user) {
+        users.add(user);
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        Repository repository = new Repository();
+        Collection collection = new Collection("My Collection", "My Branding");
+        Document document = new Document("My Metadata");
+
+        collection.addDocument(document);
+        repository.createCollection(collection);
+
+        System.out.println("Collection name: " + collection.getName());
+        System.out.println("Collection branding: " + collection.getBranding());
+        System.out.println("Document metadata: " + document.getMetadata());
+
+        repository.moveCollection(collection, new Collection("New Collection", "New Branding"));
+        repository.renameCollection(collection, "Renamed Collection");
+
+        System.out.println("Collections: " + repository.getCollections().size());
+    }
+}
+```
+
+Note: This implementation is a simplified version of the specification and may not cover all edge cases.

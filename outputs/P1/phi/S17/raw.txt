@@ -1,0 +1,234 @@
+```java
+// File: CustomerPortal.java
+public class CustomerPortal {
+    private String username;
+    private String password;
+    private boolean isAuthenticated;
+
+    public CustomerPortal(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.isAuthenticated = false;
+    }
+
+    public void authenticate() {
+        // Simulate authentication
+        this.isAuthenticated = true;
+    }
+
+    public boolean isAuthenticated() {
+        return isAuthenticated;
+    }
+
+    public void performTransaction() {
+        if (!isAuthenticated) {
+            System.out.println("User must be authenticated to perform transactions.");
+            return;
+        }
+        System.out.println("Performing transaction...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        CustomerPortal portal = new CustomerPortal("customer", "password");
+        portal.authenticate();
+        portal.performTransaction();
+    }
+}
+```
+
+```java
+// File: Applicant.java
+public class Applicant {
+    private String name;
+    private String applicationDetails;
+
+    public Applicant(String name, String applicationDetails) {
+        this.name = name;
+        this.applicationDetails = applicationDetails;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getApplicationDetails() {
+        return applicationDetails;
+    }
+
+    public void submitApplication() {
+        System.out.println("Application submitted by: " + name);
+    }
+}
+```
+
+```java
+// File: SupportingDocumentation.java
+public class SupportingDocumentation {
+    private String applicantName;
+    private String document;
+
+    public SupportingDocumentation(String applicantName, String document) {
+        this.applicantName = applicantName;
+        this.document = document;
+    }
+
+    public String getApplicantName() {
+        return applicantName;
+    }
+
+    public String getDocument() {
+        return document;
+    }
+
+    public void submitSupportingDocumentation() {
+        System.out.println("Supporting documentation submitted by: " + applicantName);
+    }
+}
+```
+
+```java
+// File: FeePayment.java
+public class FeePayment {
+    private String applicantName;
+    private double amount;
+
+    public FeePayment(String applicantName, double amount) {
+        this.applicantName = applicantName;
+        this.amount = amount;
+    }
+
+    public String getApplicantName() {
+        return applicantName;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void payFee() {
+        System.out.println("Fee paid by: " + applicantName + ", Amount: " + amount);
+    }
+}
+```
+
+```java
+// File: TransactionStatus.java
+public class TransactionStatus {
+    private String applicantName;
+    private String status;
+
+    public TransactionStatus(String applicantName, String status) {
+        this.applicantName = applicantName;
+        this.status = status;
+    }
+
+    public String getApplicantName() {
+        return applicantName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void checkStatus() {
+        System.out.println("Status for " + applicantName + ": " + status);
+    }
+}
+```
+
+```java
+// File: ApplicationModification.java
+public class ApplicationModification {
+    private String applicantName;
+    private String updatedDetails;
+
+    public ApplicationModification(String applicantName, String updatedDetails) {
+        this.applicantName = applicantName;
+        this.updatedDetails = updatedDetails;
+    }
+
+    public String getApplicantName() {
+        return applicantName;
+    }
+
+    public String getUpdatedDetails() {
+        return updatedDetails;
+    }
+
+    public void modifyApplication() {
+        System.out.println("Application modified by: " + applicantName);
+    }
+}
+```
+
+```java
+// File: CompletenessReview.java
+public class CompletenessReview {
+    private String applicantName;
+
+    public CompletenessReview(String applicantName) {
+        this.applicantName = applicantName;
+    }
+
+    public void performCompletenessReview() {
+        System.out.println("Completeness review performed for: " + applicantName);
+    }
+}
+```
+
+```java
+// File: DetailedReviewAssignment.java
+public class DetailedReviewAssignment {
+    private String applicantName;
+
+    public DetailedReviewAssignment(String applicantName) {
+        this.applicantName = applicantName;
+    }
+
+    public void assignDetailedReview() {
+        System.out.println("Detailed review assigned for: " + applicantName);
+    }
+}
+```
+
+```java
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        // Demonstrate Customer Portal User Account
+        CustomerPortal portal = new CustomerPortal("customer", "password");
+        portal.authenticate();
+        portal.performTransaction();
+
+        // Demonstrate Applicant Submitting Application
+        Applicant applicant = new Applicant("John Doe", "Application Details");
+        applicant.submitApplication();
+
+        // Demonstrate Applicant Submitting Supporting Documentation
+        SupportingDocumentation documentation = new SupportingDocumentation("John Doe", "Supporting Document");
+        documentation.submitSupportingDocumentation();
+
+        // Demonstrate Applicant Paying Fee
+        FeePayment feePayment = new FeePayment("John Doe", 100.0);
+        feePayment.payFee();
+
+        // Demonstrate Applicant Checking Transaction Status
+        TransactionStatus status = new TransactionStatus("John Doe", "In Progress");
+        status.checkStatus();
+
+        // Demonstrate Applicant Modifying Application
+        ApplicationModification modification = new ApplicationModification("John Doe", "Updated Application Details");
+        modification.modifyApplication();
+
+        // Demonstrate Staff Member Performing Completeness Review
+        CompletenessReview completenessReview = new CompletenessReview("John Doe");
+        completenessReview.performCompletenessReview();
+
+        // Demonstrate Staff Member Assigning Application for Detailed Review
+        DetailedReviewAssignment detailedReview = new DetailedReviewAssignment("John Doe");
+        detailedReview.assignDetailedReview();
+    }
+}
+```

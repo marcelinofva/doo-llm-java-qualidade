@@ -1,0 +1,74 @@
+<domain-entities>
+    <class name="Customer">
+      <single-responsibility>Represents a customer with their account information</single-responsibility>
+      <relationships>
+        <association name="has-portal-user-account" type="one-to-one" class="PortalUserAccount"/>
+      </relationships>
+      <public-methods>
+        <method name="createPortalUserAccount"/>
+        <method name="getPortalUserAccount"/>
+      </public-methods>
+    </class>
+    <class name="PortalUserAccount">
+      <single-responsibility>Represents a portal user account with authentication information</single-responsibility>
+      <relationships>
+        <association name="belongs-to" type="one-to-one" class="Customer"/>
+      </relationships>
+      <public-methods>
+        <method name="authenticate"/>
+        <method name="getCustomer"/>
+      </public-methods>
+    </class>
+    <class name="Application">
+      <single-responsibility>Represents an application with its associated information and documents</single-responsibility>
+      <relationships>
+        <association name="has-supporting-documentation" type="one-to-many" class="SupportingDocumentation"/>
+        <association name="has-fees" type="one-to-many" class="Fee"/>
+      </relationships>
+      <public-methods>
+        <method name="submit"/>
+        <method name="getSupportingDocumentation"/>
+        <method name="getFees"/>
+      </public-methods>
+    </class>
+    <class name="SupportingDocumentation">
+      <single-responsibility>Represents supporting documentation for an application</single-responsibility>
+      <relationships>
+        <association name="belongs-to" type="one-to-one" class="Application"/>
+      </relationships>
+      <public-methods>
+        <method name="upload"/>
+        <method name="getApplication"/>
+      </public-methods>
+    </class>
+    <class name="Fee">
+      <single-responsibility>Represents a fee associated with an application</single-responsibility>
+      <relationships>
+        <association name="belongs-to" type="one-to-one" class="Application"/>
+      </relationships>
+      <public-methods>
+        <method name="pay"/>
+        <method name="getApplication"/>
+      </public-methods>
+    </class>
+    <class name="StaffMember">
+      <single-responsibility>Represents a staff member with their associated permissions</single-responsibility>
+      <relationships>
+        <association name="has-permissions" type="one-to-many" class="Permission"/>
+      </relationships>
+      <public-methods>
+        <method name="performCompletenessReview"/>
+        <method name="assignApplicationForDetailedReview"/>
+      </public-methods>
+    </class>
+    <class name="Permission">
+      <single-responsibility>Represents a permission associated with a staff member</single-responsibility>
+      <relationships>
+        <association name="belongs-to" type="one-to-one" class="StaffMember"/>
+      </relationships>
+      <public-methods>
+        <method name="grant"/>
+        <method getName/>
+      </public-methods>
+    </class>
+  </domain-entities>

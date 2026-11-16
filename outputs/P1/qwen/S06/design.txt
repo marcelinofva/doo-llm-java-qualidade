@@ -1,0 +1,22 @@
+1) Domain Entities (Classes):
+   - Publisher
+   - User
+   - Role (enum)
+   - Invitation
+
+2) Single Responsibility:
+   - Publisher: Manages members and roles.
+   - User: Represents a user with an email and role.
+   - Role: Enumerates different roles (OWNER, MEMBER).
+   - Invitation: Represents an invitation to join a publisher.
+
+3) Relationships:
+   - Publisher has a list of Users.
+   - Publisher has a list of Invitations.
+   - User has a Role.
+
+4) Public Methods:
+   - Publisher: editProfile, inviteUser, inviteByEmail, removeMember, viewMembers, makeOwner, removeOwner
+   - User: (no public methods)
+   - Role: (no public methods)
+   - Invitation: (no public methods)

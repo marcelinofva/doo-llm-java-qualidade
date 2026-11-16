@@ -1,0 +1,106 @@
+outputs\P1\llama\S12\src\Trainer.java:5: error: cannot find symbol
+    private List<Course> courses;
+            ^
+  symbol:   class List
+  location: class Trainer
+outputs\P1\llama\S12\src\Trainer.java:6: error: cannot find symbol
+    private List<Event> events;
+            ^
+  symbol:   class List
+  location: class Trainer
+outputs\P1\llama\S12\src\Trainer.java:30: error: cannot find symbol
+    public List<Course> getCourses() {
+           ^
+  symbol:   class List
+  location: class Trainer
+outputs\P1\llama\S12\src\Trainer.java:34: error: cannot find symbol
+    public List<Event> getEvents() {
+           ^
+  symbol:   class List
+  location: class Trainer
+outputs\P1\llama\S12\src\SiteAdministrator.java:4: error: cannot find symbol
+    private List<Course> courses;
+            ^
+  symbol:   class List
+  location: class SiteAdministrator
+outputs\P1\llama\S12\src\SiteAdministrator.java:5: error: cannot find symbol
+    private List<Event> events;
+            ^
+  symbol:   class List
+  location: class SiteAdministrator
+outputs\P1\llama\S12\src\SiteAdministrator.java:6: error: cannot find symbol
+    private Map<String, Double> listingFees;
+            ^
+  symbol:   class Map
+  location: class SiteAdministrator
+outputs\P1\llama\S12\src\SiteAdministrator.java:26: error: cannot find symbol
+    public List<Course> getCourses() {
+           ^
+  symbol:   class List
+  location: class SiteAdministrator
+outputs\P1\llama\S12\src\SiteAdministrator.java:30: error: cannot find symbol
+    public List<Event> getEvents() {
+           ^
+  symbol:   class List
+  location: class SiteAdministrator
+outputs\P1\llama\S12\src\SiteAdministrator.java:34: error: cannot find symbol
+    public Map<String, Double> getListingFees() {
+           ^
+  symbol:   class Map
+  location: class SiteAdministrator
+outputs\P1\llama\S12\src\SiteEditor.java:4: error: cannot find symbol
+    private List<Course> courses;
+            ^
+  symbol:   class List
+  location: class SiteEditor
+outputs\P1\llama\S12\src\SiteEditor.java:5: error: cannot find symbol
+    private List<Event> events;
+            ^
+  symbol:   class List
+  location: class SiteEditor
+outputs\P1\llama\S12\src\SiteEditor.java:20: error: cannot find symbol
+    public List<Course> getCourses() {
+           ^
+  symbol:   class List
+  location: class SiteEditor
+outputs\P1\llama\S12\src\SiteEditor.java:24: error: cannot find symbol
+    public List<Event> getEvents() {
+           ^
+  symbol:   class List
+  location: class SiteEditor
+outputs\P1\llama\S12\src\Trainer.java:10: error: cannot find symbol
+        this.courses = new ArrayList<>();
+                           ^
+  symbol:   class ArrayList
+  location: class Trainer
+outputs\P1\llama\S12\src\Trainer.java:11: error: cannot find symbol
+        this.events = new ArrayList<>();
+                          ^
+  symbol:   class ArrayList
+  location: class Trainer
+outputs\P1\llama\S12\src\SiteAdministrator.java:9: error: cannot find symbol
+        this.courses = new ArrayList<>();
+                           ^
+  symbol:   class ArrayList
+  location: class SiteAdministrator
+outputs\P1\llama\S12\src\SiteAdministrator.java:10: error: cannot find symbol
+        this.events = new ArrayList<>();
+                          ^
+  symbol:   class ArrayList
+  location: class SiteAdministrator
+outputs\P1\llama\S12\src\SiteAdministrator.java:11: error: cannot find symbol
+        this.listingFees = new HashMap<>();
+                               ^
+  symbol:   class HashMap
+  location: class SiteAdministrator
+outputs\P1\llama\S12\src\SiteEditor.java:8: error: cannot find symbol
+        this.courses = new ArrayList<>();
+                           ^
+  symbol:   class ArrayList
+  location: class SiteEditor
+outputs\P1\llama\S12\src\SiteEditor.java:9: error: cannot find symbol
+        this.events = new ArrayList<>();
+                          ^
+  symbol:   class ArrayList
+  location: class SiteEditor
+21 errors

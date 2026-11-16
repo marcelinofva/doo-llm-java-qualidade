@@ -1,0 +1,151 @@
+<design>
+1) Domain Entities (Classes):
+   - Collection
+   - Item
+   - User
+   - Repository
+
+2) Single Responsibility of Each Class:
+   - Collection: Manages collection details and items.
+   - Item: Represents a single item in a collection.
+   - User: Manages user details and permissions.
+   - Repository: Manages collections and items.
+
+3) Relationships:
+   - Collection has many Items (composition).
+   - User has many Collections (composition).
+   - Repository has many Collections (composition).
+
+4) Public Methods:
+   - Collection: createCollection, renameCollection, moveCollection, applyBranding, sortItems
+   - Item: addItem, removeItem, updateItem
+   - User: createUser, deleteUser, assignCollection
+   - Repository: createRepository, moveCollection, renameCollection
+</design>
+
+// File: Collection.java
+```java
+public class Collection {
+    private String name;
+    private String branding;
+    private List<Item> items;
+
+    public Collection(String name) {
+        this.name = name;
+        this.items = new ArrayList<>();
+    }
+
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    public void removeItem(Item item) {
+        items.remove(item);
+    }
+
+    public void updateItem(Item item) {
+        // Update item details
+    }
+
+    public void rename(String newName) {
+        this.name = newName;
+    }
+
+    public void move(String newLocation) {
+        // Move collection to new location
+    }
+
+    public void applyBranding(String branding) {
+        this.branding = branding;
+    }
+
+    public void sortItems() {
+        // Sort items based on some criteria
+    }
+}
+```
+
+// File: Item.java
+```java
+public class Item {
+    private String title;
+    private String description;
+    private String author;
+
+    public Item(String title, String description, String author) {
+        this.title = title;
+        this.description = description;
+        this.author = author;
+    }
+
+    // Getters and setters
+}
+```
+
+// File: User.java
+```java
+public class User {
+    private String username;
+    private List<Collection> collections;
+
+    public User(String username) {
+        this.username = username;
+        this.collections = new ArrayList<>();
+    }
+
+    public void assignCollection(Collection collection) {
+        collections.add(collection);
+    }
+
+    // Getters and setters
+}
+```
+
+// File: Repository.java
+```java
+public class Repository {
+    private List<Collection> collections;
+
+    public Repository() {
+        this.collections = new ArrayList<>();
+    }
+
+    public void createCollection(Collection collection) {
+        collections.add(collection);
+    }
+
+    public void moveCollection(Collection collection, String newLocation) {
+        collection.move(newLocation);
+    }
+
+    public void renameCollection(Collection collection, String newName) {
+        collection.rename(newName);
+    }
+}
+```
+
+// File: Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        Repository repository = new Repository();
+        User user = new User("facultyMember");
+
+        Collection collection = new Collection("My Collection");
+        collection.applyBranding("Faculty Branding");
+        collection.sortItems();
+
+        Item item1 = new Item("Item 1", "Description 1", "Author 1");
+        Item item2 = new Item("Item 2", "Description 2", "Author 2");
+        collection.addItem(item1);
+        collection.addItem(item2);
+
+        user.assignCollection(collection);
+        repository.createCollection(collection);
+
+        // Simulate moving and renaming collection
+        repository.moveCollection(collection, "New Location");
+        repository.renameCollection(collection, "Renamed Collection");
+    }
+}
+```

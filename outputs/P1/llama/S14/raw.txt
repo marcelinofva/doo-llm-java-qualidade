@@ -1,0 +1,226 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities (classes):
+    * NewsItem
+    * NewsFeed
+    * SiteMember
+    * SiteEditor
+    * NewsSite
+
+  2. Single responsibility of each class:
+    * NewsItem: represents a single news item with its attributes and behavior
+    * NewsFeed: manages the RSS feed of news items
+    * SiteMember: represents a site member with their attributes and behavior
+    * SiteEditor: represents a site editor with their attributes and behavior
+    * NewsSite: represents the news site with its attributes and behavior
+
+  3. Relationships (association, composition, inheritance):
+    * NewsItem has a one-to-many relationship with NewsFeed (a news item can be part of multiple feeds)
+    * SiteMember has a one-to-one relationship with SiteEditor (a member can be an editor)
+    * NewsSite has a one-to-many relationship with NewsItem (a site can have multiple news items)
+    * NewsItem has a composition relationship with NewsFeed (a news item is composed of a feed)
+
+  4. Public methods of each class:
+    * NewsItem: getNewsItem(), setNewsItem(), getStartDate(), setStartDate(), getEndDate(), setEndDate()
+    * NewsFeed: getNewsFeed(), setNewsFeed(), addNewsItem(), removeNewsItem()
+    * SiteMember: getSiteMember(), setSiteMember(), getNewsFeed(), setNewsFeed()
+    * SiteEditor: getSiteEditor(), setSiteEditor(), getNewsFeed(), setNewsFeed()
+    * NewsSite: getNewsSite(), setNewsSite(), addNewsItem(), removeNewsItem()
+</design>
+```
+
+**Phase 2 - CODE**
+
+### NewsItem.java
+```java
+// File: NewsItem.java
+
+public class NewsItem {
+    private String title;
+    private String content;
+    private Date startDate;
+    private Date endDate;
+    private int priority;
+
+    public NewsItem(String title, String content, Date startDate, Date endDate, int priority) {
+        this.title = title;
+        this.content = content;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.priority = priority;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+}
+```
+
+### NewsFeed.java
+```java
+// File: NewsFeed.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class NewsFeed {
+    private List<NewsItem> newsItems;
+
+    public NewsFeed() {
+        this.newsItems = new ArrayList<>();
+    }
+
+    public void addNewsItem(NewsItem newsItem) {
+        this.newsItems.add(newsItem);
+    }
+
+    public void removeNewsItem(NewsItem newsItem) {
+        this.newsItems.remove(newsItem);
+    }
+
+    public List<NewsItem> getNewsItems() {
+        return newsItems;
+    }
+
+    public void setNewsItems(List<NewsItem> newsItems) {
+        this.newsItems = newsItems;
+    }
+}
+```
+
+### SiteMember.java
+```java
+// File: SiteMember.java
+
+public class SiteMember {
+    private String name;
+    private NewsFeed newsFeed;
+
+    public SiteMember(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public NewsFeed getNewsFeed() {
+        return newsFeed;
+    }
+
+    public void setNewsFeed(NewsFeed newsFeed) {
+        this.newsFeed = newsFeed;
+    }
+}
+```
+
+### SiteEditor.java
+```java
+// File: SiteEditor.java
+
+public class SiteEditor extends SiteMember {
+    public SiteEditor(String name) {
+        super(name);
+    }
+}
+```
+
+### NewsSite.java
+```java
+// File: NewsSite.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class NewsSite {
+    private List<NewsItem> newsItems;
+
+    public NewsSite() {
+        this.newsItems = new ArrayList<>();
+    }
+
+    public void addNewsItem(NewsItem newsItem) {
+        this.newsItems.add(newsItem);
+    }
+
+    public void removeNewsItem(NewsItem newsItem) {
+        this.newsItems.remove(newsItem);
+    }
+
+    public List<NewsItem> getNewsItems() {
+        return newsItems;
+    }
+
+    public void setNewsItems(List<NewsItem> newsItems) {
+        this.newsItems = newsItems;
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+import java.util.Date;
+
+public class Main {
+    public static void main(String[] args) {
+        NewsItem newsItem = new NewsItem("Title", "Content", new Date(), new Date(), 1);
+        NewsFeed newsFeed = new NewsFeed();
+        newsFeed.addNewsItem(newsItem);
+
+        SiteMember siteMember = new SiteMember("John");
+        siteMember.setNewsFeed(newsFeed);
+
+        NewsSite newsSite = new NewsSite();
+        newsSite.addNewsItem(newsItem);
+
+        System.out.println("News Item: " + newsItem.getTitle());
+        System.out.println("News Feed: " + newsFeed.getNewsItems());
+        System.out.println("Site Member: " + siteMember.getName());
+        System.out.println("News Site: " + newsSite.getNewsItems());
+    }
+}
+```

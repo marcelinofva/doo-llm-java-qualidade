@@ -1,0 +1,45 @@
+1. Domain entities:
+    - Agent
+    - Subject
+    - EACCPFRecord
+    - MARCXMLRecord
+    - Accession
+    - Resource
+    - ResourceComponent
+    - NameForm
+    - Source
+
+  2. Single responsibility of each class:
+    - Agent: represents an agent with its properties and relationships
+    - Subject: represents a subject with its properties and relationships
+    - EACCPFRecord: represents an EAC-CPF record with its properties and methods for importing agent information
+    - MARCXMLRecord: represents a MARCXML record with its properties and methods for importing agent and subject information
+    - Accession: represents an accession with its properties and relationships
+    - Resource: represents a resource with its properties and relationships
+    - ResourceComponent: represents a resource component with its properties and relationships
+    - NameForm: represents a name form with its properties and relationships
+    - Source: represents a source with its properties and relationships
+
+  3. Relationships:
+    - Agent has many NameForms (composition)
+    - Agent has many Sources (composition)
+    - Agent is related to many Accessions (association)
+    - Agent is related to many Resources (association)
+    - Agent is related to many ResourceComponents (association)
+    - Subject is related to many Accessions (association)
+    - Subject is related to many Resources (association)
+    - Subject is related to many ResourceComponents (association)
+    - EACCPFRecord has one Agent (composition)
+    - MARCXMLRecord has one Agent (composition)
+    - MARCXMLRecord has one Subject (composition)
+
+  4. Public methods of each class:
+    - Agent: getAgentId(), getAgentName(), addNameForm(), addSource()
+    - Subject: getSubjectId(), getSubjectName(), addSource()
+    - EACCPFRecord: importAgentFromEACCPF()
+    - MARCXMLRecord: importAgentAndSubjectFromMARCXML()
+    - Accession: getAccessionId(), getAccessionName(), addAgent(), addSubject()
+    - Resource: getResourceId(), getResourceName(), addAgent(), addSubject()
+    - ResourceComponent: getResourceComponentId(), getResourceComponentName(), addAgent(), addSubject()
+    - NameForm: getNameFormId(), getNameFormName(), getAgent()
+    - Source: getSourceId(), getSourceName(), getAgent()

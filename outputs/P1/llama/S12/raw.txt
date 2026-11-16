@@ -1,0 +1,280 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities:
+    - Course
+    - Event
+    - Trainer
+    - SiteAdministrator
+    - SiteEditor
+
+  2. Single responsibility of each class:
+    - Course: represents a course with its details
+    - Event: represents an event with its details
+    - Trainer: represents a trainer with their courses and events
+    - SiteAdministrator: manages courses and events, sets listing fees
+    - SiteEditor: updates courses and events
+
+  3. Relationships:
+    - A Trainer has many Courses and Events (composition)
+    - A Course or Event has one Trainer (association)
+    - A SiteAdministrator manages many Courses and Events (composition)
+    - A SiteEditor updates many Courses and Events (composition)
+
+  4. Public methods of each class:
+    - Course: addTrainer(), updateDetails(), delete()
+    - Event: addTrainer(), updateDetails(), delete()
+    - Trainer: addCourse(), addEvent(), updateDetails()
+    - SiteAdministrator: addCourse(), addEvent(), setListingFee()
+    - SiteEditor: updateCourse(), updateEvent()
+</design>
+```
+
+**Phase 2 - CODE**
+
+### Course.java
+```java
+// File: Course.java
+
+public class Course {
+    private String name;
+    private String description;
+    private Trainer trainer;
+
+    public Course(String name, String description, Trainer trainer) {
+        this.name = name;
+        this.description = description;
+        this.trainer = trainer;
+    }
+
+    public void addTrainer(Trainer trainer) {
+        this.trainer = trainer;
+    }
+
+    public void updateDetails(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public void delete() {
+        // implement deletion logic
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Trainer getTrainer() {
+        return trainer;
+    }
+}
+```
+
+### Event.java
+```java
+// File: Event.java
+
+public class Event {
+    private String name;
+    private String description;
+    private Trainer trainer;
+
+    public Event(String name, String description, Trainer trainer) {
+        this.name = name;
+        this.description = description;
+        this.trainer = trainer;
+    }
+
+    public void addTrainer(Trainer trainer) {
+        this.trainer = trainer;
+    }
+
+    public void updateDetails(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public void delete() {
+        // implement deletion logic
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Trainer getTrainer() {
+        return trainer;
+    }
+}
+```
+
+### Trainer.java
+```java
+// File: Trainer.java
+
+public class Trainer {
+    private String name;
+    private List<Course> courses;
+    private List<Event> events;
+
+    public Trainer(String name) {
+        this.name = name;
+        this.courses = new ArrayList<>();
+        this.events = new ArrayList<>();
+    }
+
+    public void addCourse(Course course) {
+        courses.add(course);
+    }
+
+    public void addEvent(Event event) {
+        events.add(event);
+    }
+
+    public void updateDetails(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+}
+```
+
+### SiteAdministrator.java
+```java
+// File: SiteAdministrator.java
+
+public class SiteAdministrator {
+    private List<Course> courses;
+    private List<Event> events;
+    private Map<String, Double> listingFees;
+
+    public SiteAdministrator() {
+        this.courses = new ArrayList<>();
+        this.events = new ArrayList<>();
+        this.listingFees = new HashMap<>();
+    }
+
+    public void addCourse(Course course) {
+        courses.add(course);
+    }
+
+    public void addEvent(Event event) {
+        events.add(event);
+    }
+
+    public void setListingFee(String courseOrEventName, double fee) {
+        listingFees.put(courseOrEventName, fee);
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public Map<String, Double> getListingFees() {
+        return listingFees;
+    }
+}
+```
+
+### SiteEditor.java
+```java
+// File: SiteEditor.java
+
+public class SiteEditor {
+    private List<Course> courses;
+    private List<Event> events;
+
+    public SiteEditor() {
+        this.courses = new ArrayList<>();
+        this.events = new ArrayList<>();
+    }
+
+    public void updateCourse(Course course) {
+        // implement update logic
+    }
+
+    public void updateEvent(Event event) {
+        // implement update logic
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        // create a trainer
+        Trainer trainer = new Trainer("John Doe");
+
+        // create a course
+        Course course = new Course("Java Fundamentals", "Introduction to Java", trainer);
+        trainer.addCourse(course);
+
+        // create an event
+        Event event = new Event("Java Conference", "A conference about Java", trainer);
+        trainer.addEvent(event);
+
+        // create a site administrator
+        SiteAdministrator siteAdmin = new SiteAdministrator();
+        siteAdmin.addCourse(course);
+        siteAdmin.addEvent(event);
+
+        // set listing fee
+        siteAdmin.setListingFee(course.getName(), 100.0);
+
+        // update course details
+        course.updateDetails("Java Programming", "Intermediate Java");
+
+        // update event details
+        event.updateDetails("Java Conference 2023", "A conference about Java in 2023");
+
+        // delete course
+        course.delete();
+
+        // delete event
+        event.delete();
+
+        // update course using site editor
+        SiteEditor siteEditor = new SiteEditor();
+        siteEditor.updateCourse(course);
+
+        // update event using site editor
+        siteEditor.updateEvent(event);
+    }
+}
+```
+
+Note: This implementation is a simplified version of the specification and does not include error handling, validation, and other features that a real-world application would require.

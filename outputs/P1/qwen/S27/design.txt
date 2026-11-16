@@ -1,0 +1,35 @@
+1) Domain Entities (Classes):
+   - Resource
+   - ResourceComponent
+   - Instance
+   - Container
+   - Location
+   - Subject
+   - Note
+
+2) Single Responsibility:
+   - Resource: Manages the overall resource record.
+   - ResourceComponent: Manages a component of a resource.
+   - Instance: Manages an instance associated with a resource or component.
+   - Container: Manages a container and its location.
+   - Location: Manages location information.
+   - Subject: Manages a subject associated with a resource description.
+   - Note: Manages notes for various record types.
+
+3) Relationships:
+   - Resource has many ResourceComponents.
+   - Resource has many Instances.
+   - ResourceComponent has many Instances.
+   - Instance is associated with a Container.
+   - Container has a Location.
+   - Resource has many Subjects.
+   - Resource has many Notes.
+
+4) Public Methods:
+   - Resource: assignComponentId, setLevelOfDescription, addInstance, addSubject, addNote
+   - ResourceComponent: assignComponentId, setLevelOfDescription, addInstance
+   - Instance: associateWithContainer
+   - Container: setLocation
+   - Location: setLocationDetails
+   - Subject: addSubject
+   - Note: addNote

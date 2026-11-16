@@ -1,0 +1,28 @@
+outputs\P1\phi\S04\src\DataHub.java:30: error: <identifier> expected
+    public void importPackage(DataPackage package) {
+                                         ^
+outputs\P1\phi\S04\src\DataHub.java:31: error: illegal start of expression
+        packages.put(package.getName(), package);
+                     ^
+outputs\P1\phi\S04\src\DataHub.java:31: error: ';' expected
+        packages.put(package.getName(), package);
+                                      ^
+outputs\P1\phi\S04\src\DataHub.java:32: error: illegal start of expression
+        System.out.println("Package " + package.getName() + " imported.");
+                                        ^
+outputs\P1\phi\S04\src\DataHub.java:32: error: not a statement
+        System.out.println("Package " + package.getName() + " imported.");
+                                                          ^
+outputs\P1\phi\S04\src\DataHub.java:32: error: ';' expected
+        System.out.println("Package " + package.getName() + " imported.");
+                                                                        ^
+outputs\P1\phi\S04\src\DataHub.java:37: error: not a statement
+            DataPackage package = packages.get(name);
+            ^
+outputs\P1\phi\S04\src\DataHub.java:37: error: ';' expected
+            DataPackage package = packages.get(name);
+                       ^
+outputs\P1\phi\S04\src\DataHub.java:38: error: illegal start of expression
+            package.setData(newData1, newData2);
+            ^
+9 errors

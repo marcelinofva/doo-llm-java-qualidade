@@ -1,0 +1,27 @@
+1) Domain Entities (Classes):
+   - User
+   - Role
+   - Repository
+   - AuthenticationMethod
+   - Record
+
+2) Single Responsibility:
+   - User: Manages user details and roles.
+   - Role: Manages different roles and their permissions.
+   - Repository: Manages records within a repository.
+   - AuthenticationMethod: Manages different authentication methods.
+   - Record: Manages records within a repository.
+
+3) Relationships:
+   - User has many Roles.
+   - Role has many Users.
+   - Repository has many Records.
+   - User has one AuthenticationMethod.
+   - Record belongs to one Repository.
+
+4) Public Methods:
+   - User: resetPassword(), createUser(), authenticate().
+   - Role: assignRole(), removeRole().
+   - Repository: createRecord(), updateRecord(), deleteRecord().
+   - AuthenticationMethod: authenticateUser().
+   - Record: viewRecord(), updateRecord().

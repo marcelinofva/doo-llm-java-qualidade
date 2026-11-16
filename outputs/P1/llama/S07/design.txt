@@ -1,0 +1,23 @@
+1. Domain entities:
+    * Embargo
+    * Item
+    * Collection
+    * User
+    * Repository
+  2. Single responsibility of each class:
+    * Embargo: represents an embargo on an item
+    * Item: represents a digital object with metadata
+    * Collection: represents a group of items with shared metadata
+    * User: represents a repository administrator or curator
+    * Repository: manages embargoes and item metadata
+  3. Relationships:
+    * Embargo has a one-to-one relationship with Item (an embargo is associated with one item)
+    * Item has a many-to-one relationship with Collection (an item belongs to one collection)
+    * User has a many-to-many relationship with Repository (a user can be an administrator of multiple repositories)
+    * Repository has a one-to-many relationship with Embargo (a repository can have multiple embargoes)
+  4. Public methods of each class:
+    * Embargo: liftEmbargo(), getEmbargoDate()
+    * Item: getMetadata(), setMetadata(), getEmbargo()
+    * Collection: getItems(), setEmbargoDate()
+    * User: grantEmbargoPrivileges(), viewEmbargoMetadata()
+    * Repository: liftEmbargoes(), setAccessControls(), viewEmbargoMetadata()

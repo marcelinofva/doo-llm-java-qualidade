@@ -1,0 +1,175 @@
+<design>
+1) Domain Entities (Classes):
+   - Game: Manages the game state, including rounds and estimations.
+   - Round: Represents a single estimation round with an item and estimates.
+   - Estimation: Holds an estimator's name and their estimate.
+   - Player: Represents a player (moderator or estimator) with a name.
+   - GameURL: Generates and manages the game URL.
+
+2) Single Responsibility:
+   - Game: Manages the game lifecycle and rounds.
+   - Round: Manages a single round's item and estimates.
+   - Estimation: Stores an estimator's estimate.
+   - Player: Manages a player's name.
+   - GameURL: Generates and manages the game URL.
+
+3) Relationships:
+   - Game has many Rounds.
+   - Round has many Estimations.
+   - Game has many Players.
+   - GameURL is associated with a Game.
+
+4) Public Methods:
+   - Game: createGame(String name, String description), invitePlayer(String playerName), startRound(String item), showEstimates(), finalizeEstimates(String agreedEstimate).
+   - Round: addItem(String item), addEstimation(String playerName, String estimate).
+   - Estimation: getEstimate().
+   - Player: getName().
+   - GameURL: generateURL(Game game).
+</design>
+
+// File: Game.java
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class Game {
+    private String name;
+    private String description;
+    private List<Round> rounds;
+    private List<Player> players;
+    private GameURL gameURL;
+
+    public Game(String name, String description) {
+        this.name = name;
+        this.description = description;
+        this.rounds = new ArrayList<>();
+        this.players = new ArrayList<>();
+        this.gameURL = new GameURL(this);
+    }
+
+    public void invitePlayer(String playerName) {
+        players.add(new Player(playerName));
+    }
+
+    public void startRound(String item) {
+        Round round = new Round(item);
+        rounds.add(round);
+    }
+
+    public void showEstimates() {
+        for (Round round : rounds) {
+            System.out.println("Item: " + round.getItem());
+            for (Estimation estimation : round.getEstimations()) {
+                System.out.println(estimation.getPlayer().getName() + ": " + estimation.getEstimate());
+            }
+        }
+    }
+
+    public void finalizeEstimates(String agreedEstimate) {
+        // Logic to finalize estimates
+    }
+
+    public String getGameURL() {
+        return gameURL.generateURL();
+    }
+}
+```
+
+// File: Round.java
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class Round {
+    private String item;
+    private List<Estimation> estimations;
+
+    public Round(String item) {
+        this.item = item;
+        this.estimations = new ArrayList<>();
+    }
+
+    public void addItem(String item) {
+        this.item = item;
+    }
+
+    public void addEstimation(String playerName, String estimate) {
+        estimations.add(new Estimation(new Player(playerName), estimate));
+    }
+
+    public String getItem() {
+        return item;
+    }
+
+    public List<Estimation> getEstimations() {
+        return estimations;
+    }
+}
+```
+
+// File: Estimation.java
+```java
+public class Estimation {
+    private Player player;
+    private String estimate;
+
+    public Estimation(Player player, String estimate) {
+        this.player = player;
+        this.estimate = estimate;
+    }
+
+    public String getEstimate() {
+        return estimate;
+    }
+}
+```
+
+// File: Player.java
+```java
+public class Player {
+    private String name;
+
+    public Player(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+```
+
+// File: GameURL.java
+```java
+public class GameURL {
+    private Game game;
+
+    public GameURL(Game game) {
+        this.game = game;
+    }
+
+    public String generateURL() {
+        // Logic to generate a unique URL
+        return "http://example.com/game/" + game.getName();
+    }
+}
+```
+
+// File: Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        Game game = new Game("Planning Poker Game", "A game for estimating items");
+        game.invitePlayer("Alice");
+        game.invitePlayer("Bob");
+        game.invitePlayer("Charlie");
+
+        game.startRound("Feature X");
+        game.getPlayers().get(0).estimate("1");
+        game.getPlayers().get(1).estimate("2");
+        game.getPlayers().get(2).estimate("3");
+
+        game.showEstimates();
+    }
+}
+```

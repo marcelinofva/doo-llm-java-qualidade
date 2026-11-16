@@ -1,0 +1,76 @@
+outputs\P1\qwen\S09\src\Collection.java:3: error: cannot find symbol
+    private List<Item> items;
+            ^
+  symbol:   class List
+  location: class Collection
+outputs\P1\qwen\S09\src\Collection.java:4: error: cannot find symbol
+    private List<Component> components;
+            ^
+  symbol:   class List
+  location: class Collection
+outputs\P1\qwen\S09\src\Collection.java:24: error: cannot find symbol
+    public List<Item> getItems() {
+           ^
+  symbol:   class List
+  location: class Collection
+outputs\P1\qwen\S09\src\Collection.java:28: error: cannot find symbol
+    public List<Component> getComponents() {
+           ^
+  symbol:   class List
+  location: class Collection
+outputs\P1\qwen\S09\src\Item.java:3: error: cannot find symbol
+    private List<Component> components;
+            ^
+  symbol:   class List
+  location: class Item
+outputs\P1\qwen\S09\src\Item.java:18: error: cannot find symbol
+    public List<Component> getComponents() {
+           ^
+  symbol:   class List
+  location: class Item
+outputs\P1\qwen\S09\src\CollectionCurator.java:2: error: cannot find symbol
+    private List<Collection> collections;
+            ^
+  symbol:   class List
+  location: class CollectionCurator
+outputs\P1\qwen\S09\src\Dashboard.java:2: error: cannot find symbol
+    private List<Collection> collections;
+            ^
+  symbol:   class List
+  location: class Dashboard
+outputs\P1\qwen\S09\src\RepositoryManager.java:2: error: cannot find symbol
+    private List<RemoteReplicationPolicy> policies;
+            ^
+  symbol:   class List
+  location: class RepositoryManager
+outputs\P1\qwen\S09\src\Collection.java:8: error: cannot find symbol
+        this.items = new ArrayList<>();
+                         ^
+  symbol:   class ArrayList
+  location: class Collection
+outputs\P1\qwen\S09\src\Collection.java:9: error: cannot find symbol
+        this.components = new ArrayList<>();
+                              ^
+  symbol:   class ArrayList
+  location: class Collection
+outputs\P1\qwen\S09\src\Item.java:7: error: cannot find symbol
+        this.components = new ArrayList<>();
+                              ^
+  symbol:   class ArrayList
+  location: class Item
+outputs\P1\qwen\S09\src\CollectionCurator.java:5: error: cannot find symbol
+        this.collections = new ArrayList<>();
+                               ^
+  symbol:   class ArrayList
+  location: class CollectionCurator
+outputs\P1\qwen\S09\src\Dashboard.java:5: error: cannot find symbol
+        this.collections = new ArrayList<>();
+                               ^
+  symbol:   class ArrayList
+  location: class Dashboard
+outputs\P1\qwen\S09\src\RepositoryManager.java:6: error: cannot find symbol
+        this.policies = new ArrayList<>();
+                            ^
+  symbol:   class ArrayList
+  location: class RepositoryManager
+15 errors

@@ -1,0 +1,174 @@
+<design>
+1) Domain Entities (Classes):
+   - Dataset
+   - User
+   - License
+   - Publication
+   - Project
+   - ResearchInformationManager
+
+2) Single Responsibility of Each Class:
+   - Dataset: Manages dataset properties and relationships.
+   - User: Manages user properties and permissions.
+   - License: Manages license properties and application.
+   - Publication: Manages publication properties and relationships.
+   - Project: Manages project properties and relationships.
+   - ResearchInformationManager: Manages citation counts and dataset tracking.
+
+3) Relationships:
+   - Dataset has a License.
+   - Dataset has a User (owner).
+   - Dataset can have multiple Users (collaborators).
+   - Dataset can be linked to multiple Publications.
+   - Dataset can be linked to a Project.
+   - ResearchInformationManager tracks citation counts for Datasets.
+
+4) Public Methods:
+   - Dataset: addCollaborator(User user), linkPublication(Publication publication), linkProject(Project project)
+   - User: grantPrivileges(Dataset dataset)
+   - License: applyLicense(Dataset dataset)
+   - Publication: updateCitationCount()
+   - Project: updateWorkflow()
+   - ResearchInformationManager: trackCitationCount(Dataset dataset)
+</design>
+
+// File: Dataset.java
+```java
+public class Dataset {
+    private String id;
+    private String title;
+    private User owner;
+    private List<User> collaborators;
+    private License license;
+    private List<Publication> linkedPublications;
+    private Project linkedProject;
+
+    public Dataset(String id, String title, User owner) {
+        this.id = id;
+        this.title = title;
+        this.owner = owner;
+        this.collaborators = new ArrayList<>();
+        this.linkedPublications = new ArrayList<>();
+    }
+
+    public void addCollaborator(User user) {
+        collaborators.add(user);
+    }
+
+    public void linkPublication(Publication publication) {
+        linkedPublications.add(publication);
+    }
+
+    public void linkProject(Project project) {
+        linkedProject = project;
+    }
+
+    public void applyLicense(License license) {
+        this.license = license;
+    }
+}
+```
+
+// File: User.java
+```java
+public class User {
+    private String id;
+    private String name;
+    private List<Dataset> datasets;
+
+    public User(String id, String name) {
+        this.id = id;
+        this.name = name;
+        this.datasets = new ArrayList<>();
+    }
+
+    public void grantPrivileges(Dataset dataset) {
+        dataset.addCollaborator(this);
+    }
+}
+```
+
+// File: License.java
+```java
+public class License {
+    private String type;
+    private String details;
+
+    public License(String type, String details) {
+        this.type = type;
+        this.details = details;
+    }
+
+    public void applyLicense(Dataset dataset) {
+        dataset.applyLicense(this);
+    }
+}
+```
+
+// File: Publication.java
+```java
+public class Publication {
+    private String id;
+    private String title;
+    private int citationCount;
+
+    public Publication(String id, String title) {
+        this.id = id;
+        this.title = title;
+        this.citationCount = 0;
+    }
+
+    public void updateCitationCount() {
+        citationCount++;
+    }
+}
+```
+
+// File: Project.java
+```java
+public class Project {
+    private String id;
+    private String title;
+    private List<Dataset> datasets;
+
+    public Project(String id, String title) {
+        this.id = id;
+        this.title = title;
+        this.datasets = new ArrayList<>();
+    }
+
+    public void updateWorkflow() {
+        // Update project workflow
+    }
+}
+```
+
+// File: ResearchInformationManager.java
+```java
+public class ResearchInformationManager {
+    public void trackCitationCount(Dataset dataset) {
+        // Track citation count for the dataset
+    }
+}
+```
+
+// File: Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        User depositor = new User("1", "John Doe");
+        Dataset dataset = new Dataset("D1", "Sample Dataset", depositor);
+        License license = new License("CC BY 4.0", "Creative Commons Attribution 4.0 International License");
+        Publication publication = new Publication("P1", "Sample Publication");
+        Project project = new Project("P1", "Sample Project");
+        ResearchInformationManager manager = new ResearchInformationManager();
+
+        depositor.grantPrivileges(dataset);
+        dataset.applyLicense(license);
+        dataset.linkPublication(publication);
+        dataset.linkProject(project);
+        publication.updateCitationCount();
+        manager.trackCitationCount(dataset);
+    }
+}
+```

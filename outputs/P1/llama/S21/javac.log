@@ -1,0 +1,66 @@
+outputs\P1\llama\S21\src\Collection.java:6: error: cannot find symbol
+    private List<Document> documents;
+            ^
+  symbol:   class List
+  location: class Collection
+outputs\P1\llama\S21\src\Collection.java:7: error: cannot find symbol
+    private Comparator<Document> sortingComparator;
+            ^
+  symbol:   class Comparator
+  location: class Collection
+outputs\P1\llama\S21\src\Collection.java:23: error: cannot find symbol
+    public void sortDocuments(Comparator<Document> comparator) {
+                              ^
+  symbol:   class Comparator
+  location: class Collection
+outputs\P1\llama\S21\src\Collection.java:28: error: cannot find symbol
+    public List<Document> getDocuments() {
+           ^
+  symbol:   class List
+  location: class Collection
+outputs\P1\llama\S21\src\Role.java:4: error: cannot find symbol
+    private List<User> users;
+            ^
+  symbol:   class List
+  location: class Role
+outputs\P1\llama\S21\src\Role.java:5: error: cannot find symbol
+    private List<String> permissions;
+            ^
+  symbol:   class List
+  location: class Role
+outputs\P1\llama\S21\src\Role.java:16: error: cannot find symbol
+    public List<String> getPermissions() {
+           ^
+  symbol:   class List
+  location: class Role
+outputs\P1\llama\S21\src\Role.java:24: error: cannot find symbol
+    public List<User> getUsers() {
+           ^
+  symbol:   class List
+  location: class Role
+outputs\P1\llama\S21\src\Collection.java:12: error: cannot find symbol
+        this.documents = new ArrayList<>();
+                             ^
+  symbol:   class ArrayList
+  location: class Collection
+outputs\P1\llama\S21\src\Collection.java:25: error: cannot find symbol
+        Collections.sort(documents, comparator);
+        ^
+  symbol:   variable Collections
+  location: class Collection
+outputs\P1\llama\S21\src\Repository.java:27: error: cannot find symbol
+        collection.setName(newName);
+                  ^
+  symbol:   method setName(String)
+  location: variable collection of type Collection
+outputs\P1\llama\S21\src\Role.java:8: error: cannot find symbol
+        users = new ArrayList<>();
+                    ^
+  symbol:   class ArrayList
+  location: class Role
+outputs\P1\llama\S21\src\Role.java:9: error: cannot find symbol
+        permissions = new ArrayList<>();
+                          ^
+  symbol:   class ArrayList
+  location: class Role
+13 errors

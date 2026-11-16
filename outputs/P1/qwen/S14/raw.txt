@@ -1,0 +1,209 @@
+<design>
+1) Domain Entities (Classes):
+   - NewsItem
+   - NewsFeed
+   - User
+   - Editor
+   - Subscriber
+
+2) Single Responsibility:
+   - NewsItem: Manages the properties and behaviors of a news item.
+   - NewsFeed: Manages the collection of news items and provides methods to access and manipulate them.
+   - User: Manages user-specific data and actions.
+   - Editor: Manages the editing and management of news items.
+   - Subscriber: Manages user subscriptions to news feeds.
+
+3) Relationships:
+   - NewsItem has a relationship with NewsFeed (composition).
+   - User has a relationship with Subscriber (composition).
+   - Editor has a relationship with NewsItem (composition).
+   - Subscriber has a relationship with NewsFeed (association).
+
+4) Public Methods:
+   - NewsItem: getTitle(), getContent(), setPriority(), setPublishDates(), sendEmailToEditor()
+   - NewsFeed: addNewsItem(), removeNewsItem(), getNewsItems(), getNewsItemsByDateRange()
+   - User: subscribeToFeed(), unsubscribeFromFeed()
+   - Editor: addNewsItem(), removeNewsItem(), updateNewsItem()
+   - Subscriber: getSubscribedFeeds(), receiveNewsItems()
+</design>
+
+// File: NewsItem.java
+```java
+public class NewsItem {
+    private String title;
+    private String content;
+    private int priority;
+    private Date startPublishDate;
+    private Date oldNewsDate;
+    private Date stopPublishDate;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
+    public Date getStartPublishDate() {
+        return startPublishDate;
+    }
+
+    public void setStartPublishDate(Date startPublishDate) {
+        this.startPublishDate = startPublishDate;
+    }
+
+    public Date getOldNewsDate() {
+        return oldNewsDate;
+    }
+
+    public void setOldNewsDate(Date oldNewsDate) {
+        this.oldNewsDate = oldNewsDate;
+    }
+
+    public Date getStopPublishDate() {
+        return stopPublishDate;
+    }
+
+    public void setStopPublishDate(Date stopPublishDate) {
+        this.stopPublishDate = stopPublishDate;
+    }
+
+    public void sendEmailToEditor() {
+        // Implementation to send email to editor
+    }
+}
+```
+
+// File: NewsFeed.java
+```java
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class NewsFeed {
+    private List<NewsItem> newsItems;
+
+    public NewsFeed() {
+        this.newsItems = new ArrayList<>();
+    }
+
+    public void addNewsItem(NewsItem newsItem) {
+        newsItems.add(newsItem);
+    }
+
+    public void removeNewsItem(NewsItem newsItem) {
+        newsItems.remove(newsItem);
+    }
+
+    public List<NewsItem> getNewsItems() {
+        return newsItems;
+    }
+
+    public List<NewsItem> getNewsItemsByDateRange(Date startDate, Date endDate) {
+        List<NewsItem> filteredNewsItems = new ArrayList<>();
+        for (NewsItem newsItem : newsItems) {
+            if (newsItem.getStartPublishDate().after(startDate) && newsItem.getStopPublishDate().before(endDate)) {
+                filteredNewsItems.add(newsItem);
+            }
+        }
+        return filteredNewsItems;
+    }
+}
+```
+
+// File: User.java
+```java
+import java.util.List;
+
+public class User {
+    private List<NewsFeed> subscribedFeeds;
+
+    public User() {
+        this.subscribedFeeds = new ArrayList<>();
+    }
+
+    public void subscribeToFeed(NewsFeed feed) {
+        subscribedFeeds.add(feed);
+    }
+
+    public void unsubscribeFromFeed(NewsFeed feed) {
+        subscribedFeeds.remove(feed);
+    }
+
+    public List<NewsFeed> getSubscribedFeeds() {
+        return subscribedFeeds;
+    }
+}
+```
+
+// File: Editor.java
+```java
+public class Editor {
+    public void addNewsItem(NewsItem newsItem) {
+        // Implementation to add news item
+    }
+
+    public void removeNewsItem(NewsItem newsItem) {
+        // Implementation to remove news item
+    }
+
+    public void updateNewsItem(NewsItem newsItem) {
+        // Implementation to update news item
+    }
+}
+```
+
+// File: Subscriber.java
+```java
+public class Subscriber {
+    public void receiveNewsItems() {
+        // Implementation to receive news items
+    }
+}
+```
+
+// File: Main.java
+```java
+import java.util.Date;
+
+public class Main {
+    public static void main(String[] args) {
+        NewsItem newsItem = new NewsItem();
+        newsItem.setTitle("New Scrum Alliance News");
+        newsItem.setContent("Latest updates on Scrum Alliance...");
+        newsItem.setPriority(1);
+        newsItem.setStartPublishDate(new Date());
+        newsItem.setStopPublishDate(new Date(System.currentTimeMillis() + 86400000)); // 1 day from now
+        newsItem.sendEmailToEditor();
+
+        NewsFeed newsFeed = new NewsFeed();
+        newsFeed.addNewsItem(newsItem);
+
+        User user = new User();
+        user.subscribeToFeed(newsFeed);
+
+        Editor editor = new Editor();
+        editor.addNewsItem(newsItem);
+
+        Subscriber subscriber = new Subscriber();
+        subscriber.receiveNewsItems();
+    }
+}
+```

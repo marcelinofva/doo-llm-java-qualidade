@@ -1,0 +1,160 @@
+<design>
+1) Domain Entities (Classes):
+   - Member
+   - Practitioner
+   - Trainer
+   - Class
+   - SearchCriteria
+
+2) Single Responsibility of Each Class:
+   - Member: Manages basic member details and privacy settings.
+   - Practitioner: Extends Member, adds additional details for practitioners.
+   - Trainer: Extends Member, adds additional details for trainers and upcoming classes.
+   - Class: Represents a training class with details and a link to a detailed page.
+   - SearchCriteria: Holds search criteria for member profiles.
+
+3) Relationships:
+   - Member is the superclass for Practitioner and Trainer.
+   - Trainer has a list of Class objects.
+   - SearchCriteria is used by the system to filter Member profiles.
+
+4) Public Methods:
+   - Member: getName(), getEmail(), setPrivate(), setEmailPrivate()
+   - Practitioner: getDetails(), setDetails()
+   - Trainer: getDetails(), setDetails(), getUpcomingClasses(), addClass()
+   - Class: getTitle(), getLink()
+   - SearchCriteria: setCriteria(), getCriteria()
+</design>
+
+// File: Member.java
+```java
+public class Member {
+    private String name;
+    private String email;
+    private boolean isPrivate;
+    private boolean isEmailPrivate;
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setPrivate(boolean isPrivate) {
+        this.isPrivate = isPrivate;
+    }
+
+    public void setEmailPrivate(boolean isEmailPrivate) {
+        this.isEmailPrivate = isEmailPrivate;
+    }
+}
+```
+
+// File: Practitioner.java
+```java
+public class Practitioner extends Member {
+    private String details;
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+}
+```
+
+// File: Trainer.java
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class Trainer extends Member {
+    private List<Class> upcomingClasses = new ArrayList<>();
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public List<Class> getUpcomingClasses() {
+        return upcomingClasses;
+    }
+
+    public void addClass(Class clazz) {
+        upcomingClasses.add(clazz);
+    }
+}
+```
+
+// File: Class.java
+```java
+public class Class {
+    private String title;
+    private String link;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getLink() {
+        return link;
+    }
+}
+```
+
+// File: SearchCriteria.java
+```java
+public class SearchCriteria {
+    private String name;
+    private String email;
+    private String details;
+
+    public void setCriteria(String name, String email, String details) {
+        this.name = name;
+        this.email = email;
+        this.details = details;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+}
+```
+
+// File: Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        Trainer trainer = new Trainer();
+        trainer.setName("John Doe");
+        trainer.setEmail("john.doe@example.com");
+        trainer.setDetails("Certified Scrum Trainer");
+        trainer.setEmailPrivate(true);
+
+        Class class1 = new Class();
+        class1.setTitle("Scrum Master Fundamentals");
+        class1.setLink("https://example.com/scrum-master-fundamentals");
+
+        trainer.addClass(class1);
+
+        System.out.println("Trainer Name: " + trainer.getName());
+        System.out.println("Trainer Details: " + trainer.getDetails());
+        System.out.println("Upcoming Class: " + trainer.getUpcomingClasses().get(0).getTitle());
+    }
+}
+```

@@ -1,0 +1,27 @@
+1. Domain entities:
+    - User
+    - RecyclingFacility
+    - DonationCenter
+    - Event
+    - Admin
+
+  2. Single responsibility of each class:
+    - User: manage user profile, favorites, and notifications
+    - RecyclingFacility: store and manage recycling facility information
+    - DonationCenter: store and manage donation center information
+    - Event: store and manage event information
+    - Admin: manage recycling facility and donation center information
+
+  3. Relationships:
+    - User has many RecyclingFacility (favorites)
+    - User has many DonationCenter (favorites)
+    - RecyclingFacility has many Event (associated events)
+    - Admin has many RecyclingFacility (managed facilities)
+    - Admin has many DonationCenter (managed centers)
+
+  4. Public methods of each class:
+    - User: addFavorite(RecyclingFacility), addFavorite(DonationCenter), getFavorites(), subscribeToNotifications()
+    - RecyclingFacility: getHours(), getAcceptedWasteTypes(), getOpeningHours()
+    - DonationCenter: getDonationTypes(), getOpeningHours()
+    - Event: getEventDetails(), getEventLocation()
+    - Admin: addFacility(RecyclingFacility), removeFacility(RecyclingFacility), addCenter(DonationCenter), removeCenter(DonationCenter)

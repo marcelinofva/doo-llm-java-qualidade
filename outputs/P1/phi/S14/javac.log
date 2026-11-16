@@ -1,0 +1,61 @@
+outputs\P1\phi\S14\src\NewsItem.java:5: error: cannot find symbol
+    private Date startPublishingDate;
+            ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\phi\S14\src\NewsItem.java:6: error: cannot find symbol
+    private Date oldNewsDate;
+            ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\phi\S14\src\NewsItem.java:7: error: cannot find symbol
+    private Date stopPublishingDate;
+            ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\phi\S14\src\NewsItem.java:10: error: cannot find symbol
+    public NewsItem(String title, String content, Date startPublishingDate, Date oldNewsDate, Date stopPublishingDate, int priority) {
+                                                  ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\phi\S14\src\NewsItem.java:10: error: cannot find symbol
+    public NewsItem(String title, String content, Date startPublishingDate, Date oldNewsDate, Date stopPublishingDate, int priority) {
+                                                                            ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\phi\S14\src\NewsItem.java:10: error: cannot find symbol
+    public NewsItem(String title, String content, Date startPublishingDate, Date oldNewsDate, Date stopPublishingDate, int priority) {
+                                                                                              ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\phi\S14\src\NewsItem.java:35: error: cannot find symbol
+    public Date getStartPublishingDate() {
+           ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\phi\S14\src\NewsItem.java:39: error: cannot find symbol
+    public void setStartPublishingDate(Date startPublishingDate) {
+                                       ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\phi\S14\src\NewsItem.java:43: error: cannot find symbol
+    public Date getOldNewsDate() {
+           ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\phi\S14\src\NewsItem.java:47: error: cannot find symbol
+    public void setOldNewsDate(Date oldNewsDate) {
+                               ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\phi\S14\src\NewsItem.java:51: error: cannot find symbol
+    public Date getStopPublishingDate() {
+           ^
+  symbol:   class Date
+  location: class NewsItem
+outputs\P1\phi\S14\src\NewsItem.java:55: error: cannot find symbol
+    public void setStopPublishingDate(Date stopPublishingDate) {
+                                      ^
+  symbol:   class Date
+  location: class NewsItem
+12 errors

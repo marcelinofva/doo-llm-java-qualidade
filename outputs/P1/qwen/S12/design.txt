@@ -1,0 +1,34 @@
+1) Domain Entities (Classes):
+   - Course
+   - Event
+   - ListingFee
+   - User
+   - Admin
+   - Trainer
+   - SiteEditor
+
+2) Single Responsibility:
+   - Course: Manages course details
+   - Event: Manages event details
+   - ListingFee: Manages listing fees
+   - User: Manages user details
+   - Admin: Manages administrative tasks
+   - Trainer: Manages trainer-specific tasks
+   - SiteEditor: Manages site editor-specific tasks
+
+3) Relationships:
+   - Course and Event: Both extend CourseEvent
+   - ListingFee: Managed by Admin
+   - User: Trainer, Admin, SiteEditor
+   - Admin: Manages Trainer and SiteEditor
+   - Trainer: Manages Course and Event
+   - SiteEditor: Manages Course and Event
+
+4) Public Methods:
+   - Course: createCourse(), updateCourse(), deleteCourse()
+   - Event: createEvent(), updateEvent(), deleteEvent(), turnIntoCourse()
+   - ListingFee: setFee()
+   - User: login(), logout()
+   - Admin: createListingFee(), updateListingFee(), deleteUser()
+   - Trainer: createCourse(), updateCourse(), deleteCourse(), turnIntoEvent()
+   - SiteEditor: updateCourse(), updateEvent()

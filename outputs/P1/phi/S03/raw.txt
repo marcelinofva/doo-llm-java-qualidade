@@ -1,0 +1,186 @@
+```java
+// File: User.java
+public class User {
+    private String name;
+    private String email;
+    private String zipCode;
+    private List<Favorite> favorites;
+    private List<Event> favoriteEvents;
+
+    public User(String name, String email, String zipCode) {
+        this.name = name;
+        this.email = email;
+        this.zipCode = zipCode;
+        this.favorites = new ArrayList<>();
+        this.favoriteEvents = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public List<Favorite> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<Favorite> favorites) {
+        this.favorites = favorites;
+    }
+
+    public List<Event> getFavoriteEvents() {
+        return favoriteEvents;
+    }
+
+    public void setFavoriteEvents(List<Event> favoriteEvents) {
+        this.favoriteEvents = favoriteEvents;
+    }
+
+    public void addFavorite(Favorite favorite) {
+        favorites.add(favorite);
+    }
+
+    public void removeFavorite(Favorite favorite) {
+        favorites.remove(favorite);
+    }
+
+    public void addFavoriteEvent(Event event) {
+        favoriteEvents.add(event);
+    }
+
+    public void removeFavoriteEvent(Event event) {
+        favoriteEvents.remove(event);
+    }
+}
+
+// File: Favorite.java
+public class Favorite {
+    private String facilityName;
+
+    public Favorite(String facilityName) {
+        this.facilityName = facilityName;
+    }
+
+    public String getFacilityName() {
+        return facilityName;
+    }
+
+    public void setFacilityName(String facilityName) {
+        this.facilityName = facilityName;
+    }
+}
+
+// File: Event.java
+public class Event {
+    private String eventName;
+    private LocalDateTime eventDateTime;
+
+    public Event(String eventName, LocalDateTime eventDateTime) {
+        this.eventName = eventName;
+        this.eventDateTime = eventDateTime;
+    }
+
+    public String getEventName() {
+        return eventName;
+    }
+
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
+    }
+
+    public LocalDateTime getEventDateTime() {
+        return eventDateTime;
+    }
+
+    public void setEventDateTime(LocalDateTime eventDateTime) {
+        this.eventDateTime = eventDateTime;
+    }
+}
+
+// File: RecyclingFacility.java
+public class RecyclingFacility {
+    private String facilityName;
+    private String typeOfWaste;
+    private String address;
+    private String openingHours;
+
+    public RecyclingFacility(String facilityName, String typeOfWaste, String address, String openingHours) {
+        this.facilityName = facilityName;
+        this.typeOfWaste = typeOfWaste;
+        this.address = address;
+        this.openingHours = openingHours;
+    }
+
+    public String getFacilityName() {
+        return facilityName;
+    }
+
+    public void setFacilityName(String facilityName) {
+        this.facilityName = facilityName;
+    }
+
+    public String getTypeOfWaste() {
+        return typeOfWaste;
+    }
+
+    public void setTypeOfWaste(String typeOfWaste) {
+        this.typeOfWaste = typeOfWaste;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getOpeningHours() {
+        return openingHours;
+    }
+
+    public void setOpeningHours(String openingHours) {
+        this.openingHours = openingHours;
+    }
+}
+
+// File: Main.java
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        User user = new User("John Doe", "john.doe@example.com", "12345");
+
+        RecyclingFacility plasticFacility = new RecyclingFacility("Plastic Recycling Center", "Plastics", "123 Main St", "9 AM - 5 PM");
+        user.addFavorite(new Favorite(plasticFacility.getFacilityName()));
+
+        Event event = new Event("Recycling Drive", LocalDateTime.now());
+        user.addFavoriteEvent(event);
+
+        System.out.println("User: " + user.getName());
+        System.out.println("Favorite Facility: " + user.getFavorites().get(0).getFacilityName());
+        System.out.println("Event: " + user.getFavoriteEvents().get(0).getEventName());
+    }
+}
+```

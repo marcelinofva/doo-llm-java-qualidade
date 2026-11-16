@@ -1,0 +1,76 @@
+outputs\P1\llama\S19\src\Applicant.java:4: error: cannot find symbol
+    private List<Plan> plans;
+            ^
+  symbol:   class List
+  location: class Applicant
+outputs\P1\llama\S19\src\Plan.java:4: error: cannot find symbol
+    private List<CodeModification> codeModifications;
+            ^
+  symbol:   class List
+  location: class Plan
+outputs\P1\llama\S19\src\Bond.java:4: error: cannot find symbol
+    private Project project;
+            ^
+  symbol:   class Project
+  location: class Bond
+outputs\P1\llama\S19\src\Bond.java:6: error: cannot find symbol
+    public Bond(Project project) {
+                ^
+  symbol:   class Project
+  location: class Bond
+outputs\P1\llama\S19\src\Inspector.java:4: error: cannot find symbol
+    private List<Inspection> inspections;
+            ^
+  symbol:   class List
+  location: class Inspector
+outputs\P1\llama\S19\src\PlanReviewStaff.java:4: error: cannot find symbol
+    private List<Plan> plans;
+            ^
+  symbol:   class List
+  location: class PlanReviewStaff
+outputs\P1\llama\S19\src\PlanReviewStaffMember.java:5: error: cannot find symbol
+    private List<Plan> plans;
+            ^
+  symbol:   class List
+  location: class PlanReviewStaffMember
+outputs\P1\llama\S19\src\PlanReviewStaffSupervisor.java:4: error: cannot find symbol
+    private List<PlanReviewStaffMember> staffMembers;
+            ^
+  symbol:   class List
+  location: class PlanReviewStaffSupervisor
+outputs\P1\llama\S19\src\Applicant.java:7: error: cannot find symbol
+        this.plans = new ArrayList<>();
+                         ^
+  symbol:   class ArrayList
+  location: class Applicant
+outputs\P1\llama\S19\src\Plan.java:7: error: cannot find symbol
+        this.codeModifications = new ArrayList<>();
+                                     ^
+  symbol:   class ArrayList
+  location: class Plan
+outputs\P1\llama\S19\src\Inspector.java:7: error: cannot find symbol
+        this.inspections = new ArrayList<>();
+                               ^
+  symbol:   class ArrayList
+  location: class Inspector
+outputs\P1\llama\S19\src\Main.java:11: error: cannot find symbol
+        Bond bond = new Bond(new Project());
+                                 ^
+  symbol:   class Project
+  location: class Main
+outputs\P1\llama\S19\src\PlanReviewStaff.java:7: error: cannot find symbol
+        this.plans = new ArrayList<>();
+                         ^
+  symbol:   class ArrayList
+  location: class PlanReviewStaff
+outputs\P1\llama\S19\src\PlanReviewStaffMember.java:9: error: cannot find symbol
+        this.plans = new ArrayList<>();
+                         ^
+  symbol:   class ArrayList
+  location: class PlanReviewStaffMember
+outputs\P1\llama\S19\src\PlanReviewStaffSupervisor.java:7: error: cannot find symbol
+        this.staffMembers = new ArrayList<>();
+                                ^
+  symbol:   class ArrayList
+  location: class PlanReviewStaffSupervisor
+15 errors

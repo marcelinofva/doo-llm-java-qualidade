@@ -1,0 +1,35 @@
+1) Domain Entities (Classes):
+   - Agent
+   - Subject
+   - Source
+   - Accession
+   - Resource
+   - ResourceComponent
+
+2) Single Responsibility of Each Class:
+   - Agent: Manages agent information and relationships.
+   - Subject: Manages subject information and relationships.
+   - Source: Manages source information and relationships.
+   - Accession: Manages accession information and relationships.
+   - Resource: Manages resource information and relationships.
+   - ResourceComponent: Manages resource component information and relationships.
+
+3) Relationships:
+   - Agent can have multiple Subjects.
+   - Agent can have multiple Sources.
+   - Agent can be associated with multiple Accessions.
+   - Agent can be associated with multiple Resources.
+   - Agent can be associated with multiple Resource Components.
+   - Subject can be associated with multiple Agents.
+   - Source can be associated with multiple Agents.
+   - Accession can be associated with multiple Agents.
+   - Resource can be associated with multiple Agents.
+   - Resource Component can be associated with multiple Agents.
+
+4) Public Methods:
+   - Agent: addSubject, addSource, addAccession, addResource, addResourceComponent
+   - Subject: addAgent
+   - Source: addAgent
+   - Accession: addAgent
+   - Resource: addAgent
+   - ResourceComponent: addAgent

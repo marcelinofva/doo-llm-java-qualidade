@@ -1,0 +1,37 @@
+1. Domain entities:
+    - Camper
+    - Parent
+    - Group
+    - Activity
+    - Attendance
+    - Staff
+    - CampAdministrator
+    - CampCounselor
+
+  2. Single responsibility of each class:
+    - Camper: represents a camper with attributes and methods for enrollment and attendance
+    - Parent: represents a parent with attributes and methods for enrolling children
+    - Group: represents a group of campers with methods for adding campers and scheduling activities
+    - Activity: represents a scheduled activity with attributes and methods for tracking progress
+    - Attendance: represents attendance records with methods for logging and viewing attendance
+    - Staff: represents staff members with attributes and methods for assigning positions
+    - CampAdministrator: represents the camp administrator with methods for managing campers, groups, and staff
+    - CampCounselor: represents a camp counselor with methods for taking attendance and tracking progress
+
+  3. Relationships:
+    - Camper belongs to one Group (composition)
+    - Group contains multiple Campers (association)
+    - Parent has multiple Children (association)
+    - Staff has one Position (composition)
+    - CampAdministrator manages multiple Groups (association)
+    - CampCounselor is assigned to one Group (association)
+
+  4. Public methods of each class:
+    - Camper: enroll(), attend()
+    - Parent: enrollChild()
+    - Group: addCamper(), scheduleActivity()
+    - Activity: trackProgress()
+    - Attendance: logAttendance(), viewAttendance()
+    - Staff: assignPosition()
+    - CampAdministrator: manageGroup(), assignStaff()
+    - CampCounselor: takeAttendance()

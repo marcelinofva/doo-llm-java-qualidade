@@ -1,0 +1,261 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities (classes):
+    * `ETD`: Electronic Thesis Document
+    * `Embargo`: represents an embargo on an ETD
+    * `Permission`: represents permissions for an ETD
+    * `DescriptiveRecord`: represents the descriptive metadata for an ETD
+    * `Repository`: represents the repository where ETDs are stored
+    * `BatchIngest`: represents the batch ingest process
+    * `AuthorAuthorityControl`: represents the author authority control process
+    * `OAI-PMH`: represents the OAI-PMH interface
+
+  2. Single responsibility of each class:
+    * `ETD`: represents an ETD with its metadata and files
+    * `Embargo`: represents an embargo on an ETD with its start and end dates
+    * `Permission`: represents permissions for an ETD with its allowed actions
+    * `DescriptiveRecord`: represents the descriptive metadata for an ETD
+    * `Repository`: manages the storage and retrieval of ETDs
+    * `BatchIngest`: performs the batch ingest process for ETDs
+    * `AuthorAuthorityControl`: performs author authority control on ETDs
+    * `OAI-PMH`: exposes the repository contents via OAI-PMH
+
+  3. Relationships (association, composition, inheritance):
+    * `ETD` has-a `Embargo` (composition)
+    * `ETD` has-a `Permission` (composition)
+    * `ETD` has-a `DescriptiveRecord` (composition)
+    * `Repository` contains-a `ETD` (association)
+    * `BatchIngest` uses-a `Repository` (association)
+    * `AuthorAuthorityControl` uses-a `Repository` (association)
+    * `OAI-PMH` uses-a `Repository` (association)
+
+  4. Public methods of each class:
+    * `ETD`: `getMetadata()`, `getFile()`, `setEmbargo()`, `setPermission()`
+    * `Embargo`: `getStartDate()`, `getEndDate()`
+    * `Permission`: `getAllowedActions()`
+    * `DescriptiveRecord`: `getMetadata()`
+    * `Repository`: `addETD()`, `getETD()`, `removeETD()`
+    * `BatchIngest`: `performIngest()`
+    * `AuthorAuthorityControl`: `performControl()`
+    * `OAI-PMH`: `getETDs()`
+</design>
+```
+
+**Phase 2 - CODE**
+
+### ETD.java
+```java
+// File: ETD.java
+
+public class ETD {
+    private String metadata;
+    private File file;
+    private Embargo embargo;
+    private Permission permission;
+    private DescriptiveRecord descriptiveRecord;
+
+    public ETD(String metadata, File file) {
+        this.metadata = metadata;
+        this.file = file;
+    }
+
+    public String getMetadata() {
+        return metadata;
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setEmbargo(Embargo embargo) {
+        this.embargo = embargo;
+    }
+
+    public Embargo getEmbargo() {
+        return embargo;
+    }
+
+    public void setPermission(Permission permission) {
+        this.permission = permission;
+    }
+
+    public Permission getPermission() {
+        return permission;
+    }
+
+    public DescriptiveRecord getDescriptiveRecord() {
+        return descriptiveRecord;
+    }
+
+    public void setDescriptiveRecord(DescriptiveRecord descriptiveRecord) {
+        this.descriptiveRecord = descriptiveRecord;
+    }
+}
+```
+
+### Embargo.java
+```java
+// File: Embargo.java
+
+public class Embargo {
+    private Date startDate;
+    private Date endDate;
+
+    public Embargo(Date startDate, Date endDate) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+}
+```
+
+### Permission.java
+```java
+// File: Permission.java
+
+public class Permission {
+    private String[] allowedActions;
+
+    public Permission(String[] allowedActions) {
+        this.allowedActions = allowedActions;
+    }
+
+    public String[] getAllowedActions() {
+        return allowedActions;
+    }
+}
+```
+
+### DescriptiveRecord.java
+```java
+// File: DescriptiveRecord.java
+
+public class DescriptiveRecord {
+    private String metadata;
+
+    public DescriptiveRecord(String metadata) {
+        this.metadata = metadata;
+    }
+
+    public String getMetadata() {
+        return metadata;
+    }
+}
+```
+
+### Repository.java
+```java
+// File: Repository.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Repository {
+    private List<ETD> etds;
+
+    public Repository() {
+        etds = new ArrayList<>();
+    }
+
+    public void addETD(ETD etd) {
+        etds.add(etd);
+    }
+
+    public ETD getETD(int index) {
+        return etds.get(index);
+    }
+
+    public void removeETD(ETD etd) {
+        etds.remove(etd);
+    }
+}
+```
+
+### BatchIngest.java
+```java
+// File: BatchIngest.java
+
+public class BatchIngest {
+    private Repository repository;
+
+    public BatchIngest(Repository repository) {
+        this.repository = repository;
+    }
+
+    public void performIngest(List<ETD> etds) {
+        for (ETD etd : etds) {
+            repository.addETD(etd);
+        }
+    }
+}
+```
+
+### AuthorAuthorityControl.java
+```java
+// File: AuthorAuthorityControl.java
+
+public class AuthorAuthorityControl {
+    private Repository repository;
+
+    public AuthorAuthorityControl(Repository repository) {
+        this.repository = repository;
+    }
+
+    public void performControl(List<ETD> etds) {
+        for (ETD etd : etds) {
+            // perform author authority control on etd
+        }
+    }
+}
+```
+
+### OAI-PMH.java
+```java
+// File: OAI-PMH.java
+
+public class OAI-PMH {
+    private Repository repository;
+
+    public OAI-PMH(Repository repository) {
+        this.repository = repository;
+    }
+
+    public List<ETD> getETDs() {
+        return repository.getETDs();
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        Repository repository = new Repository();
+        ETD etd = new ETD("metadata", new File("file.txt"));
+        repository.addETD(etd);
+
+        BatchIngest batchIngest = new BatchIngest(repository);
+        batchIngest.performIngest(List.of(etd));
+
+        AuthorAuthorityControl authorAuthorityControl = new AuthorAuthorityControl(repository);
+        authorAuthorityControl.performControl(List.of(etd));
+
+        OAI-PMH oaiPMH = new OAI-PMH(repository);
+        List<ETD> etds = oaiPMH.getETDs();
+        for (ETD etd1 : etds) {
+            System.out.println(etd1.getMetadata());
+        }
+    }
+}
+```

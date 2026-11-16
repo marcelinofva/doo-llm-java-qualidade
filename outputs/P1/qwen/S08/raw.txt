@@ -1,0 +1,203 @@
+<design>
+1) Domain Entities:
+   - Collection
+   - DepositGroup
+   - User
+   - Permission
+   - SubmissionWindow
+
+2) Single Responsibility:
+   - Collection: Manages deposit groups and permissions for the collection.
+   - DepositGroup: Manages users and permissions within a group.
+   - User: Represents a user with a NetID.
+   - Permission: Represents a permission with a type (e.g., submit, view).
+   - SubmissionWindow: Manages the start and end dates for a submission window.
+
+3) Relationships:
+   - Collection has many DepositGroups.
+   - DepositGroup has many Users and Permissions.
+   - User has many Permissions.
+   - Permission is associated with a Collection and a DepositGroup.
+
+4) Public Methods:
+   - Collection: addGroup, removeGroup, setDefaultPermission, restrictAccessToDukeIPs, restrictSubmittersFromModifyingItems, changePermissions, viewPermissions.
+   - DepositGroup: addUser, removeUser, setPermission.
+   - User: None.
+   - Permission: None.
+   - SubmissionWindow: setStartDate, setEndDate.
+</design>
+
+// File: Collection.java
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class Collection {
+    private String name;
+    private List<DepositGroup> depositGroups;
+    private Permission defaultPermission;
+    private boolean restrictAccessToDukeIPs;
+    private boolean restrictSubmittersFromModifyingItems;
+    private SubmissionWindow submissionWindow;
+
+    public Collection(String name) {
+        this.name = name;
+        this.depositGroups = new ArrayList<>();
+        this.defaultPermission = new Permission("view");
+        this.restrictAccessToDukeIPs = false;
+        this.restrictSubmittersFromModifyingItems = false;
+        this.submissionWindow = new SubmissionWindow();
+    }
+
+    public void addGroup(DepositGroup group) {
+        depositGroups.add(group);
+    }
+
+    public void removeGroup(DepositGroup group) {
+        depositGroups.remove(group);
+    }
+
+    public void setDefaultPermission(Permission permission) {
+        this.defaultPermission = permission;
+    }
+
+    public void restrictAccessToDukeIPs(boolean restrict) {
+        this.restrictAccessToDukeIPs = restrict;
+    }
+
+    public void restrictSubmittersFromModifyingItems(boolean restrict) {
+        this.restrictSubmittersFromModifyingItems = restrict;
+    }
+
+    public void changePermissions(DepositGroup group, Permission permission) {
+        group.setPermission(permission);
+    }
+
+    public void viewPermissions(DepositGroup group) {
+        System.out.println("Permissions for group " + group.getName() + ": " + group.getPermission());
+    }
+
+    public void setSubmissionWindow(SubmissionWindow window) {
+        this.submissionWindow = window;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+```
+
+// File: DepositGroup.java
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class DepositGroup {
+    private String name;
+    private List<User> users;
+    private Permission permission;
+
+    public DepositGroup(String name) {
+        this.name = name;
+        this.users = new ArrayList<>();
+        this.permission = new Permission("view");
+    }
+
+    public void addUser(User user) {
+        users.add(user);
+    }
+
+    public void removeUser(User user) {
+        users.remove(user);
+    }
+
+    public void setPermission(Permission permission) {
+        this.permission = permission;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Permission getPermission() {
+        return permission;
+    }
+}
+```
+
+// File: User.java
+```java
+public class User {
+    private String netID;
+
+    public User(String netID) {
+        this.netID = netID;
+    }
+
+    public String getNetID() {
+        return netID;
+    }
+}
+```
+
+// File: Permission.java
+```java
+public class Permission {
+    private String type;
+
+    public Permission(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+}
+```
+
+// File: SubmissionWindow.java
+```java
+import java.time.LocalDate;
+
+public class SubmissionWindow {
+    private LocalDate startDate;
+    private LocalDate endDate;
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+}
+```
+
+// File: Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        Collection collection = new Collection("History Collection");
+        DepositGroup group = new DepositGroup("Faculty Group");
+        User user1 = new User("netid1");
+        User user2 = new User("netid2");
+
+        group.addUser(user1);
+        group.addUser(user2);
+
+        collection.addGroup(group);
+        collection.setDefaultPermission(new Permission("submit"));
+        collection.setSubmissionWindow(new SubmissionWindow());
+
+        collection.viewPermissions(group);
+    }
+}
+```

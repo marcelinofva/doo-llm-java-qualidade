@@ -1,0 +1,56 @@
+outputs\P1\qwen\S03\src\Event.java:4: error: cannot find symbol
+    private List<Facility> associatedFacilities;
+            ^
+  symbol:   class List
+  location: class Event
+outputs\P1\qwen\S03\src\Event.java:17: error: cannot find symbol
+    public List<Facility> getAssociatedFacilities() {
+           ^
+  symbol:   class List
+  location: class Event
+outputs\P1\qwen\S03\src\RecyclingFacility.java:2: error: cannot find symbol
+    private Map<WasteType, String> acceptedWasteTypes;
+            ^
+  symbol:   class Map
+  location: class RecyclingFacility
+outputs\P1\qwen\S03\src\RecyclingFacility.java:4: error: cannot find symbol
+    public RecyclingFacility(String name, String address, Map<WasteType, String> acceptedWasteTypes) {
+                                                          ^
+  symbol:   class Map
+  location: class RecyclingFacility
+outputs\P1\qwen\S03\src\RecyclingFacility.java:14: error: cannot find symbol
+    public Map<WasteType, String> getAcceptedWasteTypes() {
+           ^
+  symbol:   class Map
+  location: class RecyclingFacility
+outputs\P1\qwen\S03\src\User.java:3: error: cannot find symbol
+    private List<DonationCenter> favorites;
+            ^
+  symbol:   class List
+  location: class User
+outputs\P1\qwen\S03\src\User.java:4: error: cannot find symbol
+    private List<Notification> notifications;
+            ^
+  symbol:   class List
+  location: class User
+outputs\P1\qwen\S03\src\Event.java:9: error: cannot find symbol
+        this.associatedFacilities = new ArrayList<>();
+                                        ^
+  symbol:   class ArrayList
+  location: class Event
+outputs\P1\qwen\S03\src\Main.java:7: error: cannot find symbol
+        RecyclingFacility facility = new RecyclingFacility("Recycling Center", "123 Main St", new HashMap<>());
+                                                                                                  ^
+  symbol:   class HashMap
+  location: class Main
+outputs\P1\qwen\S03\src\User.java:8: error: cannot find symbol
+        this.favorites = new ArrayList<>();
+                             ^
+  symbol:   class ArrayList
+  location: class User
+outputs\P1\qwen\S03\src\User.java:9: error: cannot find symbol
+        this.notifications = new ArrayList<>();
+                                 ^
+  symbol:   class ArrayList
+  location: class User
+11 errors

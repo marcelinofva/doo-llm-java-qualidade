@@ -1,0 +1,188 @@
+<design>
+1) Domain Entities (Classes):
+   - Resource
+   - ResourceComponent
+   - Instance
+   - Container
+   - Location
+   - Subject
+   - Note
+
+2) Single Responsibility:
+   - Resource: Manages the overall resource record.
+   - ResourceComponent: Manages a component of a resource.
+   - Instance: Manages an instance associated with a resource or component.
+   - Container: Manages a container and its location.
+   - Location: Manages location information.
+   - Subject: Manages a subject associated with a resource description.
+   - Note: Manages notes for various record types.
+
+3) Relationships:
+   - Resource has many ResourceComponents.
+   - Resource has many Instances.
+   - ResourceComponent has many Instances.
+   - Instance is associated with a Container.
+   - Container has a Location.
+   - Resource has many Subjects.
+   - Resource has many Notes.
+
+4) Public Methods:
+   - Resource: assignComponentId, setLevelOfDescription, addInstance, addSubject, addNote
+   - ResourceComponent: assignComponentId, setLevelOfDescription, addInstance
+   - Instance: associateWithContainer
+   - Container: setLocation
+   - Location: setLocationDetails
+   - Subject: addSubject
+   - Note: addNote
+</design>
+
+// File: Resource.java
+```java
+public class Resource {
+    private String id;
+    private String levelOfDescription;
+    private List<ResourceComponent> components;
+    private List<Instance> instances;
+    private List<Subject> subjects;
+    private List<Note> notes;
+
+    public Resource(String id) {
+        this.id = id;
+        this.components = new ArrayList<>();
+        this.instances = new ArrayList<>();
+        this.subjects = new ArrayList<>();
+        this.notes = new ArrayList<>();
+    }
+
+    public void assignComponentId(ResourceComponent component, String id) {
+        component.setId(id);
+    }
+
+    public void setLevelOfDescription(String level) {
+        this.levelOfDescription = level;
+    }
+
+    public void addInstance(Instance instance) {
+        instances.add(instance);
+    }
+
+    public void addSubject(Subject subject) {
+        subjects.add(subject);
+    }
+
+    public void addNote(Note note) {
+        notes.add(note);
+    }
+}
+```
+
+// File: ResourceComponent.java
+```java
+public class ResourceComponent {
+    private String id;
+    private String levelOfDescription;
+    private List<Instance> instances;
+
+    public ResourceComponent(String id) {
+        this.id = id;
+        this.instances = new ArrayList<>();
+    }
+
+    public void assignComponentId(String id) {
+        this.id = id;
+    }
+
+    public void setLevelOfDescription(String level) {
+        this.levelOfDescription = level;
+    }
+
+    public void addInstance(Instance instance) {
+        instances.add(instance);
+    }
+}
+```
+
+// File: Instance.java
+```java
+public class Instance {
+    private Container container;
+
+    public void associateWithContainer(Container container) {
+        this.container = container;
+    }
+}
+```
+
+// File: Container.java
+```java
+public class Container {
+    private Location location;
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+}
+```
+
+// File: Location.java
+```java
+public class Location {
+    private String details;
+
+    public void setLocationDetails(String details) {
+        this.details = details;
+    }
+}
+```
+
+// File: Subject.java
+```java
+public class Subject {
+    private String name;
+
+    public void addSubject(String name) {
+        this.name = name;
+    }
+}
+```
+
+// File: Note.java
+```java
+public class Note {
+    private String content;
+
+    public void addNote(String content) {
+        this.content = content;
+    }
+}
+```
+
+// File: Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        Resource resource = new Resource("R1");
+        ResourceComponent component = new ResourceComponent("C1");
+        Instance instance = new Instance();
+        Container container = new Container();
+        Location location = new Location();
+        Subject subject = new Subject();
+        Note note = new Note();
+
+        resource.assignComponentId(component, "C1");
+        resource.setLevelOfDescription("Item");
+        resource.addInstance(instance);
+        resource.addSubject(subject);
+        resource.addNote(note);
+
+        instance.associateWithContainer(container);
+        container.setLocation(location);
+        location.setLocationDetails("Shelf A, Box 1");
+
+        System.out.println("Resource ID: " + resource.id);
+        System.out.println("Component ID: " + component.id);
+        System.out.println("Level of Description: " + resource.levelOfDescription);
+        System.out.println("Container Location: " + location.details);
+    }
+}
+```

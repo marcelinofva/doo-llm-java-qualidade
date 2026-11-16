@@ -1,0 +1,26 @@
+1) Domain Entities (Classes):
+   - Game: Manages the game state, including rounds and estimations.
+   - Round: Represents a single estimation round with an item and estimates.
+   - Estimation: Holds an estimator's name and their estimate.
+   - Player: Represents a player (moderator or estimator) with a name.
+   - GameURL: Generates and manages the game URL.
+
+2) Single Responsibility:
+   - Game: Manages the game lifecycle and rounds.
+   - Round: Manages a single round's item and estimates.
+   - Estimation: Stores an estimator's estimate.
+   - Player: Manages a player's name.
+   - GameURL: Generates and manages the game URL.
+
+3) Relationships:
+   - Game has many Rounds.
+   - Round has many Estimations.
+   - Game has many Players.
+   - GameURL is associated with a Game.
+
+4) Public Methods:
+   - Game: createGame(String name, String description), invitePlayer(String playerName), startRound(String item), showEstimates(), finalizeEstimates(String agreedEstimate).
+   - Round: addItem(String item), addEstimation(String playerName, String estimate).
+   - Estimation: getEstimate().
+   - Player: getName().
+   - GameURL: generateURL(Game game).

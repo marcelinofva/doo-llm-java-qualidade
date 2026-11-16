@@ -1,0 +1,22 @@
+1. Domain entities:
+    - `EadFile`: represents an EAD file
+    - `Accession`: represents an accession
+    - `Resource`: represents a resource
+    - `MARCXMLRecord`: represents a MARCXML record
+    - `ImportError`: represents an error that occurred during import
+  2. Single responsibility of each class:
+    - `EadFile`: encapsulates EAD file data and operations
+    - `Accession`: encapsulates accession data and operations
+    - `Resource`: encapsulates resource data and operations
+    - `MARCXMLRecord`: encapsulates MARCXML record data and operations
+    - `ImportError`: encapsulates import error data and operations
+  3. Relationships:
+    - `EadFile` has a one-to-one relationship with `Accession` and `Resource`
+    - `MARCXMLRecord` has a one-to-one relationship with `Resource`
+    - `ImportError` has a one-to-one relationship with `EadFile`, `Accession`, or `Resource`
+  4. Public methods of each class:
+    - `EadFile`: `loadFromEadFile(String)`, `saveToEadFile(String)`
+    - `Accession`: `loadFromCSV(String)`, `saveToCSV(String)`
+    - `Resource`: `loadFromMARCXML(String)`, `saveToMARCXML(String)`
+    - `MARCXMLRecord`: `loadFromMARCXML(String)`, `saveToMARCXML(String)`
+    - `ImportError`: `getErrorType()`, `getErrorMessage()`

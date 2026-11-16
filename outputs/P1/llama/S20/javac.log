@@ -1,0 +1,36 @@
+outputs\P1\llama\S20\src\File.java:5: error: cannot find symbol
+    private List<FileRestriction> restrictions;
+            ^
+  symbol:   class List
+  location: class File
+outputs\P1\llama\S20\src\File.java:20: error: cannot find symbol
+    public List<FileRestriction> getRestrictions() {
+           ^
+  symbol:   class List
+  location: class File
+outputs\P1\llama\S20\src\FileRestriction.java:5: error: cannot find symbol
+    private Date endDate;
+            ^
+  symbol:   class Date
+  location: class FileRestriction
+outputs\P1\llama\S20\src\FileRestriction.java:7: error: cannot find symbol
+    public FileRestriction(String type, Date endDate) {
+                                        ^
+  symbol:   class Date
+  location: class FileRestriction
+outputs\P1\llama\S20\src\FileRestriction.java:16: error: cannot find symbol
+    public Date getEndDate() {
+           ^
+  symbol:   class Date
+  location: class FileRestriction
+outputs\P1\llama\S20\src\File.java:9: error: cannot find symbol
+        this.restrictions = new ArrayList<>();
+                                ^
+  symbol:   class ArrayList
+  location: class File
+outputs\P1\llama\S20\src\Main.java:12: error: cannot find symbol
+        FileRestriction restriction = new FileRestriction("access", new Date());
+                                                                        ^
+  symbol:   class Date
+  location: class Main
+7 errors

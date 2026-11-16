@@ -1,0 +1,33 @@
+outputs\P1\phi\S15\src\Main.java:2: error: duplicate class: Main
+public class Main {
+       ^
+outputs\P1\phi\S15\src\Sponsor.java:2: error: duplicate class: Sponsor
+public class Sponsor {
+       ^
+outputs\P1\phi\S15\src\SponsorLevel.java:2: error: duplicate class: SponsorLevel
+public enum SponsorLevel {
+       ^
+outputs\P1\phi\S15\src\Sponsorship.java:2: error: duplicate class: Sponsorship
+public class Sponsorship {
+       ^
+outputs\P1\phi\S15\src\Administrator.java:3: error: cannot find symbol
+    private List<Sponsorship> sponsorships;
+            ^
+  symbol:   class List
+  location: class Administrator
+outputs\P1\phi\S15\src\Administrator.java:46: error: cannot find symbol
+    private List<Sponsorship> sponsorships;
+            ^
+  symbol:   class List
+  location: class Sponsor
+outputs\P1\phi\S15\src\Administrator.java:6: error: cannot find symbol
+        this.sponsorships = new ArrayList<>();
+                                ^
+  symbol:   class ArrayList
+  location: class Administrator
+outputs\P1\phi\S15\src\Administrator.java:50: error: cannot find symbol
+        this.sponsorships = new ArrayList<>();
+                                ^
+  symbol:   class ArrayList
+  location: class Sponsor
+8 errors

@@ -1,0 +1,239 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities:
+    * Collection
+    * CollectionCurator
+    * RepositoryManager
+    * RemoteStorageSite
+    * ReplicationPolicy
+    * ReplicationStatus
+  2. Single responsibility of each class:
+    * Collection: represents a collection of items and components
+    * CollectionCurator: manages a collection and its replication
+    * RepositoryManager: manages the repository and its policies
+    * RemoteStorageSite: represents a remote storage site
+    * ReplicationPolicy: defines the replication policy for a collection
+    * ReplicationStatus: represents the replication status of a collection
+  3. Relationships:
+    * Collection has a one-to-one relationship with CollectionCurator
+    * Collection has a one-to-one relationship with ReplicationPolicy
+    * Collection has a one-to-many relationship with items and components
+    * RepositoryManager has a one-to-many relationship with collections
+    * RemoteStorageSite has a one-to-many relationship with collections
+  4. Public methods of each class:
+    * Collection: getItems(), getComponents(), getReplicationPolicy()
+    * CollectionCurator: getCollection(), replicateCollection()
+    * RepositoryManager: getCollection(), getRemoteStorageSite(), replicateCollection()
+    * RemoteStorageSite: getCollection()
+    * ReplicationPolicy: getReplicationPolicy()
+    * ReplicationStatus: getReplicationStatus()
+</design>
+```
+
+**Phase 2 - CODE**
+
+### Collection.java
+```java
+// File: Collection.java
+
+public class Collection {
+    private String name;
+    private CollectionCurator curator;
+    private ReplicationPolicy policy;
+    private List<Item> items;
+    private List<Component> components;
+
+    public Collection(String name) {
+        this.name = name;
+        this.items = new ArrayList<>();
+        this.components = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public CollectionCurator getCurator() {
+        return curator;
+    }
+
+    public void setCurator(CollectionCurator curator) {
+        this.curator = curator;
+    }
+
+    public ReplicationPolicy getPolicy() {
+        return policy;
+    }
+
+    public void setPolicy(ReplicationPolicy policy) {
+        this.policy = policy;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    public List<Component> getComponents() {
+        return components;
+    }
+
+    public void addComponent(Component component) {
+        components.add(component);
+    }
+}
+```
+
+### CollectionCurator.java
+```java
+// File: CollectionCurator.java
+
+public class CollectionCurator {
+    private Collection collection;
+
+    public CollectionCurator(Collection collection) {
+        this.collection = collection;
+    }
+
+    public Collection getCollection() {
+        return collection;
+    }
+
+    public void replicateCollection() {
+        // replicate collection to remote storage site
+    }
+}
+```
+
+### RepositoryManager.java
+```java
+// File: RepositoryManager.java
+
+public class RepositoryManager {
+    private List<Collection> collections;
+    private RemoteStorageSite remoteStorageSite;
+
+    public RepositoryManager() {
+        this.collections = new ArrayList<>();
+        this.remoteStorageSite = new RemoteStorageSite();
+    }
+
+    public List<Collection> getCollections() {
+        return collections;
+    }
+
+    public void addCollection(Collection collection) {
+        collections.add(collection);
+    }
+
+    public RemoteStorageSite getRemoteStorageSite() {
+        return remoteStorageSite;
+    }
+
+    public void replicateCollection(Collection collection) {
+        // replicate collection to remote storage site
+    }
+}
+```
+
+### RemoteStorageSite.java
+```java
+// File: RemoteStorageSite.java
+
+public class RemoteStorageSite {
+    private List<Collection> collections;
+
+    public RemoteStorageSite() {
+        this.collections = new ArrayList<>();
+    }
+
+    public List<Collection> getCollections() {
+        return collections;
+    }
+
+    public void addCollection(Collection collection) {
+        collections.add(collection);
+    }
+}
+```
+
+### ReplicationPolicy.java
+```java
+// File: ReplicationPolicy.java
+
+public class ReplicationPolicy {
+    private boolean replicate;
+    private boolean replicateBeyondPrimary;
+
+    public ReplicationPolicy(boolean replicate, boolean replicateBeyondPrimary) {
+        this.replicate = replicate;
+        this.replicateBeyondPrimary = replicateBeyondPrimary;
+    }
+
+    public boolean isReplicate() {
+        return replicate;
+    }
+
+    public boolean isReplicateBeyondPrimary() {
+        return replicateBeyondPrimary;
+    }
+}
+```
+
+### ReplicationStatus.java
+```java
+// File: ReplicationStatus.java
+
+public class ReplicationStatus {
+    private boolean replicated;
+    private boolean replicatedBeyondPrimary;
+
+    public ReplicationStatus(boolean replicated, boolean replicatedBeyondPrimary) {
+        this.replicated = replicated;
+        this.replicatedBeyondPrimary = replicatedBeyondPrimary;
+    }
+
+    public boolean isReplicated() {
+        return replicated;
+    }
+
+    public boolean isReplicatedBeyondPrimary() {
+        return replicatedBeyondPrimary;
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        Collection collection = new Collection("My Collection");
+        CollectionCurator curator = new CollectionCurator(collection);
+        RepositoryManager manager = new RepositoryManager();
+        RemoteStorageSite site = new RemoteStorageSite();
+        ReplicationPolicy policy = new ReplicationPolicy(true, true);
+        ReplicationStatus status = new ReplicationStatus(false, false);
+
+        collection.setCurator(curator);
+        collection.setPolicy(policy);
+        manager.addCollection(collection);
+        site.addCollection(collection);
+
+        curator.replicateCollection();
+        manager.replicateCollection(collection);
+        site.replicateCollection(collection);
+
+        System.out.println("Collection replicated: " + status.isReplicated());
+        System.out.println("Collection replicated beyond primary: " + status.isReplicatedBeyondPrimary());
+    }
+}
+```
+
+Note: This implementation is a simplified version of the specification and may not cover all the requirements. It is also worth noting that the `replicateCollection()` methods in the `CollectionCurator` and `RepositoryManager` classes are not implemented as they require a more complex implementation of the replication process.

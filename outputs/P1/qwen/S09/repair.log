@@ -1,0 +1,5 @@
+Collection.java: import java.util.ArrayList; import java.util.List;
+Item.java: import java.util.ArrayList; import java.util.List;
+CollectionCurator.java: import java.util.ArrayList; import java.util.List;
+Dashboard.java: import java.util.ArrayList; import java.util.List;
+RepositoryManager.java: import java.util.ArrayList; import java.util.List;

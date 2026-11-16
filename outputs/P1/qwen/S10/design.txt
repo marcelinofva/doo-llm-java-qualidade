@@ -1,0 +1,18 @@
+1) Domain Entities (Classes):
+   - Dataset
+   - User
+   - PlatformAdmin
+
+2) Single Responsibility of Each Class:
+   - Dataset: Manages dataset properties and state (public, hidden).
+   - User: Manages user-specific actions on datasets.
+   - PlatformAdmin: Manages platform-wide actions on datasets.
+
+3) Relationships:
+   - User has many Datasets.
+   - PlatformAdmin has many Datasets.
+
+4) Public Methods:
+   - Dataset: edit(), delete(), hide(), isPublic(), isHidden().
+   - User: publishDataset(Dataset), deleteDataset(Dataset), hideDataset(Dataset).
+   - PlatformAdmin: viewAllDatasets(), deleteDataset(Dataset), hideDataset(Dataset).

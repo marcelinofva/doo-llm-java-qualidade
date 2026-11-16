@@ -1,0 +1,82 @@
+outputs\P1\llama\S03\src\Admin.java:4: error: cannot find symbol
+    private List<RecyclingFacility> managedFacilities;
+            ^
+  symbol:   class List
+  location: class Admin
+outputs\P1\llama\S03\src\Admin.java:5: error: cannot find symbol
+    private List<DonationCenter> managedCenters;
+            ^
+  symbol:   class List
+  location: class Admin
+outputs\P1\llama\S03\src\Admin.java:28: error: cannot find symbol
+    public List<RecyclingFacility> getManagedFacilities() {
+           ^
+  symbol:   class List
+  location: class Admin
+outputs\P1\llama\S03\src\Admin.java:32: error: cannot find symbol
+    public List<DonationCenter> getManagedCenters() {
+           ^
+  symbol:   class List
+  location: class Admin
+outputs\P1\llama\S03\src\RecyclingFacility.java:8: error: cannot find symbol
+    private List<String> acceptedWasteTypes;
+            ^
+  symbol:   class List
+  location: class RecyclingFacility
+outputs\P1\llama\S03\src\RecyclingFacility.java:25: error: cannot find symbol
+    public List<String> getAcceptedWasteTypes() {
+           ^
+  symbol:   class List
+  location: class RecyclingFacility
+outputs\P1\llama\S03\src\User.java:6: error: cannot find symbol
+    private List<RecyclingFacility> favorites;
+            ^
+  symbol:   class List
+  location: class User
+outputs\P1\llama\S03\src\User.java:7: error: cannot find symbol
+    private List<DonationCenter> favoritesDonation;
+            ^
+  symbol:   class List
+  location: class User
+outputs\P1\llama\S03\src\User.java:25: error: cannot find symbol
+    public List<RecyclingFacility> getFavorites() {
+           ^
+  symbol:   class List
+  location: class User
+outputs\P1\llama\S03\src\User.java:29: error: cannot find symbol
+    public List<DonationCenter> getFavoritesDonation() {
+           ^
+  symbol:   class List
+  location: class User
+outputs\P1\llama\S03\src\Admin.java:8: error: cannot find symbol
+        this.managedFacilities = new ArrayList<>();
+                                     ^
+  symbol:   class ArrayList
+  location: class Admin
+outputs\P1\llama\S03\src\Admin.java:9: error: cannot find symbol
+        this.managedCenters = new ArrayList<>();
+                                  ^
+  symbol:   class ArrayList
+  location: class Admin
+outputs\P1\llama\S03\src\RecyclingFacility.java:14: error: cannot find symbol
+        this.acceptedWasteTypes = new ArrayList<>();
+                                      ^
+  symbol:   class ArrayList
+  location: class RecyclingFacility
+outputs\P1\llama\S03\src\Main.java:16: error: variable facility is already defined in method main(String[])
+        for (RecyclingFacility facility : user.getFavorites()) {
+                               ^
+outputs\P1\llama\S03\src\Main.java:21: error: variable center is already defined in method main(String[])
+        for (DonationCenter center : user.getFavoritesDonation()) {
+                            ^
+outputs\P1\llama\S03\src\User.java:13: error: cannot find symbol
+        this.favorites = new ArrayList<>();
+                             ^
+  symbol:   class ArrayList
+  location: class User
+outputs\P1\llama\S03\src\User.java:14: error: cannot find symbol
+        this.favoritesDonation = new ArrayList<>();
+                                     ^
+  symbol:   class ArrayList
+  location: class User
+17 errors

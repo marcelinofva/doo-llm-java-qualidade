@@ -1,0 +1,21 @@
+outputs\P1\qwen\S24\src\OlderPerson.java:4: error: cannot find symbol
+    private List<Medication> medications;
+            ^
+  symbol:   class List
+  location: class OlderPerson
+outputs\P1\qwen\S24\src\MedicalCaregiver.java:3: error: cannot find symbol
+    private List<Medication> medications;
+            ^
+  symbol:   class List
+  location: class MedicalCaregiver
+outputs\P1\qwen\S24\src\OlderPerson.java:9: error: cannot find symbol
+        this.medications = new ArrayList<>();
+                               ^
+  symbol:   class ArrayList
+  location: class OlderPerson
+outputs\P1\qwen\S24\src\MedicalCaregiver.java:7: error: cannot find symbol
+        this.medications = new ArrayList<>();
+                               ^
+  symbol:   class ArrayList
+  location: class MedicalCaregiver
+4 errors

@@ -1,0 +1,23 @@
+1. Domain entities:
+    * DataPackage
+    * Publisher
+    * Registry
+    * Validator
+
+  2. Single responsibility of each class:
+    * DataPackage: represents a package of data, with methods to update and delete
+    * Publisher: responsible for publishing and unpublishing data packages
+    * Registry: manages the collection of data packages, with methods to add, remove, and restore
+    * Validator: checks the validity of data packages before publishing
+
+  3. Relationships:
+    * A Publisher has many DataPackages (composition)
+    * A DataPackage is associated with one Publisher (association)
+    * A Registry contains many DataPackages (composition)
+    * A Validator is used by the Publisher to validate DataPackages (association)
+
+  4. Public methods of each class:
+    * DataPackage: update(), delete(), getPublisher()
+    * Publisher: publish(), unpublish(), validate(DataPackage)
+    * Registry: add(DataPackage), remove(DataPackage), restore(DataPackage)
+    * Validator: validate(DataPackage)

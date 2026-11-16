@@ -1,0 +1,277 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities (classes):
+    * OlderPerson
+    * MedicalCaregiver
+    * Caregiver
+    * HomeCareNurse
+    * Medication
+    * Emergency
+    * FallDetector
+
+  2. Single responsibility of each class:
+    * OlderPerson: represents an older person, stores their information and interactions with ALFRED
+    * MedicalCaregiver: represents a medical caregiver, stores their information and interactions with ALFRED
+    * Caregiver: represents a caregiver, stores their information and interactions with ALFRED
+    * HomeCareNurse: represents a home care nurse, stores their information and interactions with ALFRED
+    * Medication: represents a medication, stores its information and interactions with ALFRED
+    * Emergency: represents an emergency, stores its information and interactions with ALFRED
+    * FallDetector: detects falls and sends emergencies to specific contacts
+
+  3. Relationships (association, composition, inheritance):
+    * OlderPerson has a one-to-many relationship with Medication (an older person can have multiple medications)
+    * OlderPerson has a one-to-one relationship with Caregiver (an older person has one caregiver)
+    * MedicalCaregiver has a one-to-many relationship with OlderPerson (a medical caregiver can care for multiple older persons)
+    * HomeCareNurse has a one-to-many relationship with OlderPerson (a home care nurse can care for multiple older persons)
+    * Medication has a one-to-one relationship with Emergency (a medication can be associated with one emergency)
+    * FallDetector has a one-to-one relationship with Emergency (a fall detector can send emergencies to specific contacts)
+
+  4. Public methods of each class:
+    * OlderPerson: getMedications(), getCaregiver(), requestUrgentHelp(), receiveMessage()
+    * MedicalCaregiver: getOlderPersons(), getVideoCall()
+    * Caregiver: getOlderPerson(), getContactInformation()
+    * HomeCareNurse: getOlderPerson(), getContactInformation()
+    * Medication: getEmergency(), getDosage()
+    * Emergency: getMedication(), getContactInformation()
+    * FallDetector: detectFall(), sendEmergency()
+</design>
+```
+
+**Phase 2 - CODE**
+
+### OlderPerson.java
+```java
+// File: OlderPerson.java
+
+public class OlderPerson {
+    private String name;
+    private List<Medication> medications;
+    private Caregiver caregiver;
+    private HomeCareNurse homeCareNurse;
+
+    public OlderPerson(String name) {
+        this.name = name;
+        this.medications = new ArrayList<>();
+    }
+
+    public void addMedication(Medication medication) {
+        this.medications.add(medication);
+    }
+
+    public List<Medication> getMedications() {
+        return this.medications;
+    }
+
+    public Caregiver getCaregiver() {
+        return this.caregiver;
+    }
+
+    public void setCaregiver(Caregiver caregiver) {
+        this.caregiver = caregiver;
+    }
+
+    public HomeCareNurse getHomeCareNurse() {
+        return this.homeCareNurse;
+    }
+
+    public void setHomeCareNurse(HomeCareNurse homeCareNurse) {
+        this.homeCareNurse = homeCareNurse;
+    }
+
+    public void requestUrgentHelp() {
+        // send request to caregiver
+    }
+
+    public void receiveMessage() {
+        // receive message from home care nurse
+    }
+}
+```
+
+### MedicalCaregiver.java
+```java
+// File: MedicalCaregiver.java
+
+public class MedicalCaregiver {
+    private String name;
+    private List<OlderPerson> olderPersons;
+
+    public MedicalCaregiver(String name) {
+        this.name = name;
+        this.olderPersons = new ArrayList<>();
+    }
+
+    public void addOlderPerson(OlderPerson olderPerson) {
+        this.olderPersons.add(olderPerson);
+    }
+
+    public List<OlderPerson> getOlderPersons() {
+        return this.olderPersons;
+    }
+
+    public void getVideoCall() {
+        // establish video call with older person
+    }
+}
+```
+
+### Caregiver.java
+```java
+// File: Caregiver.java
+
+public class Caregiver {
+    private String name;
+    private String contactInformation;
+
+    public Caregiver(String name) {
+        this.name = name;
+        this.contactInformation = "";
+    }
+
+    public String getContactInformation() {
+        return this.contactInformation;
+    }
+
+    public void setContactInformation(String contactInformation) {
+        this.contactInformation = contactInformation;
+    }
+}
+```
+
+### HomeCareNurse.java
+```java
+// File: HomeCareNurse.java
+
+public class HomeCareNurse {
+    private String name;
+    private String contactInformation;
+
+    public HomeCareNurse(String name) {
+        this.name = name;
+        this.contactInformation = "";
+    }
+
+    public String getContactInformation() {
+        return this.contactInformation;
+    }
+
+    public void setContactInformation(String contactInformation) {
+        this.contactInformation = contactInformation;
+    }
+}
+```
+
+### Medication.java
+```java
+// File: Medication.java
+
+public class Medication {
+    private String name;
+    private Emergency emergency;
+
+    public Medication(String name) {
+        this.name = name;
+        this.emergency = new Emergency();
+    }
+
+    public Emergency getEmergency() {
+        return this.emergency;
+    }
+
+    public void setEmergency(Emergency emergency) {
+        this.emergency = emergency;
+    }
+}
+```
+
+### Emergency.java
+```java
+// File: Emergency.java
+
+public class Emergency {
+    private Medication medication;
+    private String contactInformation;
+
+    public Emergency() {
+        this.medication = new Medication();
+        this.contactInformation = "";
+    }
+
+    public Medication getMedication() {
+        return this.medication;
+    }
+
+    public void setMedication(Medication medication) {
+        this.medication = medication;
+    }
+
+    public String getContactInformation() {
+        return this.contactInformation;
+    }
+
+    public void setContactInformation(String contactInformation) {
+        this.contactInformation = contactInformation;
+    }
+}
+```
+
+### FallDetector.java
+```java
+// File: FallDetector.java
+
+public class FallDetector {
+    private Emergency emergency;
+
+    public FallDetector() {
+        this.emergency = new Emergency();
+    }
+
+    public void detectFall() {
+        // detect fall and send emergency
+    }
+
+    public void sendEmergency() {
+        // send emergency to specific contact
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        OlderPerson olderPerson = new OlderPerson("John");
+        MedicalCaregiver medicalCaregiver = new MedicalCaregiver("Jane");
+        Caregiver caregiver = new Caregiver("Bob");
+        HomeCareNurse homeCareNurse = new HomeCareNurse("Alice");
+        Medication medication = new Medication("Painkiller");
+        Emergency emergency = new Emergency();
+        FallDetector fallDetector = new FallDetector();
+
+        olderPerson.addMedication(medication);
+        olderPerson.setCaregiver(caregiver);
+        olderPerson.setHomeCareNurse(homeCareNurse);
+
+        medicalCaregiver.addOlderPerson(olderPerson);
+
+        caregiver.setContactInformation("123-456-7890");
+        homeCareNurse.setContactInformation("987-654-3210");
+
+        medication.setEmergency(emergency);
+        emergency.setMedication(medication);
+        emergency.setContactInformation("555-123-4567");
+
+        fallDetector.detectFall();
+        fallDetector.sendEmergency();
+
+        olderPerson.requestUrgentHelp();
+        olderPerson.receiveMessage();
+
+        medicalCaregiver.getVideoCall();
+    }
+}
+```

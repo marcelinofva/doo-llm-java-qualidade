@@ -1,0 +1,30 @@
+1. Domain entities (classes):
+    * DataSource
+    * DataImporter
+    * DataValidator
+    * DataModel
+    * Dataset
+    * DataPackager
+
+  2. Single responsibility of each class:
+    * DataSource: represents a data source (e.g. CSV file, Excel file, Google Spreadsheet)
+    * DataImporter: imports data from a data source
+    * DataValidator: validates a CSV file
+    * DataModel: represents a data model (e.g. schema, structure)
+    * Dataset: represents a dataset (e.g. collection of data)
+    * DataPackager: packages data for publishing
+
+  3. Relationships (association, composition, inheritance):
+    * DataSource has-a DataModel (composition)
+    * DataImporter uses-a DataSource (association)
+    * DataValidator uses-a DataSource (association)
+    * Dataset has-a DataModel (composition)
+    * DataPackager uses-a Dataset (association)
+
+  4. Public methods of each class:
+    * DataSource: importData(), getSchema()
+    * DataImporter: importData(), getImportedData()
+    * DataValidator: validateCSV(), getValidationResults()
+    * DataModel: getSchema(), updateSchema()
+    * Dataset: getDataset(), updateDataset()
+    * DataPackager: packageData(), getPackagedData()

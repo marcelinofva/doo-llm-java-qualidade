@@ -1,0 +1,158 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  <!-- Domain entities -->
+  1. **DataPackage**: represents a package of data
+  2. **Tag**: represents a version of a DataPackage
+  3. **Publisher**: represents a user who publishes DataPackages
+  4. **Consumer**: represents a user who consumes DataPackages
+
+  <!-- Single responsibility of each class -->
+  1. DataPackage: manages the data package schema and versioning
+  2. Tag: represents a specific version of a DataPackage
+  3. Publisher: publishes DataPackages and manages tags
+  4. Consumer: consumes DataPackages and views versions
+
+  <!-- Relationships -->
+  1. A DataPackage has many Tags (composition)
+  2. A Tag belongs to one DataPackage (association)
+  3. A Publisher can publish many DataPackages (association)
+  4. A Consumer can view many DataPackages (association)
+
+  <!-- Public methods of each class -->
+  1. DataPackage:
+    * addTag(Tag tag)
+    * getTag(String tagName)
+    * getVersion(String tagName)
+  2. Tag:
+    * getDataPackage()
+    * getTagName()
+  3. Publisher:
+    * publishDataPackage(DataPackage dataPackage)
+    * getTags(DataPackage dataPackage)
+  4. Consumer:
+    * viewDataPackage(DataPackage dataPackage, String tagName)
+    * downloadDataPackage(DataPackage dataPackage, String tagName)
+</design>
+```
+
+**Phase 2 - CODE**
+
+### DataPackage.java
+```java
+// File: DataPackage.java
+
+public class DataPackage {
+    private String name;
+    private String schema;
+    private List<Tag> tags;
+
+    public DataPackage(String name, String schema) {
+        this.name = name;
+        this.schema = schema;
+        this.tags = new ArrayList<>();
+    }
+
+    public void addTag(Tag tag) {
+        this.tags.add(tag);
+    }
+
+    public Tag getTag(String tagName) {
+        for (Tag tag : this.tags) {
+            if (tag.getTagName().equals(tagName)) {
+                return tag;
+            }
+        }
+        return null;
+    }
+
+    public String getVersion(String tagName) {
+        Tag tag = this.getTag(tagName);
+        if (tag != null) {
+            return tag.getTagName();
+        }
+        return null;
+    }
+}
+```
+
+### Tag.java
+```java
+// File: Tag.java
+
+public class Tag {
+    private DataPackage dataPackage;
+    private String tagName;
+
+    public Tag(DataPackage dataPackage, String tagName) {
+        this.dataPackage = dataPackage;
+        this.tagName = tagName;
+    }
+
+    public DataPackage getDataPackage() {
+        return this.dataPackage;
+    }
+
+    public String getTagName() {
+        return this.tagName;
+    }
+}
+```
+
+### Publisher.java
+```java
+// File: Publisher.java
+
+public class Publisher {
+    public void publishDataPackage(DataPackage dataPackage) {
+        // publish data package logic
+    }
+
+    public List<Tag> getTags(DataPackage dataPackage) {
+        return dataPackage.getTags();
+    }
+}
+```
+
+### Consumer.java
+```java
+// File: Consumer.java
+
+public class Consumer {
+    public void viewDataPackage(DataPackage dataPackage, String tagName) {
+        Tag tag = dataPackage.getTag(tagName);
+        if (tag != null) {
+            // view data package logic
+        }
+    }
+
+    public void downloadDataPackage(DataPackage dataPackage, String tagName) {
+        Tag tag = dataPackage.getTag(tagName);
+        if (tag != null) {
+            // download data package logic
+        }
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        DataPackage dataPackage = new DataPackage("example", "schema");
+        Publisher publisher = new Publisher();
+        Consumer consumer = new Consumer();
+
+        publisher.publishDataPackage(dataPackage);
+        List<Tag> tags = publisher.getTags(dataPackage);
+
+        consumer.viewDataPackage(dataPackage, "v1");
+        consumer.downloadDataPackage(dataPackage, "v1");
+    }
+}
+```
+
+Note: This implementation assumes a simple data package schema and versioning system. In a real-world scenario, you would need to implement a more robust system with features like data package validation, versioning, and conflict resolution.

@@ -1,0 +1,61 @@
+outputs\P1\qwen\S07\src\Collection.java:2: error: illegal character: '`'
+```java
+^
+outputs\P1\qwen\S07\src\Collection.java:2: error: illegal character: '`'
+```java
+ ^
+outputs\P1\qwen\S07\src\Collection.java:2: error: illegal character: '`'
+```java
+  ^
+outputs\P1\qwen\S07\src\Collection.java:3: error: class, interface, or enum expected
+import java.util.List;
+^
+outputs\P1\qwen\S07\src\Embargo.java:2: error: illegal character: '`'
+```java
+^
+outputs\P1\qwen\S07\src\Embargo.java:2: error: illegal character: '`'
+```java
+ ^
+outputs\P1\qwen\S07\src\Embargo.java:2: error: illegal character: '`'
+```java
+  ^
+outputs\P1\qwen\S07\src\Embargo.java:3: error: class, interface, or enum expected
+import java.util.Date;
+^
+outputs\P1\qwen\S07\src\Main.java:2: error: illegal character: '`'
+```java
+^
+outputs\P1\qwen\S07\src\Main.java:2: error: illegal character: '`'
+```java
+ ^
+outputs\P1\qwen\S07\src\Main.java:2: error: illegal character: '`'
+```java
+  ^
+outputs\P1\qwen\S07\src\Main.java:3: error: class, interface, or enum expected
+import java.util.Date;
+^
+outputs\P1\qwen\S07\src\Repository.java:2: error: illegal character: '`'
+```java
+^
+outputs\P1\qwen\S07\src\Repository.java:2: error: illegal character: '`'
+```java
+ ^
+outputs\P1\qwen\S07\src\Repository.java:2: error: illegal character: '`'
+```java
+  ^
+outputs\P1\qwen\S07\src\Repository.java:3: error: class, interface, or enum expected
+import java.util.List;
+^
+outputs\P1\qwen\S07\src\User.java:2: error: illegal character: '`'
+```java
+^
+outputs\P1\qwen\S07\src\User.java:2: error: illegal character: '`'
+```java
+ ^
+outputs\P1\qwen\S07\src\User.java:2: error: illegal character: '`'
+```java
+  ^
+outputs\P1\qwen\S07\src\User.java:3: error: class, interface, or enum expected
+import java.util.List;
+^
+20 errors

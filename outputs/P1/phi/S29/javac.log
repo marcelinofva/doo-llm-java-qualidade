@@ -1,0 +1,4 @@
+outputs\P1\phi\S29\src\Main.java:25: error: variable eadImporter is already defined in method main(String[])
+        EADImporter eadImporter = new EADImporter();
+                    ^
+1 error

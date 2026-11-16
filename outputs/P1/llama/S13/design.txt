@@ -1,0 +1,24 @@
+1. Domain entities:
+    - Member
+    - Profile
+    - Course
+    - SiteAdministrator
+
+  2. Single responsibility of each class:
+    - Member: represents a site member with their details
+    - Profile: represents a member's profile with their details and courses
+    - Course: represents a course with its details
+    - SiteAdministrator: represents a site administrator with the ability to edit member profiles
+
+  3. Relationships:
+    - A Member has one Profile (composition)
+    - A Profile belongs to one Member (association)
+    - A Profile has many Courses (composition)
+    - A Course belongs to one Profile (association)
+    - A SiteAdministrator can edit many Member profiles (association)
+
+  4. Public methods of each class:
+    - Member: getProfile(), getDetails()
+    - Profile: getMember(), getDetails(), addCourse(), removeCourse()
+    - Course: getProfile(), getDetails()
+    - SiteAdministrator: editProfile(Member)

@@ -1,0 +1,4 @@
+outputs\P1\llama\S15\src\Main.java:30: error: variable level is already defined in method main(String[])
+        for (SponsorshipLevel level : sponsor.getSponsorshipLevels()) {
+                              ^
+1 error

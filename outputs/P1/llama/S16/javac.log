@@ -1,0 +1,21 @@
+outputs\P1\llama\S16\src\AdminView.java:4: error: cannot find symbol
+    private List<Registration> registrations;
+            ^
+  symbol:   class List
+  location: class AdminView
+outputs\P1\llama\S16\src\AdminView.java:14: error: cannot find symbol
+    public List<Registration> getRegistrations() {
+           ^
+  symbol:   class List
+  location: class AdminView
+outputs\P1\llama\S16\src\AdminView.java:7: error: cannot find symbol
+        this.registrations = new ArrayList<>();
+                                 ^
+  symbol:   class ArrayList
+  location: class AdminView
+outputs\P1\llama\S16\src\Main.java:18: error: cannot find symbol
+        System.out.println("Attendee: " + attendee.getRegistration().getTraining().getName());
+                                                                                  ^
+  symbol:   method getName()
+  location: class Training
+4 errors

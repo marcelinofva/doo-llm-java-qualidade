@@ -1,0 +1,16 @@
+outputs\P1\llama\S06\src\Publisher.java:5: error: cannot find symbol
+    private List<Member> members;
+            ^
+  symbol:   class List
+  location: class Publisher
+outputs\P1\llama\S06\src\Publisher.java:21: error: cannot find symbol
+    public List<Member> viewMembers() {
+           ^
+  symbol:   class List
+  location: class Publisher
+outputs\P1\llama\S06\src\Publisher.java:9: error: cannot find symbol
+        this.members = new ArrayList<>();
+                           ^
+  symbol:   class ArrayList
+  location: class Publisher
+3 errors

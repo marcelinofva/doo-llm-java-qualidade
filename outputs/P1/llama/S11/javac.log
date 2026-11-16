@@ -1,0 +1,11 @@
+outputs\P1\llama\S11\src\Main.java:18: error: cannot find symbol
+        validator.validateCSV(new File("example.csv"));
+                                  ^
+  symbol:   class File
+  location: class Main
+outputs\P1\llama\S11\src\Main.java:33: error: cannot find symbol
+        List<DataModel> datasetList = dataset.getDataset();
+        ^
+  symbol:   class List
+  location: class Main
+2 errors

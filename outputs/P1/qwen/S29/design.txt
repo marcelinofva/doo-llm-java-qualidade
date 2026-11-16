@@ -1,0 +1,34 @@
+1) Domain Entities (Classes):
+   - EadFile
+   - Accession
+   - Resource
+   - MarcXmlRecord
+   - EadData
+   - Importer
+   - Exporter
+   - ErrorLog
+
+2) Single Responsibility of Each Class:
+   - EadFile: Represents an EAD file and provides methods to read and parse it.
+   - Accession: Represents an Accession and provides methods to read and parse CSV data.
+   - Resource: Represents a Resource and provides methods to read and parse MARCXML records.
+   - MarcXmlRecord: Represents a MARCXML record and provides methods to parse it.
+   - EadData: Represents EAD data and provides methods to read and parse it.
+   - Importer: Handles the import of different types of data (EAD, Accession, Resource, MarcXmlRecord, EadData).
+   - Exporter: Handles the export of EAD data.
+   - ErrorLog: Logs errors that occur during import.
+
+3) Relationships:
+   - Importer has a dependency on EadFile, Accession, Resource, MarcXmlRecord, and EadData.
+   - Exporter has a dependency on EadData.
+   - ErrorLog is used by Importer and Exporter to log errors.
+
+4) Public Methods:
+   - EadFile: read(), parse()
+   - Accession: read(), parse()
+   - Resource: read(), parse()
+   - MarcXmlRecord: parse()
+   - EadData: read(), parse()
+   - Importer: importEadFile(), importAccession(), importResource(), importMarcXmlRecord(), importEadData()
+   - Exporter: exportEadData()
+   - ErrorLog: logError()

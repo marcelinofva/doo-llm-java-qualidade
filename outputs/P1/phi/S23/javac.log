@@ -1,0 +1,61 @@
+outputs\P1\phi\S23\src\OlderPerson.java:5: error: cannot find symbol
+    private List<Meeting> meetings;
+            ^
+  symbol:   class List
+  location: class OlderPerson
+outputs\P1\phi\S23\src\OlderPerson.java:6: error: cannot find symbol
+    private List<Reminder> reminders;
+            ^
+  symbol:   class List
+  location: class OlderPerson
+outputs\P1\phi\S23\src\OlderPerson.java:31: error: cannot find symbol
+    public List<Meeting> getMeetings() {
+           ^
+  symbol:   class List
+  location: class OlderPerson
+outputs\P1\phi\S23\src\OlderPerson.java:35: error: cannot find symbol
+    public void setMeetings(List<Meeting> meetings) {
+                            ^
+  symbol:   class List
+  location: class OlderPerson
+outputs\P1\phi\S23\src\OlderPerson.java:39: error: cannot find symbol
+    public List<Reminder> getReminders() {
+           ^
+  symbol:   class List
+  location: class OlderPerson
+outputs\P1\phi\S23\src\OlderPerson.java:43: error: cannot find symbol
+    public void setReminders(List<Reminder> reminders) {
+                             ^
+  symbol:   class List
+  location: class OlderPerson
+outputs\P1\phi\S23\src\SocialCaregiver.java:4: error: cannot find symbol
+    private List<Reminder> reminders;
+            ^
+  symbol:   class List
+  location: class SocialCaregiver
+outputs\P1\phi\S23\src\SocialCaregiver.java:19: error: cannot find symbol
+    public List<Reminder> getReminders() {
+           ^
+  symbol:   class List
+  location: class SocialCaregiver
+outputs\P1\phi\S23\src\SocialCaregiver.java:23: error: cannot find symbol
+    public void setReminders(List<Reminder> reminders) {
+                             ^
+  symbol:   class List
+  location: class SocialCaregiver
+outputs\P1\phi\S23\src\OlderPerson.java:11: error: cannot find symbol
+        this.meetings = new ArrayList<>();
+                            ^
+  symbol:   class ArrayList
+  location: class OlderPerson
+outputs\P1\phi\S23\src\OlderPerson.java:12: error: cannot find symbol
+        this.reminders = new ArrayList<>();
+                             ^
+  symbol:   class ArrayList
+  location: class OlderPerson
+outputs\P1\phi\S23\src\SocialCaregiver.java:8: error: cannot find symbol
+        this.reminders = new ArrayList<>();
+                             ^
+  symbol:   class ArrayList
+  location: class SocialCaregiver
+12 errors

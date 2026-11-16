@@ -1,0 +1,189 @@
+<design>
+1) Domain Entities (Classes):
+   - File
+   - Group
+   - Restriction
+   - IPAddressRestriction
+   - UserRestriction
+   - Redaction
+   - FileGroup
+
+2) Single Responsibility of Each Class:
+   - File: Manages file properties and restrictions.
+   - Group: Manages a collection of files and group-level restrictions.
+   - Restriction: Base class for all types of restrictions.
+   - IPAddressRestriction: Restricts access by IP address.
+   - UserRestriction: Restricts access by user.
+   - Redaction: Manages redaction of file content.
+   - FileGroup: Manages a group of files and group-level restrictions.
+
+3) Relationships:
+   - File has-a Restriction (composition)
+   - Group has-a List of File (composition)
+   - Group has-a Restriction (composition)
+   - Restriction is-a IPAddressRestriction
+   - Restriction is-a UserRestriction
+   - Restriction is-a Redaction
+
+4) Public Methods:
+   - File: markAsRestricted(), addRestriction(Restriction), redactContent()
+   - Group: addFile(File), markAsRestricted(), addRestriction(Restriction)
+   - Restriction: applyRestriction()
+   - IPAddressRestriction: applyRestriction()
+   - UserRestriction: applyRestriction()
+   - Redaction: applyRedaction()
+   - FileGroup: uploadFiles()
+</design>
+
+// File: File.java
+```java
+public class File {
+    private String content;
+    private Restriction restriction;
+
+    public void markAsRestricted() {
+        restriction = new Restriction();
+    }
+
+    public void addRestriction(Restriction restriction) {
+        this.restriction = restriction;
+    }
+
+    public void redactContent() {
+        if (restriction instanceof Redaction) {
+            ((Redaction) restriction).applyRedaction();
+        }
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+}
+```
+
+// File: Group.java
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class Group {
+    private List<File> files;
+    private Restriction restriction;
+
+    public Group() {
+        files = new ArrayList<>();
+    }
+
+    public void addFile(File file) {
+        files.add(file);
+    }
+
+    public void markAsRestricted() {
+        restriction = new Restriction();
+    }
+
+    public void addRestriction(Restriction restriction) {
+        this.restriction = restriction;
+    }
+
+    public void uploadFiles() {
+        // Logic to upload files
+    }
+}
+```
+
+// File: Restriction.java
+```java
+public abstract class Restriction {
+    public abstract void applyRestriction();
+}
+```
+
+// File: IPAddressRestriction.java
+```java
+public class IPAddressRestriction extends Restriction {
+    @Override
+    public void applyRestriction() {
+        // Logic to apply IP address restriction
+    }
+}
+```
+
+// File: UserRestriction.java
+```java
+public class UserRestriction extends Restriction {
+    @Override
+    public void applyRestriction() {
+        // Logic to apply user restriction
+    }
+}
+```
+
+// File: Redaction.java
+```java
+public class Redaction extends Restriction {
+    @Override
+    public void applyRedaction() {
+        // Logic to apply redaction
+    }
+}
+```
+
+// File: FileGroup.java
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class FileGroup {
+    private List<File> files;
+    private Restriction restriction;
+
+    public FileGroup() {
+        files = new ArrayList<>();
+    }
+
+    public void addFile(File file) {
+        files.add(file);
+    }
+
+    public void markAsRestricted() {
+        restriction = new Restriction();
+    }
+
+    public void addRestriction(Restriction restriction) {
+        this.restriction = restriction;
+    }
+
+    public void uploadFiles() {
+        // Logic to upload files
+    }
+}
+```
+
+// File: Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        File file1 = new File();
+        file1.setContent("Sensitive information");
+        file1.markAsRestricted();
+        file1.addRestriction(new IPAddressRestriction());
+
+        File file2 = new File();
+        file2.setContent("Non-sensitive information");
+        file2.redactContent();
+
+        Group group = new Group();
+        group.addFile(file1);
+        group.addFile(file2);
+        group.markAsRestricted();
+        group.addRestriction(new UserRestriction());
+
+        group.uploadFiles();
+    }
+}
+```

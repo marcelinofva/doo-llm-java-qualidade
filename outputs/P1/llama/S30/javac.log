@@ -1,0 +1,19 @@
+outputs\P1\llama\S30\src\Main.java:15: error: not a statement
+        OAI-PMH oaiPMH = new OAI-PMH(repository);
+           ^
+outputs\P1\llama\S30\src\Main.java:15: error: ';' expected
+        OAI-PMH oaiPMH = new OAI-PMH(repository);
+               ^
+outputs\P1\llama\S30\src\Main.java:15: error: '(' or '[' expected
+        OAI-PMH oaiPMH = new OAI-PMH(repository);
+                                ^
+outputs\P1\llama\S30\src\OAI.java:3: error: '{' expected
+public class OAI-PMH {
+                ^
+outputs\P1\llama\S30\src\OAI.java:6: error: <identifier> expected
+    public OAI-PMH(Repository repository) {
+              ^
+outputs\P1\llama\S30\src\OAI.java:6: error: invalid method declaration; return type required
+    public OAI-PMH(Repository repository) {
+               ^
+6 errors

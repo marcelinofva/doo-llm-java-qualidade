@@ -1,0 +1,26 @@
+1. Domain entities (classes):
+    * NewsItem
+    * NewsFeed
+    * SiteMember
+    * SiteEditor
+    * NewsSite
+
+  2. Single responsibility of each class:
+    * NewsItem: represents a single news item with its attributes and behavior
+    * NewsFeed: manages the RSS feed of news items
+    * SiteMember: represents a site member with their attributes and behavior
+    * SiteEditor: represents a site editor with their attributes and behavior
+    * NewsSite: represents the news site with its attributes and behavior
+
+  3. Relationships (association, composition, inheritance):
+    * NewsItem has a one-to-many relationship with NewsFeed (a news item can be part of multiple feeds)
+    * SiteMember has a one-to-one relationship with SiteEditor (a member can be an editor)
+    * NewsSite has a one-to-many relationship with NewsItem (a site can have multiple news items)
+    * NewsItem has a composition relationship with NewsFeed (a news item is composed of a feed)
+
+  4. Public methods of each class:
+    * NewsItem: getNewsItem(), setNewsItem(), getStartDate(), setStartDate(), getEndDate(), setEndDate()
+    * NewsFeed: getNewsFeed(), setNewsFeed(), addNewsItem(), removeNewsItem()
+    * SiteMember: getSiteMember(), setSiteMember(), getNewsFeed(), setNewsFeed()
+    * SiteEditor: getSiteEditor(), setSiteEditor(), getNewsFeed(), setNewsFeed()
+    * NewsSite: getNewsSite(), setNewsSite(), addNewsItem(), removeNewsItem()

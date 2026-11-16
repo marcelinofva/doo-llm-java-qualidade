@@ -1,0 +1,204 @@
+**PHASE 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities:
+    - `EadFile`: represents an EAD file
+    - `Accession`: represents an accession
+    - `Resource`: represents a resource
+    - `MARCXMLRecord`: represents a MARCXML record
+    - `ImportError`: represents an error that occurred during import
+  2. Single responsibility of each class:
+    - `EadFile`: encapsulates EAD file data and operations
+    - `Accession`: encapsulates accession data and operations
+    - `Resource`: encapsulates resource data and operations
+    - `MARCXMLRecord`: encapsulates MARCXML record data and operations
+    - `ImportError`: encapsulates import error data and operations
+  3. Relationships:
+    - `EadFile` has a one-to-one relationship with `Accession` and `Resource`
+    - `MARCXMLRecord` has a one-to-one relationship with `Resource`
+    - `ImportError` has a one-to-one relationship with `EadFile`, `Accession`, or `Resource`
+  4. Public methods of each class:
+    - `EadFile`: `loadFromEadFile(String)`, `saveToEadFile(String)`
+    - `Accession`: `loadFromCSV(String)`, `saveToCSV(String)`
+    - `Resource`: `loadFromMARCXML(String)`, `saveToMARCXML(String)`
+    - `MARCXMLRecord`: `loadFromMARCXML(String)`, `saveToMARCXML(String)`
+    - `ImportError`: `getErrorType()`, `getErrorMessage()`
+</design>
+```
+
+**PHASE 2 - CODE**
+
+### EadFile.java
+```java
+// File: EadFile.java
+
+public class EadFile {
+    private String eadData;
+
+    public EadFile(String eadData) {
+        this.eadData = eadData;
+    }
+
+    public String getEadData() {
+        return eadData;
+    }
+
+    public void setEadData(String eadData) {
+        this.eadData = eadData;
+    }
+
+    public void loadFromEadFile(String filePath) {
+        // implementation
+    }
+
+    public void saveToEadFile(String filePath) {
+        // implementation
+    }
+}
+```
+
+### Accession.java
+```java
+// File: Accession.java
+
+public class Accession {
+    private String accessionData;
+
+    public Accession(String accessionData) {
+        this.accessionData = accessionData;
+    }
+
+    public String getAccessionData() {
+        return accessionData;
+    }
+
+    public void setAccessionData(String accessionData) {
+        this.accessionData = accessionData;
+    }
+
+    public void loadFromCSV(String filePath) {
+        // implementation
+    }
+
+    public void saveToCSV(String filePath) {
+        // implementation
+    }
+}
+```
+
+### Resource.java
+```java
+// File: Resource.java
+
+public class Resource {
+    private String resourceData;
+
+    public Resource(String resourceData) {
+        this.resourceData = resourceData;
+    }
+
+    public String getResourceData() {
+        return resourceData;
+    }
+
+    public void setResourceData(String resourceData) {
+        this.resourceData = resourceData;
+    }
+
+    public void loadFromMARCXML(String filePath) {
+        // implementation
+    }
+
+    public void saveToMARCXML(String filePath) {
+        // implementation
+    }
+}
+```
+
+### MARCXMLRecord.java
+```java
+// File: MARCXMLRecord.java
+
+public class MARCXMLRecord {
+    private String marcxmlData;
+
+    public MARCXMLRecord(String marcxmlData) {
+        this.marcxmlData = marcxmlData;
+    }
+
+    public String getMarcxmlData() {
+        return marcxmlData;
+    }
+
+    public void setMarcxmlData(String marcxmlData) {
+        this.marcxmlData = marcxmlData;
+    }
+
+    public void loadFromMARCXML(String filePath) {
+        // implementation
+    }
+
+    public void saveToMARCXML(String filePath) {
+        // implementation
+    }
+}
+```
+
+### ImportError.java
+```java
+// File: ImportError.java
+
+public class ImportError {
+    private String errorType;
+    private String errorMessage;
+
+    public ImportError(String errorType, String errorMessage) {
+        this.errorType = errorType;
+        this.errorMessage = errorMessage;
+    }
+
+    public String getErrorType() {
+        return errorType;
+    }
+
+    public void setErrorType(String errorType) {
+        this.errorType = errorType;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        EadFile eadFile = new EadFile("example ead data");
+        eadFile.loadFromEadFile("path/to/ead/file");
+
+        Accession accession = new Accession("example accession data");
+        accession.loadFromCSV("path/to/csv/file");
+
+        Resource resource = new Resource("example resource data");
+        resource.loadFromMARCXML("path/to/marcxml/file");
+
+        MARCXMLRecord marcxmlRecord = new MARCXMLRecord("example marcxml data");
+        marcxmlRecord.loadFromMARCXML("path/to/marcxml/file");
+
+        ImportError importError = new ImportError("example error type", "example error message");
+        System.out.println(importError.getErrorType());
+        System.out.println(importError.getErrorMessage());
+    }
+}
+```
+
+Note: The implementation of the `loadFrom*` and `saveTo*` methods is omitted for brevity. You will need to implement the actual logic for loading and saving data from/to files.

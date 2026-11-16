@@ -1,0 +1,14 @@
+outputs\P1\llama\S02\src\Main.java:43: error: 'void' type not allowed here
+        System.out.println("Attendance for group " + group.getName() + ": " + attendance.viewAttendance());
+                                                                                                       ^
+outputs\P1\llama\S02\src\Main.java:46: error: cannot find symbol
+        System.out.println("Camp counselor " + counselor.getName() + " is taking attendance for group " + counselor.getGroup().getName());
+                                                        ^
+  symbol:   method getName()
+  location: variable counselor of type CampCounselor
+outputs\P1\llama\S02\src\Main.java:46: error: cannot find symbol
+        System.out.println("Camp counselor " + counselor.getName() + " is taking attendance for group " + counselor.getGroup().getName());
+                                                                                                                   ^
+  symbol:   method getGroup()
+  location: variable counselor of type CampCounselor
+3 errors

@@ -1,0 +1,55 @@
+outputs\P1\phi\S02\src\CampAdministrator.java:20: error: incompatible types: Campers cannot be converted to CampGroup
+        groups.add(newCampers);
+                   ^
+outputs\P1\phi\S02\src\CampAdministrator.java:28: error: cannot find symbol
+        groups.get(groups.indexOf(group)).add(campers);
+                                         ^
+  symbol:   method add(Campers)
+  location: class CampGroup
+outputs\P1\phi\S02\src\CampAdministrator.java:32: error: cannot find symbol
+        campers.get(campers.indexOf(campers)).scheduleActivity(activity, date);
+                           ^
+  symbol:   method indexOf(Campers)
+  location: variable campers of type Campers
+outputs\P1\phi\S02\src\CampAdministrator.java:36: error: cannot find symbol
+        campers.get(campers.indexOf(campers)).logAttendance(present);
+                           ^
+  symbol:   method indexOf(Campers)
+  location: variable campers of type Campers
+outputs\P1\phi\S02\src\CampAdministrator.java:40: error: cannot find symbol
+        staff.get(staff.indexOf(staff)).assignPosition(position);
+                       ^
+  symbol:   method indexOf(Staff)
+  location: variable staff of type Staff
+outputs\P1\phi\S02\src\CampAdministrator.java:49: error: cannot find symbol
+        this.name = campers.get(campers.indexOf(campers)).name;
+                                       ^
+  symbol:   method indexOf(Campers)
+  location: variable campers of type Campers
+outputs\P1\phi\S02\src\CampAdministrator.java:71: error: constructor Campers in class Campers cannot be applied to given types;
+class CampGroup extends Campers {
+^
+  required: Campers
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+outputs\P1\phi\S02\src\CampAdministrator.java:66: error: cannot find symbol
+        campers.add(new Campers(campers));
+               ^
+  symbol:   method add(Campers)
+  location: variable campers of type Campers
+outputs\P1\phi\S02\src\CampAdministrator.java:67: error: cannot find symbol
+        campers.get(campers.indexOf(campers)).enroll(this);
+                           ^
+  symbol:   method indexOf(Campers)
+  location: variable campers of type Campers
+outputs\P1\phi\S02\src\CampAdministrator.java:101: error: incompatible types: String cannot be converted to Campers
+        parent.enrollCampers(new Campers("John Doe"));
+                                         ^
+outputs\P1\phi\S02\src\CampAdministrator.java:102: error: incompatible types: String cannot be converted to Campers
+        Campers campers = new Campers("John Doe");
+                                      ^
+outputs\P1\phi\S02\src\CampAdministrator.java:106: error: staff has private access in CampAdministrator
+        admin.assignPositions(admin.staff.get(0), "Counselor");
+                                   ^
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+12 errors

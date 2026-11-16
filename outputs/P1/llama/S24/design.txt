@@ -1,0 +1,34 @@
+1. Domain entities (classes):
+    * OlderPerson
+    * MedicalCaregiver
+    * Caregiver
+    * HomeCareNurse
+    * Medication
+    * Emergency
+    * FallDetector
+
+  2. Single responsibility of each class:
+    * OlderPerson: represents an older person, stores their information and interactions with ALFRED
+    * MedicalCaregiver: represents a medical caregiver, stores their information and interactions with ALFRED
+    * Caregiver: represents a caregiver, stores their information and interactions with ALFRED
+    * HomeCareNurse: represents a home care nurse, stores their information and interactions with ALFRED
+    * Medication: represents a medication, stores its information and interactions with ALFRED
+    * Emergency: represents an emergency, stores its information and interactions with ALFRED
+    * FallDetector: detects falls and sends emergencies to specific contacts
+
+  3. Relationships (association, composition, inheritance):
+    * OlderPerson has a one-to-many relationship with Medication (an older person can have multiple medications)
+    * OlderPerson has a one-to-one relationship with Caregiver (an older person has one caregiver)
+    * MedicalCaregiver has a one-to-many relationship with OlderPerson (a medical caregiver can care for multiple older persons)
+    * HomeCareNurse has a one-to-many relationship with OlderPerson (a home care nurse can care for multiple older persons)
+    * Medication has a one-to-one relationship with Emergency (a medication can be associated with one emergency)
+    * FallDetector has a one-to-one relationship with Emergency (a fall detector can send emergencies to specific contacts)
+
+  4. Public methods of each class:
+    * OlderPerson: getMedications(), getCaregiver(), requestUrgentHelp(), receiveMessage()
+    * MedicalCaregiver: getOlderPersons(), getVideoCall()
+    * Caregiver: getOlderPerson(), getContactInformation()
+    * HomeCareNurse: getOlderPerson(), getContactInformation()
+    * Medication: getEmergency(), getDosage()
+    * Emergency: getMedication(), getContactInformation()
+    * FallDetector: detectFall(), sendEmergency()

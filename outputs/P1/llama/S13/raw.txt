@@ -1,0 +1,148 @@
+**Phase 1 - DESIGN**
+
+```xml
+<design>
+  1. Domain entities:
+    - Member
+    - Profile
+    - Course
+    - SiteAdministrator
+
+  2. Single responsibility of each class:
+    - Member: represents a site member with their details
+    - Profile: represents a member's profile with their details and courses
+    - Course: represents a course with its details
+    - SiteAdministrator: represents a site administrator with the ability to edit member profiles
+
+  3. Relationships:
+    - A Member has one Profile (composition)
+    - A Profile belongs to one Member (association)
+    - A Profile has many Courses (composition)
+    - A Course belongs to one Profile (association)
+    - A SiteAdministrator can edit many Member profiles (association)
+
+  4. Public methods of each class:
+    - Member: getProfile(), getDetails()
+    - Profile: getMember(), getDetails(), addCourse(), removeCourse()
+    - Course: getProfile(), getDetails()
+    - SiteAdministrator: editProfile(Member)
+</design>
+```
+
+**Phase 2 - CODE**
+
+### Member.java
+```java
+// File: Member.java
+
+public class Member {
+    private String name;
+    private String email;
+    private Profile profile;
+
+    public Member(String name, String email) {
+        this.name = name;
+        this.email = email;
+        this.profile = new Profile(this);
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public String getDetails() {
+        return "Name: " + name + ", Email: " + email;
+    }
+}
+```
+
+### Profile.java
+```java
+// File: Profile.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Profile {
+    private Member member;
+    private List<Course> courses;
+
+    public Profile(Member member) {
+        this.member = member;
+        this.courses = new ArrayList<>();
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public String getDetails() {
+        return "Member: " + member.getDetails() + ", Courses: " + courses.size();
+    }
+
+    public void addCourse(Course course) {
+        courses.add(course);
+    }
+
+    public void removeCourse(Course course) {
+        courses.remove(course);
+    }
+}
+```
+
+### Course.java
+```java
+// File: Course.java
+
+public class Course {
+    private String name;
+    private Profile profile;
+
+    public Course(String name, Profile profile) {
+        this.name = name;
+        this.profile = profile;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public String getDetails() {
+        return "Name: " + name + ", Profile: " + profile.getDetails();
+    }
+}
+```
+
+### SiteAdministrator.java
+```java
+// File: SiteAdministrator.java
+
+public class SiteAdministrator {
+    public void editProfile(Member member) {
+        // implementation to edit member profile
+    }
+}
+```
+
+### Main.java
+```java
+// File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        Member member = new Member("John Doe", "john.doe@example.com");
+        Profile profile = member.getProfile();
+        Course course = new Course("Java Programming", profile);
+        profile.addCourse(course);
+
+        System.out.println(member.getDetails());
+        System.out.println(profile.getDetails());
+        System.out.println(course.getDetails());
+
+        SiteAdministrator administrator = new SiteAdministrator();
+        administrator.editProfile(member);
+    }
+}
+```
+
+Note: This implementation assumes a simple representation of the domain entities and relationships. You may need to add more methods, fields, or complexity to accurately represent the requirements.

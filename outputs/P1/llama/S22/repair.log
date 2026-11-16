@@ -1,0 +1,3 @@
+Dataset.java: import java.util.ArrayList; import java.util.List;
+Depositor.java: import java.util.ArrayList; import java.util.List;
+ResearchInformationManager.java: import java.util.ArrayList; import java.util.List;

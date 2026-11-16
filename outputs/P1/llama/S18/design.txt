@@ -1,0 +1,39 @@
+1. Domain entities (classes):
+    * Hold
+    * Meeting
+    * Application
+    * HearingCalendar
+    * Affidavit
+    * FormalResponse
+    * InternalNote
+    * StaffMember
+
+  2. Single responsibility of each class:
+    * Hold: represents a hold on an application, with methods to apply and remove holds
+    * Meeting: represents a meeting, with methods to schedule and manage meetings
+    * Application: represents an application, with methods to denote final action status and manage application lifecycle
+    * HearingCalendar: represents a hearing calendar, with methods to manage hearing-related activities and due dates
+    * Affidavit: represents an affidavit, with methods to manage affidavits and ensure compliance
+    * FormalResponse: represents a formal response, with methods to send formal responses to applicants
+    * InternalNote: represents an internal note, with methods to record and share internal notes
+    * StaffMember: represents a staff member, with methods to manage holds, meetings, applications, and other staff-related activities
+
+  3. Relationships (association, composition, inheritance):
+    * Hold has a reference to the Application it is associated with (composition)
+    * Meeting has references to the StaffMember who scheduled it and the Application it is related to (association)
+    * Application has references to the Hold and Meeting associated with it (composition)
+    * HearingCalendar has a reference to the Application it is associated with (composition)
+    * Affidavit has a reference to the Application it is associated with (composition)
+    * FormalResponse has a reference to the Application it is associated with (composition)
+    * InternalNote has a reference to the Application it is associated with (composition)
+    * StaffMember has a collection of Holds, Meetings, Applications, and other staff-related activities (composition)
+
+  4. Public methods of each class:
+    * Hold: applyHold(), removeHold()
+    * Meeting: scheduleMeeting(), manageMeeting()
+    * Application: denoteFinalAction(), manageApplication()
+    * HearingCalendar: manageHearingCalendar()
+    * Affidavit: manageAffidavit()
+    * FormalResponse: sendFormalResponse()
+    * InternalNote: recordInternalNote()
+    * StaffMember: manageHolds(), manageMeetings(), manageApplications()

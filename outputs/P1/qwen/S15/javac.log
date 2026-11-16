@@ -1,0 +1,21 @@
+outputs\P1\qwen\S15\src\Sponsor.java:4: error: cannot find symbol
+    private List<Sponsorship> sponsorships;
+            ^
+  symbol:   class List
+  location: class Sponsor
+outputs\P1\qwen\S15\src\Sponsor.java:20: error: cannot find symbol
+    public List<Sponsorship> getSponsorships() {
+           ^
+  symbol:   class List
+  location: class Sponsor
+outputs\P1\qwen\S15\src\Sponsor.java:9: error: cannot find symbol
+        this.sponsorships = new ArrayList<>();
+                                ^
+  symbol:   class ArrayList
+  location: class Sponsor
+outputs\P1\qwen\S15\src\Payment.java:17: error: cannot find symbol
+        return UUID.randomUUID().toString();
+               ^
+  symbol:   variable UUID
+  location: class Payment
+4 errors

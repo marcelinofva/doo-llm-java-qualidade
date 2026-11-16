@@ -1,0 +1,31 @@
+1. Domain entities (classes):
+    * Person
+    * Contact
+    * Meeting
+    * Reminder
+    * Agenda
+    * Alfred (assistant)
+
+  2. Single responsibility of each class:
+    * Person: represents an individual with attributes and methods for managing their contact list and agenda
+    * Contact: represents a contact with attributes and methods for managing contact information
+    * Meeting: represents a meeting with attributes and methods for managing meeting details
+    * Reminder: represents a reminder with attributes and methods for managing reminder details
+    * Agenda: represents a person's agenda with attributes and methods for managing appointments and meetings
+    * Alfred: represents the assistant with attributes and methods for managing reminders, agenda, and contacts
+
+  3. Relationships (association, composition, inheritance):
+    * Person has-a Contact (composition)
+    * Person has-a Agenda (composition)
+    * Meeting belongs-to Person (association)
+    * Reminder belongs-to Person (association)
+    * Agenda has-many Meetings (composition)
+    * Agenda has-many Reminders (composition)
+
+  4. Public methods of each class:
+    * Person: addContact(), removeContact(), addMeeting(), removeMeeting(), addReminder(), removeReminder()
+    * Contact: getName(), getPhoneNumber(), getNotes()
+    * Meeting: getStartTime(), getEndTime(), getNotes()
+    * Reminder: getReminderTime(), getReminderNotes()
+    * Agenda: addMeeting(), removeMeeting(), addReminder(), removeReminder()
+    * Alfred: remindPerson(), manageAgenda(), manageContacts()

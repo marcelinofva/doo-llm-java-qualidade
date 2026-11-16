@@ -1,0 +1,27 @@
+1) Domain Entities (Classes):
+   - User
+   - Sponsor
+   - Payment
+   - Sponsorship
+   - JobPosting
+
+2) Single Responsibility of Each Class:
+   - User: Manages user information and authentication.
+   - Sponsor: Manages sponsor information and sponsorship details.
+   - Payment: Handles payment processing and transaction details.
+   - Sponsorship: Manages sponsorship levels and associated payments.
+   - JobPosting: Manages job postings and sponsorship links.
+
+3) Relationships:
+   - User has many Sponsorships
+   - Sponsor has many Sponsorships
+   - Sponsorship has one Payment
+   - Sponsorship has one JobPosting
+   - User has many JobPostings
+
+4) Public Methods:
+   - User: login(), register(), identify()
+   - Sponsor: createSponsorship(), linkSponsorshipToJob()
+   - Payment: processPayment()
+   - Sponsorship: getDetails(), getPaymentStatus()
+   - JobPosting: postJob(), getDetails()

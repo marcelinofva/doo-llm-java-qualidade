@@ -1,0 +1,18 @@
+1) Domain Entities (Classes):
+   - DataPackage: Represents a data package with properties like id, name, content, and status.
+   - Registry: Manages the data packages, including publishing, unpublishing, deleting, and restoring.
+   - Validator: Validates the data package before publishing.
+
+2) Single Responsibility:
+   - DataPackage: Manages the properties and state of a data package.
+   - Registry: Manages the lifecycle of data packages (publish, unpublish, delete, restore).
+   - Validator: Validates the data package.
+
+3) Relationships:
+   - Registry has a collection of DataPackage.
+   - Validator validates DataPackage.
+
+4) Public Methods:
+   - DataPackage: Constructor, getters, setters, publish(), unpublish(), delete(), restore(), validate().
+   - Registry: publish(DataPackage), unpublish(DataPackage), delete(DataPackage), restore(DataPackage).
+   - Validator: validate(DataPackage).

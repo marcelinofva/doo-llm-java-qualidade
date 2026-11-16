@@ -1,0 +1,68 @@
+outputs\P1\qwen\S27\src\Resource.java:4: error: cannot find symbol
+    private List<ResourceComponent> components;
+            ^
+  symbol:   class List
+  location: class Resource
+outputs\P1\qwen\S27\src\Resource.java:5: error: cannot find symbol
+    private List<Instance> instances;
+            ^
+  symbol:   class List
+  location: class Resource
+outputs\P1\qwen\S27\src\Resource.java:6: error: cannot find symbol
+    private List<Subject> subjects;
+            ^
+  symbol:   class List
+  location: class Resource
+outputs\P1\qwen\S27\src\Resource.java:7: error: cannot find symbol
+    private List<Note> notes;
+            ^
+  symbol:   class List
+  location: class Resource
+outputs\P1\qwen\S27\src\ResourceComponent.java:4: error: cannot find symbol
+    private List<Instance> instances;
+            ^
+  symbol:   class List
+  location: class ResourceComponent
+outputs\P1\qwen\S27\src\Main.java:21: error: id has private access in Resource
+        System.out.println("Resource ID: " + resource.id);
+                                                     ^
+outputs\P1\qwen\S27\src\Main.java:22: error: id has private access in ResourceComponent
+        System.out.println("Component ID: " + component.id);
+                                                       ^
+outputs\P1\qwen\S27\src\Main.java:23: error: levelOfDescription has private access in Resource
+        System.out.println("Level of Description: " + resource.levelOfDescription);
+                                                              ^
+outputs\P1\qwen\S27\src\Main.java:24: error: details has private access in Location
+        System.out.println("Container Location: " + location.details);
+                                                            ^
+outputs\P1\qwen\S27\src\Resource.java:11: error: cannot find symbol
+        this.components = new ArrayList<>();
+                              ^
+  symbol:   class ArrayList
+  location: class Resource
+outputs\P1\qwen\S27\src\Resource.java:12: error: cannot find symbol
+        this.instances = new ArrayList<>();
+                             ^
+  symbol:   class ArrayList
+  location: class Resource
+outputs\P1\qwen\S27\src\Resource.java:13: error: cannot find symbol
+        this.subjects = new ArrayList<>();
+                            ^
+  symbol:   class ArrayList
+  location: class Resource
+outputs\P1\qwen\S27\src\Resource.java:14: error: cannot find symbol
+        this.notes = new ArrayList<>();
+                         ^
+  symbol:   class ArrayList
+  location: class Resource
+outputs\P1\qwen\S27\src\Resource.java:18: error: cannot find symbol
+        component.setId(id);
+                 ^
+  symbol:   method setId(String)
+  location: variable component of type ResourceComponent
+outputs\P1\qwen\S27\src\ResourceComponent.java:8: error: cannot find symbol
+        this.instances = new ArrayList<>();
+                             ^
+  symbol:   class ArrayList
+  location: class ResourceComponent
+15 errors

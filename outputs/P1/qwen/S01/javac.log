@@ -1,0 +1,26 @@
+outputs\P1\qwen\S01\src\Game.java:32: error: cannot find symbol
+                System.out.println(estimation.getPlayer().getName() + ": " + estimation.getEstimate());
+                                             ^
+  symbol:   method getPlayer()
+  location: variable estimation of type Estimation
+outputs\P1\qwen\S01\src\GameURL.java:10: error: cannot find symbol
+        return "http://example.com/game/" + game.getName();
+                                                ^
+  symbol:   method getName()
+  location: variable game of type Game
+outputs\P1\qwen\S01\src\Main.java:9: error: cannot find symbol
+        game.getPlayers().get(0).estimate("1");
+            ^
+  symbol:   method getPlayers()
+  location: variable game of type Game
+outputs\P1\qwen\S01\src\Main.java:10: error: cannot find symbol
+        game.getPlayers().get(1).estimate("2");
+            ^
+  symbol:   method getPlayers()
+  location: variable game of type Game
+outputs\P1\qwen\S01\src\Main.java:11: error: cannot find symbol
+        game.getPlayers().get(2).estimate("3");
+            ^
+  symbol:   method getPlayers()
+  location: variable game of type Game
+5 errors

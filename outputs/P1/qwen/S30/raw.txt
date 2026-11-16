@@ -1,0 +1,203 @@
+<design>
+1) Domain Entities (Classes):
+   - ETD (Electronic Thesis and Dissertation)
+   - BatchIngestTool
+   - Embargo
+   - Permission
+   - DescriptiveRecord
+   - AuthorAuthorityControl
+   - OAIRepository
+   - BatchSubmitter
+   - Depositor
+
+2) Single Responsibility of Each Class:
+   - ETD: Represents an ETD with its metadata and files.
+   - BatchIngestTool: Manages the batch ingestion of ETDs.
+   - Embargo: Manages embargo settings for ETDs.
+   - Permission: Manages permissions for ETDs.
+   - DescriptiveRecord: Exposes the descriptive record for ETDs.
+   - AuthorAuthorityControl: Manages author authority control.
+   - OAIRepository: Exposes repository contents via OAI-PMH.
+   - BatchSubmitter: Handles batch submission of data and metadata.
+   - Depositor: Manages depositor feedback post-ingest.
+
+3) Relationships:
+   - BatchIngestTool has-a List<ETD>
+   - ETD has-a Embargo
+   - ETD has-a List<Permission>
+   - DescriptiveRecord has-a ETD
+   - AuthorAuthorityControl has-a List<ETD>
+   - OAIRepository has-a List<ETD>
+   - BatchSubmitter has-a List<ETD>
+   - Depositor has-a List<ETD>
+
+4) Public Methods:
+   - BatchIngestTool: ingestETDs(List<ETD> etds)
+   - Embargo: setEmbargoDate(Date date)
+   - Permission: setPermissions(List<String> roles)
+   - DescriptiveRecord: getDescriptiveRecord()
+   - AuthorAuthorityControl: controlAuthorAuthority(ETD etd)
+   - OAIRepository: getRepositoryContents()
+   - BatchSubmitter: submitData(List<Object> data)
+   - Depositor: getFeedback(ETD etd)
+</design>
+
+// File: ETD.java
+```java
+public class ETD {
+    private String title;
+    private String author;
+    private Date submissionDate;
+    private Embargo embargo;
+    private List<Permission> permissions;
+
+    // Getters and setters
+}
+```
+
+// File: Embargo.java
+```java
+import java.util.Date;
+
+public class Embargo {
+    private Date embargoDate;
+
+    public void setEmbargoDate(Date date) {
+        this.embargoDate = date;
+    }
+
+    // Getters and setters
+}
+```
+
+// File: Permission.java
+```java
+import java.util.List;
+
+public class Permission {
+    private List<String> roles;
+
+    public void setPermissions(List<String> roles) {
+        this.roles = roles;
+    }
+
+    // Getters and setters
+}
+```
+
+// File: DescriptiveRecord.java
+```java
+public class DescriptiveRecord {
+    private ETD etd;
+
+    public String getDescriptiveRecord() {
+        // Return descriptive record
+        return "";
+    }
+
+    // Getters and setters
+}
+```
+
+// File: AuthorAuthorityControl.java
+```java
+import java.util.List;
+
+public class AuthorAuthorityControl {
+    public void controlAuthorAuthority(ETD etd) {
+        // Control author authority
+    }
+
+    // Getters and setters
+}
+```
+
+// File: OAIRepository.java
+```java
+import java.util.List;
+
+public class OAIRepository {
+    private List<ETD> repositoryContents;
+
+    public List<ETD> getRepositoryContents() {
+        return repositoryContents;
+    }
+
+    // Getters and setters
+}
+```
+
+// File: BatchSubmitter.java
+```java
+import java.util.List;
+
+public class BatchSubmitter {
+    private List<ETD> submittedETDs;
+
+    public void submitData(List<Object> data) {
+        // Submit data
+    }
+
+    // Getters and setters
+}
+```
+
+// File: Depositor.java
+```java
+import java.util.List;
+
+public class Depositor {
+    private List<ETD> depositedETDs;
+
+    public String getFeedback(ETD etd) {
+        // Get depositor feedback
+        return "";
+    }
+
+    // Getters and setters
+}
+```
+
+// File: Main.java
+```java
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        // Demonstrate main flows using hard-coded data
+        List<ETD> etds = new ArrayList<>();
+        ETD etd1 = new ETD();
+        etd1.setTitle("Thesis Title");
+        etd1.setAuthor("Author Name");
+        etd1.setSubmissionDate(new Date());
+        etd1.setEmbargo(new Embargo());
+        etd1.getEmbargo().setEmbargoDate(new Date());
+        etd1.setPermissions(new ArrayList<>());
+        etd1.getPermissions().add("ROLE_ADMIN");
+        etd1.getPermissions().add("ROLE_CURATION");
+        etds.add(etd1);
+
+        BatchIngestTool ingestTool = new BatchIngestTool();
+        ingestTool.ingestETDs(etds);
+
+        DescriptiveRecord record = new DescriptiveRecord();
+        record.setETD(etd1);
+        System.out.println(record.getDescriptiveRecord());
+
+        AuthorAuthorityControl control = new AuthorAuthorityControl();
+        control.controlAuthorAuthority(etd1);
+
+        OAIRepository repository = new OAIRepository();
+        repository.setRepositoryContents(etds);
+        System.out.println(repository.getRepositoryContents());
+
+        BatchSubmitter submitter = new BatchSubmitter();
+        submitter.submitData(etds);
+
+        Depositor depositor = new Depositor();
+        System.out.println(depositor.getFeedback(etd1));
+    }
+}
+```

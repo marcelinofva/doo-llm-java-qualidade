@@ -1,0 +1,55 @@
+<domain-entities>
+    <class name="File">
+      <single-responsibility>Represents a digital file with its metadata and restrictions</single-responsibility>
+      <relationships>
+        <association>one-to-many: FileRestrictions</association>
+      </relationships>
+      <public-methods>
+        <method name="addRestriction">Adds a restriction to the file</method>
+        <method name="removeRestriction">Removes a restriction from the file</method>
+        <method name="getRestrictions">Returns the list of restrictions for the file</method>
+      </public-methods>
+    </class>
+    <class name="FileRestriction">
+      <single-responsibility>Represents a restriction applied to a file</single-responsibility>
+      <relationships>
+        <association>many-to-one: File</association>
+      </relationships>
+      <public-methods>
+        <method name="getType">Returns the type of restriction (e.g. access, redaction)</method>
+        <method name="getEndDate">Returns the end date of the restriction</method>
+      </public-methods>
+    </class>
+    <class name="Group">
+      <single-responsibility>Represents a group of files with shared restrictions</single-responsibility>
+      <relationships>
+        <association>one-to-many: File</association>
+        <association>one-to-many: FileRestrictions</association>
+      </relationships>
+      <public-methods>
+        <method name="addFile">Adds a file to the group</method>
+        <method name="removeFile">Removes a file from the group</method>
+        <method name="getFiles">Returns the list of files in the group</method>
+      </public-methods>
+    </class>
+    <class name="User">
+      <single-responsibility>Represents a user with access rights</single-responsibility>
+      <relationships>
+        <association>many-to-many: File</association>
+      </relationships>
+      <public-methods>
+        <method name="addAccess">Grants access to a file</method>
+        <method name="removeAccess">Revokes access to a file</method>
+      </public-methods>
+    </class>
+    <class name="IPAccess">
+      <single-responsibility>Represents IP address-based access control</single-responsibility>
+      <relationships>
+        <association>many-to-many: File</association>
+      </relationships>
+      <public-methods>
+        <method name="addAccess">Grants access to a file from a specific IP address</method>
+        <method name="removeAccess">Revokes access to a file from a specific IP address</method>
+      </public-methods>
+    </class>
+  </domain-entities>

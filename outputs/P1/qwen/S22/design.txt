@@ -1,0 +1,31 @@
+1) Domain Entities (Classes):
+   - Dataset
+   - User
+   - License
+   - Publication
+   - Project
+   - ResearchInformationManager
+
+2) Single Responsibility of Each Class:
+   - Dataset: Manages dataset properties and relationships.
+   - User: Manages user properties and permissions.
+   - License: Manages license properties and application.
+   - Publication: Manages publication properties and relationships.
+   - Project: Manages project properties and relationships.
+   - ResearchInformationManager: Manages citation counts and dataset tracking.
+
+3) Relationships:
+   - Dataset has a License.
+   - Dataset has a User (owner).
+   - Dataset can have multiple Users (collaborators).
+   - Dataset can be linked to multiple Publications.
+   - Dataset can be linked to a Project.
+   - ResearchInformationManager tracks citation counts for Datasets.
+
+4) Public Methods:
+   - Dataset: addCollaborator(User user), linkPublication(Publication publication), linkProject(Project project)
+   - User: grantPrivileges(Dataset dataset)
+   - License: applyLicense(Dataset dataset)
+   - Publication: updateCitationCount()
+   - Project: updateWorkflow()
+   - ResearchInformationManager: trackCitationCount(Dataset dataset)

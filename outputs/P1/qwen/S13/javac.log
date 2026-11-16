@@ -1,0 +1,30 @@
+outputs\P1\qwen\S13\src\Main.java:4: error: cannot find symbol
+        trainer.setName("John Doe");
+               ^
+  symbol:   method setName(String)
+  location: variable trainer of type Trainer
+outputs\P1\qwen\S13\src\Main.java:5: error: cannot find symbol
+        trainer.setEmail("john.doe@example.com");
+               ^
+  symbol:   method setEmail(String)
+  location: variable trainer of type Trainer
+outputs\P1\qwen\S13\src\Main.java:10: error: cannot find symbol
+        class1.setTitle("Scrum Master Fundamentals");
+              ^
+  symbol:   method setTitle(String)
+  location: variable class1 of type Class
+outputs\P1\qwen\S13\src\Main.java:11: error: cannot find symbol
+        class1.setLink("https://example.com/scrum-master-fundamentals");
+              ^
+  symbol:   method setLink(String)
+  location: variable class1 of type Class
+outputs\P1\qwen\S13\src\Trainer.java:8: error: cannot find symbol
+        return details;
+               ^
+  symbol:   variable details
+  location: class Trainer
+outputs\P1\qwen\S13\src\Trainer.java:12: error: cannot find symbol
+        this.details = details;
+            ^
+  symbol: variable details
+6 errors

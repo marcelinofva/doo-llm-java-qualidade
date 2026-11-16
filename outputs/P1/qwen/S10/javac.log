@@ -1,0 +1,6 @@
+outputs\P1\qwen\S10\src\PlatformAdmin.java:13: error: cannot find symbol
+            System.out.println("Dataset: " + dataset.getTitle() + ", Public: " + dataset.isPublic() + ", Hidden: " + dataset.isHidden());
+                                                    ^
+  symbol:   method getTitle()
+  location: variable dataset of type Dataset
+1 error

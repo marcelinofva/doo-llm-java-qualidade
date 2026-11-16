@@ -1,0 +1,20 @@
+1. Domain entities:
+    * Publisher
+    * Member
+    * Owner
+    * User
+  2. Single responsibility of each class:
+    * Publisher: manages its members and owners
+    * Member: represents a user who is a member of a publisher
+    * Owner: represents a user who is an owner of a publisher
+    * User: represents a user with basic information
+  3. Relationships:
+    * A Publisher has many Members (composition)
+    * A Member belongs to one Publisher (association)
+    * An Owner is a type of Member (inheritance)
+    * A User can be an Owner or a Member (association)
+  4. Public methods of each class:
+    * Publisher: inviteUser(), removeMember(), viewMembers(), makeOwner(), removeOwner()
+    * Member: getPublisher(), getRole()
+    * Owner: getPublisher()
+    * User: getId(), getName(), getEmail()

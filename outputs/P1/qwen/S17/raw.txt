@@ -1,0 +1,237 @@
+<design>
+1) Domain Entities (Classes):
+   - Customer
+   - Applicant
+   - Application
+   - Document
+   - Fee
+   - Transaction
+   - Staff
+   - Review
+
+2) Single Responsibility of Each Class:
+   - Customer: Manages customer information and portal access.
+   - Applicant: Manages application details and transactions.
+   - Application: Represents a service request and its status.
+   - Document: Represents supporting documents for an application.
+   - Fee: Manages fee details and payment.
+   - Transaction: Tracks the status of a transaction.
+   - Staff: Manages staff actions and reviews.
+   - Review: Handles completeness review and detailed review.
+
+3) Relationships:
+   - Customer has one or many Applications.
+   - Applicant has one or many Applications.
+   - Application has one or many Documents.
+   - Application has one Fee.
+   - Application has one Transaction.
+   - Staff performs Completeness Review and Detailed Review on Applications.
+
+4) Public Methods:
+   - Customer: createAccount(), login(), logout().
+   - Applicant: submitApplication(), submitDocument(), payFee(), checkStatus(), modifyApplication().
+   - Application: getStatus(), isComplete(), assignForReview().
+   - Document: uploadDocument().
+   - Fee: getAmount(), pay().
+   - Transaction: getStatus().
+   - Staff: performCompletenessReview(), assignForDetailedReview().
+</design>
+
+// File: Customer.java
+```java
+public class Customer {
+    private String username;
+    private String password;
+
+    public Customer(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public void createAccount() {
+        // Implementation
+    }
+
+    public void login() {
+        // Implementation
+    }
+
+    public void logout() {
+        // Implementation
+    }
+}
+```
+
+// File: Applicant.java
+```java
+public class Applicant {
+    private String name;
+    private String email;
+
+    public Applicant(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    public void submitApplication() {
+        // Implementation
+    }
+
+    public void submitDocument() {
+        // Implementation
+    }
+
+    public void payFee() {
+        // Implementation
+    }
+
+    public void checkStatus() {
+        // Implementation
+    }
+
+    public void modifyApplication() {
+        // Implementation
+    }
+}
+```
+
+// File: Application.java
+```java
+public class Application {
+    private String id;
+    private String status;
+
+    public Application(String id) {
+        this.id = id;
+        this.status = "Pending";
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public boolean isComplete() {
+        // Implementation
+        return false;
+    }
+
+    public void assignForReview() {
+        // Implementation
+    }
+}
+```
+
+// File: Document.java
+```java
+public class Document {
+    private String name;
+    private byte[] content;
+
+    public Document(String name, byte[] content) {
+        this.name = name;
+        this.content = content;
+    }
+
+    public void uploadDocument() {
+        // Implementation
+    }
+}
+```
+
+// File: Fee.java
+```java
+public class Fee {
+    private double amount;
+
+    public Fee(double amount) {
+        this.amount = amount;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void pay() {
+        // Implementation
+    }
+}
+```
+
+// File: Transaction.java
+```java
+public class Transaction {
+    private String id;
+    private String status;
+
+    public Transaction(String id) {
+        this.id = id;
+        this.status = "Pending";
+    }
+
+    public String getStatus() {
+        return status;
+    }
+}
+```
+
+// File: Staff.java
+```java
+public class Staff {
+    private String username;
+    private String password;
+
+    public Staff(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public void performCompletenessReview() {
+        // Implementation
+    }
+
+    public void assignForDetailedReview() {
+        // Implementation
+    }
+}
+```
+
+// File: Review.java
+```java
+public class Review {
+    private Application application;
+
+    public Review(Application application) {
+        this.application = application;
+    }
+
+    public void performCompletenessReview() {
+        // Implementation
+    }
+
+    public void assignForDetailedReview() {
+        // Implementation
+    }
+}
+```
+
+// File: Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        Customer customer = new Customer("customer1", "password1");
+        customer.createAccount();
+        customer.login();
+
+        Applicant applicant = new Applicant("applicant1", "applicant1@example.com");
+        applicant.submitApplication();
+        applicant.submitDocument();
+        applicant.payFee();
+        applicant.checkStatus();
+        applicant.modifyApplication();
+
+        Staff staff = new Staff("staff1", "password1");
+        staff.performCompletenessReview();
+        staff.assignForDetailedReview();
+    }
+}
+```

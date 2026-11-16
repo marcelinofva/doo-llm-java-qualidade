@@ -1,0 +1,6 @@
+outputs\P1\phi\S18\src\Main.java:8: error: cannot find symbol
+        staffMember.denyFinalAction();
+                   ^
+  symbol:   method denyFinalAction()
+  location: variable staffMember of type StaffMember
+1 error

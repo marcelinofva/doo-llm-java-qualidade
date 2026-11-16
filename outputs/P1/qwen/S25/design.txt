@@ -1,0 +1,49 @@
+1) Domain Entities (Classes):
+   - OlderPerson
+   - Alfred
+   - Door
+   - Phone
+   - Light
+   - Heating
+   - TV
+   - Radio
+   - MoviePlayer
+   - NewsReader
+   - GroceryShopping
+
+2) Single Responsibility of Each Class:
+   - OlderPerson: Manages interactions with Alfred.
+   - Alfred: Handles all tasks for the OlderPerson.
+   - Door: Manages the door's state.
+   - Phone: Manages phone calls.
+   - Light: Manages light control.
+   - Heating: Manages heating control.
+   - TV: Manages TV control.
+   - Radio: Manages radio control.
+   - MoviePlayer: Manages movie playback.
+   - NewsReader: Reads and reports news.
+   - GroceryShopping: Manages grocery shopping.
+
+3) Relationships:
+   - Alfred has-a Door
+   - Alfred has-a Phone
+   - Alfred has-a Light
+   - Alfred has-a Heating
+   - Alfred has-a TV
+   - Alfred has-a Radio
+   - Alfred has-a MoviePlayer
+   - Alfred has-a NewsReader
+   - Alfred has-a GroceryShopping
+
+4) Public Methods:
+   - OlderPerson: useAlfred()
+   - Alfred: seeDoor(), pickUpPhone(), turnOnLight(), turnOffLight(), controlHeating(), controlTV(), controlRadio(), playMovie(), readNews(), doGroceryShopping()
+   - Door: open(), close()
+   - Phone: pickUp()
+   - Light: turnOn(), turnOff()
+   - Heating: setTemperature()
+   - TV: turnOn(), turnOff(), changeChannel()
+   - Radio: turnOn(), turnOff(), changeStation()
+   - MoviePlayer: playMovie()
+   - NewsReader: readNews()
+   - GroceryShopping: shop()

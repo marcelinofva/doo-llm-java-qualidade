@@ -1,0 +1,27 @@
+1. Domain entities:
+    * Collection
+    * CollectionCurator
+    * RepositoryManager
+    * RemoteStorageSite
+    * ReplicationPolicy
+    * ReplicationStatus
+  2. Single responsibility of each class:
+    * Collection: represents a collection of items and components
+    * CollectionCurator: manages a collection and its replication
+    * RepositoryManager: manages the repository and its policies
+    * RemoteStorageSite: represents a remote storage site
+    * ReplicationPolicy: defines the replication policy for a collection
+    * ReplicationStatus: represents the replication status of a collection
+  3. Relationships:
+    * Collection has a one-to-one relationship with CollectionCurator
+    * Collection has a one-to-one relationship with ReplicationPolicy
+    * Collection has a one-to-many relationship with items and components
+    * RepositoryManager has a one-to-many relationship with collections
+    * RemoteStorageSite has a one-to-many relationship with collections
+  4. Public methods of each class:
+    * Collection: getItems(), getComponents(), getReplicationPolicy()
+    * CollectionCurator: getCollection(), replicateCollection()
+    * RepositoryManager: getCollection(), getRemoteStorageSite(), replicateCollection()
+    * RemoteStorageSite: getCollection()
+    * ReplicationPolicy: getReplicationPolicy()
+    * ReplicationStatus: getReplicationStatus()

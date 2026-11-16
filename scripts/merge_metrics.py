@@ -30,7 +30,9 @@ cc = mt.groupby(KEY)["wmc"].agg(cc_mean="mean", cc_max="max").reset_index()
 sonar = pd.read_csv("results/sonar.csv")      # tech, model, spec, ncloc, complexity, cognitive_complexity, code_smells
 sonar = sonar.rename(columns={"code_smells": "smells"})
 
-ast = com_chaves(pd.read_csv("results/ast.csv"), "file")
+ast = pd.read_csv("results/ast.csv")
+ast = ast[~ast["file"].str.contains("orig_src")]          # orig_src = copia pre-reparo
+ast = com_chaves(ast, "file")
 ast = ast[ast.parsed == 1].groupby(KEY).agg(ast_nodes=("nodes", "sum"), ast_depth=("depth", "max"),
                                             n_interfaces=("interfaces", "sum"), n_extends=("extends", "sum"),
                                             n_try=("try_catch", "sum"), private_fields=("private_fields", "sum"),

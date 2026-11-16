@@ -6,3 +6,5 @@ outputs/**/classes/
 *.class
 .DS_Store
 Thumbs.db
+
+tools/

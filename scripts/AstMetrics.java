@@ -32,7 +32,7 @@ public class AstMetrics {
                 + "private_fields,extends,implements,try_catch,throws");
         List<Path> files;
         try (Stream<Path> w = Files.walk(Paths.get(args[0]))) {
-            files = w.filter(p -> p.toString().endsWith(".java")).sorted().collect(Collectors.toList());
+            files = w.filter(p -> p.toString().endsWith(".java") && !p.toString().contains("orig_src")).sorted().collect(Collectors.toList());
         }
         for (Path p : files) {
             ParseResult<CompilationUnit> r = parser.parse(p);

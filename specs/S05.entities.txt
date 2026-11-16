@@ -1,0 +1,7 @@
+Publisher
+Consumer
+DataPackage
+Tag
+Version
+Snapshot
+Schema

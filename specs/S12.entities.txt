@@ -1,0 +1,6 @@
+Course
+Event
+Trainer
+Administrator
+Editor
+ListingFee

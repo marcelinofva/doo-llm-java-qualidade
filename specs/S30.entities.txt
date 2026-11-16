@@ -1,0 +1,9 @@
+ETD
+Batch
+Embargo
+Archivist
+Curator
+Author
+Depositor
+Repository
+Permission

@@ -1,0 +1,6 @@
+Profile
+Member
+Trainer
+Practitioner
+Class
+Administrator

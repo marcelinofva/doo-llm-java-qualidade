@@ -1,0 +1,6 @@
+NewsItem
+Visitor
+Editor
+Member
+Feed
+Priority

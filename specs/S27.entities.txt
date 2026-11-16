@@ -1,0 +1,8 @@
+Resource
+Component
+Instance
+Container
+Location
+Subject
+Note
+Archivist

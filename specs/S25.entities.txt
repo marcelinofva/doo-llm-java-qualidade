@@ -1,0 +1,8 @@
+OlderPerson
+Door
+Light
+Heating
+Television
+Phone
+Order
+News

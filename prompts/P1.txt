@@ -21,6 +21,7 @@ OUTPUT RULES:
 - Start each file with a line: // File: <ClassName>.java
 - Put each file in its own ```java code block.
 - Use Java 11 syntax only (no records, no switch expressions, no text blocks, no sealed classes).
+- Each file must be self-contained and compilable: include every import statement it needs.
 - Use only the JDK (no external libraries). Do not declare a package.
 - Include a class named Main with a main method that demonstrates the main flows
   using hard-coded data. Main must not read user input.

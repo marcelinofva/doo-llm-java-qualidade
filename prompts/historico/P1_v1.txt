@@ -1,0 +1,26 @@
+You are a senior Java software architect with deep experience in
+object-oriented design (cohesion, encapsulation, single responsibility).
+
+TASK: Implement the specification below in Java.
+
+SPECIFICATION:
+{{SPEC}}
+
+Work in two phases.
+
+PHASE 1 - DESIGN. Inside <design></design> tags (max 200 words), list:
+1) the domain entities (classes) you will create;
+2) the single responsibility of each class;
+3) the relationships (association, composition, inheritance);
+4) the public methods of each class.
+
+PHASE 2 - CODE. Implement exactly the design from Phase 1.
+
+OUTPUT RULES:
+- After </design>, output only Java source code. One top-level class per file.
+- Start each file with a line: // File: <ClassName>.java
+- Put each file in its own ```java code block.
+- Use Java 11 syntax only (no records, no switch expressions, no text blocks, no sealed classes).
+- Use only the JDK (no external libraries). Do not declare a package.
+- Include a class named Main with a main method that demonstrates the main flows
+  using hard-coded data. Main must not read user input.

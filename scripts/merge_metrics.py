@@ -12,7 +12,7 @@ def com_chaves(df, col):
     return df.dropna(subset=KEY)
 
 
-build = pd.read_csv("results/build.csv")[KEY + ["compiled", "ran"]]
+build = pd.read_csv("results/build.csv")[KEY + ["compiled_strict", "compiled", "repaired", "ran"]]
 
 ck = com_chaves(pd.read_csv("results/ck/class.csv"), "file")
 g = ck.groupby(KEY)

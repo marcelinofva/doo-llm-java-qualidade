@@ -16,12 +16,12 @@ df = df[df.tech == TECH]
 modelos = sorted(df.model.unique())
 os.makedirs("results/figures", exist_ok=True)
 
-taxas = df.groupby("model")[["compiled", "ran"]].mean().reindex(modelos) * 100
+taxas = df.groupby("model")[["compiled_strict", "compiled", "ran"]].mean().reindex(modelos) * 100
 ax = taxas.plot(kind="bar", figsize=(6, 4), rot=0)
 ax.set_ylabel("% dos programas")
 ax.set_ylim(0, 100)
 ax.set_xlabel("")
-ax.legend(["Compilou", "Executou"])
+ax.legend(["Compilou (como escrito)", "Compilou (com reparo de imports)", "Executou"])
 plt.tight_layout()
 plt.savefig("results/figures/taxas.png", dpi=200)
 plt.close()

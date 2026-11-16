@@ -1,5 +1,5 @@
 """Testes estatísticos sobre results/metrics.csv (uma linha por programa).
-Colunas esperadas: tech, model, spec, compiled, ran, e as métricas numéricas abaixo."""
+Colunas esperadas: tech, model, spec, compiled_strict, compiled, ran, e as métricas numéricas abaixo."""
 import itertools
 import sys
 import numpy as np
@@ -7,7 +7,7 @@ import pandas as pd
 from scipy import stats
 
 TECH = sys.argv[1] if len(sys.argv) > 1 else "P1"
-BINARIAS = ["compiled", "ran"]
+BINARIAS = ["compiled_strict", "compiled", "ran"]
 NUMERICAS = ["cc_mean", "cogc_mean", "smells", "ncloc", "lcom_mean", "nom_mean", "npm_mean",
              "wmc_mean", "cbo_mean", "ast_nodes", "ast_depth", "entity_cov"]
 

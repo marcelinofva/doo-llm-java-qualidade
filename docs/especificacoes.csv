@@ -1,4 +1,4 @@
-id,sistema,fonte_origem,link_ou_doi,licenca,n_historias,n_entidades,dominio,alterada_por_mim,data_registro
+﻿id,sistema,fonte_origem,link_ou_doi,licenca,n_historias,n_entidades,dominio,alterada_por_mim,data_registro
 S01,Planning Poker,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,6,jogos,nao,2026-11-15
 S02,CamperPlus,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,7,educacao,nao,2026-11-15
 S03,Recycling,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,7,meio ambiente,nao,2026-11-15
@@ -16,7 +16,7 @@ S14,Scrum Alliance - noticias do site,Dalpiaz 2024 (Mendeley Data),https://doi.o
 S15,BADCamp - patrocinios,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,7,eventos,nao,2026-11-16
 S16,BADCamp - inscricao em treinamentos,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,7,eventos,nao,2026-11-16
 S17,Loudoun County - pedidos de servico (aplicacoes),Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,8,governo,nao,2026-11-16
-S18,Loudoun County - retencoes, reunioes e audiencias,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,8,governo,nao,2026-11-16
+S18,"Loudoun County - retencoes, reunioes e audiencias",Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,8,governo,nao,2026-11-16
 S19,Loudoun County - revisao de planos e inspecoes,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,8,governo,nao,2026-11-16
 S20,RACDAM (arquivo digital) - arquivos com acesso restrito,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,5,arquivos,nao,2026-11-16
 S21,CULRepo (repositorio universitario) - colecoes do repositorio,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,7,repositorio digital,nao,2026-11-16
@@ -24,8 +24,9 @@ S22,UniBath (dados de pesquisa) - deposito de conjuntos de dados,Dalpiaz 2024 (M
 S23,ALFRED (assistente pessoal) - agenda e lembretes,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,7,saude e idosos,nao,2026-11-16
 S24,ALFRED (assistente pessoal) - medicacao e emergencia,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,8,saude e idosos,nao,2026-11-16
 S25,ALFRED (assistente pessoal) - controle da casa,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,8,casa inteligente,nao,2026-11-16
-S26,ArchivesSpace - usuarios, papeis e autenticacao,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,7,arquivos,nao,2026-11-16
+S26,"ArchivesSpace - usuarios, papeis e autenticacao",Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,7,arquivos,nao,2026-11-16
 S27,ArchivesSpace - descricao de recursos arquivisticos,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,8,arquivos,nao,2026-11-16
 S28,ArchivesSpace - agentes e assuntos,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,7,7,arquivos,nao,2026-11-16
 S29,ArchivesSpace - importacao e exportacao de descricoes,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,7,arquivos,nao,2026-11-16
 S30,MIS (repositorio digital) - ingestao em lote de teses,Dalpiaz 2024 (Mendeley Data),https://doi.org/10.17632/7zbk8zsd8y.2,CC BY 4.0,8,9,repositorio digital,nao,2026-11-16
+

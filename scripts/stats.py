@@ -8,8 +8,11 @@ from scipy import stats
 
 TECH = sys.argv[1] if len(sys.argv) > 1 else "P1"
 BINARIAS = ["compiled_strict", "compiled", "ran"]
-NUMERICAS = ["cc_mean", "cogc_mean", "smells", "ncloc", "lcom_mean", "nom_mean", "npm_mean",
-             "wmc_mean", "cbo_mean", "ast_nodes", "ast_depth", "entity_cov"]
+# Métricas de código-fonte (CK, AST, entidades): existem para os 90 programas -> análise pareada por especificação.
+NUMERICAS = ["cc_mean", "lcom_mean", "nom_mean", "npm_mean", "wmc_mean", "cbo_mean",
+             "ast_nodes", "ast_depth", "entity_cov"]
+# Métricas do SonarQube: só existem para quem compilou -> comparação sem pareamento no subconjunto que compila.
+SONAR = ["cogc_mean", "smells", "ncloc"]
 
 df = pd.read_csv("results/metrics.csv")
 df = df[df.tech == TECH]
@@ -52,9 +55,29 @@ for m in BINARIAS:
     q, p = cochran_q(wide)
     print(f"[{m}] taxa por modelo: {wide.mean().round(3).to_dict()}  Cochran Q={q:.3f} p={p:.4f}")
 print()
+def sem_pareamento(sub, m, rotulo):
+    grupos = {mo: sub[sub.model == mo][m].dropna() for mo in modelos}
+    if min(len(v) for v in grupos.values()) < 3:
+        print(f"  [{rotulo}] amostra pequena demais {({k: len(v) for k, v in grupos.items()})}; pulei")
+        return
+    print(f"  [{rotulo}] n={ {k: len(v) for k, v in grupos.items()} } "
+          f"mediana={ {k: round(float(v.median()), 2) for k, v in grupos.items()} }")
+    try:
+        kw = stats.kruskal(*grupos.values())
+        print(f"    Kruskal-Wallis p={kw.pvalue:.4f}")
+    except ValueError:
+        print("    Kruskal-Wallis: valores todos iguais")
+        return
+    pares_u = list(itertools.combinations(modelos, 2))
+    pu = [stats.mannwhitneyu(grupos[a], grupos[b], alternative="two-sided").pvalue for a, b in pares_u]
+    for (a, b), padj, praw in zip(pares_u, holm(pu), pu):
+        print(f"    {a} vs {b}: Mann-Whitney U p={praw:.4f} (Holm {padj:.4f}) "
+              f"Cliff delta={cliffs_delta(grupos[a], grupos[b]):+.2f}")
+
+
+print("##### A) Métricas de código-fonte: todos os programas, pareado por especificação #####\n")
 for m in NUMERICAS:
-    sub = df[df.compiled == 1]
-    wide = sub.pivot(index="spec", columns="model", values=m).dropna()
+    wide = df.pivot(index="spec", columns="model", values=m).dropna()
     if len(wide) < 6:
         print(f"[{m}] poucas especificações completas ({len(wide)}); pulei\n")
         continue
@@ -70,15 +93,11 @@ for m in NUMERICAS:
     for (a, b), padj, praw in zip(pares, holm(ps), ps):
         print(f"  {a} vs {b}: Wilcoxon p={praw:.4f} (Holm {padj:.4f}) "
               f"Cliff delta={cliffs_delta(wide[a], wide[b]):+.2f}")
+    sem_pareamento(df[df.compiled == 1], m, "sensibilidade: só quem compila, sem pareamento")
     print()
 
-    # Análise de sensibilidade (como no artigo-base): todos os programas que compilam, sem pareamento
-    grupos = {mo: sub[sub.model == mo][m].dropna() for mo in modelos}
-    kw = stats.kruskal(*grupos.values())
-    print(f"  [sem pareamento, todos que compilam] n={ {k: len(v) for k, v in grupos.items()} } "
-          f"Kruskal-Wallis p={kw.pvalue:.4f}")
-    pares_u = list(itertools.combinations(modelos, 2))
-    pu = [stats.mannwhitneyu(grupos[a], grupos[b], alternative="two-sided").pvalue for a, b in pares_u]
-    for (a, b), padj, praw in zip(pares_u, holm(pu), pu):
-        print(f"    {a} vs {b}: Mann-Whitney U p={praw:.4f} (Holm {padj:.4f})")
+print("##### B) Métricas do SonarQube: só programas que compilam, sem pareamento #####\n")
+for m in SONAR:
+    print(f"[{m}]")
+    sem_pareamento(df[df.compiled == 1], m, "programas que compilam")
     print()

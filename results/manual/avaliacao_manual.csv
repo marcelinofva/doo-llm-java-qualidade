@@ -1,0 +1,91 @@
+tech,model,spec,n_historias,historias_atendidas,fluxo_coerente_0_1,qualidade_oo_0_2,observacoes
+P1,qwen,S01,8,5,0,2,Nao compila (Player sem estimate); finalizeEstimates vazio; sem troca de estimativa
+P1,llama,S01,8,5,0,1,Nao compila; varios metodos vazios (invite startRound showEstimates na Game)
+P1,phi,S01,8,4,1,1,Join e changeEstimate so imprimem mensagem; sem convite por URL nem estimativa final
+P1,qwen,S02,8,7,1,2,Sem papel do instrutor nem vinculo de presenca por grupo
+P1,llama,S02,8,7,0,2,Nao compila; takeAttendance so imprime
+P1,phi,S02,8,6,0,1,Nao compila; sem instrutor; registro de presenca so imprime; CampGroup herda de Campers (heranca indevida)
+P1,qwen,S03,8,5,1,2,Sem busca por CEP nem filtro por residuo nem funcao de admin
+P1,llama,S03,8,6,0,1,Nao compila; DonationCenter e RecyclingFacility duplicados sem base comum; sem busca por CEP/residuo
+P1,phi,S03,8,5,1,1,Classes so com getters/setters; sem busca por CEP/residuo nem admin; Favorite so guarda nome
+P1,qwen,S04,8,6,1,2,Validacao so imprime mensagem; demais historias cobertas
+P1,llama,S04,8,5,1,1,Update e delete vazios na DataPackage; Validator vazio; sem validacao efetiva
+P1,phi,S04,8,6,0,1,Nao compila; classe DataHub concentra tudo e o main; sem validacao
+P1,qwen,S05,8,5,1,2,"Sem aviso de tag existente, sem sobrescrita nem mudanca de esquema"
+P1,llama,S05,8,5,0,1,Nao compila; Publisher vazio; sem aviso/sobrescrita/esquema
+P1,phi,S05,8,8,0,1,Nao compila; tudo em Publisher (inclui acoes do consumidor); cobre todas as historias
+P1,qwen,S06,7,7,0,2,Nao compila (Role aninhado); cobre todas as historias
+P1,llama,S06,7,5,1,2,Sem editar perfil nem convite por e-mail
+P1,phi,S06,7,7,0,0,Nao compila; classe Owner unica com dezenas de metodos repetidos (geracao degenerada)
+P1,qwen,S07,8,5,0,2,Nao compila; liftEmbargoOnReleaseDate e downloadEmbargoMetadata vazios
+P1,llama,S07,8,5,0,1,Nao compila; setAccessControls/viewEmbargoMetadata/grantEmbargoPrivileges vazios
+P1,phi,S07,8,2,1,1,Metodos do arquivista so imprimem mensagem; sem colecao nem usuarios; apenas Item com data
+P1,qwen,S08,8,6,1,2,Sem itens (so grupos) e sem painel de docente
+P1,llama,S08,8,4,0,2,"Nao compila; sem restricao por IP, sem bloqueio de edicao, sem painel"
+P1,phi,S08,8,3,0,1,Nao compila; metodos do arquivista vazios; usa Strings no lugar de usuarios
+P1,qwen,S09,7,5,1,2,Politica nao e por colecao nem decide replicar ou nao; queueForReplication vazio
+P1,llama,S09,7,2,0,2,"Nao compila; so politica por colecao; replicacao, painel e criptografia ausentes"
+P1,phi,S09,7,3,0,1,"Nao compila; main dentro de RepositoryManager; sem fila, criptografia nem widget"
+P1,qwen,S10,8,6,0,2,Nao compila; Dataset.edit vazio; sem adicionar como oculto
+P1,llama,S10,8,4,1,2,Dataset.edit/delete vazios; sem visao do admin nem adicionar oculto
+P1,phi,S10,8,4,0,0,Nao compila; so a classe DataPublishingUser (Dataset ausente); sem admin
+P1,qwen,S11,8,4,1,2,Importacao generica (sem Excel/JSON/Google/descritor); editModel vazio
+P1,llama,S11,8,1,0,1,"Nao compila; importacao, validacao e empacotamento vazios"
+P1,phi,S11,8,2,1,1,Importar editar modelo e atualizar so imprimem mensagem; so valida CSV
+P1,qwen,S12,8,1,0,1,Nao compila; todos os metodos de Trainer/Admin/Editor vazios; sem curso Outro
+P1,llama,S12,8,3,1,1,Delete e update do editor vazios; Course e Event duplicados; sem taxa por curso Outro
+P1,phi,S12,8,3,0,0,Uma unica classe Course com flag isEvent; sem papeis; Main so imprime
+P1,qwen,S13,8,6,0,2,Nao compila; sem busca executada nem edicao pelo administrador
+P1,llama,S13,8,2,1,1,"Sem detalhes editaveis, privacidade, busca nem papeis; SiteAdministrator.editProfile vazio"
+P1,phi,S13,8,6,0,0,Nao compila; uma unica classe de dados MemberProfile; sem busca nem admin
+P1,qwen,S14,6,5,0,2,Nao compila; sendEmailToEditor vazio; Editor e Subscriber vazios
+P1,llama,S14,6,3,0,1,"Nao compila; sem data de noticia antiga, e-mail ao editor nem assinatura RSS; NewsFeed e NewsSite duplicados"
+P1,phi,S14,6,2,0,0,Nao compila; so a classe NewsItem
+P1,qwen,S15,8,4,0,2,"Nao compila; sem reembolso, pagina de pagamento nem niveis"
+P1,llama,S15,8,2,0,1,Nao compila; processPayment vazio; sem reembolso nem pagamento efetivo
+P1,phi,S15,8,1,0,1,Nao compila (classes duplicadas); refund so imprime; sem pagamento
+P1,qwen,S16,8,1,0,2,"Nao compila; quase todos os metodos vazios (registro, lista de espera, visoes)"
+P1,llama,S16,8,3,0,2,"Nao compila; sem lista de espera, prazo de cancelamento, agenda nem limite por dia"
+P1,phi,S16,8,4,0,1,"Nao compila; dois metodos main; sem aviso de termos, prazo nem visoes de admin"
+P1,qwen,S17,8,3,0,1,Compila mas quase todos os metodos vazios; Main chama metodos sem efeito
+P1,llama,S17,8,1,1,1,"So cria conta; submit, pagamento, upload e revisoes vazios"
+P1,phi,S17,8,2,0,1,Nao compila; operacoes viraram classes que so imprimem mensagem
+P1,qwen,S18,8,7,1,1,Falta status final; classes soltas sem ligacao com a aplicacao
+P1,llama,S18,8,1,0,2,Nao compila; todos os metodos vazios; so Meeting guarda dados
+P1,phi,S18,8,8,0,0,Nao compila; classe StaffMember unica com oito metodos que so imprimem (god class)
+P1,qwen,S19,8,3,0,1,Nao compila; maioria dos metodos vazios; Bond e Inspection soltos
+P1,llama,S19,8,2,0,1,"Nao compila; revisao, reuniao e fianca vazios; PlanReviewStaff e PlanReviewStaffMember duplicados"
+P1,phi,S19,8,0,0,1,Nao compila; todas as operacoes so imprimem mensagem
+P1,qwen,S20,8,4,0,1,Nao compila; Group e FileGroup duplicados; restricoes por IP/usuario e upload vazios
+P1,llama,S20,8,6,0,2,Nao compila; sem redacao nem upload em lote
+P1,phi,S20,8,4,1,0,"Uma unica classe File com atributos; sem grupos, redacao nem upload"
+P1,qwen,S21,8,3,1,2,"sortItems e move vazios; sem metadados customizados, recomendacao, alertas nem busca"
+P1,llama,S21,8,4,0,2,"Nao compila; sem metadados customizados, recomendacao, alertas nem busca"
+P1,phi,S21,8,1,1,1,Operacoes do Repository so imprimem mensagem; so cria colecao com marca
+P1,qwen,S22,8,6,1,2,Sem depositos via Pure/VRE; trackCitationCount do gestor vazio
+P1,llama,S22,8,5,1,2,"Licenca, acesso e rastreio de citacoes com metodos vazios; sem Pure/VRE"
+P1,phi,S22,8,5,0,1,Nao compila; rastreio de citacoes so imprime; projeto modelado como Dataset
+P1,qwen,S23,8,6,1,2,Sem ritmo dia/noite nem insercao por voz; mensagens so impressas
+P1,llama,S23,8,3,1,1,Alfred com metodos vazios; Person duplica o que Agenda guarda; sem chamada de acordar nem lembrete de itens
+P1,phi,S23,8,4,1,1,"Sem contatos, chamada de acordar nem Alfred; so classes de dados"
+P1,qwen,S24,8,3,1,2,Alertas ao contato e ao enfermeiro vazios; sem lembrete de remedio nem video
+P1,llama,S24,8,0,0,1,Nao compila; todos os metodos de acao vazios
+P1,phi,S24,8,5,0,1,Nao compila (atributo duplicado); OlderPerson concentra tudo; contato de emergencia e video so imprimem
+P1,qwen,S25,8,8,1,2,Dispositivos simulados por mensagens impressas (contado como atendido pela natureza da historia)
+P1,llama,S25,8,8,0,1,Compila mas falha na execucao; Person concentra todos os dispositivos e Alfred e redundante; dispositivos so imprimem
+P1,phi,S25,8,8,0,0,Nao compila; classe ALFRED unica com oito metodos que so imprimem
+P1,qwen,S26,8,7,0,2,Nao compila; autenticacao por estrategia (LDAP e local); viewRecord vazio
+P1,llama,S26,8,3,0,2,"Sem LDAP, CRUD de registros nem declaracao de gerente (metodos vazios); Main nao exercita autenticacao"
+P1,phi,S26,8,3,0,1,Nao compila; dois mains e classes duplicadas; sem autenticacao nem registros
+P1,qwen,S27,8,7,0,2,Nao compila; modelo de dominio coerente; falta criar/editar Resource
+P1,llama,S27,8,4,1,1,Compila e roda; componente sem identificador unico; Resource sem subjects e notas; Note solta
+P1,phi,S27,8,8,1,0,Compila e roda; classe Resource unica com atributos String (god class); createEditRecord apenas imprime
+P1,qwen,S28,7,3,0,1,Nao compila; so associacoes agente-entidades; sem import/export EAC-CPF ou MARCXML
+P1,llama,S28,7,2,0,2,Nao compila; metodos de importacao vazios; estrutura Agent NameForm Source razoavel
+P1,phi,S28,7,1,0,0,Compila mas nao executa; apenas SubjectHeading e Agent
+P1,qwen,S29,8,5,0,1,Compila; Main so chama export; metodos read parse vazios
+P1,llama,S29,8,1,0,1,Compila e roda; load e save vazios; so ImportError e funcional
+P1,phi,S29,8,1,0,1,Nao compila; uma classe por historia com metodos vazios
+P1,qwen,S30,8,4,0,1,Nao compila; classes soltas com metodos quase vazios
+P1,llama,S30,8,5,0,2,Nao compila (classe OAI-PMH com nome invalido); modelo ETD Embargo Permission Repository coerente
+P1,phi,S30,8,2,0,0,Nao compila; classe ETD duplicada e logica minima

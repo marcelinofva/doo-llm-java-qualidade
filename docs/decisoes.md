@@ -1,4 +1,4 @@
-﻿# Decisoes e desvios do plano
+# Decisoes e desvios do plano
 
 | Data | O que mudou | Por que | Impacto |
 | --- | --- | --- | --- |
@@ -7,5 +7,12 @@
 | 2026-11-16 | compile_run.py registra duas taxas: compiled_strict (como escrito) e compiled (apos reparo mecanico de imports) | Os modelos omitem imports (List, ArrayList, Map etc.); sem o reparo quase nada compilaria e as metricas ficariam sem dados | O reparo so acrescenta imports que o proprio javac apontou, de uma lista fixa; as duas taxas serao reportadas; original guardado em orig_src |
 | 2026-11-16 | Prompt P1 v2: regra de que cada arquivo inclua todos os imports | Falta de imports foi o erro mais comum no piloto | Regra geral de formato; os modelos a seguiram de forma inconsistente |
 | 2026-11-16 | Piloto (S01-S03 x 3 modelos) descartado; todos os programas serao gerados de novo com o prompt congelado | O prompt mudou durante o piloto | Nenhum resultado do piloto entra na analise final |
+| 2026-11-16 | O CK passou a rodar uma vez por programa (scripts/run_ck.py) | Todos os programas usam o pacote padrao; rodando tudo junto, classes com o mesmo nome (Main, Item...) de programas diferentes se sobrescreviam no relatorio do CK | CK coletado para os 90 programas; as tabelas results/ck/class.csv e method.csv unem as execucoes |
+| 2026-11-16 | AstMetrics.java e merge_metrics.py ignoram as pastas orig_src | As copias originais (antes do reparo de imports) duplicavam as classes na AST | AST com 526 classes, sem contagem dupla |
+| 2026-11-17 | SonarQube so analisa os programas que compilam (37 de 90) | O scanner exige compilacao; sem ela nao ha metricas confiaveis | Complexidade cognitiva, smells e NCLOC existem apenas para 37 programas; a comparacao entre modelos nessas metricas nao e pareada |
+| 2026-11-17 | stats.py dividido em duas analises: (A) metricas do codigo-fonte em todos os programas, pareadas por especificacao, com sensibilidade apenas nos que compilam; (B) metricas do Sonar no subconjunto que compila, sem pareamento | A primeira versao so comparava especificacoes completas nos tres modelos e sobravam poucas | Friedman e Wilcoxon com Holm na parte A; Kruskal-Wallis e Mann-Whitney com Holm na parte B |
+| 2026-11-17 | Avaliacao manual de assertividade dos 90 programas (results/manual/avaliacao_manual.csv) feita com apoio do Claude a partir de resumos estruturais do codigo, e nao por leitura completa | Tempo disponivel e tamanho da amostra | Avaliador unico, com apoio de IA, e amostra conferida pelo autor; declarado como ameaca a validade no relatorio |
+| 2026-11-17 | Linha base P0 (prompt simples) nao foi executada | Prazo; o enunciado pede justificar e validar o prompt, nao compara-lo com outro | O trabalho nao permite afirmar que o prompt P1 seja melhor que um prompt simples |
 
+# Decisoes e desvios do plano
 Observacao do piloto: erros reais dos modelos (metodo chamado e nao escrito, return ausente, variavel declarada duas vezes) ficam como falha de compilacao e nao sao corrigidos.

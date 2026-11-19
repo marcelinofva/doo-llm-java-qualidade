@@ -1,32 +1,54 @@
-# Pipeline do trabalho de DOO: código Java gerado por LLMs locais
+# Qualidade de código Java gerado por LLMs locais a partir de histórias de usuário
 
-Tudo roda na sua máquina, sem API paga e sem limite de uso.
+Trabalho da disciplina Desenvolvimento Orientado a Objetos (INF03068, 2026/2). Três modelos abertos executados localmente pelo Ollama geram código Java a partir de 30 especificações em forma de histórias de usuário. Os 90 programas resultantes são compilados, executados e analisados com métricas estáticas e uma avaliação manual de assertividade. Tudo roda em máquina local, sem API paga.
 
-## Ordem de execução
-0. `python scripts/registrar_ambiente.py` (gera `docs/ambiente.md`; rode no início e de novo no fim; complete os campos MANUAL).
-1. `ollama pull qwen2.5-coder:7b`, `ollama pull llama3.1:8b`, `ollama pull phi4-mini` (confira as tags em ollama.com/library).
-2. Coloque as 30 especificações em `specs/S01.md` ... `S30.md` e as entidades esperadas em `specs/S01.entities.txt` ... (modelos em `specs/_TEMPLATE*`).
-3. Piloto: copie 3 a 5 especificações para uma pasta à parte e rode os passos 4 a 6 nelas para validar o prompt.
-4. `python scripts/generate.py prompts/P1.txt`   (pode interromper e retomar; pula o que já foi gerado)
-5. `python scripts/extract.py`
-6. `python scripts/compile_run.py`   (javac --release 11 + execução da Main com limite de 10 s)
-7. `java -jar ck.jar outputs false 0 false results/ck/`   (CK; crie `results/ck` antes)
-8. `java -cp javaparser-core-<versão>.jar scripts/AstMetrics.java outputs > results/ast.csv`
-9. SonarQube local (Docker): suba o servidor, crie um token e rode `python scripts/sonar_scan.py <TOKEN>`
-10. `python scripts/entity_cov.py`
-11. `python scripts/merge_metrics.py`   (gera `results/metrics.csv`)
-12. `python scripts/stats.py P1`
-13. `python scripts/plots.py P1`   (gera `results/figures/taxas.png` e `box_<métrica>.png` para o relatório)
+Versão entregue: etiqueta `v1.0-entrega`.
 
-Extensão opcional: `python scripts/generate.py prompts/P0.txt` (zero-shot) e repita os passos 5 a 12 com `P0`.
+## Resumo dos resultados
 
-## Status dos testes (feitos no ambiente de montagem, sem Ollama)
-- Testados com dados simulados: generate.py (contra um servidor Ollama falso), extract.py, entity_cov.py, merge_metrics.py, stats.py, plots.py, registrar_ambiente.py.
-- Testado com JDK 21 real: compile_run.py (casos: compila e executa, erro de compilação, exceção, timeout, sem Main, sem arquivos). Com o seu JDK 25 o `--release 11` funciona do mesmo jeito.
-- sonar_scan.py: ajustado para achar `sonar-scanner.bat` no Windows e seguir em frente se um programa falhar, mas não foi testado contra um SonarQube real.
-- Não testados: a parte do SonarQube (precisa do servidor), AstMetrics.java (precisa do jar do JavaParser) e a chamada do CK. Rode primeiro no piloto e ajuste nomes de colunas dos CSVs do CK se a sua versão for diferente.
+| Modelo | Compilou (estrito) | Compilou (com reparo de imports) | Executou | Histórias atendidas (manual) | Qualidade OO (0 a 2) |
+|---|---|---|---|---|---|
+| qwen2.5-coder:7b | 8/30 | 15/30 | 15/30 | 63% | 1,73 |
+| llama3.1:8b | 6/30 | 12/30 | 11/30 | 46% | 1,43 |
+| phi4-mini | 6/30 | 10/30 | 9/30 | 50% | 0,63 |
 
-## Cuidados
-- O código gerado é executado: rode em pasta temporária (o script já faz) e não use a máquina com dados sensíveis abertos durante a execução.
-- Registre as versões: `ollama --version`, `ollama show <modelo>` (digest), `java -version`, versão do CK, do JavaParser e do SonarQube.
-- Instale as dependências Python com `pip install -r requirements.txt`.
+As taxas de compilação não diferem de forma significativa entre os modelos (Q de Cochran). A diferença está na estrutura: o phi4-mini concentra o código em poucas classes grandes e cobre menos entidades do domínio. Complexidade ciclomática e cognitiva foram quase constantes. Detalhes e limitações estão no relatório e em `results/stats_P1.txt`.
+
+## Estrutura
+
+| Pasta | Conteúdo |
+|---|---|
+| `specs/` | 30 especificações (`Sxx.md`) e as entidades esperadas (`Sxx.entities.txt`, escolhidas pelo autor) |
+| `prompts/` | prompt final `P1.txt`, versão anterior em `historico/` e linha base `P0.txt` (não executada) |
+| `outputs/P1/<modelo>/<Sxx>/` | resposta bruta, projeto (`design.txt`), código extraído (`src/`), cópia original antes do reparo de imports (`orig_src/`) e log do `javac` |
+| `scripts/` | pipeline de geração, compilação e análise |
+| `results/` | métricas (`ast`, `ck/`, `sonar`, `entities`, `metrics`), estatística (`stats_P1.txt`), figuras e avaliação manual (`manual/`) |
+| `logs/generation.csv` | tempo e tokens de cada geração |
+| `docs/` | especificações (origem e licença), prompts (versões e hashes), decisões e ambiente |
+
+## Como reproduzir
+
+Pré-requisitos: Ollama, JDK (usado o 25, compilando com `--release 11`), Python 3.12, Maven (para compilar o CK) e Docker (para o SonarQube). Instale as dependências Python com `pip install -r requirements.txt`. As versões usadas estão em `docs/ambiente.md`.
+
+1. `python scripts/registrar_ambiente.py` (gera `docs/ambiente.md`).
+2. `ollama pull qwen2.5-coder:7b`, `ollama pull llama3.1:8b`, `ollama pull phi4-mini`.
+3. `python scripts/generate.py prompts/P1.txt` (pode ser interrompido e retomado).
+4. `python scripts/extract.py` e depois `python scripts/compile_run.py` (`javac --release 11`, execução da `Main` com limite de 10 s; gera `results/build.csv`).
+5. AST: `java -cp javaparser-core-3.26.2.jar scripts/AstMetrics.java outputs > results/ast.csv`.
+6. CK: compile o CK (0.7.1-SNAPSHOT) e rode `python scripts/run_ck.py <caminho do jar com dependências>` (um programa por vez, para evitar colisão de nomes de classe).
+7. SonarQube local em Docker, com token criado na interface: `python scripts/sonar_scan.py <TOKEN>`. Não grave o token em arquivos.
+8. `python scripts/entity_cov.py`, `python scripts/merge_metrics.py`, `python scripts/stats.py P1` e `python scripts/plots.py P1`.
+9. Avaliação manual: `python scripts/manual_check.py P1 42 30` prepara os resumos e o CSV a preencher.
+
+## Limitações
+
+- Uma única resposta por combinação de especificação e modelo (semente 42, temperatura 0,1), sem medir variabilidade entre execuções.
+- O prompt foi ajustado com S01 a S03, que fazem parte da amostra; não houve comparação com um prompt de linha base.
+- Os `imports` ausentes foram reparados mecanicamente antes da segunda compilação; as duas taxas são reportadas.
+- O SonarQube só analisa os programas que compilam (37 de 90).
+- A avaliação manual foi feita por um único avaliador, com apoio do Claude (Anthropic) a partir de resumos estruturais do código, e uma amostra foi conferida pelo autor. As entidades esperadas também são escolha do autor.
+- Todas as especificações vêm de um único conjunto de dados; 30 especificações de 14 sistemas.
+
+## Dados e licença
+
+As histórias de usuário vêm de Dalpiaz (2024), *Requirements data sets (user stories)*, Mendeley Data, DOI 10.17632/7zbk8zsd8y.2, licença CC BY 4.0. O código deste repositório está sob a licença MIT (`LICENSE`); os programas em `outputs/` foram gerados por modelos de linguagem.

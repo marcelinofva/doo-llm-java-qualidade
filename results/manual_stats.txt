@@ -1,0 +1,28 @@
+AVALIACAO MANUAL - estatisticas (n = 90 programas, 30 por modelo)
+Fonte: results/manual/avaliacao_manual.csv | avaliacao feita com apoio do Claude e conferida em amostra (ver docs/decisoes.md)
+
+== Resumo por modelo ==
+       historias  total  taxa_media  fluxo_ok  oo_media  taxa_global_%
+model                                                                 
+llama        105    235       0.447         9     1.433         44.681
+phi          116    235       0.493         8     0.633         49.362
+qwen         147    235       0.628        13     1.733         62.553
+
+== Taxa de historias atendidas (n=30 especificacoes pareadas) ==
+Friedman: chi2=9.733, p=0.0077
+  llama vs phi: Wilcoxon p=0.6647 (Holm 0.6647); delta de Cliff=-0.046
+  llama vs qwen: Wilcoxon p=0.0009 (Holm 0.0026); delta de Cliff=-0.426
+  phi vs qwen: Wilcoxon p=0.0096 (Holm 0.0192); delta de Cliff=-0.304
+
+== Qualidade OO (0-2) (n=30 especificacoes pareadas) ==
+Friedman: chi2=38.225, p=0.0000
+  llama vs phi: Wilcoxon p=0.0001 (Holm 0.0002); delta de Cliff=+0.641
+  llama vs qwen: Wilcoxon p=0.0290 (Holm 0.0290); delta de Cliff=-0.300
+  phi vs qwen: Wilcoxon p=0.0000 (Holm 0.0000); delta de Cliff=-0.831
+
+== Fluxo coerente (0/1) (n=30 especificacoes pareadas) ==
+Cochran Q=2.000, p=0.3679
+Fluxo coerente por modelo: llama=9/30, phi=8/30, qwen=13/30
+
+Cautelas: avaliador unico (com apoio de IA); a conferencia de 6 programas nao e independente;
+diferencas pequenas devem ser lidas com cuidado (varios testes; n=30 por modelo).

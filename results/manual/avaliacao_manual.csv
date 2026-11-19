@@ -4,7 +4,7 @@ P1,llama,S01,8,5,0,1,Nao compila; varios metodos vazios (invite startRound showE
 P1,phi,S01,8,4,1,1,Join e changeEstimate so imprimem mensagem; sem convite por URL nem estimativa final
 P1,qwen,S02,8,7,1,2,Sem papel do instrutor nem vinculo de presenca por grupo
 P1,llama,S02,8,7,0,2,Nao compila; takeAttendance so imprime
-P1,phi,S02,8,6,0,1,Nao compila; sem instrutor; registro de presenca so imprime; CampGroup herda de Campers (heranca indevida)
+P1,phi,S02,8,4,0,1,Nao compila; sem instrutor; registro de presenca so imprime; CampGroup herda de Campers (heranca indevida) | revisado na conferencia (era 6): US4 e US5 so tentativa
 P1,qwen,S03,8,5,1,2,Sem busca por CEP nem filtro por residuo nem funcao de admin
 P1,llama,S03,8,6,0,1,Nao compila; DonationCenter e RecyclingFacility duplicados sem base comum; sem busca por CEP/residuo
 P1,phi,S03,8,5,1,1,Classes so com getters/setters; sem busca por CEP/residuo nem admin; Favorite so guarda nome
@@ -72,7 +72,7 @@ P1,qwen,S24,8,3,1,2,Alertas ao contato e ao enfermeiro vazios; sem lembrete de r
 P1,llama,S24,8,0,0,1,Nao compila; todos os metodos de acao vazios
 P1,phi,S24,8,5,0,1,Nao compila (atributo duplicado); OlderPerson concentra tudo; contato de emergencia e video so imprimem
 P1,qwen,S25,8,8,1,2,Dispositivos simulados por mensagens impressas (contado como atendido pela natureza da historia)
-P1,llama,S25,8,8,0,1,Compila mas falha na execucao; Person concentra todos os dispositivos e Alfred e redundante; dispositivos so imprimem
+P1,llama,S25,8,6,0,1,Compila mas falha na execucao; Person concentra todos os dispositivos e Alfred e redundante; dispositivos so imprimem | revisado na conferencia (era 8): US1 parcial e US2 nao atendida
 P1,phi,S25,8,8,0,0,Nao compila; classe ALFRED unica com oito metodos que so imprimem
 P1,qwen,S26,8,7,0,2,Nao compila; autenticacao por estrategia (LDAP e local); viewRecord vazio
 P1,llama,S26,8,3,0,2,"Sem LDAP, CRUD de registros nem declaracao de gerente (metodos vazios); Main nao exercita autenticacao"

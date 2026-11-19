@@ -9,8 +9,8 @@ Versão entregue: etiqueta `v1.0-entrega`.
 | Modelo | Compilou (estrito) | Compilou (com reparo de imports) | Executou | Histórias atendidas (manual) | Qualidade OO (0 a 2) |
 |---|---|---|---|---|---|
 | qwen2.5-coder:7b | 8/30 | 15/30 | 15/30 | 63% | 1,73 |
-| llama3.1:8b | 6/30 | 12/30 | 11/30 | 46% | 1,43 |
-| phi4-mini | 6/30 | 10/30 | 9/30 | 50% | 0,63 |
+| llama3.1:8b | 6/30 | 12/30 | 11/30 | 45% | 1,43 |
+| phi4-mini | 6/30 | 10/30 | 9/30 | 49% | 0,63 |
 
 As taxas de compilação não diferem de forma significativa entre os modelos (Q de Cochran). A diferença está na estrutura: o phi4-mini concentra o código em poucas classes grandes e cobre menos entidades do domínio. Complexidade ciclomática e cognitiva foram quase constantes. Detalhes e limitações estão no relatório e em `results/stats_P1.txt`.
 
